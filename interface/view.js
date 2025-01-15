@@ -199,7 +199,7 @@ class View {
     }
 
     _log(message){
-        if(!this.isLogOut)
+        if(!this.isLogOut) return;
         console.log("[" + this.constructor.name + "] " + message);
     }
 }
