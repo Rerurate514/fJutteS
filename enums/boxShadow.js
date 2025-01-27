@@ -1,4 +1,4 @@
-class ShadowLevel {
+export default class ShadowLevel {
   static LVL0 = new ShadowLevel('none');
   static LVL1 = new ShadowLevel('0 2px 4px rgba(0,0,0,0.1)');
   static LVL2 = new ShadowLevel('0 4px 8px rgba(0,0,0,0.12)');

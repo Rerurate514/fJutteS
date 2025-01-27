@@ -1,4 +1,4 @@
-class Position extends View {
+export default class Position extends View {
     constructor({child, top = 0, left = 0}){
         super({child: child, top: top, left: left});
     }

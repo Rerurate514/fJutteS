@@ -1,7 +1,7 @@
 /**
  * このクラスは状態管理しなくてはならない要素が動的に変化する際に有用なコンポーネントです。
  */
-class DynamicProviderScope extends View {
+export default class DynamicProviderScope extends View {
     constructor({child, props = {}}){
         props.child = child;
         props.providers = [];

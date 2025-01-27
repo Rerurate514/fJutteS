@@ -14,7 +14,7 @@
  * これはpreBuildでプロバイダーを定義すると、値の変更を検知したリスナーがrebuildを呼び出します。
  * しかしrebuildメソッドでもpreBuildが実行されるので無限回帰となり、エラーとなるからです。
  */
-class ProviderScope extends View {
+export default class ProviderScope extends View {
     /**
      * コンストラクタ
      * @param {View} child - 子要素

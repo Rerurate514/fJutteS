@@ -1,4 +1,4 @@
-class Column extends View {
+export default class Column extends View {
     constructor(children){
         super({children: children});
     }

@@ -1,4 +1,4 @@
-class Row extends View {
+export default class Row extends View {
     constructor(children, isAlignCenter = false, isJustifySpaceAround = false){
         super({
             children: children, 

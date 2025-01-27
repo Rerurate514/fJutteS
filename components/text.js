@@ -1,4 +1,4 @@
-class Text extends View{
+export default class Text extends View{
     constructor(text, color = "black", isFontWeight = false){
         super({text: text, color: color, isFontWeight: isFontWeight});
     }

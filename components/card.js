@@ -1,4 +1,4 @@
-class Card extends View {
+export default class Card extends View {
     constructor({
         child,
         radius = "0px", 

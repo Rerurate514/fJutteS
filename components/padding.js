@@ -1,4 +1,4 @@
-class Padding extends View {
+export default class Padding extends View {
     constructor({
         child,
         all,
