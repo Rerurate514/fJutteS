@@ -2,7 +2,7 @@
 This is a declarative component UI framework built with pure JavaScript.
 It uses a custom library called `Jiperes` optimized for `fJuttes` for state management, so you no longer need to select a state management library.
 
-- 日本語バージョンはこちら -> 
+- 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md
 
 ## Installation
 //TODO
