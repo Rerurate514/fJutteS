@@ -1,0 +1,22 @@
+{
+  "name": "fjuttes",
+  "version": "1.0.0",
+  "description": "THIS IS PURE JS FRAMEWORK",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rerurate514/fJutteS.git"
+  },
+  "keywords": [
+    "fJutteS"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rerurate514/fJutteS/issues"
+  },
+  "homepage": "https://github.com/Rerurate514/fJutteS#readme"
+}
