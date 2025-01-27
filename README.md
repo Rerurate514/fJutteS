@@ -6,6 +6,22 @@
 //TODO
 
 ## 使用方法 - チュートリアル
+### ウィジェットを描画する
+最初に`fJutteS`の`View`を描画する方法について解説します。
+まず、`index.html`などのhtmlファイルに以下のidの`div`要素を用意します。
+```html
+<div id="fJutteS-Container"></div>
+```
+
+そして、`js`ファイルで以下の処理を行います。
+```js
+const assemble = require('assembleView');
+const view = new Text("何らかのView");
+
+assemble(view);
+```
+このコードで`<div id="fJutteS-Container"></div>`以下に`assemble`関数に渡した`View`が描画されます。
+
 ### ウィジェットの作成
 #### Viewの継承
 まず、このフレームワークには全てのウィジェットの根幹となる`View`コンポーネントが提供されています。
@@ -303,4 +319,4 @@ class SampleWidget extends ProviderScope {
 //TODO
 
 ## ライセンス
-//TODO
+MIT
