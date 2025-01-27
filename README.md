@@ -1,104 +1,107 @@
 # THIS IS PURE JS FRAMEWORK
-これは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。
-状態管理に`fJuttes`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。
+This is a declarative component UI framework built with pure JavaScript.
+It uses a custom library called `Jiperes` optimized for `fJuttes` for state management, so you no longer need to select a state management library.
 
-## インストール方法
+- 日本語バージョンはこちら -> 
+
+## Installation
 //TODO
 
-## 使用方法 - チュートリアル
-### ウィジェットを描画する
-最初に`fJutteS`の`View`を描画する方法について解説します。
-まず、`index.html`などのhtmlファイルに以下のidの`div`要素を用意します。
+## Usage - Tutorial
+### Rendering Widgets
+First, let's explain how to render a `fJutteS` `View`.
+Start by preparing a `div` element with the following id in your HTML file (e.g., `index.html`):
 ```html
 <div id="fJutteS-Container"></div>
 ```
 
-そして、`js`ファイルで以下の処理を行います。
+Then, in your `js` file, do the following:
 ```js
 const assemble = require('assembleView');
-const view = new Text("何らかのView");
+const view = new Text("Some View");
 
 assemble(view);
 ```
-このコードで`<div id="fJutteS-Container"></div>`以下に`assemble`関数に渡した`View`が描画されます。
+This code will render the `View` passed to the `assemble` function within `<div id="fJutteS-Container"></div>`.
 
-### ウィジェットの作成
-#### Viewの継承
-まず、このフレームワークには全てのウィジェットの根幹となる`View`コンポーネントが提供されています。
-このクラスを継承するのが、ウィジェット作成の第一段階です。
+### Creating Widgets
+#### Inheriting from View
+First, this framework provides a `View` component that serves as the foundation for all widgets.
+Inheriting from this class is the first step in creating a widget.
 ```js
 class SampleWidget extends View {
-	...
+    ...
 }
 ```
 
-#### Viewコンストラクタの呼び出し
-そして、`View`クラス側でウィジェットを描画するのに必要な処理を行うために`View`のコンストラクタを呼び出します。
+#### Calling the View Constructor
+Next, call the `View` constructor to perform necessary rendering operations on the widget side.
 ```js
 class SampleWidget extends View {
-	constructor(){
-		super();
-	}
+    constructor(){
+        super();
+    }
 }
 ```
 
-#### ウィジェットの要素定義
-次にこのウィジェットの`HTMLElement`要素を定義します。
-これには`View`クラスで定義されている`createWrapView`をオーバーライドして作成します。
-これにはJSで使用できる`document.createElement`メソッドを使用して`HTMLElement`を作成できます。
+#### Defining Widget Elements
+Next, define the `HTMLElement` for this widget.
+This is done by overriding `createWrapView` defined in the `View` class.
+You can create `HTMLElement`s using the `document.createElement` method available in JS.
 ```js
 class SampleWidget extends View {
-	constructor(){
-		super();
-	}
+    constructor(){
+        super();
+    }
 
-	createWrapView(){
-		let div = document.createElement("div");
-		return div;
-	}
+    createWrapView(){
+        let div = document.createElement("div");
+        return div;
+    }
 }
 ```
-因みにこの`createWrapView`はオーバーライド必須で、オーバーライドしないとエラーが出てしまいます。
+Note that `createWrapView` must be overridden, or you'll get this error:
 ```error
-throw new TypeError("createWrapViewメソッドを必ずオーバーライドして、HTMLElement型を返り値に設定してください。");
+throw new TypeError("createWrapView method must be overridden and return an HTMLElement type.");
 ```
 
-#### ウィジェットのスタイル定義
-`createWrapView`で作成した`HTMLElement`要素に対してスタイルを適用するには`styledView`メソッドをオーバーライドします。
+#### Defining Widget Styles
+To apply styles to the `HTMLElement` created in `createWrapView`, override the `styledView` method.
 ```js
 class SampleWidget extends View {
-	constructor(){
-		super();
-	}
+    constructor(){
+        super();
+    }
 
-	createWrapView(){
-		let div = document.createElement("div");
-		return div;
-	}
+    createWrapView(){
+        let div = document.createElement("div");
+        return div;
+    }
 
-	styledView(element){
-		element.className = "sample-widget";
+    styledView(element){
+        element.className = "sample-widget";
 
-		element.style.backgroundColor = "red";
-		element.style.width = "100px";
-		element.style.height = "100px";
+        element.style.backgroundColor = "red";
+        element.style.width = "100px";
+        element.style.height = "100px";
 
-		return element;
-	}
+        return element;
+    }
 }
 ```
-`styledView`メソッドには引数として、`createWrapView`で作成した`HTMLElement`が渡されます。
-スタイルの適用の詳細には`HTMLElement`を参照してください。
-このメソッドの最後で必ずスタイルを適用した要素を`return`で返却してください。
-返却しない場合、以下のエラーが返されます。
+The `styledView` method receives the `HTMLElement` created by `createWrapView` as an argument.
+Refer to `HTMLElement` documentation for styling details.
+Make sure to return the styled element at the end of this method.
+If you don't return it, you'll get this error:
 ```error
-throw new TypeError("styledViewには必ずHTMLElenmentオブジェクトを格納してください。 渡された型:", typeof child);
+throw new TypeError("styledView must contain an HTMLElement object. Type passed:", typeof child);
 ```
 
-なお、このメソッドに用がない場合、オーバーライドせずに無視してもらっても構いません。
+If you don't need this method, you can ignore it without overriding.
+
 #### embedScriptToView
-もしウィジェットに何らかのJSで標準用意されているスクリプトを埋め込みたいなら`embedScriptToView`内で行ってください。
-例えば、ラジオボタンのイベントの発火などです。
+If you want to embed standard JS scripts into your widget, do it in `embedScriptToView`.
+For example, for radio button event firing:
 ```js
     embedScriptToView(element){
         this._setEventListenerToRadioBtn(element);
@@ -108,215 +111,216 @@ throw new TypeError("styledViewには必ずHTMLElenmentオブジェクトを格�
     _setEventListenerToRadioBtn(radioBtn) {
         radioBtn.addEventListener("change", (e) => {   
             if (e.target.checked) {
-                //イベントの発火により動作するコード
+                //Code that executes when event fires
             }
         });
     }
 ```
-このメソッドでも最後に要素を`return`で返却してください。
-返却しない場合、以下のエラーが返されます。
+Make sure to return the element at the end of this method too.
+If you don't return it, you'll get this error:
 ```error
-throw new TypeError("embedScriptToViewには必ずHTMLElenmentオブジェクトを格納してください。 渡された型:", typeof child);
+throw new TypeError("embedScriptToView must contain an HTMLElement object. Type passed:", typeof child);
 ```
 
-なお、このメソッドに用がない場合、オーバーライドせずに無視してもらっても構いません。
+If you don't need this method, you can ignore it without overriding.
 
-#### ウィジェットの子要素を作成する。
-`createWrapView`で作成した要素の中に子要素を入れていくには`build`メソッドをオーバーライドして使用します。
-ここには自身で作成したウィジェットやfJutteSで用意されているコンポーネントが使用できます。
+#### Creating Child Elements for Widgets
+To add child elements to the element created in `createWrapView`, override and use the `build` method.
+You can use both your custom widgets and components provided by fJutteS here.
 ```js
 class SampleWidget extends View {
-	constructor(){
-		super();
-	}
+    constructor(){
+        super();
+    }
 
-	createWrapView(){
-		let div = document.createElement("div");
-		return div;
-	}
+    createWrapView(){
+        let div = document.createElement("div");
+        return div;
+    }
 
-	styledView(element){
-		element.className = "sample-widget";
+    styledView(element){
+        element.className = "sample-widget";
 
-		element.style.backgroundColor = "red";
-		element.style.width = "100px";
-		element.style.height = "100px";
+        element.style.backgroundColor = "red";
+        element.style.width = "100px";
+        element.style.height = "100px";
 
-		return element;
-	}
+        return element;
+    }
 
-	build(){
-		return new Text("Hello World");
-	}
+    build(){
+        return new Text("Hello World");
+    }
 }
 ```
-ここでは`Text`コンポーネントを使用して文字を表示してみます。
-このとき必ず、コンポーネントやウィジェットを`return`で返却してください。
-これで一つの基本的なウィジェットを作成することができました。
+Here we're using the `Text` component to display text.
+Make sure to return the component or widget with `return`.
+Now you've created a basic widget.
 
-### ウィジェットに値の受け渡し
-例えば、ウィジェットに子要素を渡して、それを子要素でビルドして欲しい時や親要素のプロパティを子要素に渡して表示して欲しい時があるかもしれません。
-その際のやり方をこのセクションでは解説します。
+### Passing Values to Widgets
+Sometimes you might want to pass child elements to a widget for building, or pass parent properties to child elements for display.
+This section explains how to do that.
 
-まず皆さんが親要素から渡された文字列を`Text`コンポーネントで表示したいとき、このように書くかもしれません。
+First, you might write something like this when you want to display text passed from a parent element using the `Text` component:
 ```js
 class SampleWidget extends View {
-	constructor(text){
-		super();
-		this.text = text;//ここでSampleWidgetのインスタンス変数に格納
-	}
+    constructor(text){
+        super();
+        this.text = text;//Store in SampleWidget's instance variable here
+    }
 
-	createWrapView(){
-		let div = document.createElement("div");
-		return div;
-	}
+    createWrapView(){
+        let div = document.createElement("div");
+        return div;
+    }
 
-	styledView(element){
-		element.className = "sample-widget";
+    styledView(element){
+        element.className = "sample-widget";
 
-		element.style.backgroundColor = "red";
-		element.style.width = "100px";
-		element.style.height = "100px";
+        element.style.backgroundColor = "red";
+        element.style.width = "100px";
+        element.style.height = "100px";
 
-		return element;
-	}
+        return element;
+    }
 
-	build(){
-		return new Text(this.text);//ここで使用
-	}
+    build(){
+        return new Text(this.text);//Use it here
+    }
 }
 ```
-しかし、これを実行してみると`undefined`と表示されてしまいます。
-これは`View`クラス側で、`createWrapView`や`build`メソッドがコンストラクタで実行されているのが原因です。そのため、`build`が実行し終わってから`this.text = text`のコードを実行してしまいます。
+However, running this will display `undefined`.
+This is because in the `View` class, `createWrapView` and `build` methods are executed in the constructor, so `build` finishes executing before `this.text = text`.
 
-この問題を回避するため、`View`クラスのコンストラクタには`props`という引数を渡すことができます。
+To avoid this problem, you can pass `props` as an argument to the `View` class constructor.
 
-`props`を使用して、もう一度上のコードを書き直してみます。
+Let's rewrite the above code using `props`:
 ```js
 class SampleWidget extends View {
-	constructor(text){
-		super({text: text});
-	}
+    constructor(text){
+        super({text: text});
+    }
 
-	createWrapView(){
-		let div = document.createElement("div");
-		return div;
-	}
+    createWrapView(){
+        let div = document.createElement("div");
+        return div;
+    }
 
-	styledView(element){
-		element.className = "sample-widget";
+    styledView(element){
+        element.className = "sample-widget";
 
-		element.style.backgroundColor = "red";
-		element.style.width = "100px";
-		element.style.height = "100px";
+        element.style.backgroundColor = "red";
+        element.style.width = "100px";
+        element.style.height = "100px";
 
-		return element;
-	}
+        return element;
+    }
 
-	build(){
-		return new Text(this.props.text);//ここで使用
-	}
+    build(){
+        return new Text(this.props.text);//Use it here
+    }
 }
 ```
-`props`はオブジェクトとして渡します。
-これは`View`クラスのインスタンス変数として`createWrapView`などのメソッドが実行される前に格納されるので、`build`メソッドなどで値が使用可能になります。
+`props` is passed as an object.
+Since it's stored as an instance variable of the `View` class before methods like `createWrapView` are executed, the values become available in methods like `build`.
 
-同様に子要素を渡された場合でも、
+Similarly, when passing child elements:
 ```js
 class SampleWidget extends View {
-	constructor(child){
-		super({child: child});
-	}
+    constructor(child){
+        super({child: child});
+    }
 
-	createWrapView(){
-		let div = document.createElement("div");
-		return div;
-	}
+    createWrapView(){
+        let div = document.createElement("div");
+        return div;
+    }
 
-	styledView(element){
-		element.className = "sample-widget";
+    styledView(element){
+        element.className = "sample-widget";
 
-		element.style.backgroundColor = "red";
-		element.style.width = "100px";
-		element.style.height = "100px";
+        element.style.backgroundColor = "red";
+        element.style.width = "100px";
+        element.style.height = "100px";
 
-		return element;
-	}
+        return element;
+    }
 
-	build(){
-		return this.props.child;
-	}
+    build(){
+        return this.props.child;
+    }
 }
 ```
-と書くことで、簡単に子要素を描画することができます。
+This makes it easy to render child elements.
 
-### Providerによる状態管理
-この`fJutteS`フレームワークには`Jiperes`という状態管理ライブラリが付属しています。
-値が変更されたことによって、ウィジェットをリビルド、再描画したい際にはProviderを使用して行います。
-#### Providerの作成
-Providerを作成するには`Provider`クラスのファクトリメソッド`createProvider()`を使用して行います。
-以下に試しに作成してみます。
+### State Management with Provider
+The `fJutteS` framework comes with a state management library called `Jiperes`.
+When you want to rebuild and re-render widgets due to value changes, use Provider.
+
+#### Creating a Provider
+Create a Provider using the `Provider` class's factory method `createProvider()`.
+Let's try creating one:
 ```js
 const sampleProvider = Provider.createProvider(() => {
-	return 0;
+    return 0;
 })
 ```
-引数には関数オブジェクトを渡し、その中で初期値を`return`で返却します。
-（これは基本的な数値を管理するProviderであり、Providerには依存関係などの機能もあります。）
+Pass a function object as an argument and return the initial value inside it.
+(This is a basic Provider for managing numerical values; Providers also have dependency relationship features.)
 
-#### Providerの使用-ProviderScope-read
-Providerの値の変更を監視するためにはView単位で行います。
-`ProviderScope`コンポーネントを継承してウィジェットを作成します。
+#### Using Provider - ProviderScope - read
+To monitor Provider value changes, do it on a View-by-View basis.
+Create a widget by inheriting from the `ProviderScope` component:
 ```js
 class SampleWidget extends ProviderScope {
-	constructor(child){
-		super({
-			child: child,
-			watchingProviders: [ sampleProvider ]
-		});
-	}
+    constructor(child){
+        super({
+            child: child,
+            watchingProviders: [ sampleProvider ]
+        });
+    }
 
-	createWrapView(){
-		let div = document.createElement("div");
-		return div;
-	}
+    createWrapView(){
+        let div = document.createElement("div");
+        return div;
+    }
 
-	styledView(element){
-		element.className = "sample-widget";
+    styledView(element){
+        element.className = "sample-widget";
 
-		element.style.backgroundColor = "red";
-		element.style.width = "100px";
-		element.style.height = "100px";
+        element.style.backgroundColor = "red";
+        element.style.width = "100px";
+        element.style.height = "100px";
 
-		return element;
-	}
+        return element;
+    }
 
-	build(){
-		let num = sampleProvider.read();
+    build(){
+        let num = sampleProvider.read();
 
-		return Row([
-			this.props.child,
-			new Text(num)
-		]);
-	}
+        return Row([
+            this.props.child,
+            new Text(num)
+        ]);
+    }
 }
 ```
-`ProviderScope`クラスにはコンストラクタとして、三つのプロパティを渡すことができます。
-`props`と`watchingProvider`、`child`です。
-`props`には`View`と同じ役割を持ちます。
-`watchingProvider`には、Providerの配列を渡します。
-`ProviderScope`に渡されたProviderは自動的にリッスン状態になり、配列のProviderの一つでも値が変更されると、`ProviderScope`を継承したウィジェットが再ビルドされます。
+The `ProviderScope` class constructor can take three properties:
+`props`, `watchingProvider`, and `child`.
+`props` serves the same role as in `View`.
+`watchingProvider` takes an array of Providers.
+Providers passed to `ProviderScope` automatically enter listening state, and if any Provider in the array changes value, the widget inheriting from `ProviderScope` will be rebuilt.
 
-ここでは`Provider`クラスの`read`メソッドを使用して値を読み取っています。
-`read`メソッドはただ値を読み取るためのメソッドです。
+Here we're using the Provider class's `read` method to read values.
+The `read` method is simply for reading values.
 
-## 用語集
-- View(ビュー)：`View`クラスまたはその他UI構築クラスから継承して作成されたUI部品
-- コンポーネント：`fJutterS`側から提供されるViewのこと
-- ウィジェット：`fJutteS`使用者がコンポーネントを組み合わせて作成したViewのこと
+## Glossary
+- View: UI components created by inheriting from the `View` class or other UI construction classes
+- Component: Views provided by `fJutterS`
+- Widget: Views created by `fJutteS` users by combining components
 
-## 最後に余談
+## Final Notes
 //TODO
 
-## ライセンス
+## License
 MIT
