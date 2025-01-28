@@ -2,8 +2,20 @@
   "name": "fjuttes",
   "version": "1.0.0",
   "description": "THIS IS PURE JS FRAMEWORK",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +30,8 @@
   "bugs": {
     "url": "https://github.com/Rerurate514/fJutteS/issues"
   },
-  "homepage": "https://github.com/Rerurate514/fJutteS#readme"
+  "homepage": "https://github.com/Rerurate514/fJutteS#readme",
+  "devDependencies": {
+    "rollup": "^4.32.1"
+  }
 }
