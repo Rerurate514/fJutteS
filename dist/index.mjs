@@ -933,4 +933,4 @@ function assembleView(viewArg) {
     container.appendChild(view);
 }
 
-export { ShadowLevel$1 as BoxShadow, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider$1 as Provider, ProviderObserver$1 as ProviderObserver, ProviderScope, Row, SpaceBox, Stack, Text, View, assembleView, assembleView as default };
+export { ShadowLevel$1 as BoxShadow, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider$1 as Provider, ProviderObserver$1 as ProviderObserver, ProviderScope, Row, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };

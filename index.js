@@ -24,5 +24,7 @@ export { default as BoxShadow } from './enums/boxShadow.js';
 
 export * from './errors/errors.js';
 
-export { ProviderObserver } from './jiperes/observer.js';
+export { ProviderObserver } from './Jiperes/observer.js';
 export { Provider } from './jiperes/provider.js';
+
+export { generateUUID } from './utils/generateUUID.js';

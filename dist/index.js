@@ -958,3 +958,4 @@ exports.Text = Text;
 exports.View = View;
 exports.assembleView = assembleView;
 exports.default = assembleView;
+exports.generateUUID = generateUUID;
