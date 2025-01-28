@@ -1,3 +1,5 @@
+import { generateUUID } from '../utils/generateUUID.js';
+
 /**
  * Viewクラス - abstruct ---
  * 必ずcreateWrapViewをオーバーライドしてViewをカスタマイズしてください。
