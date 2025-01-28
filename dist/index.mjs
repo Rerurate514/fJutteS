@@ -1,7 +1,7 @@
-export function assembleView(viewArg) {
+function assembleView(viewArg) {
     let view = viewArg.view;
     let container = document.getElementById("fJutteS-Container");
     container.appendChild(view);
 }
 
-export default assembleView;
+export { assembleView, assembleView as default };
