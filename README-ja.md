@@ -1,9 +1,56 @@
 # THIS IS PURE JS FRAMEWORK
 これは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。
-状態管理に`fJuttes`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。
+状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。
 
-## インストール方法
-//TODO
+## インポート方法
+CDN形式でnpmを使用せずに`fJutteS`の機能を使用するには`unpkg`を使用することができます。
+以下にコード例を示します。
+```html
+<script src="https://unpkg.com/fjuttes@1.0.2/dist/index.mjs"></script>
+```
+
+詳細は後述しますが、使用するには以下のようにすることができます。
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+	
+    <script type="importmap">
+        {
+            "imports": {
+                "fjuttes": "https://unpkg.com/fjuttes@1.0.1/dist/index.mjs"
+            }
+        }
+    </script>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
+```
+
+```js
+//script.js
+import { assembleView, Text } from "fjuttes";
+
+assembleView(new Text("Hello World!"));
+```
+このように書くとただ単にテキストが表示されます。
 
 ## 使用方法 - チュートリアル
 ### ウィジェットを描画する

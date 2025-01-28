@@ -4,8 +4,55 @@ It uses a custom library called `Jiperes` optimized for `fJuttes` for state mana
 
 - 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md
 
-## Installation
-//TODO
+## Import Method
+You can use `unpkg` to utilize `fJutteS` functionality in CDN format without using npm.
+Here's a code example:
+```html
+<script src="https://unpkg.com/fjuttes@1.0.2/dist/index.mjs"></script>
+```
+
+While more details will be explained later, you can use it as follows:
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+	
+    <script type="importmap">
+        {
+            "imports": {
+                "fjuttes": "https://unpkg.com/fjuttes@1.0.1/dist/index.mjs"
+            }
+        }
+    </script>
+    <script type="module" src="./script.js"></script>
+</body>
+</html>
+```
+
+```js
+//script.js
+import { assembleView, Text } from "fjuttes";
+
+assembleView(new Text("Hello World!"));
+```
+Writing code this way will simply display text.
 
 ## Usage - Tutorial
 ### Rendering Widgets
