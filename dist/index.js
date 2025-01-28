@@ -7,7 +7,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
  * 必ずcreateWrapViewをオーバーライドしてViewをカスタマイズしてください。
  * もしViewクラス内のログを出力する際には継承先でthis.isLogOutをtrueにしてください。
  */
-let View$1 = class View {
+class View {
     isLogOut = false;
 
     constructor(props = {}) {
@@ -206,7 +206,7 @@ let View$1 = class View {
         if(!this.isLogOut) return;
         console.log("[" + this.constructor.name + "] " + message);
     }
-};
+}
 
 class Card extends View {
     constructor({
@@ -947,6 +947,6 @@ exports.Row = Row;
 exports.SpaceBox = SpaceBox;
 exports.Stack = Stack;
 exports.Text = Text;
-exports.View = View$1;
+exports.View = View;
 exports.assembleView = assembleView;
 exports.default = assembleView;

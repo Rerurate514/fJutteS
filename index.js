@@ -6,19 +6,19 @@ export function assembleView(viewArg) {
 
 export default assembleView;
 
-export { default as View } from './interface/view.js';
+export { View } from './interface/view.js';
 
-export { default as Card } from './components/card.js';
-export { default as Center } from './components/center.js';
-export { default as Column } from './components/column.js';
-export { default as DynamicProviderScope } from './components/dynamicProviderScope.js';
-export { default as Padding } from './components/padding.js';
-export { default as Position } from './components/position.js';
-export { default as ProviderScope } from './components/providerScope.js';
-export { default as Row } from './components/row.js';
-export { default as SpaceBox } from './components/spaceBox.js';
-export { default as Stack } from './components/stack.js';
-export { default as Text } from './components/text.js';
+export { Card } from './components/card.js';
+export { Center } from './components/center.js';
+export { Column } from './components/column.js';
+export { DynamicProviderScope } from './components/dynamicProviderScope.js';
+export { Padding } from './components/padding.js';
+export { Position } from './components/position.js';
+export { ProviderScope } from './components/providerScope.js';
+export { Row } from './components/row.js';
+export { SpaceBox } from './components/spaceBox.js';
+export { Stack } from './components/stack.js';
+export { Text } from './components/text.js';
 
 export { default as BoxShadow } from './enums/boxShadow.js';
 

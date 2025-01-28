@@ -3,7 +3,7 @@
  * 必ずcreateWrapViewをオーバーライドしてViewをカスタマイズしてください。
  * もしViewクラス内のログを出力する際には継承先でthis.isLogOutをtrueにしてください。
  */
-export default class View {
+export class View {
     isLogOut = false;
 
     constructor(props = {}) {

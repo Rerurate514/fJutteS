@@ -3,7 +3,7 @@
  * 必ずcreateWrapViewをオーバーライドしてViewをカスタマイズしてください。
  * もしViewクラス内のログを出力する際には継承先でthis.isLogOutをtrueにしてください。
  */
-let View$1 = class View {
+class View {
     isLogOut = false;
 
     constructor(props = {}) {
@@ -202,7 +202,7 @@ let View$1 = class View {
         if(!this.isLogOut) return;
         console.log("[" + this.constructor.name + "] " + message);
     }
-};
+}
 
 class Card extends View {
     constructor({
@@ -925,4 +925,4 @@ function assembleView(viewArg) {
     container.appendChild(view);
 }
 
-export { ShadowLevel$1 as BoxShadow, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider$1 as Provider, ProviderObserver$1 as ProviderObserver, ProviderScope, Row, SpaceBox, Stack, Text, View$1 as View, assembleView, assembleView as default };
+export { ShadowLevel$1 as BoxShadow, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider$1 as Provider, ProviderObserver$1 as ProviderObserver, ProviderScope, Row, SpaceBox, Stack, Text, View, assembleView, assembleView as default };
