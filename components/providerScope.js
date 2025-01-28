@@ -1,3 +1,5 @@
+import { View } from "../interface/view.js";
+
 /**
  * @param {View} child - 子要素
  * @param {Object} props - プロップス
@@ -14,7 +16,7 @@
  * これはpreBuildでプロバイダーを定義すると、値の変更を検知したリスナーがrebuildを呼び出します。
  * しかしrebuildメソッドでもpreBuildが実行されるので無限回帰となり、エラーとなるからです。
  */
-export default class ProviderScope extends View {
+export class ProviderScope extends View {
     /**
      * コンストラクタ
      * @param {View} child - 子要素

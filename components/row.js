@@ -1,4 +1,6 @@
-export default class Row extends View {
+import { View } from "../interface/view.js";
+
+export class Row extends View {
     constructor(children, isAlignCenter = false, isJustifySpaceAround = false){
         super({
             children: children, 

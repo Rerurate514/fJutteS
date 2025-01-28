@@ -1,4 +1,6 @@
-export default class Card extends View {
+import { View } from "../interface/view.js";
+
+export class Card extends View {
     constructor({
         child,
         radius = "0px", 

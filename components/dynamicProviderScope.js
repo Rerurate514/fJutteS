@@ -1,7 +1,9 @@
+import { View } from "../interface/view.js";
+
 /**
  * このクラスは状態管理しなくてはならない要素が動的に変化する際に有用なコンポーネントです。
  */
-export default class DynamicProviderScope extends View {
+export class DynamicProviderScope extends View {
     constructor({child, props = {}}){
         props.child = child;
         props.providers = [];

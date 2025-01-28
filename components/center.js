@@ -1,4 +1,6 @@
-export default class Center extends View {
+import { View } from "../interface/view.js";
+
+export class Center extends View {
     constructor(child){
         super({child: child});
     }

@@ -1,4 +1,6 @@
-export default class Stack extends View {
+import { View } from "../interface/view.js";
+
+export class Stack extends View {
     constructor(children){
         super({children: children});
     }    

@@ -1,4 +1,6 @@
-export default class Column extends View {
+import { View } from "../interface/view.js";
+
+export class Column extends View {
     constructor(children){
         super({children: children});
     }

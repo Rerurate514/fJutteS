@@ -1,4 +1,6 @@
-export default class Padding extends View {
+import { View } from "../interface/view.js";
+
+export class Padding extends View {
     constructor({
         child,
         all,

@@ -1,4 +1,6 @@
-export default class Position extends View {
+import { View } from "../interface/view.js";
+
+export class Position extends View {
     constructor({child, top = 0, left = 0}){
         super({child: child, top: top, left: left});
     }
