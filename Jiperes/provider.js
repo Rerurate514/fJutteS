@@ -14,7 +14,7 @@
  * 
  * このファイル下のほうに使用例が記載されています。
  */
-export default class Provider {
+export class Provider {
     constructor(createFn) {
         this._dependencies = new Map();
         this._listeners = new Set();

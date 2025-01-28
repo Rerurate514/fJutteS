@@ -1,4 +1,4 @@
-export default class ProviderObserver {
+export class ProviderObserver {
     constructor(isLogOut = false) {
         if (!ProviderObserver.instance) {
             ProviderObserver.instance = this;
