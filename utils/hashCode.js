@@ -1,4 +1,4 @@
-function hashCode(value, length = 8) {
+export function hashCode(value, length = 8) {
   if(value === undefined) value = Math.random() * (100 - 1) + 1;
 
   const str = JSON.stringify(value);
