@@ -1,4 +1,5 @@
 import { View } from "../interface/view.js";
+import { Provider } from "../jiperes/provider.js";
 
 /**
  * このクラスは状態管理しなくてはならない要素が動的に変化する際に有用なコンポーネントです。
