@@ -1,4 +1,4 @@
-import { View } from "../interface/view.js";
+import { View } from "./view.js";
 
 /**
  * @param {View} child - 子要素
