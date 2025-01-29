@@ -1,0 +1,60 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+	
+    <script type="importmap">
+        {
+            "imports": {
+                "fjuttes": "https://unpkg.com/fjuttes@1.0.1/dist/index.mjs"
+            }
+        }
+    </script>
+    <script type="module">
+        import { assembleView, View, Text, Row } from "fjuttes";
+
+        class HelloWorld extends View {
+            constructor(name){
+                super({name: name});
+            }
+
+            createWrapView(){
+                return document.createElement("div");
+            }
+
+            styledView(element){
+                element.className = "helloWorldText-Container";
+                element.style.color = "red";
+
+                return element;
+            }
+
+            build(){
+                return new Row([
+                    new Text("Hello"),
+                    new Text("World!,"),
+                    new Text(this.props.name)
+                ]);
+            }
+        }
+
+        assembleView(new HelloWorld("Alex"));
+    </script>
+</body>
+</html>
