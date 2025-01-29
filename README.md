@@ -66,10 +66,9 @@ Start by preparing a `div` element with the following id in your HTML file (e.g.
 
 Then, in your `js` file, do the following:
 ```js
-const assemble = require('assembleView');
-const view = new Text("Some View");
+import { assembleView, Text } from "fjuttes";
 
-assemble(view);
+assembleView(new Text("Hello World!"));
 ```
 This code will render the `View` passed to the `assemble` function within `<div id="fJutteS-Container"></div>`.
 

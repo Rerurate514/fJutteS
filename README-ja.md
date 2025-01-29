@@ -64,10 +64,9 @@ assembleView(new Text("Hello World!"));
 
 そして、`js`ファイルで以下の処理を行います。
 ```js
-const assemble = require('assembleView');
-const view = new Text("何らかのView");
+import { assembleView, Text } from "fjuttes";
 
-assemble(view);
+assembleView(new Text("Hello World!"));
 ```
 このコードで`<div id="fJutteS-Container"></div>`以下に`assemble`関数に渡した`View`が描画されます。
 
