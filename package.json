@@ -1,6 +1,6 @@
 {
   "name": "fjuttes",
-  "version": "1.0.6alpha0.0.4",
+  "version": "1.0.6alpha0.0.5",
   "description": "THIS IS PURE JS FRAMEWORK",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

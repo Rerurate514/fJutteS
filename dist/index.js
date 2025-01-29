@@ -960,7 +960,7 @@ function assembleView(viewArg) {
     let view = viewArg.view;
     let container = document.getElementById("fJutteS-Container");
     
-    if(container !== undefined) container.appendChild(view);
+    if(container != null) container.appendChild(view);
 
     return view;
 }
