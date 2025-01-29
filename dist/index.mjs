@@ -212,6 +212,79 @@ class View {
     }
 }
 
+/**
+ * @param {View} child - 子要素
+ * @param {Object} props - プロップス
+ * @param {Array<Provider>} watchingProviders - プロバイダーの配列
+ *
+ * このクラスに渡されたProvidersはリッスン状態となり、値の変更を常に監視しています。
+ * 変更が検知されるとこのコンポーネント以下のViewがrebuild()されます。
+ * 
+ * FlutterでいうところのsetState、ReactでいうところのuseStateを使用したいとき、
+ * このクラスをViewにラップしてwatchもしくはreadしているProvider群を渡すだけです。
+ * このとき必ず、配列でProviderを渡してください。(providerが一つしかなくても！)
+ * 
+ * そしてproviderの値を初期化する際にはpreBuildメソッドではなく、initializeメソッドを使用してください。
+ * これはpreBuildでプロバイダーを定義すると、値の変更を検知したリスナーがrebuildを呼び出します。
+ * しかしrebuildメソッドでもpreBuildが実行されるので無限回帰となり、エラーとなるからです。
+ */
+class ProviderScope extends View {
+    /**
+     * コンストラクタ
+     * @param {View} child - 子要素
+     * @param {Object} props - プロップス
+     * @param {Array<Provider>} watchingProviders - プロバイダーの配列
+     */
+    constructor({child, props = {}, watchingProviders = []}) {
+        props.providers = watchingProviders;
+        props.child = child;
+        super(props);
+
+        this._iterateProviders();
+    }
+
+    _iterateProviders() {
+        this.props.providers.forEach(provider => {
+            this._watch(provider);
+        });
+    }
+
+    _watch(provider) {
+        provider.watch(() => {
+            this.rebuild();
+        },
+        { immediate: false });
+    }
+}
+
+/**
+ * このクラスは状態管理しなくてはならない要素が動的に変化する際に有用なコンポーネントです。
+ */
+class DynamicProviderScope extends View {
+    constructor({child, props = {}}){
+        props.child = child;
+        props.providers = [];
+        super(props);
+    }
+
+    createProvider(initialValue){
+        let provider = Provider.createProvider((ref) => {
+            return initialValue;
+        });
+
+        this.props.providers.push(provider);
+
+        return provider;
+    }
+
+    refreshProviders(){
+        if(!this.getBuildCompletionState()){
+           throw new IllegalPreBuildDoSomothingError("Viewの構築プロセスが終了するまでrefreshProvidersメソッドを呼び出さないでください。\nView構築プロセス状態 >>> isViewAssembleProccessesCompleted = " +  this.getBuildCompletionState());
+        }
+        this.rebuild(this.props);
+    }
+}
+
 class Card extends View {
     constructor({
         child,
@@ -300,34 +373,6 @@ class Column extends View {
 
     build(){
         return this.props.children;
-    }
-}
-
-/**
- * このクラスは状態管理しなくてはならない要素が動的に変化する際に有用なコンポーネントです。
- */
-class DynamicProviderScope extends View {
-    constructor({child, props = {}}){
-        props.child = child;
-        props.providers = [];
-        super(props);
-    }
-
-    createProvider(initialValue){
-        let provider = Provider.createProvider((ref) => {
-            return initialValue;
-        });
-
-        this.props.providers.push(provider);
-
-        return provider;
-    }
-
-    refreshProviders(){
-        if(!this.getBuildCompletionState()){
-           throw new IllegalPreBuildDoSomothingError("Viewの構築プロセスが終了するまでrefreshProvidersメソッドを呼び出さないでください。\nView構築プロセス状態 >>> isViewAssembleProccessesCompleted = " +  this.getBuildCompletionState());
-        }
-        this.rebuild(this.props);
     }
 }
 
@@ -442,51 +487,6 @@ class _PositionChild extends View {
     }
 }
 
-/**
- * @param {View} child - 子要素
- * @param {Object} props - プロップス
- * @param {Array<Provider>} watchingProviders - プロバイダーの配列
- *
- * このクラスに渡されたProvidersはリッスン状態となり、値の変更を常に監視しています。
- * 変更が検知されるとこのコンポーネント以下のViewがrebuild()されます。
- * 
- * FlutterでいうところのsetState、ReactでいうところのuseStateを使用したいとき、
- * このクラスをViewにラップしてwatchもしくはreadしているProvider群を渡すだけです。
- * このとき必ず、配列でProviderを渡してください。(providerが一つしかなくても！)
- * 
- * そしてproviderの値を初期化する際にはpreBuildメソッドではなく、initializeメソッドを使用してください。
- * これはpreBuildでプロバイダーを定義すると、値の変更を検知したリスナーがrebuildを呼び出します。
- * しかしrebuildメソッドでもpreBuildが実行されるので無限回帰となり、エラーとなるからです。
- */
-class ProviderScope extends View {
-    /**
-     * コンストラクタ
-     * @param {View} child - 子要素
-     * @param {Object} props - プロップス
-     * @param {Array<Provider>} watchingProviders - プロバイダーの配列
-     */
-    constructor({child, props = {}, watchingProviders = []}) {
-        props.providers = watchingProviders;
-        props.child = child;
-        super(props);
-
-        this._iterateProviders();
-    }
-
-    _iterateProviders() {
-        this.props.providers.forEach(provider => {
-            this._watch(provider);
-        });
-    }
-
-    _watch(provider) {
-        provider.watch(() => {
-            this.rebuild();
-        },
-        { immediate: false });
-    }
-}
-
 class Row extends View {
     constructor(children, isAlignCenter = false, isJustifySpaceAround = false){
         super({
@@ -594,6 +594,31 @@ let ShadowLevel$1 = class ShadowLevel {
   toString() {
     return this.value;
   }
+};
+
+let Border$1 = class Border {
+    constructor(
+        borderSize = "0px", 
+        borderProperty = "solid",
+        color = "transparent",
+        isTop = true,
+        isLeft = true,
+        isRight = true,
+        isBottom = true
+    ){
+        this.borderSize = borderSize;
+        this.borderProperty = borderProperty;
+        this.color = color;
+
+        this.isTop = isTop;
+        this.isLeft = isLeft;
+        this.isRight = isRight;
+        this.isBottom = isBottom;
+    }
+
+    assembleCSS(){
+        return this.borderSize + " " + this.borderProperty + " " + this.color;
+    }
 };
 
 class CustomError extends Error {
@@ -933,4 +958,4 @@ function assembleView(viewArg) {
     container.appendChild(view);
 }
 
-export { ShadowLevel$1 as BoxShadow, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider$1 as Provider, ProviderObserver$1 as ProviderObserver, ProviderScope, Row, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };
+export { Border$1 as Border, ShadowLevel$1 as BoxShadow, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider$1 as Provider, ProviderObserver$1 as ProviderObserver, ProviderScope, Row, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };
