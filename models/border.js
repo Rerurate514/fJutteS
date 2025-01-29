@@ -1,4 +1,4 @@
-class Border {
+export class Border {
     constructor(
         borderSize = "0px", 
         borderProperty = "solid",
