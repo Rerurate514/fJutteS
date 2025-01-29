@@ -1,0 +1,40 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+	
+    <script type="importmap">
+        {
+            "imports": {
+                "fjuttes": "https://unpkg.com/fjuttes@1.0.1/dist/index.mjs"
+            }
+        }
+    </script>
+    <script type="module">
+        import { assembleView, Text, Row } from "fjuttes";
+
+        const rowText = new Row([
+            new Text("Hello "),
+            new Text("World!")
+        ]);
+
+        assembleView(rowText);
+    </script>
+</body>
+</html>
