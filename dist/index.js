@@ -959,7 +959,8 @@ let IllegalPreBuildDoSomothingError$1 = class IllegalPreBuildDoSomothingError ex
 function assembleView(viewArg) {
     let view = viewArg.view;
     let container = document.getElementById("fJutteS-Container");
-    container.appendChild(view);
+    
+    if(container !== undefined) container.appendChild(view);
 
     return view;
 }
