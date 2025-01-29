@@ -1,3 +1,5 @@
+import { ProviderObserver } from "./observer.js";
+
 /**
  * Providerクラス - UIなどの状態管理を担当する。
  * 
