@@ -961,7 +961,7 @@ function assembleView(viewArg) {
     let container = document.getElementById("fJutteS-Container");
     container.appendChild(view);
 
-    return container;
+    return view;
 }
 
 exports.Border = Border;

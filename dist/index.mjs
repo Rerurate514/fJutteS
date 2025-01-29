@@ -957,7 +957,7 @@ function assembleView(viewArg) {
     let container = document.getElementById("fJutteS-Container");
     container.appendChild(view);
 
-    return container;
+    return view;
 }
 
 export { Border, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider, ProviderObserver, ProviderScope, Row, ShadowLevel, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };
