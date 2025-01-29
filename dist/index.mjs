@@ -586,6 +586,23 @@ class DynamicProviderScope extends View {
     }
 }
 
+class ShadowLevel {
+  static LVL0 = new ShadowLevel('none');
+  static LVL1 = new ShadowLevel('0 2px 4px rgba(0,0,0,0.1)');
+  static LVL2 = new ShadowLevel('0 4px 8px rgba(0,0,0,0.12)');
+  static LVL3 = new ShadowLevel('0 8px 16px rgba(0,0,0,0.14)');
+  static LVL4 = new ShadowLevel('0 12px 24px rgba(0,0,0,0.16)');
+  static LVL5 = new ShadowLevel('0 16px 32px rgba(0,0,0,0.18)');
+
+  constructor(value) {
+    this.value = value;
+  }
+
+  toString() {
+    return this.value;
+  }
+}
+
 class Card extends View {
     constructor({
         child,
@@ -880,23 +897,6 @@ class Text extends View{
     }
 }
 
-let ShadowLevel$1 = class ShadowLevel {
-  static LVL0 = new ShadowLevel('none');
-  static LVL1 = new ShadowLevel('0 2px 4px rgba(0,0,0,0.1)');
-  static LVL2 = new ShadowLevel('0 4px 8px rgba(0,0,0,0.12)');
-  static LVL3 = new ShadowLevel('0 8px 16px rgba(0,0,0,0.14)');
-  static LVL4 = new ShadowLevel('0 12px 24px rgba(0,0,0,0.16)');
-  static LVL5 = new ShadowLevel('0 16px 32px rgba(0,0,0,0.18)');
-
-  constructor(value) {
-    this.value = value;
-  }
-
-  toString() {
-    return this.value;
-  }
-};
-
 let Border$1 = class Border {
     constructor(
         borderSize = "0px", 
@@ -958,4 +958,4 @@ function assembleView(viewArg) {
     container.appendChild(view);
 }
 
-export { Border$1 as Border, ShadowLevel$1 as BoxShadow, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider, ProviderObserver, ProviderScope, Row, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };
+export { Border$1 as Border, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider, ProviderObserver, ProviderScope, Row, ShadowLevel, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };

@@ -20,7 +20,7 @@ export { SpaceBox } from './components/spaceBox.js';
 export { Stack } from './components/stack.js';
 export { Text } from './components/text.js';
 
-export { default as BoxShadow } from './enums/boxShadow.js';
+export { ShadowLevel } from './enums/shadowLevel.js';
 export { Border } from './models/border.js';
 
 export * from './errors/errors.js';

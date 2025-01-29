@@ -1,4 +1,5 @@
 import { View } from "../interface/view.js";
+import { ShadowLevel } from '../enums/shadowLevel.js';
 
 export class Card extends View {
     constructor({
