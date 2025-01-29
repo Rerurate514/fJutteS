@@ -1,7 +1,7 @@
 # THIS IS PURE JS FRAMEWORK
 This is a declarative component UI framework built with pure JavaScript.
 It uses a custom library called `Jiperes` optimized for `fJuttes` for state management, so you no longer need to select a state management library.
-- latest version -> fjuttes@1.0.6
+- latest version -> fjuttes@1.0.7
 ![fJutteS-official-logo](src/fjuttes-official-logo.svg)
 
 - 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md
@@ -10,7 +10,7 @@ It uses a custom library called `Jiperes` optimized for `fJuttes` for state mana
 You can use `unpkg` to utilize `fJutteS` functionality in CDN format without using npm.
 Here's a code example:
 ```html
-<script src="https://unpkg.com/fjuttes@1.0.6/dist/index.mjs"></script>
+<script src="https://unpkg.com/fjuttes@1.0.7/dist/index.mjs"></script>
 ```
 
 While more details will be explained later, you can use it as follows:
@@ -39,7 +39,7 @@ While more details will be explained later, you can use it as follows:
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@1.0.6/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@1.0.7/dist/index.mjs"
             }
         }
     </script>
