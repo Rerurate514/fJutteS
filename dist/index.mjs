@@ -603,6 +603,31 @@ class ShadowLevel {
   }
 }
 
+class Border {
+    constructor(
+        borderSize = "0px", 
+        borderProperty = "solid",
+        color = "transparent",
+        isTop = true,
+        isLeft = true,
+        isRight = true,
+        isBottom = true
+    ){
+        this.borderSize = borderSize;
+        this.borderProperty = borderProperty;
+        this.color = color;
+
+        this.isTop = isTop;
+        this.isLeft = isLeft;
+        this.isRight = isRight;
+        this.isBottom = isBottom;
+    }
+
+    assembleCSS(){
+        return this.borderSize + " " + this.borderProperty + " " + this.color;
+    }
+}
+
 class Card extends View {
     constructor({
         child,
@@ -897,31 +922,6 @@ class Text extends View{
     }
 }
 
-let Border$1 = class Border {
-    constructor(
-        borderSize = "0px", 
-        borderProperty = "solid",
-        color = "transparent",
-        isTop = true,
-        isLeft = true,
-        isRight = true,
-        isBottom = true
-    ){
-        this.borderSize = borderSize;
-        this.borderProperty = borderProperty;
-        this.color = color;
-
-        this.isTop = isTop;
-        this.isLeft = isLeft;
-        this.isRight = isRight;
-        this.isBottom = isBottom;
-    }
-
-    assembleCSS(){
-        return this.borderSize + " " + this.borderProperty + " " + this.color;
-    }
-};
-
 class CustomError extends Error {
     constructor(message) {
         super(message);
@@ -958,4 +958,4 @@ function assembleView(viewArg) {
     container.appendChild(view);
 }
 
-export { Border$1 as Border, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider, ProviderObserver, ProviderScope, Row, ShadowLevel, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };
+export { Border, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider, ProviderObserver, ProviderScope, Row, ShadowLevel, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };
