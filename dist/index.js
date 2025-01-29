@@ -655,7 +655,7 @@ let IllegalPreBuildDoSomothingError$1 = class IllegalPreBuildDoSomothingError ex
     }
 };
 
-let ProviderObserver$1 = class ProviderObserver {
+class ProviderObserver {
     constructor(isLogOut = false) {
         if (!ProviderObserver.instance) {
             ProviderObserver.instance = this;
@@ -736,7 +736,7 @@ let ProviderObserver$1 = class ProviderObserver {
     static clearInstance() {
         ProviderObserver.instance = null;
     }
-};
+}
 
 /**
  * Providerクラス - UIなどの状態管理を担当する。
@@ -975,7 +975,7 @@ exports.OverridePreBuildMethodInProviderScopeError = OverridePreBuildMethodInPro
 exports.Padding = Padding;
 exports.Position = Position;
 exports.Provider = Provider$1;
-exports.ProviderObserver = ProviderObserver$1;
+exports.ProviderObserver = ProviderObserver;
 exports.ProviderScope = ProviderScope;
 exports.Row = Row;
 exports.SpaceBox = SpaceBox;

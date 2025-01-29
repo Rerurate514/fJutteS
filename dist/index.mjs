@@ -651,7 +651,7 @@ let IllegalPreBuildDoSomothingError$1 = class IllegalPreBuildDoSomothingError ex
     }
 };
 
-let ProviderObserver$1 = class ProviderObserver {
+class ProviderObserver {
     constructor(isLogOut = false) {
         if (!ProviderObserver.instance) {
             ProviderObserver.instance = this;
@@ -732,7 +732,7 @@ let ProviderObserver$1 = class ProviderObserver {
     static clearInstance() {
         ProviderObserver.instance = null;
     }
-};
+}
 
 /**
  * Providerクラス - UIなどの状態管理を担当する。
@@ -958,4 +958,4 @@ function assembleView(viewArg) {
     container.appendChild(view);
 }
 
-export { Border$1 as Border, ShadowLevel$1 as BoxShadow, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider$1 as Provider, ProviderObserver$1 as ProviderObserver, ProviderScope, Row, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };
+export { Border$1 as Border, ShadowLevel$1 as BoxShadow, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider$1 as Provider, ProviderObserver, ProviderScope, Row, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };
