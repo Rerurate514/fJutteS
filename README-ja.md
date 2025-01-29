@@ -1,7 +1,7 @@
 # THIS IS PURE JS FRAMEWORK
 これは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。
 状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。
-- 現行バージョン -> fjuttes@1.0.1
+- 現行バージョン -> fjuttes@1.0.2
 ![fJutteS-official-logo](src/fjuttes-official-logo.svg)
 
 ## インポート方法
@@ -37,7 +37,7 @@ CDN形式でnpmを使用せずに`fJutteS`の機能を使用するには`unpkg`�
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@1.0.1/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@1.0.2/dist/index.mjs"
             }
         }
     </script>
