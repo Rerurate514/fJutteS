@@ -952,6 +952,52 @@ class Text extends View{
     }
 }
 
+class Box extends View {
+    constructor({
+        width = "0px", 
+        height = "0px",
+        border = new Border()
+    }){
+        super({
+            width: width, 
+            height: height, 
+            border: border
+        });
+    }
+
+    createWrapView(){
+        let box = document.createElement("div");
+        return box;
+    }
+
+    styledView(element){
+        element.style.width = this.props.width;
+        element.style.height = this.props.height;
+
+        element = this._styleBorder(element);
+
+        return element;
+    }
+
+    _styleBorder(element){
+        let border = this.props.border;
+        if(border.isTop){
+            element.style.borderTop = border.assembleCSS();
+        }
+        if(border.isLeft){
+            element.style.borderLeft= border.assembleCSS();
+        }
+        if(border.isRight){
+            element.style.borderRight = border.assembleCSS();
+        }
+        if(border.isBottom){
+            element.style.borderBottom = border.assembleCSS();
+        }
+
+        return element;
+    }
+}
+
 class CustomError extends Error {
     constructor(message) {
         super(message);
@@ -991,4 +1037,4 @@ function assembleView(viewArg) {
     return view;
 }
 
-export { Border, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider, ProviderObserver, ProviderScope, Row, ShadowLevel, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };
+export { Border, Box, Card, Center, Column, CreateIllegalInstanceError, CustomError, DynamicProviderScope, IllegalPreBuildDoSomothingError$1 as IllegalPreBuildDoSomothingError, OverridePreBuildMethodInProviderScopeError, Padding, Position, Provider, ProviderObserver, ProviderScope, Row, ShadowLevel, SpaceBox, Stack, Text, View, assembleView, assembleView as default, generateUUID };

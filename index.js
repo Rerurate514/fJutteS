@@ -22,6 +22,7 @@ export { Row } from './components/row.js';
 export { SpaceBox } from './components/spaceBox.js';
 export { Stack } from './components/stack.js';
 export { Text } from './components/text.js';
+export { Box } from './components/box.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { Border } from './models/border.js';
