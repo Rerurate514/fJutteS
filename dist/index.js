@@ -636,6 +636,7 @@ class Card extends View {
     constructor({
         child,
         radius = "0px", 
+        padding = "0px",
         background = "transparent",
         elevation = ShadowLevel.LVL0,
         border = new Border()
@@ -651,6 +652,7 @@ class Card extends View {
         super({
             child: child,
             radius: radius, 
+            padding: padding,
             background: background,
             elevation: elevation,
             border: border.assembleCSS()
@@ -667,6 +669,8 @@ class Card extends View {
         element.style.background = this.props.background;
         element.style.boxShadow = this.props.elevation;
         element.style.border = this.props.border;
+
+        element.style.padding = this.props.padding;
 
         element.style.width = "fit-content";
         element.style.height = "fit-content";
