@@ -8,16 +8,6 @@
 </head>
 <body>
     <div id="fJutteS-Container"></div>
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="fJutteS-Container"></div>
 	
     <script type="importmap">
         {
@@ -27,7 +17,7 @@
         }
     </script>
     <script type="module">
-        import { assembleView, View, Text, Row } from "fjuttes";
+        import { assembleView, View, Text, Row, Center } from "fjuttes";
 
         class HelloWorld extends View {
             constructor(name){
@@ -40,17 +30,19 @@
 
             styledView(element){
                 element.className = "helloWorldText-Container";
-                element.style.color = "red";
+                element.style.background = "#ff0000";
 
                 return element;
             }
 
             build(){
-                return new Row([
-                    new Text("Hello"),
-                    new Text("World!,"),
-                    new Text(this.props.name)
-                ]);
+                return new Center(
+                    Row([
+                        new Text("Hello"),
+                        new Text("World!,"),
+                        new Text(this.props.name)
+                    ])
+                );
             }
         }
 
