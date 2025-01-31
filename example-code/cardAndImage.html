@@ -1,0 +1,69 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+	
+    <script type="importmap">
+        {
+            "imports": {
+                "fjuttes": "https://unpkg.com/fjuttes@1.0.8/dist/index.mjs"
+            }
+        }
+    </script>
+    <script type="module">
+        import { assembleView, View, Center, Card, Column, Text, SpaceBox, Image, ShadowLevel } from "fjuttes";
+
+        class CardExample extends View {
+            constructor(src){
+                super({src: src});
+            }
+
+            createWrapView(){
+                return document.createElement("div");
+            }
+
+            styledView(element){
+                element.className = "helloWorldText-Container";
+
+                element.style.height = "90vh";
+
+                return element;
+            }
+
+            build(){
+                return new Center(
+                    new Card({
+                        child: new Column([
+                            new Text("This framework name is fJutteS."),
+                            new SpaceBox({height: "16px"}),
+                            new Center(
+                                new Image({
+                                    width: "100px",
+                                    height: "100px",
+                                    src: this.props.src,
+                                    alt: "fjuttes-logo",
+                                    title: "fjuttes-logo"
+                                })
+                            )
+                        ]),
+                        radius:"16px",
+                        padding: "15px",
+                        background: "wheat",
+                        elevation: ShadowLevel.LVL3
+                    })
+                );
+            }
+        }
+
+        assembleView(
+            new CardExample("../src/fjuttes-official-logo.svg")
+        );
+    </script>
+</body>
+</html>
