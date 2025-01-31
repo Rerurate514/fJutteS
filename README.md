@@ -1,5 +1,6 @@
 # THIS IS PURE JS FRAMEWORK
 This is a declarative component UI framework built with pure JavaScript.
+This framework is a special environment where only HTML, CSS, and JavaScript files are allowed (not even React or Vue), making it ideal for component-based programming such as Flutter.
 It uses a custom library called `Jiperes` optimized for `fJuttes` for state management, so you no longer need to select a state management library.
 - latest version -> fjuttes@1.0.7
 ![fJutteS-official-logo](src/fjuttes-official-logo.svg)
