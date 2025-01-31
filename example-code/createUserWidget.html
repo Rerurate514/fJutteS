@@ -30,14 +30,13 @@
 
             styledView(element){
                 element.className = "helloWorldText-Container";
-                element.style.background = "#ff0000";
 
                 return element;
             }
 
             build(){
                 return new Center(
-                    Row([
+                    new Row([
                         new Text("Hello"),
                         new Text("World!,"),
                         new Text(this.props.name)
