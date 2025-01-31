@@ -23,16 +23,6 @@ CDN形式でnpmを使用せずに`fJutteS`の機能を使用するには`unpkg`�
 </head>
 <body>
     <div id="fJutteS-Container"></div>
-
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="fJutteS-Container"></div>
 	
     <script type="importmap">
         {
