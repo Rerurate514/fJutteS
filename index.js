@@ -23,6 +23,7 @@ export { SpaceBox } from './components/spaceBox.js';
 export { Stack } from './components/stack.js';
 export { Text } from './components/text.js';
 export { Box } from './components/box.js';
+export { Image } from './components/image.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { Border } from './models/border.js';

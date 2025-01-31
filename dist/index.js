@@ -1006,6 +1006,40 @@ class Box extends View {
     }
 }
 
+class Image extends View {
+    constructor({
+        width = "auto", 
+        height = "auto", 
+        src: src = "",
+        alt: alt = "",
+        title: title = ""
+    }){
+        super({
+            width: width, 
+            height: height, 
+            src: src,
+            alt: alt,
+            title: title
+        });
+    }
+
+    createWrapView(){
+        let img = document.createElement("img");
+        return img;
+    }
+
+    styledView(element){
+        element.style.width = this.props.width;
+        element.style.height = this.props.height;
+
+        element.src = this.props.src;
+        element.alt = this.props.alt;
+        element.title = this.props.title;
+
+        return element;
+    }
+}
+
 class CustomError extends Error {
     constructor(message) {
         super(message);
@@ -1054,6 +1088,7 @@ exports.CreateIllegalInstanceError = CreateIllegalInstanceError;
 exports.CustomError = CustomError;
 exports.DynamicProviderScope = DynamicProviderScope;
 exports.IllegalPreBuildDoSomothingError = IllegalPreBuildDoSomothingError$1;
+exports.Image = Image;
 exports.OverridePreBuildMethodInProviderScopeError = OverridePreBuildMethodInProviderScopeError;
 exports.Padding = Padding;
 exports.Position = Position;
