@@ -1,5 +1,6 @@
 # THIS IS PURE JS FRAMEWORK
 これは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。
+HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境下(ReactやVueも入れられない環境)でFlutterのようなコンポーネント型プログラミングをしたいときに最適なフレームワークです。
 状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。
 - 現行バージョン -> fjuttes@1.0.7
 ![fJutteS-official-logo](src/fjuttes-official-logo.svg)
