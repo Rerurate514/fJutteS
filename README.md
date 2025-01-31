@@ -199,7 +199,7 @@ Now you've created a basic widget.
 Sometimes you might want to pass child elements to a widget for building, or pass parent properties to child elements for display.
 This section explains how to do that.
 
-First, you might write something like this when you want to display text passed from a parent element using the `Text` component:
+If you were using the Text component to display a string passed from a parent element, you would write.
 ```js
 class SampleWidget extends View {
     constructor(text){
