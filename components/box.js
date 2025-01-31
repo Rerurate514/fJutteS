@@ -1,4 +1,7 @@
-class Box extends View {
+import { View } from "../interface/view.js";
+import { Border } from "../models/border.js";
+
+export class Box extends View {
     constructor({
         width = "0px", 
         height = "0px",
