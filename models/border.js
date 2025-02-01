@@ -1,5 +1,5 @@
 export class Border {
-    constructor(
+    constructor({
         borderSize = "0px", 
         borderProperty = "solid",
         color = "transparent",
@@ -7,7 +7,8 @@ export class Border {
         isLeft = true,
         isRight = true,
         isBottom = true
-    ){
+    
+    } = {}){
         this.borderSize = borderSize;
         this.borderProperty = borderProperty;
         this.color = color;
