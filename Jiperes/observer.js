@@ -56,14 +56,7 @@ export class ProviderObserver {
     }
 
     _getProviderInfo(provider) {
-        return provider.constructor.name + '_' + this._getObjectId(provider);
-    }
-
-    _getObjectId(obj) {
-        if (!obj.__id) {
-            obj.__id = Math.random().toString(36).substr(2, 9);
-        }
-        return obj.__id;
+        return provider.constructor.name + ':' + provider.name;
     }
 
     _getStackTrace() {

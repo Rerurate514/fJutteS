@@ -34,8 +34,19 @@ export class Provider {
      * 
      * 使用例：`Provider.createProvider((ref) => { return 値 });`
      */
-    static createProvider(createFn) {
-        return new Provider(createFn);
+    static createProvider(createFn, name = null) {
+        let provider = new Provider(createFn);
+        provider._setName(name);
+        return provider;
+    }
+
+    _setName(name){
+        if(name){
+            this.name = name;
+        }
+        else {
+            this.name = Math.random().toString(36).substr(2, 9);
+        }
     }
 
     /**
