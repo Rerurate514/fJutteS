@@ -25,6 +25,8 @@ export { Text } from './components/text.js';
 export { Box } from './components/box.js';
 export { Image } from './components/image.js';
 export { Link } from './components/link.js';
+export { ElevatedButton } from './components/elevatedButton.js';
+export { Margin } from './components/margin.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { TextCSS } from './enums/textCSS.js';
