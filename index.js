@@ -26,6 +26,9 @@ export { Box } from './components/box.js';
 export { Image } from './components/image.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
+export { TextCSS } from './enums/textCSS.js';
+export { FontCSS } from './enums/fontCSS.js';
+
 export { Border } from './models/border.js';
 
 export * from './errors/errors.js';
