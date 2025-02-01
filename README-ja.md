@@ -374,6 +374,119 @@ class SampleWidget extends ProviderScope {
 ここでは`Provider`クラスの`read`メソッドを使用して値を読み取っています。
 `read`メソッドはただ値を読み取るためのメソッドです。
 
+#### Providerの使用-ProviderScope-update
+Providerの値を変更してウィジェットを再描画するには`Provider`クラスの`update`メソッドを使用します。
+今回は`ElevatedButton`を押したら`counter`の値をインクリメントして、`Text`に反映されるコードを作成してみます。
+```js
+import { 
+    assembleView, 
+    Text, 
+    Card, 
+    Column,
+    ElevatedButton,
+    BaseCSS,
+    SpaceBox,
+    Center, 
+    TextCSS, 
+    FontCSS, 
+    Provider, 
+    ProviderObserver, 
+    ProviderScope,
+    ShadowLevel,
+} from './node_modules/fjuttes/dist/index.mjs';
+
+const counter = Provider.createProvider((ref) => {
+    return 0;
+}, "counter");
+
+class ProviderExample extends ProviderScope {
+    constructor(){
+        super({
+            watchingProviders: [ counter ]
+        });
+    }
+
+    createWrapView(){
+        return document.createElement("div");
+    }
+
+    styledView(element){
+        element.style.height = "90vh";
+
+        return element;
+    }
+
+    build(){
+        counter.read()
+
+        return new Center(
+            new Card({
+                radius:"16px",
+                padding: "15px",
+                background: "wheat",
+                elevation: ShadowLevel.LVL5,
+                child: new Column([
+                    new ElevatedButton({
+                        child: new Text("CLICK!"),
+                        baseCSS: new BaseCSS({
+                            height: "32px",
+                        }),
+                        onClick: () => {
+                            counter.update((value) => {
+                                return value + 1;
+                            })
+                        }
+                    }),
+                    new SpaceBox({height: "16px"}),
+                    new Text("click count : " + counter.read()),
+                ]),
+            })
+        );
+    }
+}
+
+assembleView(
+    new ProviderExample()
+);
+```
+`ElevatedButton`コンポーネントの`onClick`プロパティにて`Provider`の`update`を実行しています。
+
+全てのコードを見る場合はこちらから確認することができます。
+https://github.com/Rerurate514/fJutteS/blob/main/example-code/providerExample.html
+
+#### Provider例-依存関係
+`Provider`クラスには依存関係を管理する機能があります。
+ここでは簡単なユーザを管理する`Provider`を作成します。
+```js
+//プロバイダーを作成
+const userProvider = Provider.createProvider(ref => {
+    return { name: "Jhon", age: 25 };
+});
+```
+
+そして`userProvider`内の`age`を監視するには以下のように`ref`を使用して`provider`を作成します。
+```js
+const userAgeProvider = Provider.createProvider(ref => {
+    ref.watch(userProvider, (user, currentValue) => {
+        return user.age;
+    });
+    return ref.read(userProvider).age;
+});
+```
+このように記述すると、自動的に`userProvider`がリッスン状態になり、`userProvider`の`age`が変更された際に`userAgeProvider`の値を自動的に変更します。これは`watch`または`ProviderScope`で`userAgeProvider`の変更を監視することができます。
+
+#### ProviderObserverによる値の変更確認
+`Jiperes`には`ProviderObserver`という`Provider`の値の変更履歴や依存関係を記録するクラスが実装されています。
+このクラスを使用するにはまず、ログの出力を有効にします。
+```js
+new ProviderObserver().outLogs()
+```
+
+ログの出力を有効にすると以下のコードを使用してログを確認することができます。
+- `Provider`の更新履歴：`console.log(new ProviderObserver().getAllUpdateHistory());`
+- 特定の`Provider`の更新履歴：`console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));`
+- `Provider`の依存関係を表示：`console.log(new ProviderObserver().getDependencyGraph());`
+
 ## 用語集
 - View(ビュー)：`View`クラスまたはその他UI構築クラスから継承して作成されたUI部品
 - コンポーネント：`fJutterS`側から提供されるViewのこと

@@ -378,6 +378,122 @@ Providers passed to `ProviderScope` automatically enter listening state, and if 
 Here we're using the Provider class's `read` method to read values.
 The `read` method is simply for reading values.
 
+#### Using Providers - ProviderScope - Updates
+To modify a Provider's value and trigger widget redrawing, use the `update` method of the `Provider` class.
+Let's create code that increments a `counter` value when an `ElevatedButton` is pressed and reflects this change in a `Text` widget.
+
+```js
+import { 
+    assembleView, 
+    Text, 
+    Card, 
+    Column,
+    ElevatedButton,
+    BaseCSS,
+    SpaceBox,
+    Center, 
+    TextCSS, 
+    FontCSS, 
+    Provider, 
+    ProviderObserver, 
+    ProviderScope,
+    ShadowLevel,
+} from './node_modules/fjuttes/dist/index.mjs';
+
+const counter = Provider.createProvider((ref) => {
+    return 0;
+}, "counter");
+
+class ProviderExample extends ProviderScope {
+    constructor(){
+        super({
+            watchingProviders: [ counter ]
+        });
+    }
+
+    createWrapView(){
+        return document.createElement("div");
+    }
+
+    styledView(element){
+        element.style.height = "90vh";
+        return element;
+    }
+
+    build(){
+        counter.read()
+        return new Center(
+            new Card({
+                radius:"16px",
+                padding: "15px",
+                background: "wheat",
+                elevation: ShadowLevel.LVL5,
+                child: new Column([
+                    new ElevatedButton({
+                        child: new Text("CLICK!"),
+                        baseCSS: new BaseCSS({
+                            height: "32px",
+                        }),
+                        onClick: () => {
+                            counter.update((value) => {
+                                return value + 1;
+                            })
+                        }
+                    }),
+                    new SpaceBox({height: "16px"}),
+                    new Text("click count : " + counter.read()),
+                ]),
+            })
+        );
+    }
+}
+
+assembleView(
+    new ProviderExample()
+);
+```
+
+The Provider's `update` is executed in the `onClick` property of the `ElevatedButton` component.
+You can view the complete code here:
+https://github.com/Rerurate514/fJutteS/blob/main/example-code/providerExample.html
+
+#### Provider Example - Dependencies
+The `Provider` class includes functionality to manage dependencies.
+Here's how to create a simple Provider to manage user data:
+
+```js
+// Create provider
+const userProvider = Provider.createProvider(ref => {
+    return { name: "Jhon", age: 25 };
+});
+```
+
+To monitor the `age` within `userProvider`, create a provider using `ref` like this:
+
+```js
+const userAgeProvider = Provider.createProvider(ref => {
+    ref.watch(userProvider, (user, currentValue) => {
+        return user.age;
+    });
+    return ref.read(userProvider).age;
+});
+```
+
+With this setup, `userProvider` automatically enters a listening state, and when the `age` in `userProvider` changes, it automatically updates the value in `userAgeProvider`. These changes can be monitored using either `watch` or `ProviderScope`.
+
+#### Tracking Value Changes with ProviderObserver
+`Jiperes` implements a `ProviderObserver` class that records Provider value change history and dependencies.
+To use this class, first enable log output:
+
+```js
+new ProviderObserver().outLogs()
+```
+
+Once logging is enabled, you can check logs using these methods:
+- View all Provider update history: `console.log(new ProviderObserver().getAllUpdateHistory());`
+- View update history for a specific Provider: `console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));`
+- Display Provider dependency graph: `console.log(new ProviderObserver().getDependencyGraph());`
+
 ## Glossary
 - View: UI components created by inheriting from the `View` class or other UI construction classes
 - Component: Views provided by `fJutterS`
