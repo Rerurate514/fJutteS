@@ -1,12 +1,15 @@
+import { BaseCSS } from "../enums/baseCSS.js";
 import { View } from "../interface/view.js";
 
 export class ElevatedButton extends View {
     constructor({
         child,
+        baseCSS = new BaseCSS(),
         onClick: onClick = () => {},
     }){
         super({
             child: child,
+            baseCSS: baseCSS,
             onClick: onClick
         });
     }
@@ -14,6 +17,11 @@ export class ElevatedButton extends View {
     createWrapView(){
         let button = document.createElement("button");
         return button;
+    }
+
+    styledView(element){
+        element = this.props.baseCSS.applyCSS(element);
+        return element;
     }
 
     embedScriptToView(element){
