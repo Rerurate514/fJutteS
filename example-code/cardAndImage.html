@@ -17,7 +17,7 @@
         }
     </script>
     <script type="module">
-        import { assembleView, View, Center, Card, Column, Text, SpaceBox, Image, ShadowLevel, TextCSS, FontCSS, BaseCSS } from "fjuttes";
+        import { assembleView, View, Link, Center, Row, Card, Column, Text, SpaceBox, Image, ShadowLevel, TextCSS, FontCSS, BaseCSS } from "fjuttes";
 
         class CardExample extends View {
             constructor(src){
@@ -44,16 +44,32 @@
                         background: "wheat",
                         elevation: ShadowLevel.LVL5,
                         child: new Column([
-                            new Text(
-                                "This framework name is fJutteS.",
-                                new TextCSS({
-                                    fontCSS: new FontCSS({
-                                        color: "#29C5F8",
-                                        fontWeight: "bold",
-                                        fontSize: "32px"
+                            new Row([
+                                new Text(
+                                    "This framework name is",
+                                    new TextCSS({
+                                        fontCSS: new FontCSS({
+                                            color: "#29C5F8",
+                                            fontWeight: "bold",
+                                            fontSize: "32px"
+                                        })
                                     })
+                                ),
+                                new SpaceBox({width: "16px"}),
+                                new Link({
+                                    href: "https://www.npmjs.com/package/fjuttes",
+                                    child: new Text(
+                                        "fJutteS.",
+                                        new TextCSS({
+                                            fontCSS: new FontCSS({
+                                                color: "red",
+                                                fontWeight: "bold",
+                                                fontSize: "32px"
+                                            })
+                                        })
+                                    ),
                                 })
-                            ),
+                            ]),
                             new SpaceBox({height: "16px"}),
                             new Center(
                                 new Image({
