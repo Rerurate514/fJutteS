@@ -17,7 +17,7 @@
         }
     </script>
     <script type="module">
-        import { assembleView, View, Center, Card, Column, Text, SpaceBox, Image, ShadowLevel } from "fjuttes";
+        import { assembleView, View, Center, Card, Column, Text, SpaceBox, Image, ShadowLevel, TextCSS, FontCSS, BaseCSS } from "fjuttes";
 
         class CardExample extends View {
             constructor(src){
@@ -39,23 +39,33 @@
             build(){
                 return new Center(
                     new Card({
+                        radius:"16px",
+                        padding: "15px",
+                        background: "wheat",
+                        elevation: ShadowLevel.LVL5,
                         child: new Column([
-                            new Text("This framework name is fJutteS."),
+                            new Text(
+                                "This framework name is fJutteS.",
+                                new TextCSS({
+                                    fontCSS: new FontCSS({
+                                        color: "#29C5F8",
+                                        fontWeight: "bold",
+                                        fontSize: "32px"
+                                    })
+                                })
+                            ),
                             new SpaceBox({height: "16px"}),
                             new Center(
                                 new Image({
-                                    width: "100px",
-                                    height: "100px",
+                                    baseCSS: new BaseCSS({
+                                        width: "256px"
+                                    }),
                                     src: this.props.src,
                                     alt: "fjuttes-logo",
                                     title: "fjuttes-logo"
                                 })
                             )
                         ]),
-                        radius:"16px",
-                        padding: "15px",
-                        background: "wheat",
-                        elevation: ShadowLevel.LVL3
                     })
                 );
             }
