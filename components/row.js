@@ -1,7 +1,11 @@
 import { View } from "../interface/view.js";
 
 export class Row extends View {
-    constructor(children, isAlignCenter = false, isJustifySpaceAround = false){
+    constructor({
+        children, 
+        isAlignCenter = false, 
+        isJustifySpaceAround = false
+    }){
         super({
             children: children, 
             isAlignCenter: isAlignCenter, 

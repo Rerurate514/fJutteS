@@ -1,7 +1,9 @@
 import { View } from "../interface/view.js";
 
 export class Stack extends View {
-    constructor(children){
+    constructor({
+        children
+    }){
         super({children: children});
     }    
 

@@ -1,7 +1,9 @@
 import { View } from "../interface/view.js";
 
 export class Center extends View {
-    constructor(child){
+    constructor({
+        child
+    }){
         super({child: child});
     }
 

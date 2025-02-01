@@ -1,7 +1,11 @@
 import { View } from "../interface/view.js";
 
 export class Text extends View{
-    constructor(text, color = "black", isFontWeight = false){
+    constructor({
+        text, 
+        color = "black", 
+        isFontWeight = false
+    }){
         super({text: text, color: color, isFontWeight: isFontWeight});
     }
 

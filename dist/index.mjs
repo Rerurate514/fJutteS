@@ -680,7 +680,9 @@ class Card extends View {
 }
 
 class Center extends View {
-    constructor(child){
+    constructor({
+        child
+    }){
         super({child: child});
     }
 
@@ -733,7 +735,9 @@ class _Center extends View {
 }
 
 class Column extends View {
-    constructor(children){
+    constructor({
+        children
+    }){
         super({children: children});
     }
 
@@ -809,7 +813,11 @@ class Padding extends View {
 }
 
 class Position extends View {
-    constructor({child, top = 0, left = 0}){
+    constructor({
+        child, 
+        top = 0, 
+        left = 0
+    }){
         super({child: child, top: top, left: left});
     }
 
@@ -865,7 +873,11 @@ class _PositionChild extends View {
 }
 
 class Row extends View {
-    constructor(children, isAlignCenter = false, isJustifySpaceAround = false){
+    constructor({
+        children, 
+        isAlignCenter = false, 
+        isJustifySpaceAround = false
+    }){
         super({
             children: children, 
             isAlignCenter: isAlignCenter, 
@@ -894,7 +906,10 @@ class Row extends View {
 }
 
 class SpaceBox extends View {
-    constructor({width = "0px", height = "0px"}){
+    constructor({
+        width = "0px", 
+        height = "0px"
+    }){
         super({width: width, height: height});
     }
 
@@ -912,7 +927,9 @@ class SpaceBox extends View {
 }
 
 class Stack extends View {
-    constructor(children){
+    constructor({
+        children
+    }){
         super({children: children});
     }    
 
@@ -938,7 +955,11 @@ class Stack extends View {
 }
 
 class Text extends View{
-    constructor(text, color = "black", isFontWeight = false){
+    constructor({
+        text, 
+        color = "black", 
+        isFontWeight = false
+    }){
         super({text: text, color: color, isFontWeight: isFontWeight});
     }
 

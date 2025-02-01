@@ -1,7 +1,9 @@
 import { View } from "../interface/view.js";
 
 export class Column extends View {
-    constructor(children){
+    constructor({
+        children
+    }){
         super({children: children});
     }
 

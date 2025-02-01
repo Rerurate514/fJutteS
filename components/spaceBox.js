@@ -1,7 +1,10 @@
 import { View } from "../interface/view.js";
 
 export class SpaceBox extends View {
-    constructor({width = "0px", height = "0px"}){
+    constructor({
+        width = "0px", 
+        height = "0px"
+    }){
         super({width: width, height: height});
     }
 
