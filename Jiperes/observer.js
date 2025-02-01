@@ -1,13 +1,16 @@
 export class ProviderObserver {
-    constructor(isLogOut = false) {
+    constructor() {
         if (!ProviderObserver.instance) {
             ProviderObserver.instance = this;
             this.dependencyGraph = new Map();
             this.updateHistory = [];
         }
 
-        this._isLogOut = isLogOut;
         return ProviderObserver.instance;
+    }
+
+    outLogs(isOutedLog = true){
+        this._isOutedLog = isOutedLog;
     }
 
     addDependency(childProvider, parentProvider) {
@@ -65,7 +68,7 @@ export class ProviderObserver {
     }
 
     log(message) {
-        if(!this._isLogOut) return;
+        if(!this._isOutedLog) return;
         console.log(`[ProviderObserver] ${message}`);
     }
 
