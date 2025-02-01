@@ -1,3 +1,5 @@
+import terser from '@rollup/plugin-terser';
+
 export default {
   input: 'index.js',
   output: [
@@ -11,22 +13,17 @@ export default {
     }
   ],
   plugins: [
-    removeComments()
+    terser({
+      compress: {
+        dead_code: true,
+        conditionals: true,
+        collapse_vars: true
+      },
+      format: {
+        comments: false,
+        beautify: false
+      },
+      ecma: 2015
+    })
   ]
 };
-
-function removeComments() {
-  return {
-    name: 'remove-comments',
-    transform(code) {
-      code = code.replace(/\/\/.*/g, '');
-      code = code.replace(/\/\*[\s\S]*?\*\//g, '');
-      code = code.replace(/^\s*[\r\n]/gm, '');
-      
-      return {
-        code,
-        map: null
-      };
-    }
-  };
-}
