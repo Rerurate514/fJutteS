@@ -6,6 +6,30 @@ HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境
 ![fJutteS-official-logo](src/fjuttes-official-logo.svg)
 
 ## インポート方法
+### npm
+npm経由で`fjuttes`を使用するには`npm install fjuttes`をコンソールで実行してから`node_modules`で使用します。
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+	
+    <script type="module">
+		import { assembleView, Text } from './node_modules/fjuttes/dist/index.mjs';;
+
+		assembleView(new Text("Hello World!"));
+	</script>
+</body>
+</html>
+```
+
+### CDN
 CDN形式でnpmを使用せずに`fJutteS`の機能を使用するには`unpkg`を使用することができます。
 以下にコード例を示します。
 ```html

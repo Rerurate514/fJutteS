@@ -8,6 +8,30 @@ It uses a custom library called `Jiperes` optimized for `fJuttes` for state mana
 - 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md
 
 ## Import Method
+### npm
+To use `fjuttes` via npm, run `npm install fjuttes` in the console and then use it in `node_modules`.
+```html
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+	
+    <script type="module">
+		import { assembleView, Text } from './node_modules/fjuttes/dist/index.mjs';;
+
+		assembleView(new Text("Hello World!"));
+	</script>
+</body>
+</html>
+```
+
+### CDN
 You can use `unpkg` to utilize `fJutteS` functionality in CDN format without using npm.
 Here's a code example:
 ```html
