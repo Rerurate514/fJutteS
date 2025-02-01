@@ -1,0 +1,107 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+	
+    <script type="importmap">
+        {
+            "imports": {
+                "fjuttes": "https://unpkg.com/fjuttes@2.0.0/dist/index.mjs"
+            }
+        }
+    </script>
+    <script type="module">
+        import { 
+            assembleView, 
+            Text, 
+            Card, 
+            Column,
+            ElevatedButton,
+            BaseCSS,
+            SpaceBox,
+            Center, 
+            TextCSS, 
+            FontCSS, 
+            Provider, 
+            ProviderObserver, 
+            ProviderScope 
+        } from "fjuttes";
+
+        export const counter = Provider.createProvider((ref) => {
+            return 0;
+        }, "counter");
+
+        new ProviderObserver().outLogs();
+
+        class CardExample extends ProviderScope {
+            constructor(src){
+                super({
+                    props:{
+                        src: src
+                    },
+                    watchingProviders: [ counter ]
+                });
+            }
+
+            createWrapView(){
+                return document.createElement("div");
+            }
+
+            styledView(element){
+                element.style.height = "90vh";
+
+                return element;
+            }
+
+            build(){
+                counter.read()
+
+                return new Center(
+                    new Card({
+                        radius:"16px",
+                        padding: "15px",
+                        background: "wheat",
+                        elevation: ShadowLevel.LVL5,
+                        child: new Column([
+                            new ElevatedButton({
+                                child: new Text("CLICK!"),
+                                baseCSS: new BaseCSS({
+                                    height: "32px",
+                                }),
+                                onClick: () => {
+                                    console.log("clicked!");
+                                    counter.update((value) => {
+                                        return value + 1;
+                                    })
+                                }
+                            }),
+                            new SpaceBox({height: "16px"}),
+                            new Text("click count : " + counter.read()),
+                        ]),
+                    })
+                );
+            }
+        }
+
+        assembleView(
+            new ProviderExample("../src/fjuttes-official-logo.svg")
+        );
+    </script>
+</body>
+</html>
