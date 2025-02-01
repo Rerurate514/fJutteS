@@ -40,7 +40,9 @@
             FontCSS, 
             Provider, 
             ProviderObserver, 
-            ProviderScope 
+            ProviderScope,
+            ShadowLevel,
+            Border
         } from "fjuttes";
 
         export const counter = Provider.createProvider((ref) => {
@@ -49,7 +51,7 @@
 
         new ProviderObserver().outLogs();
 
-        class CardExample extends ProviderScope {
+        class ProviderExample extends ProviderScope {
             constructor(src){
                 super({
                     props:{
@@ -83,6 +85,10 @@
                                 child: new Text("CLICK!"),
                                 baseCSS: new BaseCSS({
                                     height: "32px",
+                                    border: new Border({
+                                        borderSize: "2px",
+                                        color: "red"
+                                    })
                                 }),
                                 onClick: () => {
                                     console.log("clicked!");
