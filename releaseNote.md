@@ -2,6 +2,7 @@
 ## ver 2.0.1
 ### models
 - border class constructor changed default to object
+- Fixed problem with class names in index.mjs being converted by terser
 
 ## ver 2.0.0
 ### components
