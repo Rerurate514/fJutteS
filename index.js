@@ -24,10 +24,12 @@ export { Stack } from './components/stack.js';
 export { Text } from './components/text.js';
 export { Box } from './components/box.js';
 export { Image } from './components/image.js';
+export { Link } from './components/link.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { TextCSS } from './enums/textCSS.js';
 export { FontCSS } from './enums/fontCSS.js';
+export { BaseCSS } from './enums/baseCSS.js';
 
 export { Border } from './models/border.js';
 
