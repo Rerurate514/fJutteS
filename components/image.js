@@ -1,19 +1,18 @@
+import { BaseCSS } from "../enums/baseCSS.js";
 import { View } from "../interface/view.js";
 
 export class Image extends View {
     constructor({
-        width = "auto", 
-        height = "auto", 
         src: src = "",
         alt: alt = "",
-        title: title = ""
+        title: title = "",
+        baseCSS: baseCSS = new BaseCSS()
     }){
         super({
-            width: width, 
-            height: height, 
             src: src,
             alt: alt,
-            title: title
+            title: title,
+            baseCSS: baseCSS
         });
     }
 
@@ -23,8 +22,7 @@ export class Image extends View {
     }
 
     styledView(element){
-        element.style.width = this.props.width;
-        element.style.height = this.props.height;
+        element = this.props.baseCSS.applyCSS(element);
 
         element.src = this.props.src;
         element.alt = this.props.alt;
