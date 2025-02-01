@@ -1,4 +1,8 @@
 # Release Notes
+## ver 2.0.1
+### models
+- border class constructor changed default to object
+
 ## ver 2.0.0
 ### components
 - added Margin Component
