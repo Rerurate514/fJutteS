@@ -23,10 +23,10 @@ To use `fjuttes` via npm, run `npm install fjuttes` in the console and then use 
     <div id="fJutteS-Container"></div>
 	
     <script type="module">
-		import { assembleView, Text } from './node_modules/fjuttes/dist/index.mjs';;
+        import { assembleView, Text } from './node_modules/fjuttes/dist/index.mjs';
 
-		assembleView(new Text("Hello World!"));
-	</script>
+        assembleView(new Text("Hello World!"));
+    </script>
 </body>
 </html>
 ```
