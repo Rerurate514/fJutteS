@@ -309,6 +309,7 @@ Pass a function object as an argument and return the initial value inside it.
 
 #### Using Provider - ProviderScope - read
 To monitor Provider value changes, do it on a View-by-View basis.
+`fJutteS` provides an interface called `ProviderScope` that automatically monitors value changes and redraws them.
 Create a widget by inheriting from the `ProviderScope` component:
 ```js
 class SampleWidget extends ProviderScope {

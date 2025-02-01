@@ -305,6 +305,7 @@ const sampleProvider = Provider.createProvider(() => {
 
 #### Providerの使用-ProviderScope-read
 Providerの値の変更を監視するためにはView単位で行います。
+`fJutteS`では、値の変更を自動的に監視し、再描画を行う`ProviderScope`というインターフェースを提供しています。
 `ProviderScope`コンポーネントを継承してウィジェットを作成します。
 ```js
 class SampleWidget extends ProviderScope {
