@@ -27,7 +27,7 @@
         }
     </script>
     <script type="module">
-        import { assembleView, Text, Card, Center, Image, TextCSS, FontCSS, Margin } from "fjuttes";
+        import { assembleView, View, Text, ShadowLevel, Column, Link, BaseCSS, Card, Center, Image, TextCSS, FontCSS, Margin } from "fjuttes";
 
         class ImageExample extends View {
             constructor(src){
@@ -86,7 +86,7 @@
         }
 
         assembleView(
-            new ImageExample("../src/fjuttes-official-logo.svg")
+            new ImageExample("https://raw.githubusercontent.com/Rerurate514/fJutteS/fb62ba354740229ac83fbdbd4c5307d59684c92b/src/fjuttes-official-logo.svg")
         );
     </script>
 </body>
