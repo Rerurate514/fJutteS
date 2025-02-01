@@ -20,7 +20,7 @@ export class TextCSS {
         writingMode = null,
         textCombineUpright = null,
         textOrientation = null
-    }) {
+    } = {}) {
         this.#properties = {
             fontCSS,
             letterSpacing,

@@ -8,7 +8,7 @@ export class FontCSS {
         fontSize = null,
         lineHeight = null,
         fontFamily = null
-    }) {
+    } = {}) {
         this.#properties = {
             color,
             fontStyle,
