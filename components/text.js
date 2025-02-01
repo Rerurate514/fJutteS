@@ -4,7 +4,7 @@ import { TextCSS } from "../enums/textCSS.js";
 export class Text extends View{
     constructor(
         text, 
-        { textCSS = new TextCSS() }
+        textCSS = new TextCSS()
     ){
         super({text: text, textCSS: textCSS});
     }
@@ -18,27 +18,27 @@ export class Text extends View{
         element.textContent = this.props.text;
         element.style.margin = "0";
 
-        if(this.textCSS.fontCSS.color) element.style.color = this.textCSS.fontCSS.color;
-        if(this.textCSS.fontCSS.fontStyle) element.style.fontStyle = this.textCSS.fontCSS.fontStyle;
-        if(this.textCSS.fontCSS.fontWeight) element.style.fontWeight = this.textCSS.fontCSS.fontWeight;
-        if(this.textCSS.fontCSS.fontSize) element.style.fontSize = this.textCSS.fontCSS.fontSize;
-        if(this.textCSS.fontCSS.lineHeight) element.style.lineHeight = this.textCSS.fontCSS.lineHeight;
-        if(this.textCSS.fontCSS.fontFamily) element.style.fontFamily = this.textCSS.fontCSS.fontFamily;
+        if(this.props.textCSS.fontCSS.color) element.style.color = this.props.textCSS.fontCSS.color;
+        if(this.props.textCSS.fontCSS.fontStyle) element.style.fontStyle = this.props.textCSS.fontCSS.fontStyle;
+        if(this.props.textCSS.fontCSS.fontWeight) element.style.fontWeight = this.props.textCSS.fontCSS.fontWeight;
+        if(this.props.textCSS.fontCSS.fontSize) element.style.fontSize = this.props.textCSS.fontCSS.fontSize;
+        if(this.props.textCSS.fontCSS.lineHeight) element.style.lineHeight = this.props.textCSS.fontCSS.lineHeight;
+        if(this.props.textCSS.fontCSS.fontFamily) element.style.fontFamily = this.props.textCSS.fontCSS.fontFamily;
 
-        if(this.textCSS.letterSpacing) element.style.letterSpacing = this.textCSS.letterSpacing;
-        if(this.textCSS.textAlign) element.style.textAlign = this.textCSS.textAlign;
-        if(this.textCSS.textAlignLast) element.style.textAlignLast = this.textCSS.textAlignLast;
-        if(this.textCSS.textIndent) element.style.textIndent = `${this.textCSS.textIndent}px`;
-        if(this.textCSS.textTransform) element.style.textTransform = this.textCSS.textTransform;
-        if(this.textCSS.lineBreak) element.style.lineBreak = this.textCSS.lineBreak;
-        if(this.textCSS.textOverflow) element.style.textOverflow = this.textCSS.textOverflow;
-        if(this.textCSS.wordBreak) element.style.wordBreak = this.textCSS.wordBreak;
-        if(this.textCSS.textDecoration) element.style.textDecoration = this.textCSS.textDecoration;
-        if(this.textCSS.textEmphasis) element.style.textEmphasis = this.textCSS.textEmphasis;
-        if(this.textCSS.textShadow) element.style.textShadow = this.textCSS.textShadow;
-        if(this.textCSS.writingMode) element.style.writingMode = this.textCSS.writingMode;
-        if(this.textCSS.textCombineUpright) element.style.textCombineUpright = this.textCSS.textCombineUpright;
-        if(this.textCSS.textOrientation) element.style.textOrientation = this.textCSS.textOrientation;
+        if(this.props.textCSS.letterSpacing) element.style.letterSpacing = this.props.textCSS.letterSpacing;
+        if(this.props.textCSS.textAlign) element.style.textAlign = this.props.textCSS.textAlign;
+        if(this.props.textCSS.textAlignLast) element.style.textAlignLast = this.props.textCSS.textAlignLast;
+        if(this.props.textCSS.textIndent) element.style.textIndent = `${this.props.textCSS.textIndent}px`;
+        if(this.props.textCSS.textTransform) element.style.textTransform = this.props.textCSS.textTransform;
+        if(this.props.textCSS.lineBreak) element.style.lineBreak = this.props.textCSS.lineBreak;
+        if(this.props.textCSS.textOverflow) element.style.textOverflow = this.props.textCSS.textOverflow;
+        if(this.props.textCSS.wordBreak) element.style.wordBreak = this.props.textCSS.wordBreak;
+        if(this.props.textCSS.textDecoration) element.style.textDecoration = this.props.textCSS.textDecoration;
+        if(this.props.textCSS.textEmphasis) element.style.textEmphasis = this.props.textCSS.textEmphasis;
+        if(this.props.textCSS.textShadow) element.style.textShadow = this.props.textCSS.textShadow;
+        if(this.props.textCSS.writingMode) element.style.writingMode = this.props.textCSS.writingMode;
+        if(this.props.textCSS.textCombineUpright) element.style.textCombineUpright = this.props.textCSS.textCombineUpright;
+        if(this.props.textCSS.textOrientation) element.style.textOrientation = this.props.textCSS.textOrientation;
 
         return element;
     }
