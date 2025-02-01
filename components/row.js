@@ -5,7 +5,7 @@ export class Row extends View {
         children, { 
         isAlignCenter = false, 
         isJustifySpaceAround = false
-    }){
+    } = {}){
         super({
             children: children, 
             isAlignCenter: isAlignCenter, 
