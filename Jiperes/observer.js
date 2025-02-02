@@ -31,7 +31,7 @@ export class ProviderObserver {
     logUpdate(provider, oldValue, newValue) {
         const updateInfo = {
             timestamp: new Date(),
-            provider: this._getProviderInfo(provider),
+            provider: provider.name,
             oldValue,
             newValue,
             stackTrace: this._getStackTrace()
