@@ -91,7 +91,6 @@
                                     })
                                 }),
                                 onClick: () => {
-                                    console.log("clicked!");
                                     counter.update((value) => {
                                         return value + 1;
                                     });
@@ -116,7 +115,9 @@
                                     ["oldValue", "newValue"], 
                                     2
                                 ),
-                            )
+                            ),
+                            new SpaceBox({height: "16px"}),
+                            new Text("and watch brower console!")
                         ]),
                     })
                 );
