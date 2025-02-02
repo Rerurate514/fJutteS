@@ -94,11 +94,29 @@
                                     console.log("clicked!");
                                     counter.update((value) => {
                                         return value + 1;
-                                    })
+                                    });
+
+                                    console.log(new ProviderObserver().getAllUpdateHistory());
                                 }
                             }),
                             new SpaceBox({height: "16px"}),
                             new Text("click count : " + counter.read()),
+                            new SpaceBox({height: "32px"}),
+                            new Text(
+                                "Provider update history",
+                                new TextCSS({
+                                    fontCSS: new FontCSS({
+                                        fontWeight: "bold"
+                                    })
+                                })
+                            ),
+                            new Text(
+                                JSON.stringify(
+                                    new ProviderObserver().getAllUpdateHistory(),
+                                    ["oldValue", "newValue"], 
+                                    2
+                                ),
+                            )
                         ]),
                     })
                 );
