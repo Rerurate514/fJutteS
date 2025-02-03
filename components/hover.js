@@ -77,7 +77,6 @@ class _Hover extends View {
         after.style.borderRadius = (parseInt(this.props.radius, 10)) - 3 + "px";
 
         after = this._calcAfterSize(after);
-        console.log(after)
 
         after.addEventListener('mouseenter', () => {
             after.style.background = "rgb(128, 128, 128, 0.3)";
@@ -97,8 +96,6 @@ class _Hover extends View {
 
         element.style.width = clientWidth + "px";
         element.style.height = clientHeight + "px";
-
-        console.log(element)
 
         return element;
     }
