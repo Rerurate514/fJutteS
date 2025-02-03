@@ -36,7 +36,7 @@ export class ElevatedButton extends View {
     }
 }
 
-export class _ElevatedButton extends View {
+class _ElevatedButton extends View {
     constructor({
         child,
         baseCSS = new BaseCSS(),
