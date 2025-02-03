@@ -19,6 +19,8 @@ export class Center extends View {
         element.style.display = "flex";
         element.style.alignItems = "center";
 
+        element.style.borderRadius = "inherit";
+
         return element;
     }
 
@@ -42,6 +44,8 @@ export class _Center extends View {
         element.style.height = "fit-content";
 
         element.style.margin = "auto";
+
+        element.style.borderRadius = "inherit";
 
         return element;
     }
