@@ -31,4 +31,10 @@ export class BaseCSS {
     
         return element;
     }
+
+    get width() { return this.#properties.width }
+    get height() { return this.#properties.height }
+    get margin() { return this.#properties.margin }
+    get padding() { return this.#properties.padding }
+    get assembledBorder() { return this.#properties.assembledBorder }
 }
