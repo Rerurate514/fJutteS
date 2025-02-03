@@ -70,7 +70,7 @@ class _Hover extends View {
         after.style.position = "absolute";
         after.style.top = "0";
         after.style.left = "0";
-        after.style.background = "rgb(128, 128, 128, 0)";
+        after.style.background = "rgb(0, 0, 0, 0)";
         after.style.mixBlendMode = "difference";
         after.style.transition = "background-color 0.3s";
 
@@ -79,11 +79,11 @@ class _Hover extends View {
         after = this._calcAfterSize(after);
 
         after.addEventListener('mouseenter', () => {
-            after.style.background = "rgb(128, 128, 128, 0.3)";
+            after.style.background = "rgb(0, 0, 0, 0.3)";
         });
 
         after.addEventListener('mouseleave', () => {
-            after.style.background = "rgb(128, 128, 128, 0)";
+            after.style.background = "rgb(0, 0, 0, 0)";
         });
 
         return after;
