@@ -1,8 +1,9 @@
 # THIS IS PURE JS FRAMEWORK
-これは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。
-HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境下(ReactやVueも入れられない環境)でFlutterのようなコンポーネント型プログラミングをしたいときに最適なフレームワークです。
-状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。
-- 現行バージョン -> fjuttes@2.0.1
+## fJutteSとは
+`fJutteS`とは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。  
+HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境下(ReactやVueも入れられない環境)でFlutterのようなコンポーネント型プログラミングをしたいときに最適なフレームワークです。`fJutteS`には様々なコンポーネントが提供されていますが、これも詰まるところ私が作成したウィジェットであり、ユーザ自身が自由にウィジェットを作成する事ができます。結局のところ、ただのJavaScriptなので！  
+そして、状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。しかし、それと引き換えにsetState、useStateを失っています。これはウィジェット単体で状態を変更することはできないことを意味しています。これも一つの設計思想として捉えてもらえると幸いです。  
+- 現行バージョン -> fjuttes@2.0.1  
 ![fJutteS-official-logo](src/fjuttes-official-logo.svg)
 
 ## インポート方法
@@ -87,7 +88,7 @@ assembleView(new Text("Hello World!"));
 
 ### ウィジェットの作成
 #### Viewの継承
-まず、このフレームワークには全てのウィジェットの根幹となる`View`コンポーネントが提供されています。
+まず、このフレームワークには全てのウィジェットの根幹となる`View`インターフェースが提供されています。
 このクラスを継承するのが、ウィジェット作成の第一段階です。
 ```js
 class SampleWidget extends View {
@@ -324,13 +325,12 @@ const sampleProvider = Provider.createProvider(() => {
 	return 0;
 })
 ```
-引数には関数オブジェクトを渡し、その中で初期値を`return`で返却します。
-（これは基本的な数値を管理するProviderであり、Providerには依存関係などの機能もあります。）
+引数には関数オブジェクトを渡し、その中で初期値を`return`で返却します。これはプリミティブな数値を管理、保持、監視するProviderです。ただし、なんの設定もしていないと値の変更の監視はできません。
 
 #### Providerの使用-ProviderScope-read
 Providerの値の変更を監視するためにはView単位で行います。
 `fJutteS`では、値の変更を自動的に監視し、再描画を行う`ProviderScope`というインターフェースを提供しています。
-`ProviderScope`コンポーネントを継承してウィジェットを作成します。
+`ProviderScope`を継承してウィジェットを作成します。
 ```js
 class SampleWidget extends ProviderScope {
 	constructor(child){
@@ -450,6 +450,8 @@ assembleView(
 );
 ```
 `ElevatedButton`コンポーネントの`onClick`プロパティにて`Provider`の`update`を実行しています。
+`update`にはその`Provider`の現在の値が渡されるので、その値にインクリメントをして`return`で返却し値を変更しています。
+その結果、`ProviderScope`を継承したウィジェット自身が`Provider`内の値の変更を検知し自身を再描画します。
 
 全てのコードを見る場合はこちらから確認することができます。
 https://github.com/Rerurate514/fJutteS/blob/main/example-code/providerExample.html
@@ -477,20 +479,33 @@ const userAgeProvider = Provider.createProvider(ref => {
 
 #### ProviderObserverによる値の変更確認
 `Jiperes`には`ProviderObserver`という`Provider`の値の変更履歴や依存関係を記録するクラスが実装されています。
-このクラスを使用するにはまず、ログの出力を有効にします。
+
+そして、以下のコードを使用してログを確認することができます。  
+##### `Provider`の更新時、依存関係構築時にログを出力する。
 ```js
 new ProviderObserver().outLogs()
-```
-
-ログの出力を有効にすると以下のコードを使用してログを確認することができます。
-- `Provider`の更新履歴：`console.log(new ProviderObserver().getAllUpdateHistory());`
-- 特定の`Provider`の更新履歴：`console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));`
-- `Provider`の依存関係を表示：`console.log(new ProviderObserver().getDependencyGraph());`
+```  
+  
+##### `Provider`の更新履歴  
+```js
+console.log(new ProviderObserver().getAllUpdateHistory());
+```  
+  
+##### 特定の`Provider`の更新履歴  
+```js
+console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));
+```  
+  
+##### `Provider`の依存関係を表示  
+```js
+console.log(new ProviderObserver().getDependencyGraph());
+```  
 
 ## 用語集
 - View(ビュー)：`View`クラスまたはその他UI構築クラスから継承して作成されたUI部品
 - コンポーネント：`fJutterS`側から提供されるViewのこと
 - ウィジェット：`fJutteS`使用者がコンポーネントを組み合わせて作成したViewのこと
+- インターフェース：`fJutteS`が提供している継承することで機能を使用できるクラスのこと。(`View`や`ProviderScope`など)
 
 ## 最後に余談
 //TODO
