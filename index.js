@@ -1,10 +1,11 @@
 export function assembleView(viewArg) {
-    let view = viewArg.view;
+    let element = viewArg.view;
     let container = document.getElementById("fJutteS-Container");
     
-    if(container != null) container.appendChild(view);
+    if(container != null) container.appendChild(element);
+    viewArg.addPseudoElement();
 
-    return view;
+    return element;
 }
 
 export default assembleView;
@@ -29,6 +30,7 @@ export { ElevatedButton } from './components/elevatedButton.js';
 export { Margin } from './components/margin.js';
 export { RadioButton } from './components/radioButton.js';
 export { Chips } from './components/chips.js';
+export { Hover } from './components/hover.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { TextCSS } from './enums/textCSS.js';
