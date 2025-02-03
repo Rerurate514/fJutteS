@@ -116,7 +116,7 @@ class _Hover extends View {
 
         element.addEventListener('mouseleave', () => {
             element.style.boxShadow = ShadowLevel.LVL0;
-            element.style.background = "rgb(0, 0, 0, 0.1)";
+            element.style.background = "rgb(0, 0, 0, 0)";
             element.style.transition = "background 0.3s";
         });
 
