@@ -10,8 +10,7 @@ export class Text extends View{
     }
 
     createWrapView(){
-        let p = document.createElement("p");
-        return p;
+        return document.createElement("p");
     }
 
     styledView(element) {

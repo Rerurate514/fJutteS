@@ -15,8 +15,7 @@ export class ElevatedButton extends View {
     }
 
     createWrapView(){
-        let button = document.createElement("button");
-        return button;
+        return document.createElement("div");
     }
 
     styledView(element){

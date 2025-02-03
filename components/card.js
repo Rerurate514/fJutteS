@@ -30,8 +30,7 @@ export class Card extends View {
     }
 
     createWrapView(){
-        let card = document.createElement("div");
-        return card;
+        return document.createElement("div");
     }
 
     styledView(element){

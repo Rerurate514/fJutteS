@@ -6,8 +6,7 @@ export class Stack extends View {
     }    
 
     createWrapView(){
-        let stack = document.createElement("div");
-        return stack;
+        return document.createElement("div");
     }
     
     styledView(element){

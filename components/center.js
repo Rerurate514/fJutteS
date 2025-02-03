@@ -6,8 +6,7 @@ export class Center extends View {
     }
 
     createWrapView(){
-        let center = document.createElement("div");
-        return center;
+        return document.createElement("div");
     }
 
     styledView(element){
@@ -35,8 +34,7 @@ export class _Center extends View {
     }
 
     createWrapView(){
-        let center = document.createElement("div");
-        return center;
+        return document.createElement("div");
     }
 
     styledView(element){

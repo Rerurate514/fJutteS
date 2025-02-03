@@ -37,8 +37,7 @@ export class Margin extends View {
     }
 
     createWrapView(){
-        let margin = document.createElement("div");
-        return margin;
+        return document.createElement("div");
     }
 
     styledView(element){

@@ -6,8 +6,7 @@ export class Column extends View {
     }
 
     createWrapView(){
-        let col = document.createElement("div");
-        return col;
+        return document.createElement("div");
     }
 
     styledView(element){

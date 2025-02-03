@@ -37,8 +37,7 @@ export class Padding extends View {
     }
 
     createWrapView(){
-        let padding = document.createElement("div");
-        return padding;
+        return document.createElement("div");
     }
 
     styledView(element){

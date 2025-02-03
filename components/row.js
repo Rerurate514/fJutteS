@@ -14,8 +14,7 @@ export class Row extends View {
     }
 
     createWrapView(){
-        let row = document.createElement("div");
-        return row;
+        return document.createElement("div");
     }
 
     styledView(element){

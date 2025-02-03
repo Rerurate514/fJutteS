@@ -17,8 +17,7 @@ export class Image extends View {
     }
 
     createWrapView(){
-        let img = document.createElement("img");
-        return img;
+        return document.createElement("img");
     }
 
     styledView(element){

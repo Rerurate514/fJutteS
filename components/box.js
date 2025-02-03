@@ -15,8 +15,7 @@ export class Box extends View {
     }
 
     createWrapView(){
-        let box = document.createElement("div");
-        return box;
+        return document.createElement("div");
     }
 
     styledView(element){

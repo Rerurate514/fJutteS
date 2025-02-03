@@ -37,8 +37,7 @@ class _PositionChild extends View {
     }
 
     createWrapView(){
-        let pos = document.createElement("div");
-        return pos;
+        return document.createElement("div");
     }
 
     styledView(element){
