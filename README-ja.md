@@ -1,9 +1,9 @@
 # THIS IS PURE JS FRAMEWORK
 ## fJutteSとは
-`fJutteS`とは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。
-HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境下(ReactやVueも入れられない環境)でFlutterのようなコンポーネント型プログラミングをしたいときに最適なフレームワークです。`fJutteS`には様々なコンポーネントが提供されていますが、これも詰まるところ私が作成したウィジェットであり、ユーザ自身が自由にウィジェットを作成する事ができます。結局のところ、ただのJavaScriptなので！
-そして、状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。しかし、それと引き換えにsetState、useStateを失っています。これはウィジェット単体で状態を変更することはできないことを意味しています。これも一つの設計思想として捉えてもらえると幸いです。
-- 現行バージョン -> fjuttes@2.0.1
+`fJutteS`とは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。  
+HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境下(ReactやVueも入れられない環境)でFlutterのようなコンポーネント型プログラミングをしたいときに最適なフレームワークです。`fJutteS`には様々なコンポーネントが提供されていますが、これも詰まるところ私が作成したウィジェットであり、ユーザ自身が自由にウィジェットを作成する事ができます。結局のところ、ただのJavaScriptなので！  
+そして、状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。しかし、それと引き換えにsetState、useStateを失っています。これはウィジェット単体で状態を変更することはできないことを意味しています。これも一つの設計思想として捉えてもらえると幸いです。  
+- 現行バージョン -> fjuttes@2.0.1  
 ![fJutteS-official-logo](src/fjuttes-official-logo.svg)
 
 ## インポート方法
@@ -480,19 +480,26 @@ const userAgeProvider = Provider.createProvider(ref => {
 #### ProviderObserverによる値の変更確認
 `Jiperes`には`ProviderObserver`という`Provider`の値の変更履歴や依存関係を記録するクラスが実装されています。
 
-そして、以下のコードを使用してログを確認することができます。
-- `Provider`の更新時、依存関係構築時にログを出力する。
-`new ProviderObserver().outLogs()`
-
-- `Provider`の更新履歴
-`console.log(new ProviderObserver().getAllUpdateHistory());`
-
-- 特定の`Provider`の更新履歴
-`console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));`
-
-
-- `Provider`の依存関係を表示
-`console.log(new ProviderObserver().getDependencyGraph());`
+そして、以下のコードを使用してログを確認することができます。  
+##### `Provider`の更新時、依存関係構築時にログを出力する。
+```js
+new ProviderObserver().outLogs()
+```  
+  
+##### `Provider`の更新履歴  
+```js
+console.log(new ProviderObserver().getAllUpdateHistory());
+```  
+  
+##### 特定の`Provider`の更新履歴  
+```js
+console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));
+```  
+  
+##### `Provider`の依存関係を表示  
+```js
+console.log(new ProviderObserver().getDependencyGraph());
+```  
 
 ## 用語集
 - View(ビュー)：`View`クラスまたはその他UI構築クラスから継承して作成されたUI部品
