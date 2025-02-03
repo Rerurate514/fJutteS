@@ -4,12 +4,14 @@ export class Row extends View {
     constructor(
         children, { 
         isAlignCenter = false, 
-        isJustifySpaceAround = false
+        isJustifySpaceAround = false,
+        isJustifySpaceBetween = false
     } = {}){
         super({
             children: children, 
             isAlignCenter: isAlignCenter, 
-            isJustifySpaceAround: isJustifySpaceAround
+            isJustifySpaceAround: isJustifySpaceAround,
+            isJustifySpaceBetween: isJustifySpaceBetween
         });
     }
 
@@ -23,6 +25,7 @@ export class Row extends View {
 
         if(this.props.isAlignCenter) element.style.justifyContent = "center";
         if(this.props.isJustifySpaceAround) element.style.justifyContent = "space-around";
+        if(this.props.isJustifySpaceBetween) element.style.justifyContent = "space-between";
 
         return element;
     }
