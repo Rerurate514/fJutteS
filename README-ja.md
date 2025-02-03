@@ -88,7 +88,7 @@ assembleView(new Text("Hello World!"));
 
 ### ウィジェットの作成
 #### Viewの継承
-まず、このフレームワークには全てのウィジェットの根幹となる`View`コンポーネントが提供されています。
+まず、このフレームワークには全てのウィジェットの根幹となる`View`インターフェースが提供されています。
 このクラスを継承するのが、ウィジェット作成の第一段階です。
 ```js
 class SampleWidget extends View {
@@ -479,15 +479,20 @@ const userAgeProvider = Provider.createProvider(ref => {
 
 #### ProviderObserverによる値の変更確認
 `Jiperes`には`ProviderObserver`という`Provider`の値の変更履歴や依存関係を記録するクラスが実装されています。
-このクラスを使用するにはまず、ログの出力を有効にします。
-```js
-new ProviderObserver().outLogs()
-```
 
-ログの出力を有効にすると以下のコードを使用してログを確認することができます。
-- `Provider`の更新履歴：`console.log(new ProviderObserver().getAllUpdateHistory());`
-- 特定の`Provider`の更新履歴：`console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));`
-- `Provider`の依存関係を表示：`console.log(new ProviderObserver().getDependencyGraph());`
+そして、以下のコードを使用してログを確認することができます。
+- `Provider`の更新時、依存関係構築時にログを出力する。
+`new ProviderObserver().outLogs()`
+
+- `Provider`の更新履歴
+`console.log(new ProviderObserver().getAllUpdateHistory());`
+
+- 特定の`Provider`の更新履歴
+`console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));`
+
+
+- `Provider`の依存関係を表示
+`console.log(new ProviderObserver().getDependencyGraph());`
 
 ## 用語集
 - View(ビュー)：`View`クラスまたはその他UI構築クラスから継承して作成されたUI部品
