@@ -5,9 +5,9 @@ import { Border } from "../models/border.js";
 export class Card extends View {
     constructor({
         child,
-        radius = "0px", 
-        padding = "0px",
-        background = "transparent",
+        radius = null, 
+        padding = null,
+        background = null,
         elevation = ShadowLevel.LVL0,
         border = new Border()
     }){
@@ -34,12 +34,12 @@ export class Card extends View {
     }
 
     styledView(element){
-        element.style.borderRadius = this.props.radius;
-        element.style.background = this.props.background;
+        if(this.props.radius) element.style.borderRadius = this.props.radius;
+        if(this.props.background) element.style.background = this.props.background;
         element.style.boxShadow = this.props.elevation;
         element.style.border = this.props.border;
 
-        element.style.padding = this.props.padding;
+        if(this.props.padding) element.style.padding = this.props.padding;
 
         element.style.width = "fit-content";
         element.style.height = "fit-content";
