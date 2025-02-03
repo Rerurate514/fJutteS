@@ -1,12 +1,16 @@
 import { View } from "../interface/view.js";
 import { ShadowLevel } from '../enums/shadowLevel.js';
 import { Border } from "../models/border.js";
+import { BaseCSS } from "../enums/baseCSS.js";
 
 export class Card extends View {
     constructor({
         child,
         radius = "inherit", 
-        padding = null,
+        baseCSS = new BaseCSS({
+            width: "inherit",
+            height: "inherit"
+        }),
         background = null,
         elevation = ShadowLevel.LVL0,
         border = new Border()
@@ -22,7 +26,7 @@ export class Card extends View {
         super({
             child: child,
             radius: radius, 
-            padding: padding,
+            baseCSS: baseCSS,
             background: background,
             elevation: elevation,
             border: border.assembleCSS()
@@ -39,10 +43,7 @@ export class Card extends View {
         element.style.boxShadow = this.props.elevation;
         element.style.border = this.props.border;
 
-        if(this.props.padding) element.style.padding = this.props.padding;
-
-        element.style.width = "fit-content";
-        element.style.height = "fit-content";
+        element = this.props.baseCSS.applyCSS(element);
 
         return element;
     }
