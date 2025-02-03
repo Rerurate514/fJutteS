@@ -1,7 +1,8 @@
 # THIS IS PURE JS FRAMEWORK
-これは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。
-HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境下(ReactやVueも入れられない環境)でFlutterのようなコンポーネント型プログラミングをしたいときに最適なフレームワークです。
-状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。
+## fJutteSとは
+`fJutteS`とは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。
+HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境下(ReactやVueも入れられない環境)でFlutterのようなコンポーネント型プログラミングをしたいときに最適なフレームワークです。`fJutteS`には様々なコンポーネントが提供されていますが、これも詰まるところ私が作成したウィジェットであり、ユーザ自身が自由にウィジェットを作成する事ができます。結局のところ、ただのJavaScriptなので！
+そして、状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。しかし、それと引き換えにsetState、useStateを失っています。これはウィジェット単体で状態を変更することはできないことを意味しています。これも一つの設計思想として捉えてもらえると幸いです。
 - 現行バージョン -> fjuttes@2.0.1
 ![fJutteS-official-logo](src/fjuttes-official-logo.svg)
 
@@ -324,13 +325,12 @@ const sampleProvider = Provider.createProvider(() => {
 	return 0;
 })
 ```
-引数には関数オブジェクトを渡し、その中で初期値を`return`で返却します。
-（これは基本的な数値を管理するProviderであり、Providerには依存関係などの機能もあります。）
+引数には関数オブジェクトを渡し、その中で初期値を`return`で返却します。これはプリミティブな数値を管理、保持、監視するProviderです。ただし、なんの設定もしていないと値の変更の監視はできません。
 
 #### Providerの使用-ProviderScope-read
 Providerの値の変更を監視するためにはView単位で行います。
 `fJutteS`では、値の変更を自動的に監視し、再描画を行う`ProviderScope`というインターフェースを提供しています。
-`ProviderScope`コンポーネントを継承してウィジェットを作成します。
+`ProviderScope`を継承してウィジェットを作成します。
 ```js
 class SampleWidget extends ProviderScope {
 	constructor(child){
@@ -450,6 +450,8 @@ assembleView(
 );
 ```
 `ElevatedButton`コンポーネントの`onClick`プロパティにて`Provider`の`update`を実行しています。
+`update`にはその`Provider`の現在の値が渡されるので、その値にインクリメントをして`return`で返却し値を変更しています。
+その結果、`ProviderScope`を継承したウィジェット自身が`Provider`内の値の変更を検知し自身を再描画します。
 
 全てのコードを見る場合はこちらから確認することができます。
 https://github.com/Rerurate514/fJutteS/blob/main/example-code/providerExample.html
@@ -491,6 +493,7 @@ new ProviderObserver().outLogs()
 - View(ビュー)：`View`クラスまたはその他UI構築クラスから継承して作成されたUI部品
 - コンポーネント：`fJutterS`側から提供されるViewのこと
 - ウィジェット：`fJutteS`使用者がコンポーネントを組み合わせて作成したViewのこと
+- インターフェース：`fJutteS`が提供している継承することで機能を使用できるクラスのこと。(`View`や`ProviderScope`など)
 
 ## 最後に余談
 //TODO
