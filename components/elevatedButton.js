@@ -5,11 +5,13 @@ import { Hover } from "./hover.js";
 export class ElevatedButton extends View {
     constructor({
         child,
+        radius = "inherit",
         baseCSS = new BaseCSS(),
         onClick: onClick = () => {},
     }){
         super({
             child: child,
+            radius: radius,
             baseCSS: baseCSS,
             onClick: onClick
         });
@@ -20,6 +22,8 @@ export class ElevatedButton extends View {
     }
 
     styledView(element){
+        element.style.borderRadius = this.props.radius;
+
         return element;
     }
 
@@ -31,6 +35,7 @@ export class ElevatedButton extends View {
 
     build(){
         return new Hover({
+            radius: this.props.radius,
             child: new _ElevatedButton(this.props)
         })
     }
@@ -56,6 +61,8 @@ class _ElevatedButton extends View {
     styledView(element){
         element.style.paddingLeft = "14px";
         element.style.paddingRight = "14px";
+
+        element.style.borderRadius = "inherit";
 
         element = this.props.baseCSS.applyCSS(element);
         return element;
