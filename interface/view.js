@@ -22,6 +22,7 @@ export class View {
         this.initialize();
         this.preBuild();
         let child = this.build();
+        this.child = child;
         this.postBuild();
         this.terminate();
 
@@ -46,6 +47,35 @@ export class View {
         this._checkHTMLElement(embededView, "embedScriptToView");
 
         return embededView;
+    }
+
+    addPseudoElement(){
+        if(this.child instanceof View) this.child.addPseudoElement();
+        if(this.child instanceof Array){
+            this.child.forEach((child) => {
+                child.addPseudoElement();
+            });
+        }
+
+        let before = this.createBeforeElement();
+        let after = this.createAfterElement();
+
+        if(before) {
+            this._checkHTMLElement(before, "createBeforeElement");
+            this.view.before(before);
+        }
+        if(after) {
+            this._checkHTMLElement(after, "createAfterElement");
+            this.view.after(after);
+        }
+    }
+
+    createBeforeElement(){
+        return null;
+    }
+
+    createAfterElement(){
+        return null;
     }
 
     _checkHTMLElement(child, msg) {
