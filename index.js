@@ -33,6 +33,7 @@ export { Chips } from './components/chips.js';
 export { Hover } from './components/hover.js';
 export { TextForm } from './components/textForm.js';
 export { TextArea } from './components/textArea.js';
+export { Clip } from './components/clip.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { TextCSS } from './enums/textCSS.js';
