@@ -31,6 +31,7 @@ export { Margin } from './components/margin.js';
 export { RadioButton } from './components/radioButton.js';
 export { Chips } from './components/chips.js';
 export { Hover } from './components/hover.js';
+export { TextForm } from './components/textForm.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { TextCSS } from './enums/textCSS.js';
