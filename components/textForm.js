@@ -10,8 +10,7 @@ export class TextForm extends View {
         placeholder = "",
         required = "",
         pattern = "",
-        
-        baseCSS = new BaseCSS,
+        baseCSS = new BaseCSS(),
     }){
         super({
             provider: provider,
