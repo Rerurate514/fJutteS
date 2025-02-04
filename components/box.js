@@ -5,12 +5,14 @@ export class Box extends View {
     constructor({
         width = "0px", 
         height = "0px",
-        border = new Border()
+        border = new Border(),
+        child = null
     }){
         super({
             width: width, 
             height: height, 
-            border: border
+            border: border,
+            child: child
         });
     }
 
@@ -43,5 +45,9 @@ export class Box extends View {
         }
 
         return element;
+    }
+
+    build(){
+        return this.props.child;
     }
 }
