@@ -39,8 +39,10 @@
             build(){
                 return new Center(
                     new Card({
+                        baseCSS: new BaseCSS({
+                            padding: "15px",
+                        }),
                         radius:"16px",
-                        padding: "15px",
                         background: "wheat",
                         elevation: ShadowLevel.LVL5,
                         child: new Column([
