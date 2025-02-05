@@ -1,5 +1,5 @@
-import { BaseCSS } from "../enums/baseCSS";
-import { View } from "../interface/view";
+import { BaseCSS } from "../enums/baseCSS.js";
+import { View } from "../interface/view.js";
 
 export class Clip extends View {
     constructor({
