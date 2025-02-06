@@ -63,18 +63,18 @@
 
                 return new Center(
                     new Card({
+                        baseCSS: new BaseCSS({
+                            padding: "16px",
+                        }),
                         radius:"16px",
-                        padding: "15px",
                         background: "wheat",
-                        elevation: ShadowLevel.LVL5,
                         child: new Column([
                             new ElevatedButton({
+                                radius: "4px",
                                 child: new Text("CLICK!"),
                                 baseCSS: new BaseCSS({
-                                    height: "32px",
                                     border: new Border({
                                         borderSize: "2px",
-                                        color: "red"
                                     })
                                 }),
                                 onClick: () => {
