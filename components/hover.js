@@ -24,6 +24,7 @@ export class Hover extends View {
         element.style.height = "fit-content";
 
         element.style.position = "relative";
+        element.style.background = "transparent";
 
         element.style.borderRadius = this.props.radius;
 
@@ -57,8 +58,7 @@ class _Hover extends View {
         element.style.width = "fit-content";
         element.style.height = "fit-content";
         element.style.borderRadius = this.props.radius;
-
-        this._addHoverEffect(element);
+        element.style.background = "transparent";
 
         return element;
     }
@@ -72,14 +72,17 @@ class _Hover extends View {
         after.style.left = "0";
         after.style.background = "rgb(0, 0, 0, 0)";
         after.style.mixBlendMode = "difference";
-        after.style.transition = "background-color 0.3s";
+        after.style.transition = "background-color 0.4s";
 
-        after.style.borderRadius = (parseInt(this.props.radius, 10)) - 3 + "px";
+        after.style.zIndex = 999;
 
-        after = this._calcAfterSize(after);
+        after.style.borderRadius = (parseInt(this.props.radius, 10)) + "px";
+
+        after.style.width = "100%";
+        after.style.height = "100%";
 
         after.addEventListener('mouseenter', () => {
-            after.style.background = "rgb(0, 0, 0, 0.3)";
+            after.style.background = "rgb(100, 100, 100, 0.4)";
         });
 
         after.addEventListener('mouseleave', () => {
@@ -89,37 +92,7 @@ class _Hover extends View {
         return after;
     }
 
-    _calcAfterSize(element){
-        const hover = document.getElementById(`${this.props.id}`);
-        const clientWidth = hover.clientWidth;
-        const clientHeight = hover.clientHeight;
-
-        element.style.width = clientWidth + "px";
-        element.style.height = clientHeight + "px";
-
-        return element;
-    }
-
     build(){
         return this.props.child;
-    }
-
-    _addHoverEffect(element){
-        element.style.boxShadow = ShadowLevel.LVL0;
-        element.style.transition = 'box-shadow 0.3s ease-in-out';
-
-        element.addEventListener('mouseenter', () => {
-            element.style.boxShadow = this.props.shadow;
-            element.style.mixBlendMode = "multiply";
-            element.style.background = "rgb(0, 0, 0, 0.1)";
-        });
-
-        element.addEventListener('mouseleave', () => {
-            element.style.boxShadow = ShadowLevel.LVL0;
-            element.style.background = "rgb(0, 0, 0, 0)";
-            element.style.transition = "background 0.3s";
-        });
-
-        return element;
     }
 }
