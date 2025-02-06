@@ -205,9 +205,7 @@ export class View {
 
     _inputSingleView(child, embededView) {
         this.view = embededView;
-        if (child !== undefined) {
-            this.view.appendChild(child.view);
-        }
+        if (child) this.view.appendChild(child.view);
     }
 
     _inputMultiView(child, embededView) {
