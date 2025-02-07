@@ -212,6 +212,7 @@ export class View {
         if (!this.view) this.view = embededView;
 
         child.forEach(child => {
+            if(!child) return;
             this.view.appendChild(child.view);
         });
     }
