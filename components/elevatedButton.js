@@ -59,9 +59,6 @@ class _ElevatedButton extends View {
     }
 
     styledView(element){
-        element.style.paddingLeft = "14px";
-        element.style.paddingRight = "14px";
-
         element.style.borderRadius = "inherit";
 
         element = this.props.baseCSS.applyCSS(element);
