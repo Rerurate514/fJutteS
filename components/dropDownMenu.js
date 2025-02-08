@@ -10,7 +10,7 @@ export class DropDownMenu extends View {
         super({
             item: item,
             baseCSS: baseCSS,
-            provider
+            provider: provider
         });
     }
 
