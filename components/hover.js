@@ -6,11 +6,13 @@ export class Hover extends View {
         child,
         radius = "inherit",
         shadow = ShadowLevel.LVL5,
+        clickEffect = false
     }){
         super({
             child: child,
             radius: radius,
-            shadow: shadow
+            shadow: shadow,
+            clickEffect: clickEffect
         });
     }
 
@@ -41,11 +43,13 @@ class _Hover extends View {
         child,
         radius = "inherit",
         shadow = ShadowLevel.LVL5,
+        clickEffect = false
     }){
         super({
             child: child,
             radius: radius,
-            shadow: shadow
+            shadow: shadow,
+            clickEffect: clickEffect
         });
     }
 
@@ -83,10 +87,30 @@ class _Hover extends View {
 
         after.addEventListener('mouseenter', () => {
             after.style.background = "rgb(100, 100, 100, 0.4)";
+            this.entered = true;
         });
 
         after.addEventListener('mouseleave', () => {
             after.style.background = "rgb(0, 0, 0, 0)";
+            this.entered = false;
+        });
+
+        if(!this.props.clickEffect) return after;
+
+        after.addEventListener('click', () => {
+            after.style.background = "rgb(100, 100, 100, 0.9)";
+            this.isExecutable = false;
+
+            setInterval(() => {
+                if(this.entered){
+                    after.style.background = "rgb(100, 100, 100, 0.4)";
+                }
+                else {
+                    after.style.background = "rgb(0, 0, 0, 0)";
+                }
+
+                this.isExecutable = true;
+            }, 1000);
         });
 
         return after;
