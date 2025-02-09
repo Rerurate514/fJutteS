@@ -32,7 +32,7 @@ export class FlotingActionButton extends View {
     }
 }
 
-export class _FlotingActionButton extends View {
+class _FlotingActionButton extends View {
     constructor(onClick){
         super({onClick: onClick});
     }
