@@ -5,7 +5,7 @@ import { Center } from "./center.js";
 import { ElevatedButton } from "./elevatedButton.js";
 import { Text } from "./text.js";
 
-export class FlotingActionButton extends View {
+export class FloatingActionButton extends View {
     constructor({
        onClick: onClick = () => {}
     } = {}){
