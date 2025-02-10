@@ -1,6 +1,6 @@
 import { ProviderScope } from "../interface/providerScope.js";
 
-export class ProviderLimitedScope extends ProviderScope {
+export class LimitedProviderScope extends ProviderScope {
     constructor({
         props = {}, 
         watchingProviders = [],
