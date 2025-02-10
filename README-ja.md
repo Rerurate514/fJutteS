@@ -487,6 +487,76 @@ const userAgeProvider = Provider.createProvider(ref => {
 ```
 このように記述すると、自動的に`userProvider`がリッスン状態になり、`userProvider`の`age`が変更された際に`userAgeProvider`の値を自動的に変更します。これは`watch`または`ProviderScope`で`userAgeProvider`の変更を監視することができます。
 
+#### LimitedProviderScope
+`ProviderScope`インターフェースは`View`を継承しなければならず、さらに`watch`している`provider`の値が変更されるたびに再描画されてパフォーマンスが下がってしまいます。
+これを解決するために`fJutteS`はその`rebuild`のスコープを狭めてくれる`LimitedProviderScope`コンポーネントを提供しています。
+```js
+import { 
+    assembleView, 
+	View,
+    Text, 
+    Column,
+    ElevatedButton,
+    BaseCSS,
+    SpaceBox,
+    Center, 
+    TextCSS, 
+    FontCSS, 
+    Provider, 
+    ProviderObserver, 
+} from './node_modules/fjuttes/dist/index.mjs';
+
+const counter = Provider.createProvider((ref) => {
+    return 0;
+}, "counter");
+
+class ProviderExample extends View {
+    constructor(){
+        super();
+    }
+
+    createWrapView(){
+        return document.createElement("div");
+    }
+
+    styledView(element){
+        element.style.height = "90vh";
+
+        return element;
+    }
+
+    build(){
+        return new Center(
+            new Column([
+                new ElevatedButton({
+                    child: new Text("CLICK!"),
+                    baseCSS: new BaseCSS({
+                        padding: "32px",
+                    }),
+                    onClick: () => {
+                        counter.update((value) => {
+                            return value + 1;
+                        })
+                    }
+                }),
+                new SpaceBox({height: "16px"}),
+                new LimitedProviderScope({
+                    watchingProviders: [ counter ],
+                    build: (providerValue) => {
+                        return new Text("click count : " + providerValue);
+                    }
+                })
+            ]),
+        );
+    }
+}
+
+assembleView(
+    new ProviderExample()
+);
+```
+通常の`ProviderScope`を継承したやり方では、この`ProviderExample`ウィジェット全体が再描画されてしまいます。しかし、この`LimitedProviderScope`を使用したやり方では`Text`コンポーネントのみが再描画されます。この`build`関数オブジェクトの引数ですが、`provider`を`watchingProviders`で格納した順番でそれぞれの`Provider`の値が格納された配列が返されます。要素数が一つならindexを指定しなくても大丈夫です。
+
 #### ProviderObserverによる値の変更確認
 `Jiperes`には`ProviderObserver`という`Provider`の値の変更履歴や依存関係を記録するクラスが実装されています。
 
