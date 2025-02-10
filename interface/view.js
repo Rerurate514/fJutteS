@@ -31,8 +31,6 @@ export class View {
 
         this._inputViewData(child, embededView);
 
-        this._attributeViewNameToDataset();
-
         this._isViewBuilt = true;
     }
 
@@ -204,6 +202,7 @@ export class View {
         }
 
         this._attributeId();
+        this._attributeViewNameToDataset();
     }
 
     _inputSingleView(child, embededView) {
