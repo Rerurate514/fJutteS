@@ -3,8 +3,9 @@
 `fJutteS`とは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。  
 HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境下(ReactやVueも入れられない環境)でFlutterのようなコンポーネント型プログラミングをしたいときに最適なフレームワークです。`fJutteS`には様々なコンポーネントが提供されていますが、これも詰まるところ私が作成したウィジェットであり、ユーザ自身が自由にウィジェットを作成する事ができます。結局のところ、ただのJavaScriptなので！  
 そして、状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。しかし、それと引き換えにsetState、useStateを失っています。これはウィジェット単体で状態を変更することはできないことを意味しています。これも一つの設計思想として捉えてもらえると幸いです。  
-- 現行バージョン -> fjuttes@2.2.0  
-![fJutteS-official-logo](src/fjuttes-official-logo.svg)
+- 現行バージョン -> fjuttes@2.2.0
+
+<img src="src/fjuttes-official-logo.svg" width="25%">
 
 ## インポート方法
 ### npm
