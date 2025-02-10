@@ -5,9 +5,18 @@ It uses a custom library called `Jiperes` optimized for `fJuttes` for state mana
 - latest version -> fjuttes@2.2.0
 - 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md  
 
-<img src="src/fjuttes-official-logo.svg" width="25%">
+<div align="center">
+	</br>
+	</br>
+	<img src="src/fjuttes-official-logo.svg" width="25%">	
+	</br>
+	</br>
+	<strong>fJutteS</strong>
+</div>
+</br>
+</br>
 
-## Import Method
+## Installations
 ### npm
 To use `fjuttes` via npm, run `npm install fjuttes` in the console and then use it in `node_modules`.
 ```html
