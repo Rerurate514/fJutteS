@@ -11,16 +11,6 @@ export class LimitedProviderScope extends ProviderScope {
         props.providers = watchingProviders;
         props.build = build;
 
-        props.providers.forEach(provider => {
-            provider.watch(() => {
-                const view = props.build(provider.read())
-                this.rebuild({
-                    builtView: view
-                })
-            },
-            { immediate: false });
-        });
-
         super({
             props: props,
             watchingProviders: props.providers
