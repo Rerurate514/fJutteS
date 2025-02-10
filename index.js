@@ -1,6 +1,6 @@
-export function assembleView(viewArg) {
+export function assembleView(viewArg, idName = "fJutteS-Container") {
     let element = viewArg.view;
-    let container = document.getElementById("fJutteS-Container");
+    let container = document.getElementById(idName);
     
     if(container != null) container.appendChild(element);
     viewArg.addPseudoElement();
