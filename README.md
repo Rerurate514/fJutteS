@@ -3,11 +3,20 @@ This is a declarative component UI framework built with pure JavaScript.
 This framework is a special environment where only HTML, CSS, and JavaScript files are allowed (not even React or Vue), making it ideal for component-based programming such as Flutter.
 It uses a custom library called `Jiperes` optimized for `fJuttes` for state management, so you no longer need to select a state management library.
 - latest version -> fjuttes@2.2.0
-![fJutteS-official-logo](src/fjuttes-official-logo.svg)
+- 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md  
 
-- 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md
+<div align="center">
+	</br>
+	</br>
+	<img src="src/fjuttes-official-logo.svg" width="25%">	
+	</br>
+	</br>
+	<strong>fJutteS</strong>
+</div>
+</br>
+</br>
 
-## Import Method
+## Installations
 ### npm
 To use `fjuttes` via npm, run `npm install fjuttes` in the console and then use it in `node_modules`.
 ```html
