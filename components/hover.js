@@ -6,13 +6,13 @@ export class Hover extends View {
         child,
         radius = "inherit",
         shadow = ShadowLevel.LVL5,
-        clickEffect = false
+        onClickEffect = false
     }){
         super({
             child: child,
             radius: radius,
             shadow: shadow,
-            clickEffect: clickEffect
+            onClickEffect: onClickEffect
         });
     }
 
@@ -43,13 +43,13 @@ class _Hover extends View {
         child,
         radius = "inherit",
         shadow = ShadowLevel.LVL5,
-        clickEffect = false
+        onClickEffect = false
     }){
         super({
             child: child,
             radius: radius,
             shadow: shadow,
-            clickEffect: clickEffect
+            onClickEffect: onClickEffect
         });
     }
 
@@ -78,6 +78,8 @@ class _Hover extends View {
         after.style.mixBlendMode = "difference";
         after.style.transition = "background-color 0.4s";
 
+        after.style.overflow = "hidden";
+
         after.style.zIndex = 999;
 
         after.style.borderRadius = (parseInt(this.props.radius, 10)) + "px";
@@ -95,22 +97,44 @@ class _Hover extends View {
             this.entered = false;
         });
 
-        if(!this.props.clickEffect) return after;
+        if(!this.props.onClickEffect) return after;
 
-        after.addEventListener('click', () => {
-            after.style.background = "rgb(100, 100, 100, 0.9)";
-            this.isExecutable = false;
+        after.addEventListener('click', (e) => {
+            const ripples = after.getElementsByClassName('ripple');
+            Array.from(ripples).forEach(ripple => ripple.remove());
 
-            setInterval(() => {
-                if(this.entered){
-                    after.style.background = "rgb(100, 100, 100, 0.4)";
-                }
-                else {
-                    after.style.background = "rgb(0, 0, 0, 0)";
-                }
+            const ripple = document.createElement("div");
+            ripple.classList.add('ripple');
+            
+            ripple.style.position = "absolute";
+            ripple.style.transform = "scale(0)";
+            ripple.style.animation = "";
+            ripple.style.pointerEvents = "none";
+            ripple.style.background = "rgba(255, 255, 255, 0.7)";
+            ripple.style.borderRadius = "50%";
+            
+            const rect = after.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
 
-                this.isExecutable = true;
-            }, 1000);
+            const w = after.offsetWidth;
+            const h = after.offsetHeight;
+            const dia = Math.sqrt(w * w + h * h);
+
+            ripple.style.width = ripple.style.height = dia * 2 + 'px';
+            ripple.style.left = x - dia + 'px';
+            ripple.style.top = y - dia + 'px';
+
+            after.appendChild(ripple);
+
+            ripple.animate([
+                { transform: "scale(1)", opacity: "0"}
+            ], {
+                duration: 1000,
+                easing: "ease-in-out"
+            })
+
+            setTimeout(() => ripple.remove(), 1000);
         });
 
         return after;
