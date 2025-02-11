@@ -28,6 +28,8 @@ export class Hover extends View {
         element.style.position = "relative";
         element.style.background = "transparent";
 
+        element.style.overflow = "hidden";
+
         element.style.borderRadius = this.props.radius;
 
         return element;
@@ -110,8 +112,9 @@ class _Hover extends View {
             ripple.style.transform = "scale(0)";
             ripple.style.animation = "";
             ripple.style.pointerEvents = "none";
-            ripple.style.background = "rgba(255, 255, 255, 0.7)";
+            ripple.style.background = "rgba(200, 200, 200, 0.9)";
             ripple.style.borderRadius = "50%";
+            ripple.style.mixBlendMode = "difference";
             
             const rect = after.getBoundingClientRect();
             const x = e.clientX - rect.left;
