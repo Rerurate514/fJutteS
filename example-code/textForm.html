@@ -1,0 +1,72 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="fJutteS-Container"></div>
+
+    <script type="importmap">
+        {
+            "imports": {
+                "fjuttes": "https://unpkg.com/fjuttes@2.2.1/dist/index.mjs"
+            }
+        }
+    </script>
+    <script type="module">
+        import { assembleView, View, Provider, ProviderScope, Center, Row, Card, Column, Text, SpaceBox, Image, ShadowLevel, TextCSS, FontCSS, BaseCSS, TextForm } from "fjuttes";
+
+        const textController = Provider.createProvider((ref) => {
+            return "";
+        });
+
+        class TextFormExample extends View {
+            constructor() {
+                super();
+            }
+
+            createWrapView() {
+                return document.createElement("div");
+            }
+
+            build() {
+                return new Column([
+                    new TextForm({
+                        provider: textController,
+                    }),
+                    new SpaceBox({
+                        height: "16px"
+                    }),
+                    new TextProv()
+                ])
+            }
+        }
+
+        class TextProv extends ProviderScope {
+            constructor(){
+                super({
+                    watchingProviders: [ textController ]
+                });
+            }
+
+            createWrapView(){
+                return document.createElement("div");
+            }
+
+            build(){
+                return new Text(textController.read())
+            }
+        }
+
+        assembleView(
+            new TextFormExample()
+        );
+    </script>
+</body>
+
+</html>
