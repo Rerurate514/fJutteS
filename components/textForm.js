@@ -35,8 +35,8 @@ export class TextForm extends View {
 
         element.value = this.props.value || '';
         element.placeholder = this.props.placeholder;
-        element.minLength = this.props.minLength;
-        element.maxLength = this.props.maxLength;
+        if(this.props.minLength) element.minLength = this.props.minLength;
+        if(this.props.maxLength) element.maxLength = this.props.maxLength;
         element.required = this.props.required !== "";
         element.pattern = this.props.pattern;
 

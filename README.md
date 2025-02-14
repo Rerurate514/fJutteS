@@ -2,7 +2,7 @@
 This is a declarative component UI framework built with pure JavaScript.
 This framework is a special environment where only HTML, CSS, and JavaScript files are allowed (not even React or Vue), making it ideal for component-based programming such as Flutter.
 It uses a custom library called `Jiperes` optimized for `fJuttes` for state management, so you no longer need to select a state management library.
-- latest version -> fjuttes@2.2.0
+- latest version -> fjuttes@2.2.1
 - 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md  
 
 <div align="center">
@@ -44,7 +44,7 @@ To use `fjuttes` via npm, run `npm install fjuttes` in the console and then use 
 You can use `unpkg` to utilize `fJutteS` functionality in CDN format without using npm.
 Here's a code example:
 ```html
-<script src="https://unpkg.com/fjuttes@2.2.0/dist/index.mjs"></script>
+<script src="https://unpkg.com/fjuttes@2.2.1/dist/index.mjs"></script>
 ```
 
 While more details will be explained later, you can use it as follows:
@@ -63,7 +63,7 @@ While more details will be explained later, you can use it as follows:
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@2.2.0/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@2.2.1/dist/index.mjs"
             }
         }
     </script>
