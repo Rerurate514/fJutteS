@@ -1,8 +1,14 @@
 # THIS IS PURE JS FRAMEWORK
+<<<<<<< HEAD
+`fJutteS` is a declarative component UI framework built purely with JavaScript. It's the perfect framework when you want to do Flutter-like component-based programming in specialized environments where only HTML, CSS, and JavaScript files are allowed (environments where you can't use React or Vue). While `fJutteS` comes with various pre-built components, these are ultimately just widgets that I created, and users can freely create their own widgets - after all, it's just JavaScript!
+For state management, `fJutteS` uses its own library called `Jiperes` that's been optimized specifically for the framework, eliminating the need to choose a state management library. However, this comes with a trade-off: the loss of setState and useState. This means that individual widgets cannot modify their state independently. We hope you'll understand this as one of our core design philosophies.
+- latest version -> fjuttes@2.2.0
+=======
 This is a declarative component UI framework built with pure JavaScript.
 This framework is a special environment where only HTML, CSS, and JavaScript files are allowed (not even React or Vue), making it ideal for component-based programming such as Flutter.
 It uses a custom library called `Jiperes` optimized for `fJuttes` for state management, so you no longer need to select a state management library.
-- latest version -> fjuttes@2.2.1
+- latest version -> fjuttes@2.3.0
+>>>>>>> 9626cc00440d909c5bb9ed98bf0cb8ae7550b187
 - 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md  
 
 <div align="center">
@@ -44,7 +50,7 @@ To use `fjuttes` via npm, run `npm install fjuttes` in the console and then use 
 You can use `unpkg` to utilize `fJutteS` functionality in CDN format without using npm.
 Here's a code example:
 ```html
-<script src="https://unpkg.com/fjuttes@2.2.1/dist/index.mjs"></script>
+<script src="https://unpkg.com/fjuttes@2.3.0/dist/index.mjs"></script>
 ```
 
 While more details will be explained later, you can use it as follows:
@@ -63,7 +69,7 @@ While more details will be explained later, you can use it as follows:
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@2.2.1/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@2.3.0/dist/index.mjs"
             }
         }
     </script>
@@ -487,6 +493,77 @@ const userAgeProvider = Provider.createProvider(ref => {
     return ref.read(userProvider).age;
 });
 ```
+
+#### LimitedProviderScope
+The `ProviderScope` interface must inherit from `View`, and furthermore, performance degrades as it triggers a re-render every time a watched provider's value changes. To solve this issue, `fJutteS` provides the `LimitedProviderScope` component that narrows the rebuild scope.
+
+```js
+import { 
+    assembleView, 
+    View,
+    Text, 
+    Column,
+    ElevatedButton,
+    BaseCSS,
+    SpaceBox,
+    Center, 
+    TextCSS, 
+    FontCSS, 
+    Provider, 
+    ProviderObserver, 
+} from './node_modules/fjuttes/dist/index.mjs';
+
+const counter = Provider.createProvider((ref) => {
+    return 0;
+}, "counter");
+
+class ProviderExample extends View {
+    constructor(){
+        super();
+    }
+
+    createWrapView(){
+        return document.createElement("div");
+    }
+
+    styledView(element){
+        element.style.height = "90vh";
+
+        return element;
+    }
+
+    build(){
+        return new Center(
+            new Column([
+                new ElevatedButton({
+                    child: new Text("CLICK!"),
+                    baseCSS: new BaseCSS({
+                        padding: "32px",
+                    }),
+                    onClick: () => {
+                        counter.update((value) => {
+                            return value + 1;
+                        })
+                    }
+                }),
+                new SpaceBox({height: "16px"}),
+                new LimitedProviderScope({
+                    watchingProviders: [ counter ],
+                    build: (providerValue) => {
+                        return new Text("click count : " + providerValue);
+                    }
+                })
+            ]),
+        );
+    }
+}
+
+assembleView(
+    new ProviderExample()
+);
+```
+
+With the traditional approach of inheriting from `ProviderScope`, the entire `ProviderExample` widget would be re-rendered. However, using `LimitedProviderScope`, only the `Text` component gets re-rendered. Regarding the `build` function object's arguments, they are provided as an array containing the values of each Provider in the same order as they were stored in `watchingProviders`. If there's only one element, you don't need to specify an index.
 
 With this setup, `userProvider` automatically enters a listening state, and when the `age` in `userProvider` changes, it automatically updates the value in `userAgeProvider`. These changes can be monitored using either `watch` or `ProviderScope`.
 

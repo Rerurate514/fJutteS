@@ -4,7 +4,7 @@ export class SpaceBox extends View {
     constructor({
         width = "0px", 
         height = "0px"
-    }){
+    } = {}){
         super({width: width, height: height});
     }
 

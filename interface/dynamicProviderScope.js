@@ -25,6 +25,8 @@ export class DynamicProviderScope extends View {
         if(!this.getBuildCompletionState()){
            throw new IllegalPreBuildDoSomothingError("Viewの構築プロセスが終了するまでrefreshProvidersメソッドを呼び出さないでください。\nView構築プロセス状態 >>> isViewAssembleProccessesCompleted = " +  this.getBuildCompletionState());
         }
-        this.rebuild(this.props);
+        this.rebuild({
+            props: this.props
+        });
     }
 }

@@ -31,8 +31,6 @@ export class View {
 
         this._inputViewData(child, embededView);
 
-        this._attributeViewNameToDataset();
-
         this._isViewBuilt = true;
     }
 
@@ -175,15 +173,18 @@ export class View {
         //TODO:実装、参照、使用
     }
 
-    rebuild(props) {
-        if (props !== undefined) this.props = props;
+    rebuild({
+        props = null, 
+        builtView = null
+    } = {}) {
+        if (props) this.props = props;
 
         this.preBuild();
 
         let thisView = document.getElementById(`${this.view.id}`);
         if (thisView == null) return;
 
-        this._inputViewData(this.build(), this.viewCache.cloneNode(true));
+        this._inputViewData(builtView ?? this.build(), this.viewCache.cloneNode(true));
 
         thisView.replaceWith(this.view);
 
@@ -201,6 +202,7 @@ export class View {
         }
 
         this._attributeId();
+        this._attributeViewNameToDataset();
     }
 
     _inputSingleView(child, embededView) {

@@ -3,7 +3,7 @@
 `fJutteS`とは基本的なJavaScriptのみで構成された宣言型コンポーネントUI型のフレームワークです。  
 HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境下(ReactやVueも入れられない環境)でFlutterのようなコンポーネント型プログラミングをしたいときに最適なフレームワークです。`fJutteS`には様々なコンポーネントが提供されていますが、これも詰まるところ私が作成したウィジェットであり、ユーザ自身が自由にウィジェットを作成する事ができます。結局のところ、ただのJavaScriptなので！  
 そして、状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。しかし、それと引き換えにsetState、useStateを失っています。これはウィジェット単体で状態を変更することはできないことを意味しています。これも一つの設計思想として捉えてもらえると幸いです。  
-- 現行バージョン -> fjuttes@2.2.1
+- 現行バージョン -> fjuttes@2.3.0
 
 <div align="center">
 	</br>
@@ -44,7 +44,7 @@ npm経由で`fjuttes`を使用するには`npm install fjuttes`をコンソー�
 CDN形式でnpmを使用せずに`fJutteS`の機能を使用するには`unpkg`を使用することができます。
 以下にコード例を示します。
 ```html
-<script src="https://unpkg.com/fjuttes@2.2.1/dist/index.mjs"></script>
+<script src="https://unpkg.com/fjuttes@2.3.0/dist/index.mjs"></script>
 ```
 
 詳細は後述しますが、使用するには以下のようにすることができます。
@@ -63,7 +63,7 @@ CDN形式でnpmを使用せずに`fJutteS`の機能を使用するには`unpkg`�
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@2.2.1/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@2.3.0/dist/index.mjs"
             }
         }
     </script>
@@ -486,6 +486,76 @@ const userAgeProvider = Provider.createProvider(ref => {
 });
 ```
 このように記述すると、自動的に`userProvider`がリッスン状態になり、`userProvider`の`age`が変更された際に`userAgeProvider`の値を自動的に変更します。これは`watch`または`ProviderScope`で`userAgeProvider`の変更を監視することができます。
+
+#### LimitedProviderScope
+`ProviderScope`インターフェースは`View`を継承しなければならず、さらに`watch`している`provider`の値が変更されるたびに再描画されてパフォーマンスが下がってしまいます。
+これを解決するために`fJutteS`はその`rebuild`のスコープを狭めてくれる`LimitedProviderScope`コンポーネントを提供しています。
+```js
+import { 
+    assembleView, 
+	View,
+    Text, 
+    Column,
+    ElevatedButton,
+    BaseCSS,
+    SpaceBox,
+    Center, 
+    TextCSS, 
+    FontCSS, 
+    Provider, 
+    ProviderObserver, 
+} from './node_modules/fjuttes/dist/index.mjs';
+
+const counter = Provider.createProvider((ref) => {
+    return 0;
+}, "counter");
+
+class ProviderExample extends View {
+    constructor(){
+        super();
+    }
+
+    createWrapView(){
+        return document.createElement("div");
+    }
+
+    styledView(element){
+        element.style.height = "90vh";
+
+        return element;
+    }
+
+    build(){
+        return new Center(
+            new Column([
+                new ElevatedButton({
+                    child: new Text("CLICK!"),
+                    baseCSS: new BaseCSS({
+                        padding: "32px",
+                    }),
+                    onClick: () => {
+                        counter.update((value) => {
+                            return value + 1;
+                        })
+                    }
+                }),
+                new SpaceBox({height: "16px"}),
+                new LimitedProviderScope({
+                    watchingProviders: [ counter ],
+                    build: (providerValue) => {
+                        return new Text("click count : " + providerValue);
+                    }
+                })
+            ]),
+        );
+    }
+}
+
+assembleView(
+    new ProviderExample()
+);
+```
+通常の`ProviderScope`を継承したやり方では、この`ProviderExample`ウィジェット全体が再描画されてしまいます。しかし、この`LimitedProviderScope`を使用したやり方では`Text`コンポーネントのみが再描画されます。この`build`関数オブジェクトの引数ですが、`provider`を`watchingProviders`で格納した順番でそれぞれの`Provider`の値が格納された配列が返されます。要素数が一つならindexを指定しなくても大丈夫です。
 
 #### ProviderObserverによる値の変更確認
 `Jiperes`には`ProviderObserver`という`Provider`の値の変更履歴や依存関係を記録するクラスが実装されています。
