@@ -1,6 +1,6 @@
-export function assembleView(viewArg) {
+export function assembleView(viewArg, idName = "fJutteS-Container") {
     let element = viewArg.view;
-    let container = document.getElementById("fJutteS-Container");
+    let container = document.getElementById(idName);
     
     if(container != null) container.appendChild(element);
     viewArg.addPseudoElement();
@@ -37,6 +37,7 @@ export { Clip } from './components/clip.js';
 export { SimpleDialog  } from './components/simpleDialog.js';
 export { DropDownMenu, DropDownMenuItem } from './components/dropDownMenu.js';
 export { FloatingActionButton } from './components/floatingActionButton.js';
+export { LimitedProviderScope } from './components/limitedProviderScope.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { TextCSS } from './enums/textCSS.js';

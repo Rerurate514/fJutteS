@@ -36,6 +36,7 @@ export class ElevatedButton extends View {
     build(){
         return new Hover({
             radius: this.props.radius,
+            onClickEffect: true,
             child: new _ElevatedButton(this.props)
         })
     }
