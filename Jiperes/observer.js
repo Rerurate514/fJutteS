@@ -59,7 +59,7 @@ export class ProviderObserver {
     }
 
     _getProviderInfo(provider) {
-        return provider.constructor.name + ':' + provider.name;
+        return provider.name;
     }
 
     _getStackTrace() {
