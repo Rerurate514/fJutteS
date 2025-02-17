@@ -12,7 +12,7 @@
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@2.3.0/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@2.4.0/dist/index.mjs"
             }
         }
     </script>
@@ -34,10 +34,11 @@
             ProviderScope,
             ShadowLevel,
             Border,
-            LimitedProviderScope
+            LimitedProviderScope,
+            ExpandsPanel
         } from "fjuttes";
 
-        export const counter = Provider.createProvider((ref) => {
+        const counter = Provider.createProvider((ref) => {
             return 0;
         }, "counter");
 
@@ -62,58 +63,80 @@
                 return new Center(
                     new Card({
                         baseCSS: new BaseCSS({
+                            width: "512px",
                             padding: "16px",
                         }),
                         radius:"16px",
                         background: "wheat",
-                        child: new Column([
-                            new ElevatedButton({
-                                radius: "4px",
-                                child: new Text("CLICK!"),
-                                baseCSS: new BaseCSS({
-                                    border: new Border({
-                                        borderSize: "2px",
-                                    })
-                                }),
-                                onClick: () => {
-                                    counter.update((value) => {
-                                        return value + 1;
-                                    });
-
-                                    console.log(new ProviderObserver().getAllUpdateHistory());
-                                }
-                            }),
-                            new SpaceBox({height: "16px"}),
-                            new LimitedProviderScope({
-                                watchingProviders: [ counter ],
-                                build: (value) => {
-                                    return new Text("click count : " + value);
-                                },
-                            }),
-                            new SpaceBox({height: "32px"}),
-                            new Text(
-                                "Provider update history",
-                                new TextCSS({
-                                    fontCSS: new FontCSS({
-                                        fontWeight: "bold"
-                                    })
-                                })
-                            ),
-                            new LimitedProviderScope({
-                                watchingProviders: [ counter ],
-                                build: () => {
-                                    return new Text(
-                                        JSON.stringify(
-                                            new ProviderObserver().getAllUpdateHistory(),
-                                            ["oldValue", "newValue"], 
-                                            2
+                        child: new Column({
+                            isHorizontalCenter: true,
+                            children: [
+                                new Card({
+                                    background: "teal",
+                                    radius: "8px",
+                                    elevation: ShadowLevel.LVL6,
+                                    child: new ElevatedButton({
+                                        child: new Text(
+                                            "CLICK HERE!",
+                                            new TextCSS({
+                                                fontCSS: new FontCSS({
+                                                    color: "white",
+                                                    fontWeight: "bold",
+                                                })
+                                            })
                                         ),
-                                    )
-                                },
-                            }),
-                            new SpaceBox({height: "16px"}),
-                            new Text("and watch brower console!")
-                        ]),
+                                        baseCSS: new BaseCSS({
+                                            padding: "8px",
+                                            border: new Border({
+                                                borderSize: "2px",
+                                            })
+                                        }),
+                                        onClick: () => {
+                                            counter.update((value) => {
+                                                return value + 1;
+                                            });
+            
+                                            console.log("all history : ")
+                                            console.log( new ProviderObserver().getAllUpdateHistory());
+                                            console.log("counter history : ")
+                                            console.log(new ProviderObserver().getFilteredUpdateHistory(counter));
+                                        }
+                                    }),
+                                }),
+                                new SpaceBox({height: "16px"}),
+                                new LimitedProviderScope({
+                                    watchingProviders: [ counter ],
+                                    build: (value) => {
+                                        return new Text("click count : " + value);
+                                    },
+                                }),
+                                new SpaceBox({height: "32px"}),
+                                new ExpandsPanel({
+                                    titleItem: new Text(
+                                        "Provider update history",
+                                        new TextCSS({
+                                            fontCSS: new FontCSS({
+                                                fontWeight: "bold"
+                                            })
+                                        })
+                                    ),
+                                    child: new LimitedProviderScope({
+                                        watchingProviders: [ counter ],
+                                        build: () => {
+                                            return new Text(
+                                                JSON.stringify(
+                                                    new ProviderObserver().getAllUpdateHistory(),
+                                                    ["oldValue", "newValue"], 
+                                                    2
+                                                ),
+                                            )
+                                        },
+                                    }),
+                                }),
+                                new SpaceBox({height: "16px"}),
+                                new Text("and watch browser console!")
+                            ]
+                        }),
                     })
                 );
             }

@@ -1,31 +1,35 @@
 import { BaseCSS } from "../enums/baseCSS.js";
-import { FontCSS } from "../enums/fontCSS.js";
 import { ShadowLevel } from "../enums/shadowLevel.js";
-import { TextCSS } from "../enums/textCSS.js";
 import { View } from "../interface/view.js";
-import { Border } from "../models/border.js";
+import { Provider } from "../jiperes/provider.js";
 import { Card } from "./card.js";
-import { Center } from "./center.js";
 import { Column } from "./column.js";
 import { ElevatedButton } from "./elevatedButton.js";
-import { Margin } from "./margin.js";
-import { Padding } from "./padding.js";
+import { LimitedProviderScope } from "./limitedProviderScope.js";
 import { Row } from "./row.js";
+import { Shrink } from "./shrink.js";
 import { SpaceBox } from "./spaceBox.js";
 import { Text } from "./text.js";
 
 export class ExpandsPanel extends View {
     constructor({
-        title,
+        titleItem: titleItem,
         child,
-        duration = 300,
-        panelItemBackGround = "white"
+        radius = "10px",
+        buttonShadowLevel = ShadowLevel.LVL3,
+        panelItemBackGround = "white",
     }){
+        const isExpands = Provider.createProvider((ref) => {
+            return false;
+        }, "ExpandsPanel_isExpands");
+        
         super({
-            title: title,
+            titleItem: titleItem,
             child: child,
-            duration: duration,
-            panelItemBackGround: panelItemBackGround
+            panelItemBackGround: panelItemBackGround,
+            radius: radius,
+            buttonShadowLevel: buttonShadowLevel,
+            isExpands: isExpands
         });
     }
 
@@ -39,104 +43,53 @@ export class ExpandsPanel extends View {
     }
 
     build(){
-        const exItem = new _ExpandsPenelItem({
-            duration: this.props.duration,
-            child: new Card({
-                background: this.props.panelItemBackGround,
-                baseCSS: new BaseCSS({
-                    width: "100%"
-                }),
-                elevation: ShadowLevel.LVL3,
-                child: new Padding({
-                    all: "32px",
-                    child: this.props.child
-                })
-            })
-        })
-        
-        return new Column([
-            new Card({
-                baseCSS: new BaseCSS({
-                    width: "100%"
-                }),
-                elevation: ShadowLevel.LVL3,
-                child: new Padding({
-                    all: "32px",
-                    child: new Row([
-                        new Margin({
-                            left: "32px",
-                            child: new Center(
-                                new Text(
-                                    this.props.title,
-                                    new TextCSS({
-                                        fontCSS: new FontCSS({
-                                            fontWeight: "bold"
-                                        })
-                                    })
-                                ),
-                            )
+        return new Column({
+            children: [
+                new Row({
+                    isJustifySpaceBetween: true,
+                    isVerticalCenter: true,
+                    children: [
+                        this.props.titleItem,
+                        new SpaceBox({
+                            width: "8px",
                         }),
-                        new Margin({
-                            right: "32px",
-                            child: new Card({
-                                radius: "16px",
-                                child: new ElevatedButton({
-                                    child: new Text("∨"),
-                                    radius: "128px",
-                                    baseCSS: new BaseCSS({
-                                        padding: "8px"
-                                    }),
-                                    onClick: () => {
-                                        this._slideToggle(
-                                            document.getElementById(exItem.props.id),
-                                            500
-                                        )
+                        new Card({
+                            radius: this.props.radius,
+                            elevation: this.props.buttonShadowLevel,
+                            child: new ElevatedButton({
+                                baseCSS: new BaseCSS({
+                                    padding: "8px",
+                                }),
+                                child: new LimitedProviderScope({
+                                    watchingProviders: [ this.props.isExpands ],
+                                    build: (isExpand) => {
+                                        const button = isExpand[0] ? "∧" : "∨";
+                                        return new Text(button);
                                     }
-                                })
+                                }),
+                                onClick: () => {
+                                    this.props.isExpands.update((currentValue) => {
+                                        return !currentValue;
+                                    });
+                                }
                             })
-                        }),
-                    ],{
-                        isJustifySpaceBetween: true
-                    })
-                })
-            }),
-            exItem
-        ])
-    }
+                        })
+                    ]
+                }),
+                new SpaceBox({
+                    height: "8px",
+                }),
+                new LimitedProviderScope({
+                    watchingProviders: [ this.props.isExpands ],
+                    build: (isExpand) => {
+                        const view = isExpand[0] 
+                        ? this.props.child
+                        : new Shrink(this.props.child);
 
-    _slideToggle(element){
-        element.classList.toggle("open"); 
-
-        if(element.classList.contains("open")){
-           element.style.height = element.scrollHeight + 'px';
-        }
-        else{
-           element.style.height = "0";
-        }
-    }
-}
-
-class _ExpandsPenelItem extends View {
-    constructor({child, duration}){
-        super({
-            child: child,
-            duration: duration
-        });
-    }
-
-    createWrapView(){
-        return document.createElement("div");
-    }
-
-    styledView(element){
-        element.style.height = "0";
-        element.style.overflow = "hidden";
-        element.style.transition = "all " + this.props.duration + "ms";
-
-        return element;
-    }
-
-    build(){
-        return this.props.child;
+                        return view;
+                    }
+                }),
+            ]
+        })
     }
 }

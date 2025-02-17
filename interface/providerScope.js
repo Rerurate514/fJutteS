@@ -11,10 +11,6 @@ import { View } from "./view.js";
  * FlutterでいうところのsetState、ReactでいうところのuseStateを使用したいとき、
  * このクラスをViewにラップしてwatchもしくはreadしているProvider群を渡すだけです。
  * このとき必ず、配列でProviderを渡してください。(providerが一つしかなくても！)
- * 
- * そしてproviderの値を初期化する際にはpreBuildメソッドではなく、initializeメソッドを使用してください。
- * これはpreBuildでプロバイダーを定義すると、値の変更を検知したリスナーがrebuildを呼び出します。
- * しかしrebuildメソッドでもpreBuildが実行されるので無限回帰となり、エラーとなるからです。
  */
 export class ProviderScope extends View {
     /**

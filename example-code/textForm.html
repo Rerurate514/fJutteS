@@ -14,7 +14,7 @@
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@2.3.0/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@2.4.0/dist/index.mjs"
             }
         }
     </script>
@@ -35,15 +35,17 @@
             }
 
             build() {
-                return new Column([
-                    new TextForm({
-                        provider: textController,
-                    }),
-                    new SpaceBox({
-                        height: "16px"
-                    }),
-                    new TextProv()
-                ])
+                return new Column({
+                    children: [
+                        new TextForm({
+                            provider: textController,
+                        }),
+                        new SpaceBox({
+                            height: "16px"
+                        }),
+                        new TextProv()
+                    ]
+                })
             }
         }
 

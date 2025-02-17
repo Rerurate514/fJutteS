@@ -21,7 +21,6 @@ export class Hover extends View {
     }
 
     styledView(element){
-        element.style.display = "inline-block";
         element.style.width = "fit-content";
         element.style.height = "fit-content";
 
@@ -60,7 +59,6 @@ class _Hover extends View {
     }
 
     styledView(element){
-        element.style.display = "inline-block";
         element.style.width = "fit-content";
         element.style.height = "fit-content";
         element.style.borderRadius = this.props.radius;
@@ -133,7 +131,7 @@ class _Hover extends View {
             ripple.animate([
                 { transform: "scale(1)", opacity: "0"}
             ], {
-                duration: 1000,
+                duration: 600,
                 easing: "ease-in-out"
             })
 

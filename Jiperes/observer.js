@@ -59,12 +59,12 @@ export class ProviderObserver {
     }
 
     _getProviderInfo(provider) {
-        return provider.constructor.name + ':' + provider.name;
+        return provider.name;
     }
 
     _getStackTrace() {
-        const error = new Error();
-        return error.stack;
+        const stackTrace = new Error().stack.toString();
+        return stackTrace.substr(13, stackTrace.length);
     }
 
     log(message) {

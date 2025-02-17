@@ -169,8 +169,8 @@ export class View {
      * この関数はオーバーライド不可で、dispose時に処理が必要な場合はonDiseposeを使用してください。
      */
     _dispose() {
+        this.child._dispose();
         this.onDispose();
-        //TODO:実装、参照、使用
     }
 
     rebuild({
