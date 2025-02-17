@@ -1,4 +1,4 @@
-import { View } from "fjuttes";
+import { View } from "../interface/view.js";
 
 export class Row extends View {
     constructor({
