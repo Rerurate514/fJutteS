@@ -2,14 +2,15 @@ import { BaseCSS } from "../enums/baseCSS.js";
 import { ShadowLevel } from "../enums/shadowLevel.js";
 import { View } from "../interface/view.js";
 import { Provider } from "../jiperes/provider.js";
-import { Box } from "./box.js";
 import { Card } from "./card.js";
 import { Column } from "./column.js";
 import { ElevatedButton } from "./elevatedButton.js";
 import { LimitedProviderScope } from "./limitedProviderScope.js";
 import { Row } from "./row.js";
+import { Shrink } from "./shrink.js";
 import { SpaceBox } from "./spaceBox.js";
 import { Text } from "./text.js";
+
 export class ExpandsPanel extends View {
     constructor({
         titleItem: titleItem,
@@ -83,7 +84,7 @@ export class ExpandsPanel extends View {
                     build: (isExpand) => {
                         const view = isExpand[0] 
                         ? this.props.child
-                        : new Box({});
+                        : new Shrink(this.props.child);
 
                         return view;
                     }
