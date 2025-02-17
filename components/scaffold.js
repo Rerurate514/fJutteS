@@ -42,6 +42,8 @@ export class Scaffold extends View {
             children.push(this.props.footer);
         }
         
-        return new Column(children);
+        return new Column({
+            children: children
+        });
     }
 }

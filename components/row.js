@@ -1,17 +1,19 @@
 import { View } from "../interface/view.js";
 
 export class Row extends View {
-    constructor(
-        children, { 
+    constructor({
+        children,
         isAlignCenter = false, 
         isJustifySpaceAround = false,
-        isJustifySpaceBetween = false
-    } = {}){
+        isJustifySpaceBetween = false,
+        isVerticalCenter = false
+    }){
         super({
             children: children, 
             isAlignCenter: isAlignCenter, 
             isJustifySpaceAround: isJustifySpaceAround,
-            isJustifySpaceBetween: isJustifySpaceBetween
+            isJustifySpaceBetween: isJustifySpaceBetween,
+            isVerticalCenter: isVerticalCenter
         });
     }
 
@@ -26,6 +28,7 @@ export class Row extends View {
         if(this.props.isAlignCenter) element.style.justifyContent = "center";
         if(this.props.isJustifySpaceAround) element.style.justifyContent = "space-around";
         if(this.props.isJustifySpaceBetween) element.style.justifyContent = "space-between";
+        if(this.props.isVerticalCenter) element.style.alignItems = "center";
 
         return element;
     }
