@@ -35,15 +35,17 @@
             }
 
             build() {
-                return new Column([
-                    new TextForm({
-                        provider: textController,
-                    }),
-                    new SpaceBox({
-                        height: "16px"
-                    }),
-                    new TextProv()
-                ])
+                return new Column({
+                    children: [
+                        new TextForm({
+                            provider: textController,
+                        }),
+                        new SpaceBox({
+                            height: "16px"
+                        }),
+                        new TextProv()
+                    ]
+                })
             }
         }
 

@@ -30,27 +30,29 @@ export class SimpleDialog extends View {
     }
 
     build(){
-        return new Column([
-            this.props.child,
-            new Row([
-                new ElevatedButton({
-                    child: this.props.cancelText ?? new Text("cancel"),
-                    onClick: () => {
-                        this.props.onCancelClickedFn();
-                        this.closeModal();
-                    }
-                }),
-                new ElevatedButton({
-                    child: this.props.okText ?? new Text("ok"),
-                    onClick: () => {
-                        this.props.onOkClickedFn();
-                        this.closeModal();
-                    }
+        return new Column({
+            children: [
+                this.props.child,
+                new Row([
+                    new ElevatedButton({
+                        child: this.props.cancelText ?? new Text("cancel"),
+                        onClick: () => {
+                            this.props.onCancelClickedFn();
+                            this.closeModal();
+                        }
+                    }),
+                    new ElevatedButton({
+                        child: this.props.okText ?? new Text("ok"),
+                        onClick: () => {
+                            this.props.onOkClickedFn();
+                            this.closeModal();
+                        }
+                    })
+                ], {
+                    isAlignCenter: true
                 })
-            ], {
-                isAlignCenter: true
-            })
-        ]);
+            ]
+        });
     }
 
     openModal(){

@@ -45,45 +45,47 @@
                         radius:"16px",
                         background: "wheat",
                         elevation: ShadowLevel.LVL5,
-                        child: new Column([
-                            new Row([
-                                new Text(
-                                    "This framework name is",
-                                    new TextCSS({
-                                        fontCSS: new FontCSS({
-                                            color: "#29C5F8",
-                                            fontWeight: "bold",
-                                            fontSize: "32px"
-                                        })
-                                    })
-                                ),
-                                new SpaceBox({width: "16px"}),
-                                new Link({
-                                    href: "https://www.npmjs.com/package/fjuttes",
-                                    child: new Text(
-                                        "fJutteS.",
+                        child: new Column({
+                            children: [
+                                new Row([
+                                    new Text(
+                                        "This framework name is",
                                         new TextCSS({
                                             fontCSS: new FontCSS({
-                                                color: "red",
+                                                color: "#29C5F8",
                                                 fontWeight: "bold",
                                                 fontSize: "32px"
                                             })
                                         })
                                     ),
-                                })
-                            ]),
-                            new SpaceBox({height: "16px"}),
-                            new Center(
-                                new Image({
-                                    baseCSS: new BaseCSS({
-                                        width: "256px"
-                                    }),
-                                    src: this.props.src,
-                                    alt: "fjuttes-logo",
-                                    title: "fjuttes-logo"
-                                })
-                            )
-                        ]),
+                                    new SpaceBox({width: "16px"}),
+                                    new Link({
+                                        href: "https://www.npmjs.com/package/fjuttes",
+                                        child: new Text(
+                                            "fJutteS.",
+                                            new TextCSS({
+                                                fontCSS: new FontCSS({
+                                                    color: "red",
+                                                    fontWeight: "bold",
+                                                    fontSize: "32px"
+                                                })
+                                            })
+                                        ),
+                                    })
+                                ]),
+                                new SpaceBox({height: "16px"}),
+                                new Center(
+                                    new Image({
+                                        baseCSS: new BaseCSS({
+                                            width: "256px"
+                                        }),
+                                        src: this.props.src,
+                                        alt: "fjuttes-logo",
+                                        title: "fjuttes-logo"
+                                    })
+                                )
+                            ]
+                        }),
                     })
                 );
             }

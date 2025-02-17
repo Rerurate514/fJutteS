@@ -54,54 +54,56 @@ export class ExpandsPanel extends View {
             })
         })
         
-        return new Column([
-            new Card({
-                baseCSS: new BaseCSS({
-                    width: "100%"
-                }),
-                elevation: ShadowLevel.LVL3,
-                child: new Padding({
-                    all: "32px",
-                    child: new Row([
-                        new Margin({
-                            left: "32px",
-                            child: new Center(
-                                new Text(
-                                    this.props.title,
-                                    new TextCSS({
-                                        fontCSS: new FontCSS({
-                                            fontWeight: "bold"
+        return new Column({
+            children: [
+                new Card({
+                    baseCSS: new BaseCSS({
+                        width: "100%"
+                    }),
+                    elevation: ShadowLevel.LVL3,
+                    child: new Padding({
+                        all: "32px",
+                        child: new Row([
+                            new Margin({
+                                left: "32px",
+                                child: new Center(
+                                    new Text(
+                                        this.props.title,
+                                        new TextCSS({
+                                            fontCSS: new FontCSS({
+                                                fontWeight: "bold"
+                                            })
                                         })
+                                    ),
+                                )
+                            }),
+                            new Margin({
+                                right: "32px",
+                                child: new Card({
+                                    radius: "16px",
+                                    child: new ElevatedButton({
+                                        child: new Text("∨"),
+                                        radius: "128px",
+                                        baseCSS: new BaseCSS({
+                                            padding: "8px"
+                                        }),
+                                        onClick: () => {
+                                            this._slideToggle(
+                                                document.getElementById(exItem.props.id),
+                                                500
+                                            )
+                                        }
                                     })
-                                ),
-                            )
-                        }),
-                        new Margin({
-                            right: "32px",
-                            child: new Card({
-                                radius: "16px",
-                                child: new ElevatedButton({
-                                    child: new Text("∨"),
-                                    radius: "128px",
-                                    baseCSS: new BaseCSS({
-                                        padding: "8px"
-                                    }),
-                                    onClick: () => {
-                                        this._slideToggle(
-                                            document.getElementById(exItem.props.id),
-                                            500
-                                        )
-                                    }
                                 })
-                            })
-                        }),
-                    ],{
-                        isJustifySpaceBetween: true
+                            }),
+                        ],{
+                            isJustifySpaceBetween: true
+                        })
                     })
-                })
-            }),
-            exItem
-        ])
+                }),
+                exItem
+            ]
+        })
     }
 
     _slideToggle(element){

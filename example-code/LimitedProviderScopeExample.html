@@ -66,54 +66,56 @@
                         }),
                         radius:"16px",
                         background: "wheat",
-                        child: new Column([
-                            new ElevatedButton({
-                                radius: "4px",
-                                child: new Text("CLICK!"),
-                                baseCSS: new BaseCSS({
-                                    border: new Border({
-                                        borderSize: "2px",
-                                    })
-                                }),
-                                onClick: () => {
-                                    counter.update((value) => {
-                                        return value + 1;
-                                    });
+                        child: new Column({
+                            children: [
+                                new ElevatedButton({
+                                    radius: "4px",
+                                    child: new Text("CLICK!"),
+                                    baseCSS: new BaseCSS({
+                                        border: new Border({
+                                            borderSize: "2px",
+                                        })
+                                    }),
+                                    onClick: () => {
+                                        counter.update((value) => {
+                                            return value + 1;
+                                        });
 
-                                    console.log(new ProviderObserver().getAllUpdateHistory());
-                                }
-                            }),
-                            new SpaceBox({height: "16px"}),
-                            new LimitedProviderScope({
-                                watchingProviders: [ counter ],
-                                build: (value) => {
-                                    return new Text("click count : " + value);
-                                },
-                            }),
-                            new SpaceBox({height: "32px"}),
-                            new Text(
-                                "Provider update history",
-                                new TextCSS({
-                                    fontCSS: new FontCSS({
-                                        fontWeight: "bold"
+                                        console.log(new ProviderObserver().getAllUpdateHistory());
+                                    }
+                                }),
+                                new SpaceBox({height: "16px"}),
+                                new LimitedProviderScope({
+                                    watchingProviders: [ counter ],
+                                    build: (value) => {
+                                        return new Text("click count : " + value);
+                                    },
+                                }),
+                                new SpaceBox({height: "32px"}),
+                                new Text(
+                                    "Provider update history",
+                                    new TextCSS({
+                                        fontCSS: new FontCSS({
+                                            fontWeight: "bold"
+                                        })
                                     })
-                                })
-                            ),
-                            new LimitedProviderScope({
-                                watchingProviders: [ counter ],
-                                build: () => {
-                                    return new Text(
-                                        JSON.stringify(
-                                            new ProviderObserver().getAllUpdateHistory(),
-                                            ["oldValue", "newValue"], 
-                                            2
-                                        ),
-                                    )
-                                },
-                            }),
-                            new SpaceBox({height: "16px"}),
-                            new Text("and watch brower console!")
-                        ]),
+                                ),
+                                new LimitedProviderScope({
+                                    watchingProviders: [ counter ],
+                                    build: () => {
+                                        return new Text(
+                                            JSON.stringify(
+                                                new ProviderObserver().getAllUpdateHistory(),
+                                                ["oldValue", "newValue"], 
+                                                2
+                                            ),
+                                        )
+                                    },
+                                }),
+                                new SpaceBox({height: "16px"}),
+                                new Text("and watch brower console!")
+                            ]
+                        }),
                     })
                 );
             }

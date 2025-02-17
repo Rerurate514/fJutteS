@@ -436,7 +436,8 @@ class ProviderExample extends ProviderScope {
                 padding: "15px",
                 background: "wheat",
                 elevation: ShadowLevel.LVL5,
-                child: new Column([
+                child: new Column({
+                    children: [
                     new ElevatedButton({
                         child: new Text("CLICK!"),
                         baseCSS: new BaseCSS({
@@ -450,7 +451,8 @@ class ProviderExample extends ProviderScope {
                     }),
                     new SpaceBox({height: "16px"}),
                     new Text("click count : " + counter.read()),
-                ]),
+                ]
+                }),
             })
         );
     }

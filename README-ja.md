@@ -527,7 +527,8 @@ class ProviderExample extends View {
 
     build(){
         return new Center(
-            new Column([
+            new Column({
+                children: [
                 new ElevatedButton({
                     child: new Text("CLICK!"),
                     baseCSS: new BaseCSS({
@@ -546,7 +547,8 @@ class ProviderExample extends View {
                         return new Text("click count : " + providerValue);
                     }
                 })
-            ]),
+            ]
+            }),
         );
     }
 }
