@@ -1,0 +1,127 @@
+<!--index.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="fJutteS-Container"></div>
+	
+    <script type="importmap">
+        {
+            "imports": {
+                "fjuttes": "https://unpkg.com/fjuttes@2.3.0/dist/index.mjs"
+            }
+        }
+    </script>
+    <script type="module">
+        import { 
+            assembleView, 
+            View,
+            Text, 
+            Card, 
+            Column,
+            ElevatedButton,
+            BaseCSS,
+            SpaceBox,
+            Center, 
+            TextCSS, 
+            FontCSS, 
+            Provider, 
+            ProviderObserver, 
+            ProviderScope,
+            ShadowLevel,
+            Border,
+            LimitedProviderScope
+        } from "fjuttes";
+
+        export const counter = Provider.createProvider((ref) => {
+            return 0;
+        }, "counter");
+
+        new ProviderObserver().outLogs();
+
+        class LimitedProviderExample extends View {
+            constructor(){
+                super();
+            }
+
+            createWrapView(){
+                return document.createElement("div");
+            }
+
+            styledView(element){
+                element.style.height = "90vh";
+
+                return element;
+            }
+
+            build(){
+                return new Center(
+                    new Card({
+                        baseCSS: new BaseCSS({
+                            padding: "16px",
+                        }),
+                        radius:"16px",
+                        background: "wheat",
+                        child: new Column([
+                            new ElevatedButton({
+                                radius: "4px",
+                                child: new Text("CLICK!"),
+                                baseCSS: new BaseCSS({
+                                    border: new Border({
+                                        borderSize: "2px",
+                                    })
+                                }),
+                                onClick: () => {
+                                    counter.update((value) => {
+                                        return value + 1;
+                                    });
+
+                                    console.log(new ProviderObserver().getAllUpdateHistory());
+                                }
+                            }),
+                            new SpaceBox({height: "16px"}),
+                            new LimitedProviderScope({
+                                watchingProviders: [ counter ],
+                                build: (value) => {
+                                    return new Text("click count : " + value);
+                                },
+                            }),
+                            new SpaceBox({height: "32px"}),
+                            new Text(
+                                "Provider update history",
+                                new TextCSS({
+                                    fontCSS: new FontCSS({
+                                        fontWeight: "bold"
+                                    })
+                                })
+                            ),
+                            new LimitedProviderScope({
+                                watchingProviders: [ counter ],
+                                build: () => {
+                                    return new Text(
+                                        JSON.stringify(
+                                            new ProviderObserver().getAllUpdateHistory(),
+                                            ["oldValue", "newValue"], 
+                                            2
+                                        ),
+                                    )
+                                },
+                            }),
+                            new SpaceBox({height: "16px"}),
+                            new Text("and watch brower console!")
+                        ]),
+                    })
+                );
+            }
+        }
+
+        assembleView(
+            new LimitedProviderExample()
+        );
+    </script>
+</body>
+</html>
