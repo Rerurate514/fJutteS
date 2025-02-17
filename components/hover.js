@@ -133,7 +133,7 @@ class _Hover extends View {
             ripple.animate([
                 { transform: "scale(1)", opacity: "0"}
             ], {
-                duration: 1000,
+                duration: 600,
                 easing: "ease-in-out"
             })
 
