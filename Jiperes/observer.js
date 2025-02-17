@@ -64,8 +64,7 @@ export class ProviderObserver {
 
     _getStackTrace() {
         const stackTrace = new Error().stack.toString();
-        const withoutErrorStr = stackTrace.substr(13, stackTrace.length);
-        return withoutErrorStr;
+        return stackTrace.substr(13, stackTrace.length);
     }
 
     log(message) {
