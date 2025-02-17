@@ -1,5 +1,6 @@
 import { BaseCSS } from "../enums/baseCSS.js";
 import { View } from "../interface/view.js";
+import { Center } from "./center.js";
 import { Hover } from "./hover.js";
 
 export class ElevatedButton extends View {
@@ -34,11 +35,13 @@ export class ElevatedButton extends View {
     }
 
     build(){
-        return new Hover({
-            radius: this.props.radius,
-            onClickEffect: true,
-            child: new _ElevatedButton(this.props)
-        })
+        return new Center(
+            new Hover({
+                radius: this.props.radius,
+                onClickEffect: true,
+                child: new _ElevatedButton(this.props)
+            })
+        );
     }
 }
 
