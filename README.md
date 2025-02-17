@@ -438,20 +438,20 @@ class ProviderExample extends ProviderScope {
                 elevation: ShadowLevel.LVL5,
                 child: new Column({
                     children: [
-                    new ElevatedButton({
-                        child: new Text("CLICK!"),
-                        baseCSS: new BaseCSS({
-                            height: "32px",
+                        new ElevatedButton({
+                            child: new Text("CLICK!"),
+                            baseCSS: new BaseCSS({
+                                height: "32px",
+                            }),
+                            onClick: () => {
+                                counter.update((value) => {
+                                    return value + 1;
+                                })
+                            }
                         }),
-                        onClick: () => {
-                            counter.update((value) => {
-                                return value + 1;
-                            })
-                        }
-                    }),
-                    new SpaceBox({height: "16px"}),
-                    new Text("click count : " + counter.read()),
-                ]
+                        new SpaceBox({height: "16px"}),
+                        new Text("click count : " + counter.read()),
+                    ]
                 }),
             })
         );
@@ -529,7 +529,8 @@ class ProviderExample extends View {
 
     build(){
         return new Center(
-            new Column([
+            new Column({
+                children: [
                 new ElevatedButton({
                     child: new Text("CLICK!"),
                     baseCSS: new BaseCSS({
@@ -548,7 +549,8 @@ class ProviderExample extends View {
                         return new Text("click count : " + providerValue);
                     }
                 })
-            ]),
+            ]
+            }),
         );
     }
 }

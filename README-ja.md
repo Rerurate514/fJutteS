@@ -435,21 +435,23 @@ class ProviderExample extends ProviderScope {
                 padding: "15px",
                 background: "wheat",
                 elevation: ShadowLevel.LVL5,
-                child: new Column([
-                    new ElevatedButton({
-                        child: new Text("CLICK!"),
-                        baseCSS: new BaseCSS({
-                            height: "32px",
+                child: new Column({
+                    children: [
+                        new ElevatedButton({
+                            child: new Text("CLICK!"),
+                            baseCSS: new BaseCSS({
+                                height: "32px",
+                            }),
+                            onClick: () => {
+                                counter.update((value) => {
+                                    return value + 1;
+                                })
+                            }
                         }),
-                        onClick: () => {
-                            counter.update((value) => {
-                                return value + 1;
-                            })
-                        }
-                    }),
-                    new SpaceBox({height: "16px"}),
-                    new Text("click count : " + counter.read()),
-                ]),
+                        new SpaceBox({height: "16px"}),
+                        new Text("click count : " + counter.read()),
+                    ]
+                }),
             })
         );
     }
