@@ -39,6 +39,7 @@ export { DropDownMenu, DropDownMenuItem } from './components/dropDownMenu.js';
 export { FloatingActionButton } from './components/floatingActionButton.js';
 export { LimitedProviderScope } from './components/limitedProviderScope.js';
 export { ExpandsPanel } from './components/expandsPanel.js';
+export { Shrink } from './components/shrink.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { TextCSS } from './enums/textCSS.js';
