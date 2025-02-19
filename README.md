@@ -546,7 +546,7 @@ class ProviderExample extends View {
                 new LimitedProviderScope({
                     watchingProviders: [ counter ],
                     build: (providerValue) => {
-                        return new Text("click count : " + providerValue);
+                        return new Text("click count : " + providerValue[0]);
                     }
                 })
             ]
@@ -560,7 +560,7 @@ assembleView(
 );
 ```
 
-With the traditional approach of inheriting from `ProviderScope`, the entire `ProviderExample` widget would be re-rendered. However, using `LimitedProviderScope`, only the `Text` component gets re-rendered. Regarding the `build` function object's arguments, they are provided as an array containing the values of each Provider in the same order as they were stored in `watchingProviders`. If there's only one element, you don't need to specify an index.
+With the traditional approach of inheriting from `ProviderScope`, the entire `ProviderExample` widget would be re-rendered. However, using `LimitedProviderScope`, only the `Text` component gets re-rendered. Regarding the `build` function object's arguments, they are provided as an array containing the values of each Provider in the same order as they were stored in `watchingProviders`.
 
 With this setup, `userProvider` automatically enters a listening state, and when the `age` in `userProvider` changes, it automatically updates the value in `userAgeProvider`. These changes can be monitored using either `watch` or `ProviderScope`.
 
