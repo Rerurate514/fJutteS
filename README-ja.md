@@ -546,7 +546,7 @@ class ProviderExample extends View {
                 new LimitedProviderScope({
                     watchingProviders: [ counter ],
                     build: (providerValue) => {
-                        return new Text("click count : " + providerValue);
+                        return new Text("click count : " + providerValue[0]);
                     }
                 })
             ]
@@ -559,7 +559,7 @@ assembleView(
     new ProviderExample()
 );
 ```
-通常の`ProviderScope`を継承したやり方では、この`ProviderExample`ウィジェット全体が再描画されてしまいます。しかし、この`LimitedProviderScope`を使用したやり方では`Text`コンポーネントのみが再描画されます。この`build`関数オブジェクトの引数ですが、`provider`を`watchingProviders`で格納した順番でそれぞれの`Provider`の値が格納された配列が返されます。要素数が一つならindexを指定しなくても大丈夫です。
+通常の`ProviderScope`を継承したやり方では、この`ProviderExample`ウィジェット全体が再描画されてしまいます。しかし、この`LimitedProviderScope`を使用したやり方では`Text`コンポーネントのみが再描画されます。この`build`関数オブジェクトの引数ですが、`provider`を`watchingProviders`で格納した順番でそれぞれの`Provider`の値が格納された配列が返されます。
 
 #### ProviderObserverによる値の変更確認
 `Jiperes`には`ProviderObserver`という`Provider`の値の変更履歴や依存関係を記録するクラスが実装されています。
