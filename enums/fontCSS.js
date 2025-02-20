@@ -18,15 +18,26 @@ export class FontCSS {
             fontFamily
         };
     }
+    
+    applyCSS(element) {
+        if (this.#properties.color) element.style.color = this.#properties.color;
+        if (this.#properties.fontStyle) element.style.fontStyle = this.#properties.fontStyle;
+        if (this.#properties.fontWeight) element.style.fontWeight = this.#properties.fontWeight;
+        if (this.#properties.fontSize) element.style.fontSize = this.#properties.fontSize;
+        if (this.#properties.lineHeight) element.style.lineHeight = this.#properties.lineHeight;
+        if (this.#properties.fontFamily) element.style.fontFamily = this.#properties.fontFamily;
 
-    get color() { return this.#properties.color; }
-    get fontStyle() { return this.#properties.fontStyle; }
-    get fontWeight() { return this.#properties.fontWeight; }
-    get fontSize() { return this.#properties.fontSize; }
-    get lineHeight() { return this.#properties.lineHeight; }
-    get fontFamily() { return this.#properties.fontFamily; }
-
-    getAllProperties() {
-        return { ...this.#properties } 
+        return element;
     }
+
+    // get color() { return this.#properties.color; }
+    // get fontStyle() { return this.#properties.fontStyle; }
+    // get fontWeight() { return this.#properties.fontWeight; }
+    // get fontSize() { return this.#properties.fontSize; }
+    // get lineHeight() { return this.#properties.lineHeight; }
+    // get fontFamily() { return this.#properties.fontFamily; }
+
+    // getAllProperties() {
+    //     return { ...this.#properties } 
+    // }
 }
