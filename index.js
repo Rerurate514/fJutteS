@@ -45,6 +45,7 @@ export { ShadowLevel } from './enums/shadowLevel.js';
 export { TextCSS } from './enums/textCSS.js';
 export { FontCSS } from './enums/fontCSS.js';
 export { BaseCSS } from './enums/baseCSS.js';
+export { WebkitCSS } from './enums/webkitCSS.js';
 
 export { Border } from './models/border.js';
 

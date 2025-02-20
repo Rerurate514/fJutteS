@@ -1,3 +1,4 @@
+import { WebkitCSS } from "../enums/webkitCSS.js";
 import { View } from "../interface/view.js";
 import { Border } from "../models/border.js";
 
@@ -6,12 +7,14 @@ export class Box extends View {
         width = "0px", 
         height = "0px",
         border = new Border(),
+        webkitCSS = new WebkitCSS(),
         child = null
     }){
         super({
             width: width, 
-            height: height, 
+            height: height,
             border: border,
+            webkitCSS: webkitCSS,
             child: child
         });
     }
@@ -25,6 +28,8 @@ export class Box extends View {
         element.style.height = this.props.height;
 
         element = this._styleBorder(element);
+
+        element = this.props.webkitCSS.applyCSS(element);
 
         return element;
     }

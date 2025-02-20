@@ -4,7 +4,7 @@ import { TextCSS } from "../enums/textCSS.js";
 export class Text extends View{
     constructor(
         text, 
-        textCSS = new TextCSS()
+        textCSS = new TextCSS(),
     ){
         super({text: text, textCSS: textCSS});
     }
@@ -38,6 +38,8 @@ export class Text extends View{
         if(this.props.textCSS.writingMode) element.style.writingMode = this.props.textCSS.writingMode;
         if(this.props.textCSS.textCombineUpright) element.style.textCombineUpright = this.props.textCSS.textCombineUpright;
         if(this.props.textCSS.textOrientation) element.style.textOrientation = this.props.textCSS.textOrientation;
+
+        element = this.props.webkitCSS.applyCSS(element);
 
         return element;
     }

@@ -1,4 +1,5 @@
 import { FontCSS } from "./fontCSS.js";
+import { WebkitCSS } from "./webkitCSS.js";
 
 export class TextCSS {
     #properties = {};
@@ -19,7 +20,8 @@ export class TextCSS {
         textShadow = null,
         writingMode = null,
         textCombineUpright = null,
-        textOrientation = null
+        textOrientation = null,
+        webkitCSS = new WebkitCSS()
     } = {}) {
         this.#properties = {
             fontCSS,
@@ -37,7 +39,8 @@ export class TextCSS {
             textShadow,
             writingMode,
             textCombineUpright,
-            textOrientation
+            textOrientation,
+            webkitCSS
         };
     }
 
