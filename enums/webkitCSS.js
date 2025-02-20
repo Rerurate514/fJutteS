@@ -360,120 +360,120 @@ export class WebkitCSS {
         return element;
     }
 
-    // getter メソッド - 変形と遷移
-    get webkitTransform() { return this.#properties.webkitTransform; }
-    get webkitTransformOrigin() { return this.#properties.webkitTransformOrigin; }
-    get webkitTransformStyle() { return this.#properties.webkitTransformStyle; }
-    get webkitTransition() { return this.#properties.webkitTransition; }
-    get webkitTransitionDelay() { return this.#properties.webkitTransitionDelay; }
-    get webkitTransitionDuration() { return this.#properties.webkitTransitionDuration; }
-    get webkitTransitionProperty() { return this.#properties.webkitTransitionProperty; }
-    get webkitTransitionTimingFunction() { return this.#properties.webkitTransitionTimingFunction; }
+    // // getter メソッド - 変形と遷移
+    // get webkitTransform() { return this.#properties.webkitTransform; }
+    // get webkitTransformOrigin() { return this.#properties.webkitTransformOrigin; }
+    // get webkitTransformStyle() { return this.#properties.webkitTransformStyle; }
+    // get webkitTransition() { return this.#properties.webkitTransition; }
+    // get webkitTransitionDelay() { return this.#properties.webkitTransitionDelay; }
+    // get webkitTransitionDuration() { return this.#properties.webkitTransitionDuration; }
+    // get webkitTransitionProperty() { return this.#properties.webkitTransitionProperty; }
+    // get webkitTransitionTimingFunction() { return this.#properties.webkitTransitionTimingFunction; }
     
-    // getter メソッド - アニメーション
-    get webkitAnimation() { return this.#properties.webkitAnimation; }
-    get webkitAnimationDelay() { return this.#properties.webkitAnimationDelay; }
-    get webkitAnimationDirection() { return this.#properties.webkitAnimationDirection; }
-    get webkitAnimationDuration() { return this.#properties.webkitAnimationDuration; }
-    get webkitAnimationFillMode() { return this.#properties.webkitAnimationFillMode; }
-    get webkitAnimationIterationCount() { return this.#properties.webkitAnimationIterationCount; }
-    get webkitAnimationName() { return this.#properties.webkitAnimationName; }
-    get webkitAnimationPlayState() { return this.#properties.webkitAnimationPlayState; }
-    get webkitAnimationTimingFunction() { return this.#properties.webkitAnimationTimingFunction; }
+    // // getter メソッド - アニメーション
+    // get webkitAnimation() { return this.#properties.webkitAnimation; }
+    // get webkitAnimationDelay() { return this.#properties.webkitAnimationDelay; }
+    // get webkitAnimationDirection() { return this.#properties.webkitAnimationDirection; }
+    // get webkitAnimationDuration() { return this.#properties.webkitAnimationDuration; }
+    // get webkitAnimationFillMode() { return this.#properties.webkitAnimationFillMode; }
+    // get webkitAnimationIterationCount() { return this.#properties.webkitAnimationIterationCount; }
+    // get webkitAnimationName() { return this.#properties.webkitAnimationName; }
+    // get webkitAnimationPlayState() { return this.#properties.webkitAnimationPlayState; }
+    // get webkitAnimationTimingFunction() { return this.#properties.webkitAnimationTimingFunction; }
     
-    // getter メソッド - フレックスボックス
-    get webkitFlex() { return this.#properties.webkitFlex; }
-    get webkitFlexBasis() { return this.#properties.webkitFlexBasis; }
-    get webkitFlexDirection() { return this.#properties.webkitFlexDirection; }
-    get webkitFlexFlow() { return this.#properties.webkitFlexFlow; }
-    get webkitFlexGrow() { return this.#properties.webkitFlexGrow; }
-    get webkitFlexShrink() { return this.#properties.webkitFlexShrink; }
-    get webkitFlexWrap() { return this.#properties.webkitFlexWrap; }
-    get webkitJustifyContent() { return this.#properties.webkitJustifyContent; }
-    get webkitAlignItems() { return this.#properties.webkitAlignItems; }
-    get webkitAlignContent() { return this.#properties.webkitAlignContent; }
-    get webkitAlignSelf() { return this.#properties.webkitAlignSelf; }
-    get webkitOrder() { return this.#properties.webkitOrder; }
+    // // getter メソッド - フレックスボックス
+    // get webkitFlex() { return this.#properties.webkitFlex; }
+    // get webkitFlexBasis() { return this.#properties.webkitFlexBasis; }
+    // get webkitFlexDirection() { return this.#properties.webkitFlexDirection; }
+    // get webkitFlexFlow() { return this.#properties.webkitFlexFlow; }
+    // get webkitFlexGrow() { return this.#properties.webkitFlexGrow; }
+    // get webkitFlexShrink() { return this.#properties.webkitFlexShrink; }
+    // get webkitFlexWrap() { return this.#properties.webkitFlexWrap; }
+    // get webkitJustifyContent() { return this.#properties.webkitJustifyContent; }
+    // get webkitAlignItems() { return this.#properties.webkitAlignItems; }
+    // get webkitAlignContent() { return this.#properties.webkitAlignContent; }
+    // get webkitAlignSelf() { return this.#properties.webkitAlignSelf; }
+    // get webkitOrder() { return this.#properties.webkitOrder; }
     
-    // getter メソッド - ボックスモデル
-    get webkitBoxSizing() { return this.#properties.webkitBoxSizing; }
-    get webkitBoxShadow() { return this.#properties.webkitBoxShadow; }
-    get webkitBoxReflect() { return this.#properties.webkitBoxReflect; }
-    get webkitBoxPack() { return this.#properties.webkitBoxPack; }
-    get webkitBoxAlign() { return this.#properties.webkitBoxAlign; }
-    get webkitBoxFlex() { return this.#properties.webkitBoxFlex; }
-    get webkitBoxFlexGroup() { return this.#properties.webkitBoxFlexGroup; }
-    get webkitBoxLines() { return this.#properties.webkitBoxLines; }
-    get webkitBoxOrdinalGroup() { return this.#properties.webkitBoxOrdinalGroup; }
-    get webkitBoxOrient() { return this.#properties.webkitBoxOrient; }
-    get webkitBoxDirection() { return this.#properties.webkitBoxDirection; }
+    // // getter メソッド - ボックスモデル
+    // get webkitBoxSizing() { return this.#properties.webkitBoxSizing; }
+    // get webkitBoxShadow() { return this.#properties.webkitBoxShadow; }
+    // get webkitBoxReflect() { return this.#properties.webkitBoxReflect; }
+    // get webkitBoxPack() { return this.#properties.webkitBoxPack; }
+    // get webkitBoxAlign() { return this.#properties.webkitBoxAlign; }
+    // get webkitBoxFlex() { return this.#properties.webkitBoxFlex; }
+    // get webkitBoxFlexGroup() { return this.#properties.webkitBoxFlexGroup; }
+    // get webkitBoxLines() { return this.#properties.webkitBoxLines; }
+    // get webkitBoxOrdinalGroup() { return this.#properties.webkitBoxOrdinalGroup; }
+    // get webkitBoxOrient() { return this.#properties.webkitBoxOrient; }
+    // get webkitBoxDirection() { return this.#properties.webkitBoxDirection; }
     
-    // getter メソッド - テキスト関連
-    get webkitFontSmoothing() { return this.#properties.webkitFontSmoothing; }
-    get webkitTextSizeAdjust() { return this.#properties.webkitTextSizeAdjust; }
-    get webkitTextFillColor() { return this.#properties.webkitTextFillColor; }
-    get webkitTextStroke() { return this.#properties.webkitTextStroke; }
-    get webkitTextStrokeColor() { return this.#properties.webkitTextStrokeColor; }
-    get webkitTextStrokeWidth() { return this.#properties.webkitTextStrokeWidth; }
-    get webkitBackgroundClip() { return this.#properties.webkitBackgroundClip; }
-    get webkitTextSecurity() { return this.#properties.webkitTextSecurity; }
-    get webkitLineClamp() { return this.#properties.webkitLineClamp; }
-    get webkitLineBreak() { return this.#properties.webkitLineBreak; }
+    // // getter メソッド - テキスト関連
+    // get webkitFontSmoothing() { return this.#properties.webkitFontSmoothing; }
+    // get webkitTextSizeAdjust() { return this.#properties.webkitTextSizeAdjust; }
+    // get webkitTextFillColor() { return this.#properties.webkitTextFillColor; }
+    // get webkitTextStroke() { return this.#properties.webkitTextStroke; }
+    // get webkitTextStrokeColor() { return this.#properties.webkitTextStrokeColor; }
+    // get webkitTextStrokeWidth() { return this.#properties.webkitTextStrokeWidth; }
+    // get webkitBackgroundClip() { return this.#properties.webkitBackgroundClip; }
+    // get webkitTextSecurity() { return this.#properties.webkitTextSecurity; }
+    // get webkitLineClamp() { return this.#properties.webkitLineClamp; }
+    // get webkitLineBreak() { return this.#properties.webkitLineBreak; }
     
-    // getter メソッド - その他
-    get webkitAppearance() { return this.#properties.webkitAppearance; }
-    get webkitFilter() { return this.#properties.webkitFilter; }
-    get webkitBackdropFilter() { return this.#properties.webkitBackdropFilter; }
-    get webkitUserSelect() { return this.#properties.webkitUserSelect; }
-    get webkitUserDrag() { return this.#properties.webkitUserDrag; }
-    get webkitUserModify() { return this.#properties.webkitUserModify; }
-    get webkitTouchCallout() { return this.#properties.webkitTouchCallout; }
-    get webkitOverflowScrolling() { return this.#properties.webkitOverflowScrolling; }
-    get webkitMaskImage() { return this.#properties.webkitMaskImage; }
-    get webkitMaskSize() { return this.#properties.webkitMaskSize; }
-    get webkitMaskPosition() { return this.#properties.webkitMaskPosition; }
-    get webkitMaskRepeat() { return this.#properties.webkitMaskRepeat; }
-    get webkitMaskOrigin() { return this.#properties.webkitMaskOrigin; }
-    get webkitMaskClip() { return this.#properties.webkitMaskClip; }
-    get webkitMaskComposite() { return this.#properties.webkitMaskComposite; }
-    get webkitPerspective() { return this.#properties.webkitPerspective; }
-    get webkitPerspectiveOrigin() { return this.#properties.webkitPerspectiveOrigin; }
-    get webkitBackfaceVisibility() { return this.#properties.webkitBackfaceVisibility; }
-    get webkitTapHighlightColor() { return this.#properties.webkitTapHighlightColor; }
-    get webkitHyphenateCharacter() { return this.#properties.webkitHyphenateCharacter; }
-    get webkitLocale() { return this.#properties.webkitLocale; }
-    get webkitMarginBefore() { return this.#properties.webkitMarginBefore; }
-    get webkitMarginAfter() { return this.#properties.webkitMarginAfter; }
-    get webkitMarginStart() { return this.#properties.webkitMarginStart; }
-    get webkitMarginEnd() { return this.#properties.webkitMarginEnd; }
-    get webkitPaddingBefore() { return this.#properties.webkitPaddingBefore; }
-    get webkitPaddingAfter() { return this.#properties.webkitPaddingAfter; }
-    get webkitPaddingStart() { return this.#properties.webkitPaddingStart; }
-    get webkitPaddingEnd() { return this.#properties.webkitPaddingEnd; }
-    get webkitBorderStart() { return this.#properties.webkitBorderStart; }
-    get webkitBorderEnd() { return this.#properties.webkitBorderEnd; }
-    get webkitBorderBefore() { return this.#properties.webkitBorderBefore; }
-    get webkitBorderAfter() { return this.#properties.webkitBorderAfter; }
-    get webkitBorderStartWidth() { return this.#properties.webkitBorderStartWidth; }
-    get webkitBorderEndWidth() { return this.#properties.webkitBorderEndWidth; }
-    get webkitBorderBeforeWidth() { return this.#properties.webkitBorderBeforeWidth; }
-    get webkitBorderAfterWidth() { return this.#properties.webkitBorderAfterWidth; }
-    get webkitBorderStartColor() { return this.#properties.webkitBorderStartColor; }
-    get webkitBorderEndColor() { return this.#properties.webkitBorderEndColor; }
-    get webkitBorderBeforeColor() { return this.#properties.webkitBorderBeforeColor; }
-    get webkitBorderAfterColor() { return this.#properties.webkitBorderAfterColor; }
-    get webkitBorderImage() { return this.#properties.webkitBorderImage; }
-    get webkitBorderRadius() { return this.#properties.webkitBorderRadius; }
-    get webkitColumnCount() { return this.#properties.webkitColumnCount; }
-    get webkitColumnGap() { return this.#properties.webkitColumnGap; }
-    get webkitColumnRule() { return this.#properties.webkitColumnRule; }
-    get webkitColumnRuleColor() { return this.#properties.webkitColumnRuleColor; }
-    get webkitColumnRuleStyle() { return this.#properties.webkitColumnRuleStyle; }
-    get webkitColumnRuleWidth() { return this.#properties.webkitColumnRuleWidth; }
-    get webkitColumnSpan() { return this.#properties.webkitColumnSpan; }
-    get webkitColumnWidth() { return this.#properties.webkitColumnWidth; }
-    get webkitColumns() { return this.#properties.webkitColumns; }
-    get webkitShapeOutside() { return this.#properties.webkitShapeOutside; }
-    get webkitShapeImageThreshold() { return this.#properties.webkitShapeImageThreshold; }
-    get webkitShapeMargin() { return this.#properties.webkitShapeMargin; }
+    // // getter メソッド - その他
+    // get webkitAppearance() { return this.#properties.webkitAppearance; }
+    // get webkitFilter() { return this.#properties.webkitFilter; }
+    // get webkitBackdropFilter() { return this.#properties.webkitBackdropFilter; }
+    // get webkitUserSelect() { return this.#properties.webkitUserSelect; }
+    // get webkitUserDrag() { return this.#properties.webkitUserDrag; }
+    // get webkitUserModify() { return this.#properties.webkitUserModify; }
+    // get webkitTouchCallout() { return this.#properties.webkitTouchCallout; }
+    // get webkitOverflowScrolling() { return this.#properties.webkitOverflowScrolling; }
+    // get webkitMaskImage() { return this.#properties.webkitMaskImage; }
+    // get webkitMaskSize() { return this.#properties.webkitMaskSize; }
+    // get webkitMaskPosition() { return this.#properties.webkitMaskPosition; }
+    // get webkitMaskRepeat() { return this.#properties.webkitMaskRepeat; }
+    // get webkitMaskOrigin() { return this.#properties.webkitMaskOrigin; }
+    // get webkitMaskClip() { return this.#properties.webkitMaskClip; }
+    // get webkitMaskComposite() { return this.#properties.webkitMaskComposite; }
+    // get webkitPerspective() { return this.#properties.webkitPerspective; }
+    // get webkitPerspectiveOrigin() { return this.#properties.webkitPerspectiveOrigin; }
+    // get webkitBackfaceVisibility() { return this.#properties.webkitBackfaceVisibility; }
+    // get webkitTapHighlightColor() { return this.#properties.webkitTapHighlightColor; }
+    // get webkitHyphenateCharacter() { return this.#properties.webkitHyphenateCharacter; }
+    // get webkitLocale() { return this.#properties.webkitLocale; }
+    // get webkitMarginBefore() { return this.#properties.webkitMarginBefore; }
+    // get webkitMarginAfter() { return this.#properties.webkitMarginAfter; }
+    // get webkitMarginStart() { return this.#properties.webkitMarginStart; }
+    // get webkitMarginEnd() { return this.#properties.webkitMarginEnd; }
+    // get webkitPaddingBefore() { return this.#properties.webkitPaddingBefore; }
+    // get webkitPaddingAfter() { return this.#properties.webkitPaddingAfter; }
+    // get webkitPaddingStart() { return this.#properties.webkitPaddingStart; }
+    // get webkitPaddingEnd() { return this.#properties.webkitPaddingEnd; }
+    // get webkitBorderStart() { return this.#properties.webkitBorderStart; }
+    // get webkitBorderEnd() { return this.#properties.webkitBorderEnd; }
+    // get webkitBorderBefore() { return this.#properties.webkitBorderBefore; }
+    // get webkitBorderAfter() { return this.#properties.webkitBorderAfter; }
+    // get webkitBorderStartWidth() { return this.#properties.webkitBorderStartWidth; }
+    // get webkitBorderEndWidth() { return this.#properties.webkitBorderEndWidth; }
+    // get webkitBorderBeforeWidth() { return this.#properties.webkitBorderBeforeWidth; }
+    // get webkitBorderAfterWidth() { return this.#properties.webkitBorderAfterWidth; }
+    // get webkitBorderStartColor() { return this.#properties.webkitBorderStartColor; }
+    // get webkitBorderEndColor() { return this.#properties.webkitBorderEndColor; }
+    // get webkitBorderBeforeColor() { return this.#properties.webkitBorderBeforeColor; }
+    // get webkitBorderAfterColor() { return this.#properties.webkitBorderAfterColor; }
+    // get webkitBorderImage() { return this.#properties.webkitBorderImage; }
+    // get webkitBorderRadius() { return this.#properties.webkitBorderRadius; }
+    // get webkitColumnCount() { return this.#properties.webkitColumnCount; }
+    // get webkitColumnGap() { return this.#properties.webkitColumnGap; }
+    // get webkitColumnRule() { return this.#properties.webkitColumnRule; }
+    // get webkitColumnRuleColor() { return this.#properties.webkitColumnRuleColor; }
+    // get webkitColumnRuleStyle() { return this.#properties.webkitColumnRuleStyle; }
+    // get webkitColumnRuleWidth() { return this.#properties.webkitColumnRuleWidth; }
+    // get webkitColumnSpan() { return this.#properties.webkitColumnSpan; }
+    // get webkitColumnWidth() { return this.#properties.webkitColumnWidth; }
+    // get webkitColumns() { return this.#properties.webkitColumns; }
+    // get webkitShapeOutside() { return this.#properties.webkitShapeOutside; }
+    // get webkitShapeImageThreshold() { return this.#properties.webkitShapeImageThreshold; }
+    // get webkitShapeMargin() { return this.#properties.webkitShapeMargin; }
 }
