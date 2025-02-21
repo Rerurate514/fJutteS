@@ -1,5 +1,3 @@
-import { Border } from "../models/border.js";
-
 export class BaseCSS {
     #properties = {};
 
@@ -8,17 +6,14 @@ export class BaseCSS {
         height = null,
         margin = null,
         padding = null,
-        border = null
+        borderCSS = null
     } = {}){
-        let assembledBorder = null;
-        if(border) assembledBorder = border.assembleCSS();
-
         this.#properties = {
             width,
             height,
             margin,
             padding,
-            assembledBorder
+            borderCSS
         }
     }
 
@@ -27,7 +22,7 @@ export class BaseCSS {
         if(this.#properties.height) element.style.height = this.#properties.height;
         if(this.#properties.margin) element.style.margin = this.#properties.margin;
         if(this.#properties.padding) element.style.padding = this.#properties.padding;
-        if(this.#properties.assembledBorder) element.style.border = this.#properties.assembledBorder;
+        if(this.#properties.borderCSS) element = this.#properties.borderCSS.applyCSS(element);
     
         return element;
     }
