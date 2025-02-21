@@ -48,7 +48,7 @@ export { FontCSS } from './enums/fontCSS.js';
 export { BaseCSS } from './enums/baseCSS.js';
 export { WebkitCSS } from './enums/webkitCSS.js';
 
-export { Border } from './models/border.js';
+export { BorderCSS } from './models/borderCSS.js';
 
 export * from './errors/errors.js';
 
