@@ -1,7 +1,7 @@
 import { View } from "../interface/view.js";
 
 export class ClippingText extends View {
-  cosntructor(child){
+  constructor(child){
     super({
       child: child
     });
