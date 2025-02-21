@@ -6,14 +6,14 @@ export class Box extends View {
     constructor({
         width = "0px", 
         height = "0px",
-        border = new BorderCSS(),
+        borderCSS = new BorderCSS(),
         webkitCSS = new WebkitCSS(),
         child = null
     }){
         super({
             width: width, 
             height: height,
-            border: border,
+            borderCSS: borderCSS,
             webkitCSS: webkitCSS,
             child: child
         });
