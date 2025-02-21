@@ -1,8 +1,8 @@
 import { View } from "../interface/view.js";
 import { ShadowLevel } from '../enums/shadowLevel.js';
-import { Border } from "../models/border.js";
 import { BaseCSS } from "../enums/baseCSS.js";
 import { WebkitCSS } from "../enums/webkitCSS.js";
+import { BorderCSS } from "../models/borderCSS.js";
 
 export class Card extends View {
     constructor({
@@ -14,7 +14,7 @@ export class Card extends View {
         }),
         background = null,
         elevation = ShadowLevel.LVL0,
-        border = new Border(),
+        borderCSS = new BorderCSS(),
         webkitCSS = new WebkitCSS()
     }){
         if(!(elevation instanceof ShadowLevel)){
@@ -35,7 +35,7 @@ export class Card extends View {
             baseCSS: baseCSS,
             background: background,
             elevation: elevation,
-            border: border.assembleCSS(),
+            borderCSS: borderCSS,
             webkitCSS: webkitCSS
         });
     }
@@ -51,6 +51,7 @@ export class Card extends View {
         element.style.border = this.props.border;
 
         element = this.props.baseCSS.applyCSS(element);
+        element = this.props.borderCSS.applyCSS(element)
         element = this.props.webkitCSS.applyCSS(element);
 
         return element;
