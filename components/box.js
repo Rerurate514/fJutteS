@@ -6,6 +6,7 @@ export class Box extends View {
     constructor({
         width = "0px", 
         height = "0px",
+        background = null,
         borderCSS = new BorderCSS(),
         webkitCSS = new WebkitCSS(),
         child = null
@@ -13,6 +14,7 @@ export class Box extends View {
         super({
             width: width, 
             height: height,
+            background: background,
             borderCSS: borderCSS,
             webkitCSS: webkitCSS,
             child: child
@@ -26,6 +28,8 @@ export class Box extends View {
     styledView(element){
         element.style.width = this.props.width;
         element.style.height = this.props.height;
+
+        if(this.props.background) element.style.background = this.props.background;
 
         element = this.props.borderCSS.applyCSS(element)
         element = this.props.webkitCSS.applyCSS(element);
