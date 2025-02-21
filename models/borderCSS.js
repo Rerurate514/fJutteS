@@ -3,7 +3,7 @@ export class BorderCSS {
         borderSize = "0px", 
         borderProperty = "solid",
         color = "transparent",
-        radius = "0px",
+        radius = null,
         isTop = true,
         isLeft = true,
         isRight = true,
@@ -21,8 +21,12 @@ export class BorderCSS {
         this.isBottom = isBottom;
     }
 
+    _assembleCSS(){
+        return this.borderSize + " " + this.borderProperty + " " + this.color;
+    }
+
     applyCSS(element){
-        const borderValue = this.assembleCSS();
+        const borderValue = this._assembleCSS();
         
         if (this.isTop) element.style.borderTop = borderValue;
         if (this.isRight) element.style.borderRight = borderValue;
