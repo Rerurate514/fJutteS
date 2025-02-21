@@ -1,12 +1,12 @@
 import { WebkitCSS } from "../enums/webkitCSS.js";
 import { View } from "../interface/view.js";
-import { Border } from "../models/borderCSS.js";
+import { BorderCSS } from "../models/borderCSS.js";
 
 export class Box extends View {
     constructor({
         width = "0px", 
         height = "0px",
-        border = new Border(),
+        border = new BorderCSS(),
         webkitCSS = new WebkitCSS(),
         child = null
     }){
