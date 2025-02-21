@@ -21,8 +21,8 @@ export class Card extends View {
             throw TypeError("CardコンポーネントのElevationプロパティには、ShadowLevelクラスのみ受け付けています。\n渡された型:" + typeof elevation);
         }
 
-        if(!(border instanceof Border)){
-            throw TypeError("Cardコンポーネントのborderプロパティには、Borderクラスのみ受け付けています。\n渡された型:" + typeof elevation);
+        if(!(borderCSS instanceof BorderCSS)){
+            throw TypeError("CardコンポーネントのborderCSSプロパティには、BorderCSSクラスのみ受け付けています。\n渡された型:" + typeof elevation);
         }
 
         if(!(webkitCSS instanceof WebkitCSS)){
