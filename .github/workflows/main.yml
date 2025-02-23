@@ -13,27 +13,28 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14'
+          node-version: '20'
           cache: 'npm'
       - name: npm install
         run: npm install
-      - name: eslint review
-        uses: reviewdog/action-eslint@v1.33.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-          eslint_flags: './**/*.{js}'
+      # - name: eslint review
+      #   uses: reviewdog/action-eslint@v1.33.0
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     reporter: github-pr-review
+      #     eslint_flags: './**/*.{js}'
       - name: Run eslint
-        run: npm lint
+        run: npx eslint
       - name: Run Jest
-        run: npm jest
+        run: npm test
       - name: Upload test coverage artifact
         uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: coverage
       - name: Show coverage in comments
-        uses: ArtiomTr/jest-coverage-report-action@v2
+        uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          test-script: npm jest --coverage
+          test-script: npm run test:coverage
+          threshold: 70
