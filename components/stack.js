@@ -1,10 +1,15 @@
+import { BaseCSS } from "../enums/baseCSS.js";
 import { View } from "../interface/view.js";
 
 export class Stack extends View {
     constructor({
-        children: children
+        children,
+        baseCSS = new BaseCSS()
     }){
-        super({children: children});
+        super({
+            children: children,
+            baseCSS: baseCSS
+        });
     }    
 
     createWrapView(){
@@ -13,6 +18,9 @@ export class Stack extends View {
     
     styledView(element){
         element.style.position = "relative";
+
+        element = this.props.baseCSS.applyCSS(element);
+
         return element;
     }
 

@@ -1,8 +1,10 @@
+import { BaseCSS } from "../enums/baseCSS.js";
 import { View } from "../interface/view.js";
 
 export class Row extends View {
     constructor({
         children,
+        baseCSS = new BaseCSS(),
         isAlignCenter = false, 
         isJustifySpaceAround = false,
         isJustifySpaceBetween = false,
@@ -10,6 +12,7 @@ export class Row extends View {
     }){
         super({
             children: children, 
+            baseCSS: baseCSS,
             isAlignCenter: isAlignCenter, 
             isJustifySpaceAround: isJustifySpaceAround,
             isJustifySpaceBetween: isJustifySpaceBetween,
@@ -29,6 +32,8 @@ export class Row extends View {
         if(this.props.isJustifySpaceAround) element.style.justifyContent = "space-around";
         if(this.props.isJustifySpaceBetween) element.style.justifyContent = "space-between";
         if(this.props.isVerticalCenter) element.style.alignItems = "center";
+
+        element = this.props.baseCSS.applyCSS(element);
 
         return element;
     }

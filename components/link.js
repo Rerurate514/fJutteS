@@ -6,14 +6,16 @@ export class Link extends View {
         href,
         rel = null,
         target = null,
-        isDownload = false
+        isDownload = false,
+        isShownUnderline = true
     }){
         super({
             child: child,
             href: href,
             rel: rel,
             target: target,
-            isDownload: isDownload
+            isDownload: isDownload,
+            isShownUnderline: isShownUnderline
         });
     }
 
@@ -27,6 +29,8 @@ export class Link extends View {
 
         if(this.props.rel) element.rel = this.props.rel;
         if(this.props.target) element.target = this.props.target;
+
+        if(!this.props.isShownUnderline) element.style.textDecoration = "none";
 
         return element;
     }
