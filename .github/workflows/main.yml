@@ -24,7 +24,7 @@ jobs:
       #     reporter: github-pr-review
       #     eslint_flags: './**/*.{js}'
       - name: Run eslint
-        run: npm lint
+        run: npx eslint
       - name: Run Jest
         run: npm jest
       - name: Upload test coverage artifact
