@@ -40,13 +40,17 @@ export { FloatingActionButton } from './components/floatingActionButton.js';
 export { LimitedProviderScope } from './components/limitedProviderScope.js';
 export { ExpandsPanel } from './components/expandsPanel.js';
 export { Shrink } from './components/shrink.js';
+export { Grid } from './components/Grid.js';
+export { RelativePosition } from './components/relativePosition.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
+export { RelativePositions } from './enums/relativePositions.js';
 export { TextCSS } from './enums/textCSS.js';
 export { FontCSS } from './enums/fontCSS.js';
 export { BaseCSS } from './enums/baseCSS.js';
+export { WebkitCSS } from './enums/webkitCSS.js';
 
-export { Border } from './models/border.js';
+export { BorderCSS } from './models/borderCSS.js';
 
 export * from './errors/errors.js';
 

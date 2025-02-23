@@ -1,4 +1,5 @@
 import { BaseCSS } from "../enums/baseCSS.js";
+import { WebkitCSS } from "../enums/webkitCSS.js";
 import { View } from "../interface/view.js";
 
 export class Image extends View {
@@ -6,13 +7,15 @@ export class Image extends View {
         src: src = "",
         alt: alt = "",
         title: title = "",
-        baseCSS: baseCSS = new BaseCSS()
+        baseCSS: baseCSS = new BaseCSS(),
+        webkitCSS: webkitCSS = new WebkitCSS()
     }){
         super({
             src: src,
             alt: alt,
             title: title,
-            baseCSS: baseCSS
+            baseCSS: baseCSS,
+            webkitCSS: webkitCSS
         });
     }
 
@@ -22,6 +25,7 @@ export class Image extends View {
 
     styledView(element){
         element = this.props.baseCSS.applyCSS(element);
+        element = this.props.webkitCSS.applyCSS(element);
 
         element.src = this.props.src;
         element.alt = this.props.alt;

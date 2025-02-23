@@ -1,7 +1,7 @@
 import { View } from "../interface/view.js";
 import { ShadowLevel } from '../enums/shadowLevel.js';
-import { Border } from "../models/border.js";
 import { BaseCSS } from "../enums/baseCSS.js";
+import { WebkitCSS } from "../enums/webkitCSS.js";
 
 export class Card extends View {
     constructor({
@@ -13,14 +13,14 @@ export class Card extends View {
         }),
         background = null,
         elevation = ShadowLevel.LVL0,
-        border = new Border()
+        webkitCSS = new WebkitCSS()
     }){
         if(!(elevation instanceof ShadowLevel)){
             throw TypeError("CardコンポーネントのElevationプロパティには、ShadowLevelクラスのみ受け付けています。\n渡された型:" + typeof elevation);
         }
 
-        if(!(border instanceof Border)){
-            throw TypeError("Cardコンポーネントのborderプロパティには、Borderクラスのみ受け付けています。\n渡された型:" + typeof elevation);
+        if(!(webkitCSS instanceof WebkitCSS)){
+            throw TypeError("CardコンポーネントのwebkitCSSプロパティには、WebkitCSSクラスのみ受け付けています。\n渡された型:" + typeof elevation);
         }
 
         super({
@@ -29,7 +29,7 @@ export class Card extends View {
             baseCSS: baseCSS,
             background: background,
             elevation: elevation,
-            border: border.assembleCSS()
+            webkitCSS: webkitCSS
         });
     }
 
@@ -41,9 +41,9 @@ export class Card extends View {
         element.style.borderRadius = this.props.radius;
         if(this.props.background) element.style.background = this.props.background;
         element.style.boxShadow = this.props.elevation;
-        element.style.border = this.props.border;
 
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.props.baseCSS.applyCSS(element)
+        element = this.props.webkitCSS.applyCSS(element);
 
         return element;
     }

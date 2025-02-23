@@ -1,17 +1,22 @@
+import { WebkitCSS } from "../enums/webkitCSS.js";
 import { View } from "../interface/view.js";
-import { Border } from "../models/border.js";
+import { BorderCSS } from "../models/borderCSS.js";
 
 export class Box extends View {
     constructor({
         width = "0px", 
         height = "0px",
-        border = new Border(),
+        background = null,
+        borderCSS = new BorderCSS(),
+        webkitCSS = new WebkitCSS(),
         child = null
     }){
         super({
             width: width, 
-            height: height, 
-            border: border,
+            height: height,
+            background: background,
+            borderCSS: borderCSS,
+            webkitCSS: webkitCSS,
             child: child
         });
     }
@@ -24,25 +29,10 @@ export class Box extends View {
         element.style.width = this.props.width;
         element.style.height = this.props.height;
 
-        element = this._styleBorder(element);
+        if(this.props.background) element.style.background = this.props.background;
 
-        return element;
-    }
-
-    _styleBorder(element){
-        let border = this.props.border;
-        if(border.isTop){
-            element.style.borderTop = border.assembleCSS();
-        }
-        if(border.isLeft){
-            element.style.borderLeft= border.assembleCSS();
-        }
-        if(border.isRight){
-            element.style.borderRight = border.assembleCSS();
-        }
-        if(border.isBottom){
-            element.style.borderBottom = border.assembleCSS();
-        }
+        element = this.props.borderCSS.applyCSS(element)
+        element = this.props.webkitCSS.applyCSS(element);
 
         return element;
     }
