@@ -5,6 +5,8 @@ HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境
 そして、状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。しかし、それと引き換えにsetState、useStateを失っています。これはウィジェット単体で状態を変更することはできないことを意味しています。これも一つの設計思想として捉えてもらえると幸いです。  
 - 現行バージョン -> fjuttes@2.4.0
 
+<h6>公式サイト : https://rerurate514.github.io/fJutteS-Wiki/</h6>
+
 <div align="center">
 	</br>
 	</br>
