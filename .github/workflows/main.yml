@@ -1,4 +1,4 @@
-name: CI
+name: CI-eslint-jest
 
 on:
   pull_request:
