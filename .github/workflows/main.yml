@@ -33,8 +33,8 @@ jobs:
           name: coverage
           path: coverage
       - name: Show coverage in comments
-        uses: ArtiomTr/jest-coverage-report-action@v2
+        uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          test-script: npm test -- --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\"
+          test-script: npm run test:coverage
           threshold: 80
