@@ -32,7 +32,10 @@
   },
   "homepage": "https://rerurate514.github.io/fJutteS-Wiki/",
   "devDependencies": {
+    "@eslint/js": "^9.21.0",
     "@rollup/plugin-terser": "^0.4.4",
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0",
     "rollup": "^4.32.1"
   }
 }
