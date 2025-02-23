@@ -40,5 +40,6 @@ jobs:
         uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          annotations: none
           test-script: npm run test:coverage
           threshold: 60
