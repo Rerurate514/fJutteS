@@ -1,6 +1,6 @@
 {
   "name": "fjuttes",
-  "version": "2.5.0",
+  "version": "2.5.0alpha0.0.1",
   "description": "THIS IS PURE JS FRAMEWORK",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -25,12 +25,12 @@
   "keywords": [
     "fJutteS"
   ],
-  "author": "",
+  "author": "Rerurate_514",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Rerurate514/fJutteS/issues"
   },
-  "homepage": "https://github.com/Rerurate514/fJutteS#readme",
+  "homepage": "https://rerurate514.github.io/fJutteS-Wiki/",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "rollup": "^4.32.1"
