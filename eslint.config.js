@@ -8,7 +8,13 @@ export default [
     ignores: ['dist'], // 無視するファイル・ディレクトリ
   },
   {
-    languageOptions: { globals: globals.browser }
+    languageOptions: { 
+      globals: {
+        ...globals.browser,
+        ...globals.jest
+      },
+    }
   },
+  
   pluginJs.configs.recommended,
 ];
