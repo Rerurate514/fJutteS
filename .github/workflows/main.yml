@@ -17,12 +17,12 @@ jobs:
           cache: 'npm'
       - name: npm install
         run: npm install
-      - name: eslint review
-        uses: reviewdog/action-eslint@v1.33.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review
-          eslint_flags: './**/*.{js}'
+      # - name: eslint review
+      #   uses: reviewdog/action-eslint@v1.33.0
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     reporter: github-pr-review
+      #     eslint_flags: './**/*.{js}'
       - name: Run eslint
         run: npm lint
       - name: Run Jest
