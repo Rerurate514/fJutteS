@@ -43,6 +43,7 @@ export { Shrink } from './components/shrink.js';
 export { Grid } from './components/Grid.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
+export { RelativePositions } from './enums/relativePositions.js';
 export { TextCSS } from './enums/textCSS.js';
 export { FontCSS } from './enums/fontCSS.js';
 export { BaseCSS } from './enums/baseCSS.js';
