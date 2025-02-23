@@ -4,7 +4,7 @@ export class LimitedProviderScope extends ProviderScope {
     constructor({
         props = {}, 
         watchingProviders = [],
-        build = (value) => {
+        build = () => {
             return undefined;
         }
     }) {
