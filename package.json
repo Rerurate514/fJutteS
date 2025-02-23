@@ -15,7 +15,7 @@
   ],
   "scripts": {
     "build": "rollup -c",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "npm run test -- --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\""
   },
