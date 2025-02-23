@@ -4,7 +4,7 @@ For state management, `fJutteS` uses its own library called `Jiperes` that's bee
 - latest version -> fjuttes@2.4.0
 - 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md
 
-<h2>OFFICIAL WIKI : https://rerurate514.github.io/fJutteS-Wiki/</h1>
+<h6>OFFICIAL WIKI : https://rerurate514.github.io/fJutteS-Wiki/</h6>
 
 <div align="center">
 	</br>
