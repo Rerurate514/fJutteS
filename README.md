@@ -6,6 +6,18 @@ For state management, `fJutteS` uses its own library called `Jiperes` that's bee
 
 <h6>OFFICIAL WIKI : https://rerurate514.github.io/fJutteS-Wiki/</h6>
 
+![NPM Version](https://img.shields.io/npm/v/fjuttes)
+![NPM Unpacked Size : mjs and js](https://img.shields.io/npm/unpacked-size/fjuttes)
+![NPM Last Update](https://img.shields.io/npm/last-update/fjuttes)
+![NPM Downloads](https://img.shields.io/npm/dw/fjuttes)
+![NPM License](https://img.shields.io/npm/l/fjuttes)
+![npm package minimized gzipped size](https://img.shields.io/bundlejs/size/fjuttes)
+![GitHub repo size](https://img.shields.io/github/repo-size/rerurate514/fjuttes)
+![GitHub branch status](https://img.shields.io/github/checks-status/rerurate514/fjuttes/develop)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/rerurate514/fjuttes)
+![GitHub last commit](https://img.shields.io/github/last-commit/rerurate514/fjuttes)
+![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Frerurate)
+
 <div align="center">
 	</br>
 	</br>
