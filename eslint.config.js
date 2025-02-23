@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import globals from "globals";
 import pluginJs from "@eslint/js";
 
