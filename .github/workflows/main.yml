@@ -8,6 +8,10 @@ jobs:
   build:
     name: build
     runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
+      contents: write
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js
