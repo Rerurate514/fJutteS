@@ -36,5 +36,5 @@ jobs:
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          test-script: npm run test -- --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\"
+          test-script: npm test -- --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\"
           threshold: 80
