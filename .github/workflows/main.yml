@@ -1,7 +1,5 @@
-# アクション名
 name: CI
 
-# タイミングを指定
 on:
   pull_request:
     branches: [ develop ]
@@ -11,11 +9,16 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1 
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+          cache: 'yarn'
       - name: yarn install
         run: yarn install
       - name: eslint review
-        uses: reviewdog/action-eslint@v1
+        uses: reviewdog/action-eslint@v1.23.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
@@ -25,12 +28,12 @@ jobs:
       - name: Run Jest
         run: yarn jest
       - name: Upload test coverage artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: coverage
       - name: Show coverage in comments
-        uses: ziishaned/jest-reporter-action@v0.0.1
+        uses: ArtiomTr/jest-coverage-report-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          test-command: "yarn jest --coverage"
+          test-script: yarn jest --coverage
