@@ -5,6 +5,20 @@ HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境
 そして、状態管理に`fJutteS`に最適化された自己ライブラリ`Jiperes`を採用しており、状態管理ライブラリを選定する必要はもうありません。しかし、それと引き換えにsetState、useStateを失っています。これはウィジェット単体で状態を変更することはできないことを意味しています。これも一つの設計思想として捉えてもらえると幸いです。  
 - 現行バージョン -> fjuttes@2.4.0
 
+<h6>公式サイト : https://rerurate514.github.io/fJutteS-Wiki/</h6>
+
+![NPM Version](https://img.shields.io/npm/v/fjuttes)
+![NPM Unpacked Size : mjs and js](https://img.shields.io/npm/unpacked-size/fjuttes)
+![NPM Last Update](https://img.shields.io/npm/last-update/fjuttes)
+![NPM Downloads](https://img.shields.io/npm/dw/fjuttes)
+![NPM License](https://img.shields.io/npm/l/fjuttes)
+![npm package minimized gzipped size](https://img.shields.io/bundlejs/size/fjuttes)
+![GitHub repo size](https://img.shields.io/github/repo-size/rerurate514/fjuttes)
+![GitHub branch status](https://img.shields.io/github/checks-status/rerurate514/fjuttes/develop)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/rerurate514/fjuttes)
+![GitHub last commit](https://img.shields.io/github/last-commit/rerurate514/fjuttes)
+![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Frerurate)
+
 <div align="center">
 	</br>
 	</br>
@@ -435,21 +449,23 @@ class ProviderExample extends ProviderScope {
                 padding: "15px",
                 background: "wheat",
                 elevation: ShadowLevel.LVL5,
-                child: new Column([
-                    new ElevatedButton({
-                        child: new Text("CLICK!"),
-                        baseCSS: new BaseCSS({
-                            height: "32px",
+                child: new Column({
+                    children: [
+                        new ElevatedButton({
+                            child: new Text("CLICK!"),
+                            baseCSS: new BaseCSS({
+                                height: "32px",
+                            }),
+                            onClick: () => {
+                                counter.update((value) => {
+                                    return value + 1;
+                                })
+                            }
                         }),
-                        onClick: () => {
-                            counter.update((value) => {
-                                return value + 1;
-                            })
-                        }
-                    }),
-                    new SpaceBox({height: "16px"}),
-                    new Text("click count : " + counter.read()),
-                ]),
+                        new SpaceBox({height: "16px"}),
+                        new Text("click count : " + counter.read()),
+                    ]
+                }),
             })
         );
     }
@@ -544,7 +560,7 @@ class ProviderExample extends View {
                 new LimitedProviderScope({
                     watchingProviders: [ counter ],
                     build: (providerValue) => {
-                        return new Text("click count : " + providerValue);
+                        return new Text("click count : " + providerValue[0]);
                     }
                 })
             ]
@@ -557,7 +573,7 @@ assembleView(
     new ProviderExample()
 );
 ```
-通常の`ProviderScope`を継承したやり方では、この`ProviderExample`ウィジェット全体が再描画されてしまいます。しかし、この`LimitedProviderScope`を使用したやり方では`Text`コンポーネントのみが再描画されます。この`build`関数オブジェクトの引数ですが、`provider`を`watchingProviders`で格納した順番でそれぞれの`Provider`の値が格納された配列が返されます。要素数が一つならindexを指定しなくても大丈夫です。
+通常の`ProviderScope`を継承したやり方では、この`ProviderExample`ウィジェット全体が再描画されてしまいます。しかし、この`LimitedProviderScope`を使用したやり方では`Text`コンポーネントのみが再描画されます。この`build`関数オブジェクトの引数ですが、`provider`を`watchingProviders`で格納した順番でそれぞれの`Provider`の値が格納された配列が返されます。
 
 #### ProviderObserverによる値の変更確認
 `Jiperes`には`ProviderObserver`という`Provider`の値の変更履歴や依存関係を記録するクラスが実装されています。

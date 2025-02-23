@@ -2,7 +2,21 @@
 `fJutteS` is a declarative component UI framework built purely with JavaScript. It's the perfect framework when you want to do Flutter-like component-based programming in specialized environments where only HTML, CSS, and JavaScript files are allowed (environments where you can't use React or Vue). While `fJutteS` comes with various pre-built components, these are ultimately just widgets that I created, and users can freely create their own widgets - after all, it's just JavaScript!
 For state management, `fJutteS` uses its own library called `Jiperes` that's been optimized specifically for the framework, eliminating the need to choose a state management library. However, this comes with a trade-off: the loss of setState and useState. This means that individual widgets cannot modify their state independently. We hope you'll understand this as one of our core design philosophies.
 - latest version -> fjuttes@2.4.0
-- 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md  
+- 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md
+
+<h6>OFFICIAL WIKI : https://rerurate514.github.io/fJutteS-Wiki/</h6>
+
+![NPM Version](https://img.shields.io/npm/v/fjuttes)
+![NPM Unpacked Size : mjs and js](https://img.shields.io/npm/unpacked-size/fjuttes)
+![NPM Last Update](https://img.shields.io/npm/last-update/fjuttes)
+![NPM Downloads](https://img.shields.io/npm/dw/fjuttes)
+![NPM License](https://img.shields.io/npm/l/fjuttes)
+![npm package minimized gzipped size](https://img.shields.io/bundlejs/size/fjuttes)
+![GitHub repo size](https://img.shields.io/github/repo-size/rerurate514/fjuttes)
+![GitHub branch status](https://img.shields.io/github/checks-status/rerurate514/fjuttes/develop)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/rerurate514/fjuttes)
+![GitHub last commit](https://img.shields.io/github/last-commit/rerurate514/fjuttes)
+![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Frerurate)
 
 <div align="center">
 	</br>
@@ -438,20 +452,20 @@ class ProviderExample extends ProviderScope {
                 elevation: ShadowLevel.LVL5,
                 child: new Column({
                     children: [
-                    new ElevatedButton({
-                        child: new Text("CLICK!"),
-                        baseCSS: new BaseCSS({
-                            height: "32px",
+                        new ElevatedButton({
+                            child: new Text("CLICK!"),
+                            baseCSS: new BaseCSS({
+                                height: "32px",
+                            }),
+                            onClick: () => {
+                                counter.update((value) => {
+                                    return value + 1;
+                                })
+                            }
                         }),
-                        onClick: () => {
-                            counter.update((value) => {
-                                return value + 1;
-                            })
-                        }
-                    }),
-                    new SpaceBox({height: "16px"}),
-                    new Text("click count : " + counter.read()),
-                ]
+                        new SpaceBox({height: "16px"}),
+                        new Text("click count : " + counter.read()),
+                    ]
                 }),
             })
         );
@@ -529,7 +543,8 @@ class ProviderExample extends View {
 
     build(){
         return new Center(
-            new Column([
+            new Column({
+                children: [
                 new ElevatedButton({
                     child: new Text("CLICK!"),
                     baseCSS: new BaseCSS({
@@ -545,10 +560,11 @@ class ProviderExample extends View {
                 new LimitedProviderScope({
                     watchingProviders: [ counter ],
                     build: (providerValue) => {
-                        return new Text("click count : " + providerValue);
+                        return new Text("click count : " + providerValue[0]);
                     }
                 })
-            ]),
+            ]
+            }),
         );
     }
 }
@@ -558,7 +574,7 @@ assembleView(
 );
 ```
 
-With the traditional approach of inheriting from `ProviderScope`, the entire `ProviderExample` widget would be re-rendered. However, using `LimitedProviderScope`, only the `Text` component gets re-rendered. Regarding the `build` function object's arguments, they are provided as an array containing the values of each Provider in the same order as they were stored in `watchingProviders`. If there's only one element, you don't need to specify an index.
+With the traditional approach of inheriting from `ProviderScope`, the entire `ProviderExample` widget would be re-rendered. However, using `LimitedProviderScope`, only the `Text` component gets re-rendered. Regarding the `build` function object's arguments, they are provided as an array containing the values of each Provider in the same order as they were stored in `watchingProviders`.
 
 With this setup, `userProvider` automatically enters a listening state, and when the `age` in `userProvider` changes, it automatically updates the value in `userAgeProvider`. These changes can be monitored using either `watch` or `ProviderScope`.
 
