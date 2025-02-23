@@ -14,9 +14,9 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-          cache: 'yarn'
-      - name: yarn install
-        run: yarn install
+          cache: 'npm'
+      - name: npm install
+        run: npm install
       - name: eslint review
         uses: reviewdog/action-eslint@v1.33.0
         with:
@@ -24,9 +24,9 @@ jobs:
           reporter: github-pr-review
           eslint_flags: './**/*.{js}'
       - name: Run eslint
-        run: yarn lint
+        run: npm lint
       - name: Run Jest
-        run: yarn jest
+        run: npm jest
       - name: Upload test coverage artifact
         uses: actions/upload-artifact@v4
         with:
@@ -36,4 +36,4 @@ jobs:
         uses: ArtiomTr/jest-coverage-report-action@v2
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          test-script: yarn jest --coverage
+          test-script: npm jest --coverage
