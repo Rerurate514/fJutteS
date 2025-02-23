@@ -19,7 +19,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-          eslint_flags: './**/*.{vue,ts,js}'
+          eslint_flags: './**/*.{js}'
       - name: Run eslint
         run: yarn lint
       - name: Run Jest
