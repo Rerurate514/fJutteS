@@ -8,7 +8,7 @@ export class Chips extends View {
     constructor({
         text,
         background = null,
-        borderCSS = new Border()
+        borderCSS = new BorderCSS()
     }){
         super({
             text: text,
