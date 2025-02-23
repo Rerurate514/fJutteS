@@ -1,3 +1,4 @@
+import { IllegalPreBuildDoSomothingError } from "../errors/errors.js";
 import { View } from "../interface/view.js";
 import { Provider } from "../jiperes/provider.js";
 
@@ -12,7 +13,7 @@ export class DynamicProviderScope extends View {
     }
 
     createProvider(initialValue){
-        let provider = Provider.createProvider((ref) => {
+        let provider = Provider.createProvider(() => {
             return initialValue;
         });
 
