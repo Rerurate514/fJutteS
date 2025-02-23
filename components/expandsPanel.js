@@ -19,7 +19,7 @@ export class ExpandsPanel extends View {
         buttonShadowLevel = ShadowLevel.LVL3,
         panelItemBackGround = "white",
     }){
-        const isExpands = Provider.createProvider((ref) => {
+        const isExpands = Provider.createProvider(() => {
             return false;
         }, "ExpandsPanel_isExpands");
         
