@@ -64,8 +64,8 @@ describe('Clickable', () => {
 
         describe('build', () => {
             test('子要素を返す', () => {
-                const boxWithChild = new Clickable({ child: moc });
-                expect(boxWithChild.build()).toBe(moc);
+                const clickableWithChild = new Clickable({ child: moc });
+                expect(clickableWithChild.build()).toBe(moc);
             });
         });
     });

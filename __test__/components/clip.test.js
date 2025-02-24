@@ -67,8 +67,8 @@ describe('Clip', () => {
 
     describe('build', () => {
         test('子要素を返す', () => {
-            const boxWithChild = new Clip({ child: moc });
-            expect(boxWithChild.build()).toBe(moc);
+            const clipWithChild = new Clip({ child: moc });
+            expect(clipWithChild.build()).toBe(moc);
         });
     });
 });
