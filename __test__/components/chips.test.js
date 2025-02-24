@@ -2,7 +2,7 @@ import { Card } from '../../components/card.js';
 import { Chips } from '../../components/chips.js';
 import { Text } from '../../components/text.js';
 import { BorderCSS } from '../../models/borderCSS.js';
-import { extendsWithoutId } from '../testScripts/matcherWithoutID.js';
+import { extendsWithoutId } from '../testScripts/matcherWithoutId.js';
 
 describe('chips', () => {
   let chips;

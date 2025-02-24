@@ -2,7 +2,7 @@ import { Card } from '../../components/card.js';
 import { ShadowLevel } from '../../enums/shadowLevel.js';
 import { BaseCSS } from '../../enums/baseCSS.js';
 import { WebkitCSS } from '../../enums/webkitCSS.js';
-import { Moc } from "../mocs/moc.js";
+import { Moc } from "../testScripts/moc.js";
 
 describe('Card', () => {
   let card;
