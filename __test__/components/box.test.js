@@ -1,7 +1,7 @@
 import { Box } from '../../components/box.js';
 import { BorderCSS } from '../../models/borderCSS.js';
 import { WebkitCSS } from '../../enums/webkitCSS.js';
-import { Moc } from "../mocs/moc.js";
+import { Moc } from "../testScripts/moc.js";
 
 jest.mock('../../models/borderCSS', () => ({
   BorderCSS: jest.fn().mockImplementation(() => ({
