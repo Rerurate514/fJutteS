@@ -1,7 +1,7 @@
 import { View } from "../../interface/view.js";
 
 
-export class Box extends View {
+export class Moc extends View {
     constructor(){
         super();
     }
