@@ -2,7 +2,7 @@ import { Card } from '../../components/card.js';
 import { Chips } from '../../components/chips.js';
 import { Text } from '../../components/text.js';
 import { BorderCSS } from '../../models/borderCSS.js';
-import { extendsWithptuId } from '../testScripts/matcherWithoutID.js';
+import { extendsWithoutId } from '../testScripts/matcherWithoutID.js';
 
 describe('chips', () => {
   let chips;
@@ -14,7 +14,7 @@ describe('chips', () => {
       borderCSS: new BorderCSS(),
     });
 
-		extendsWithptuId();
+		extendsWithoutId();
   });
 
   describe('constructor', () => {

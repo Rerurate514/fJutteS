@@ -1,4 +1,4 @@
-export function extendsWithptuId() {
+export function extendsWithoutId() {
     expect.extend({
         toMatchWithoutIds(received, expected) {
             const receivedWithoutIds = JSON.parse(JSON.stringify(received, (key, value) =>
