@@ -1,7 +1,7 @@
 import { Box } from '../../components/box.js';
-import { Text } from '../../components/text.js';
 import { BorderCSS } from '../../models/borderCSS.js';
 import { WebkitCSS } from '../../enums/webkitCSS.js';
+import { Moc } from "../mocs/moc.js";
 
 jest.mock('../../models/borderCSS', () => ({
   BorderCSS: jest.fn().mockImplementation(() => ({
@@ -86,7 +86,7 @@ describe('Box', () => {
 
   describe('build', () => {
     test('子要素を返す', () => {
-      const text = new Text("test");
+      const text = new Moc();
       const boxWithChild = new Box({ child: text });
       expect(boxWithChild.build()).toBe(text);
     });

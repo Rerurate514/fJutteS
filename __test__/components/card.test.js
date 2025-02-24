@@ -2,14 +2,14 @@ import { Card } from '../../components/card.js';
 import { ShadowLevel } from '../../enums/shadowLevel.js';
 import { BaseCSS } from '../../enums/baseCSS.js';
 import { WebkitCSS } from '../../enums/webkitCSS.js';
-import { Text } from '../../components/text.js';
+import { Moc } from "../mocs/moc.js";
 
 describe('Card', () => {
   let card;
   
   beforeEach(() => {
     card = new Card({
-      child: new Text("test"),
+      child: new Moc(),
       radius: '4px',
       baseCSS: new BaseCSS(),
       background: 'rgb(255, 255, 255)',
@@ -21,7 +21,7 @@ describe('Card', () => {
   describe('constructor', () => {
     test('デフォルト値で初期化できる', () => {
       const card = new Card({
-        child: new Text("test")
+        child: new Moc()
       });
       expect(card.props.radius).toBe('inherit');
       expect(card.props.background).toBeNull();
@@ -30,7 +30,7 @@ describe('Card', () => {
 
     test('カスタム値で初期化できる', () => {
       const card = new Card({
-        child: new Text("test"),
+        child: new Moc(),
         radius: '8px',
         background: 'rgb(0, 0, 0)',
         elevation: ShadowLevel.LVL1
@@ -65,7 +65,7 @@ describe('Card', () => {
 
     test('背景色がnullの場合でもエラーにならない', () => {
       const cardWithoutBackground = new Card({
-        child: new Text("test"),
+        child: new Moc(),
         radius: '4px'
       });
       const element = document.createElement('div');;
@@ -76,7 +76,7 @@ describe('Card', () => {
 
   describe('build', () => {
     test('子要素を返す', () => {
-      const child = new Text("test");
+      const child = new Moc();
       const cardWithChild = new Card({ child });
       expect(cardWithChild.build()).toBe(child);
     });
