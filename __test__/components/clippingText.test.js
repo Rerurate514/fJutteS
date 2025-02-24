@@ -14,7 +14,7 @@ jest.mock('../../enums/webkitCSS', () => ({
     }))
 }));
 
-describe('Box', () => {
+describe('ClippingText', () => {
         let clipping;
         let moc;
     
