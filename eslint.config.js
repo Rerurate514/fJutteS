@@ -1,10 +1,10 @@
 /* eslint-disable */
 
-const globals = require("globals");
-const pluginJs = require("@eslint/js");
+import globals from "globals";
+import pluginJs from "@eslint/js";
 
 /** @type {import('eslint').Linter.Config[]} */
-module.exports = [
+export default [
   {
     ignores: ['dist'] // 無視するファイル・ディレクトリ
   },
