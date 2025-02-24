@@ -1,5 +1,5 @@
 import { Center, _Center } from "../../components/center.js";
-import { Moc } from "../mocs/moc.js";
+import { Moc } from "../testScripts/moc.js";
 
 describe('Center', () => {
   let center;
