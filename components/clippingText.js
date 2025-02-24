@@ -1,9 +1,13 @@
 import { View } from "../interface/view.js";
 
 export class ClippingText extends View {
-  constructor(child){
+  constructor({
+    child,
+    background = null
+  }){
     super({
-      child: child
+      child: child,
+      background: background
     });
   }
 
@@ -16,6 +20,8 @@ export class ClippingText extends View {
     element.style.height = "100%";
 
     element.style.webkitBackgroundClip = "text";
+
+    if(this.props.background) element.style.background = this.props.background;
 
     return element;
   }
