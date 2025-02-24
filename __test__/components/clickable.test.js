@@ -15,13 +15,13 @@ describe('Clickable', () => {
     let moc;
 
     beforeEach(() => {
+        moc = new Moc();
+
         clickable = new Clickable({
-            child: new Moc(),
+            child: moc,
             baseCSS: new BaseCSS(),
             onClick: () => { }
         });
-
-        moc = new Moc();
 
         extendsWithoutId();
     });
