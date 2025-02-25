@@ -169,7 +169,7 @@ export class View {
      * この関数はオーバーライド不可で、dispose時に処理が必要な場合はonDiseposeを使用してください。
      */
     _dispose() {
-        this.child._dispose();
+        if(this.child) this.child._dispose();
         this.onDispose();
     }
 
@@ -178,7 +178,7 @@ export class View {
     }
     
     _rendered(){
-        this.child._rendered();
+        if(this.child) this.child._rendered();
         this.onRendered();
     }
 
