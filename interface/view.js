@@ -173,6 +173,15 @@ export class View {
         this.onDispose();
     }
 
+    onRendered(){
+
+    }
+    
+    _rendered(){
+        this.child._rendered();
+        this.onRendered();
+    }
+
     rebuild({
         props = null, 
         builtView = null

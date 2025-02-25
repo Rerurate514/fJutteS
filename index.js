@@ -5,6 +5,8 @@ export function assembleView(viewArg, idName = "fJutteS-Container") {
     if(container != null) container.appendChild(element);
     viewArg.addPseudoElement();
 
+    viewArg._rendered();
+
     return element;
 }
 
