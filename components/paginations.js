@@ -3,7 +3,7 @@ import { View } from "../interface/view.js";
 import { Provider } from "../jiperes/provider.js";
 import { LimitedProviderScope } from "./limitedProviderScope.js";
 
-export class Pagination extends View {
+export class Paginations extends View {
     constructor({ 
         totalPages,
         currentPageIndex = 1,
