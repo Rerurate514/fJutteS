@@ -1,8 +1,8 @@
-import { View } from './View';
-import { generateUUID } from '../utils/generateUUID';
+import { View } from '../../interface/view.js';
+import { generateUUID } from '../../utils/generateUUID';
 
 // モックのクリア
-jest.mock('../utils/generateUUID.js');
+jest.mock('../../utils/generateUUID.js');
 
 describe('View Class', () => {
   let view;
