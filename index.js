@@ -44,6 +44,10 @@ export { ExpandsPanel } from './components/expandsPanel.js';
 export { Shrink } from './components/shrink.js';
 export { Grid } from './components/Grid.js';
 export { RelativePosition } from './components/relativePosition.js';
+export { Slider } from './components/slider.js';
+export { Transform } from './components/transform.js';
+export { Accordion } from './components/accordion.js';
+export { Paginations } from './components/paginations.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { RelativePositions } from './enums/relativePositions.js';
