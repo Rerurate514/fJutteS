@@ -1,6 +1,5 @@
 import { View } from '../../interface/view.js';
 
-// モックのクリア
 jest.mock('../../utils/generateUUID.js');
 
 describe('View Class', () => {
@@ -17,7 +16,6 @@ describe('View Class', () => {
 	let mockOnRendered;
 
 	beforeEach(() => {
-		// モック関数の設定
 		mockCreateWrapView = jest.fn(() => document.createElement('div'));
 		mockStyledView = jest.fn((element) => element);
 		mockEmbedScriptToView = jest.fn((element) => element);
@@ -29,7 +27,6 @@ describe('View Class', () => {
 		mockOnDispose = jest.fn();
 		mockOnRendered = jest.fn();
 
-		// Viewクラスの拡張
 		class TestView extends View {
 			constructor(props) {
 				super(props);
