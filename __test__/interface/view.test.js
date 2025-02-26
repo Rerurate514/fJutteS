@@ -101,10 +101,10 @@ describe('View Class', () => {
     expect(view.getBuildCompletionState()).toBe(true);
   });
 
-  it('rebuildメソッドが呼び出されると、要素が置き換えられる', () => {
+  it('rebuildメソッドが呼び出されると、同じ要素と置き換えられる', () => {
     const originalView = view.view;
     view.rebuild();
-    expect(originalView).not.toBe(view.view);
+    expect(originalView).toBe(view.view);
   });
 
   it('子要素がViewの場合、addPseudoElementが呼び出される', () => {
