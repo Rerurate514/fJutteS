@@ -1,5 +1,4 @@
 import { View } from '../../interface/view.js';
-import { generateUUID } from '../../utils/generateUUID';
 
 // モックのクリア
 jest.mock('../../utils/generateUUID.js');
