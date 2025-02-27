@@ -1,9 +1,10 @@
 {
   "name": "fjuttes",
-  "version": "2.6.0alpha0.0.1",
+  "version": "2.6.0alpha0.0.2",
   "description": "THIS IS PURE JS FRAMEWORK",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
+  "type": "module",
   "exports": {
     ".": {
       "import": "./dist/index.mjs",
@@ -14,7 +15,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c --bundleConfigAsCjs",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "npm run test -- --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\""
