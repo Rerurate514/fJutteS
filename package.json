@@ -1,6 +1,6 @@
 {
   "name": "fjuttes",
-  "version": "2.5.0",
+  "version": "2.6.0alpha0.0.2",
   "description": "THIS IS PURE JS FRAMEWORK",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -15,9 +15,19 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c --bundleConfigAsCjs",
     "test": "jest",
+    "test:watch": "jest --watch",
     "test:coverage": "npm run test -- --coverage --silent --testLocationInResults --ci --json --outputFile=\"report.json\""
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testEnvironment": "jest-environment-jsdom",
+    "transform": {
+      "^.+\\.js$": "babel-jest"
+    }
   },
   "repository": {
     "type": "git",
@@ -26,14 +36,22 @@
   "keywords": [
     "fJutteS"
   ],
-  "author": "",
+  "author": "Rerurate_514",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Rerurate514/fJutteS/issues"
   },
-  "homepage": "https://github.com/Rerurate514/fJutteS#readme",
+  "homepage": "https://rerurate514.github.io/fJutteS-Wiki/",
   "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "@eslint/js": "^9.21.0",
     "@rollup/plugin-terser": "^0.4.4",
+    "babel-jest": "^29.7.0",
+    "eslint": "^9.21.0",
+    "globals": "^16.0.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "rollup": "^4.32.1"
   }
 }

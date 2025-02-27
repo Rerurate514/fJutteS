@@ -169,8 +169,17 @@ export class View {
      * この関数はオーバーライド不可で、dispose時に処理が必要な場合はonDiseposeを使用してください。
      */
     _dispose() {
-        this.child._dispose();
+        if(this.child) this.child._dispose();
         this.onDispose();
+    }
+
+    onRendered(){
+
+    }
+    
+    _rendered(){
+        if(this.child) this.child._rendered();
+        this.onRendered();
     }
 
     rebuild({
@@ -207,7 +216,7 @@ export class View {
 
     _inputSingleView(child, embededView) {
         this.view = embededView;
-        if (child) this.view.appendChild(child.view);
+        if (child instanceof View) this.view.appendChild(child.view);
     }
 
     _inputMultiView(child, embededView) {

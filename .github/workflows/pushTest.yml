@@ -1,8 +1,7 @@
-name: CI-eslint-jest
+name: push-jestest
 
 on:
-  pull_request:
-    branches: [ develop ]
+  push:
 
 jobs:
   build:
@@ -21,12 +20,6 @@ jobs:
           cache: 'npm'
       - name: npm install
         run: npm install
-      # - name: eslint review
-      #   uses: reviewdog/action-eslint@v1.33.0
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     reporter: github-pr-review
-      #     eslint_flags: './**/*.{js}'
       - name: Run eslint
         run: npx eslint
       - name: Run Jest
@@ -36,10 +29,3 @@ jobs:
         with:
           name: coverage
           path: coverage
-      - name: Show coverage in comments
-        uses: ArtiomTr/jest-coverage-report-action@v2.0-rc.6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          annotations: none
-          test-script: npm run test:coverage
-          threshold: 60
