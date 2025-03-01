@@ -42,6 +42,8 @@ export class ProviderObserver {
             stackTrace: this._getStackTrace()
         };
 
+        console.log(truncatedNewValue)
+
         this.updateHistory.push(record);
         this.log(`Update: ${record.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(truncatedNewValue)}`);
     }
