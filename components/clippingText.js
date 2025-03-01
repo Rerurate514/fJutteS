@@ -6,8 +6,8 @@ export class ClippingText extends View {
     background = null
   }){
     super({
-      child: child,
-      background: background
+      child,
+      background
     });
   }
 

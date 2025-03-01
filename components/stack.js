@@ -7,8 +7,8 @@ export class Stack extends View {
         baseCSS = new BaseCSS()
     }){
         super({
-            children: children,
-            baseCSS: baseCSS
+            children,
+            baseCSS
         });
     }    
 

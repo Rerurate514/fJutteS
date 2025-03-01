@@ -14,15 +14,15 @@ export class Slider extends View {
         baseCSS = new BaseCSS()
     } = {}){
         super({
-            providers: provider,
-            min: min,
-            max: max,
-            value: value,
-            step: step,
-            name: name,
-            onChange: onChange,
-            isDisplay: isDisplay,
-            baseCSS: baseCSS
+            provider,
+            min,
+            max,
+            value,
+            step,
+            name,
+            onChange,
+            isDisplay,
+            baseCSS
         });
     }
 

@@ -26,7 +26,7 @@ export class Margin extends View {
         validateMargin(left, 'left');
 
         super({
-            child: child,
+            child,
             margin: {
                 top,
                 right,

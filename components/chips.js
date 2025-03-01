@@ -11,9 +11,9 @@ export class Chips extends View {
         borderCSS = new BorderCSS()
     }){
         super({
-            text: text,
-            background: background,
-            borderCSS: borderCSS
+            text,
+            background,
+            borderCSS
         });
     }
 

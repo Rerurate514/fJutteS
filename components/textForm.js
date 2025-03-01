@@ -13,14 +13,14 @@ export class TextForm extends View {
         baseCSS = new BaseCSS(),
     }){
         super({
-            provider: provider,
-            minLength: minLength,
-            maxLength: maxLength,
-            value: value,
-            placeholder: placeholder,
+            provider,
+            minLength,
+            maxLength,
+            value,
+            placeholder,
             required: required,
-            pattern: pattern,
-            baseCSS: baseCSS
+            pattern,
+            baseCSS
         });
     }
 

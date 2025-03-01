@@ -24,12 +24,12 @@ export class ExpandsPanel extends View {
         }, "ExpandsPanel_isExpands");
         
         super({
-            titleItem: titleItem,
-            child: child,
-            panelItemBackGround: panelItemBackGround,
-            radius: radius,
-            buttonShadowLevel: buttonShadowLevel,
-            isExpands: isExpands
+            titleItem,
+            child,
+            panelItemBackGround,
+            radius,
+            buttonShadowLevel,
+            isExpands
         });
     }
 

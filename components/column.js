@@ -8,9 +8,9 @@ export class Column extends View {
         isHorizontalCenter = false
     }){
         super({
-            children: children,
-            baseCSS: baseCSS,
-            isHorizontalCenter: isHorizontalCenter
+            children,
+            baseCSS,
+            isHorizontalCenter
         });
     }
 

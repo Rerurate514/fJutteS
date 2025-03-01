@@ -8,9 +8,9 @@ export class DropDownMenu extends View {
         provider
     }){
         super({
-            item: item,
-            baseCSS: baseCSS,
-            provider: provider
+            item,
+            baseCSS,
+            provider
         });
     }
 

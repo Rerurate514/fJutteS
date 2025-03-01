@@ -9,10 +9,10 @@ export class Hover extends View {
         onClickEffect = false
     }){
         super({
-            child: child,
-            radius: radius,
-            shadow: shadow,
-            onClickEffect: onClickEffect
+            child,
+            radius,
+            shadow,
+            onClickEffect
         });
     }
 
@@ -47,10 +47,10 @@ class _Hover extends View {
         onClickEffect = false
     }){
         super({
-            child: child,
-            radius: radius,
-            shadow: shadow,
-            onClickEffect: onClickEffect
+            child,
+            radius,
+            shadow,
+            onClickEffect
         });
     }
 

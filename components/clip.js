@@ -7,8 +7,8 @@ export class Clip extends View {
         baseCSS = new BaseCSS()
     }){
         super({
-            child: child,
-            baseCSS: baseCSS
+            child,
+            baseCSS
         });
     }
 

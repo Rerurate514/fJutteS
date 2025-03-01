@@ -12,12 +12,12 @@ export class Box extends View {
         child = null
     }){
         super({
-            width: width, 
-            height: height,
-            background: background,
-            borderCSS: borderCSS,
-            webkitCSS: webkitCSS,
-            child: child
+            width, 
+            height,
+            background,
+            borderCSS,
+            webkitCSS,
+            child
         });
     }
 

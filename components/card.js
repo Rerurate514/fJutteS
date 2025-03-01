@@ -24,12 +24,12 @@ export class Card extends View {
         }
 
         super({
-            child: child,
-            radius: radius, 
-            baseCSS: baseCSS,
-            background: background,
-            elevation: elevation,
-            webkitCSS: webkitCSS
+            child,
+            radius, 
+            baseCSS,
+            background,
+            elevation,
+            webkitCSS
         });
     }
 

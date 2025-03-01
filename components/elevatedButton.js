@@ -11,10 +11,10 @@ export class ElevatedButton extends View {
         onClick: onClick = () => {},
     }){
         super({
-            child: child,
-            radius: radius,
-            baseCSS: baseCSS,
-            onClick: onClick
+            child,
+            radius,
+            baseCSS,
+            onClick
         });
     }
 

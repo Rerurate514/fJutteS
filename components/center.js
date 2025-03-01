@@ -2,7 +2,7 @@ import { View } from "../interface/view.js";
 
 export class Center extends View {
     constructor(child){
-        super({child: child});
+        super({child});
     }
 
     createWrapView(){
@@ -32,7 +32,7 @@ export class Center extends View {
 
 export class _Center extends View {
     constructor(child){
-        super({child: child});
+        super({child});
     }
 
     createWrapView(){

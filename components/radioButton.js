@@ -12,11 +12,11 @@ export class RadioButton extends ProviderScope {
         super({
             watchingProviders: providers ?? [],
             props : {
-                labelText: labelText,
-                name: name,
-                checkedRadioButton: checkedRadioButton,
-                isDisplay : isDisplay,
-                isChecked : isChecked
+                labelText,
+                name,
+                checkedRadioButton,
+                isDisplay,
+                isChecked
             },
         });
     }

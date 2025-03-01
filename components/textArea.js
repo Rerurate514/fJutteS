@@ -16,17 +16,17 @@ export class TextArea extends View {
         baseCSS = new BaseCSS(),
     }) {
         super({
-            provider: provider,
-            value: value,
-            placeholder: placeholder,
-            maxLength: maxLength,
-            rows: rows,
-            cols: cols,
-            wrap: wrap,
-            spellcheck: spellcheck,
-            readonly: readonly,
-            disabled: disabled,
-            baseCSS: baseCSS
+            provider,
+            value,
+            placeholder,
+            maxLength,
+            rows,
+            cols,
+            wrap,
+            spellcheck,
+            readonly,
+            disabled,
+            baseCSS
         });
     }
 

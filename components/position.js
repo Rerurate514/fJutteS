@@ -6,7 +6,11 @@ export class Position extends View {
         top = 0, 
         left = 0
     }){
-        super({child: child, top: top, left: left});
+        super({
+            child,
+            top, 
+            left
+        });
     }
 
     createWrapView(){
@@ -33,7 +37,11 @@ export class Position extends View {
 
 class _PositionChild extends View {
     constructor({child, top = 0, left = 0}){
-        super({child: child, top: top, left: left});
+        super({
+            child, 
+            top, 
+            left
+        });
     }
 
     createWrapView(){

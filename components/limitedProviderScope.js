@@ -12,7 +12,7 @@ export class LimitedProviderScope extends ProviderScope {
         props.build = build;
 
         super({
-            props: props,
+            props,
             watchingProviders: props.providers
         });
     }

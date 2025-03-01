@@ -10,11 +10,11 @@ export class Scaffold extends View {
         floatingActionButton = null
     }){
         super({
-            child: child,
-            header: header,
-            footer: footer,
-            drawer: drawer,
-            floatingActionButton: floatingActionButton
+            child,
+            header,
+            footer,
+            drawer,
+            floatingActionButton
         });
     }
 

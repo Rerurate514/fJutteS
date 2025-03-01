@@ -8,10 +8,10 @@ export class Grid extends View {
         gap = "0px"
     }){
         super({
-            children: children,
-            minmaxPX: minmaxPX,
-            fraction: fraction,
-            gap: gap
+            children,
+            minmaxPX,
+            fraction,
+            gap
         });
     }
 

@@ -5,7 +5,7 @@ export class SpaceBox extends View {
         width = "0px", 
         height = "0px"
     } = {}){
-        super({width: width, height: height});
+        super({width, height});
     }
 
     createWrapView(){
