@@ -9,7 +9,7 @@ export class ProviderObserver {
         return ProviderObserver.instance;
     }
 
-    outLogs(isOutedLog = true){
+    outLogs(isOutedLog = true) {
         this._isOutedLog = isOutedLog;
     }
 
@@ -21,7 +21,7 @@ export class ProviderObserver {
         this.log(`Dependency added: ${this._getProviderInfo(childProvider)} depends on ${this._getProviderInfo(parentProvider)}`);
     }
 
-    deleteDependency(childProvider, parentProvider){
+    deleteDependency(childProvider, parentProvider) {
         if (this.dependencyGraph.has(childProvider)) {
             this.dependencyGraph.get(childProvider).delete(parentProvider);
         }
@@ -29,6 +29,17 @@ export class ProviderObserver {
     }
 
     logUpdate(provider, oldValue, newValue) {
+        if (newValue instanceof HTMLElement) {
+            newValue = JSON.stringify(newValue, (key, value) => {
+                if (key === 'id' || key === 'className' || key === 'data-view-class-name') {
+                    return value;
+                } else if (typeof value !== 'object') {
+                    return value;
+                }
+                return undefined;
+            });
+        }
+
         const record = {
             timestamp: new Date,
             provider: provider.name,
@@ -37,16 +48,11 @@ export class ProviderObserver {
             stackTrace: this._getStackTrace()
         };
 
-        
-
         this.updateHistory.push(record);
-        
-        try{
+
+        if (newValue)
+
             this.log(`Update: ${record.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(newValue)}`);
-        }
-        catch(e){
-            this.log(e);
-        }
     }
 
     getDependencyGraph() {
@@ -62,7 +68,7 @@ export class ProviderObserver {
     }
 
     getFilteredUpdateHistory(provider) {
-        return this.updateHistory.filter((history) => 
+        return this.updateHistory.filter((history) =>
             history.provider === this._getProviderInfo(provider)
         );
     }
@@ -77,7 +83,7 @@ export class ProviderObserver {
     }
 
     log(message) {
-        if(!this._isOutedLog) return;
+        if (!this._isOutedLog) return;
         console.log(`[ProviderObserver] ${message}`);
     }
 
