@@ -29,15 +29,21 @@ export class ProviderObserver {
     }
 
     logUpdate(provider, oldValue, newValue) {
-        const updateInfo = {
-            timestamp: new Date(),
+        const maxLength = 1000;
+        const truncatedNewValue = typeof newValue === 'string' && newValue.length > maxLength
+            ? newValue.substring(0, maxLength) + '... this value is substringed because too much big'
+            : newValue;
+
+        const record = {
+            timestamp: new Date,
             provider: provider.name,
-            oldValue,
-            newValue,
+            oldValue: oldValue,
+            newValue: truncatedNewValue,
             stackTrace: this._getStackTrace()
         };
-        this.updateHistory.push(updateInfo);
-        this.log(`Update: ${updateInfo.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(newValue)}`);
+
+        this.updateHistory.push(record);
+        this.log(`Update: ${record.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(truncatedNewValue)}`);
     }
 
     getDependencyGraph() {
