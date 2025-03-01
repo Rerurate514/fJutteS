@@ -42,7 +42,7 @@ export { FloatingActionButton } from './components/floatingActionButton.js';
 export { LimitedProviderScope } from './components/limitedProviderScope.js';
 export { ExpandsPanel } from './components/expandsPanel.js';
 export { Shrink } from './components/shrink.js';
-export { Grid } from './components/Grid.js';
+export { Grid } from './components/grid.js';
 export { RelativePosition } from './components/relativePosition.js';
 export { Slider } from './components/slider.js';
 export { Transform } from './components/transform.js';
