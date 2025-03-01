@@ -22,7 +22,7 @@ export class ProviderObserver {
     }
 
     deleteDependency(childProvider, parentProvider){
-        if (!this.dependencyGraph.has(childProvider)) {
+        if (this.dependencyGraph.has(childProvider)) {
             this.dependencyGraph.get(childProvider).delete(parentProvider);
         }
         this.log(`Dependency deleted: ${this._getProviderInfo(childProvider)} unsubscribed ${this._getProviderInfo(parentProvider)}`);
