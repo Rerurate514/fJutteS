@@ -3,47 +3,55 @@ import { Provider } from "../jiperes/provider.js";
 import { LimitedProviderScope } from "../components/limitedProviderScope.js";
 
 export class PageRouter extends View {
-    constructor({
-        pages = [],
-        onMoveNextPage = () => {},
-        onMovePreviousPage = () => {}
-    }){
-        const pageIndexProvider = Provider.createProvider(() => {
-            return 0;
-        });
+    constructor({ pages = [] }) {
+        const pageHistoryProvider = Provider.createProvider(() => [0]);
+        const currentPageIndexProvider = Provider.createProvider(() => 0);
 
-        super({
-            pages,
-            pageIndexProvider,
-            onMoveNextPage,
-            onMovePreviousPage
-        });
+        super({ pages, pageHistoryProvider, currentPageIndexProvider });
     }
 
-    createWrapView(){
+    createWrapView() {
         return document.createElement("div");
     }
 
-    build(){
-        if(this.props.pages.isEmpty()) return null;
+    build() {
+        if (this.props.pages.length === 0) return null;
 
         return new LimitedProviderScope({
-            watchingProviders: [ this.props.pageIndexProvider ],
+            watchingProviders: [this.props.currentPageIndexProvider],
             build: (index) => {
-                return this.props.pages[index];
+                return this.props.pages[index[0]];
             }
         });
     }
 
-    moveNextPage(){
-        this.props.pageIndexProvider.update((currentIndex) => {
-            return currentIndex++;
+    pushPage(pageIndex) {
+        this.props.pageHistoryProvider.update((history) => {
+            return [...history, pageIndex];
+        });
+        this.props.currentPageIndexProvider.update(() => pageIndex);
+    }
+
+    popPage() {
+        this.props.pageHistoryProvider.update((history) => {
+            if (history.length > 1) {
+                const newHistory = history.slice(0, -1);
+                this.props.currentPageIndexProvider.update(() => newHistory[newHistory.length - 1]);
+                return newHistory;
+            }
+            return history;
         });
     }
 
-    movePreviousPage(){
-        this.props.pageIndexProvider.update((currentIndex) => {
-            return currentIndex--;
+    replacePage(pageIndex) {
+        this.props.pageHistoryProvider.update((history) => {
+            const newHistory = [...history.slice(0, -1), pageIndex];
+            this.props.currentPageIndexProvider.update(() => pageIndex);
+            return newHistory;
         });
+    }
+
+    canPop() {
+        return this.props.pageHistoryProvider.read().length > 1;
     }
 }
