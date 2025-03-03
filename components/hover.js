@@ -1,5 +1,7 @@
+import { BaseCSS } from "../enums/baseCSS.js";
 import { ShadowLevel } from "../enums/shadowLevel.js";
 import { View } from "../interface/view.js";
+import { BorderCSS } from "../models/borderCSS.js";
 import { Row } from "./row.js";
 
 export class Hover extends View {
@@ -32,6 +34,11 @@ export class Hover extends View {
 
     build(){
         return new Row({
+            baseCSS: new BaseCSS({
+                borderCSS: new BorderCSS({
+                    radius: "inherit"
+                })
+            }),
             children: [
                 this.props.child,
                 new _Hover(this.props)
