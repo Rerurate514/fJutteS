@@ -36,11 +36,13 @@
 
             build(){
                 return new Center(
-                    new Row([
-                        new Text("Hello"),
-                        new Text("World!,"),
-                        new Text(this.props.name)
-                    ])
+                    new Row({
+                        children: [ 
+                            new Text("Hello"),
+                            new Text("World!,"),
+                            new Text(this.props.name)
+                        ]
+                    })
                 );
             }
         }

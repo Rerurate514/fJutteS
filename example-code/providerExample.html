@@ -32,7 +32,7 @@
             ProviderObserver, 
             ProviderScope,
             ShadowLevel,
-            Border
+            BorderCSS
         } from "fjuttes";
 
         export const counter = Provider.createProvider((ref) => {
@@ -74,7 +74,7 @@
                                     radius: "4px",
                                     child: new Text("CLICK!"),
                                     baseCSS: new BaseCSS({
-                                        border: new Border({
+                                        border: new BorderCSS({
                                             borderSize: "2px",
                                         })
                                     }),

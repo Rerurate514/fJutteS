@@ -19,10 +19,12 @@
     <script type="module">
         import { assembleView, Text, Row } from "fjuttes";
 
-        const rowText = new Row([
-            new Text("Hello "),
-            new Text("World!")
-        ]);
+        const rowText = new Row({
+            children: [
+                new Text("Hello "),
+                new Text("World!")
+            ]
+        });
 
         assembleView(rowText);
     </script>
