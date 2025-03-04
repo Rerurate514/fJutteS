@@ -1,5 +1,6 @@
-import { View } from "../interface/view.js";
 import { Column } from "./column.js";
+import { Header } from "./header.js";
+import { View } from "../interface/view";
 
 export class Scaffold extends View {
     constructor({
@@ -7,14 +8,18 @@ export class Scaffold extends View {
         header = null,
         footer = null,
         drawer = null,
-        floatingActionButton = null
+        floatingActionButton = null,
     }){
+        if(!(header instanceof Header)){
+            throw new Error("Scaffold header property must assign Header class");
+        }
+
         super({
-            child,
-            header,
-            footer,
-            drawer,
-            floatingActionButton
+            child: child,
+            header: header,
+            footer: footer,
+            drawer: drawer,
+            floatingActionButton: floatingActionButton,
         });
     }
 
@@ -33,7 +38,9 @@ export class Scaffold extends View {
         const children = [];
         
         if (this.props.header) {
-            children.push(this.props.header);
+            children.push(
+                this.props.header
+            );
         }
         
         children.push(this.props.child);
