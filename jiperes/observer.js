@@ -50,9 +50,7 @@ export class ProviderObserver {
 
         this.updateHistory.push(record);
 
-        if (newValue)
-
-            this.log(`Update: ${record.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(newValue)}`);
+        this.log(`Update: ${record.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(newValue)}`);
     }
 
     getDependencyGraph() {

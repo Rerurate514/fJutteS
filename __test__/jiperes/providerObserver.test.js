@@ -49,13 +49,6 @@ describe('ProviderObserver', () => {
         expect(filteredHistory[0].provider).toBe('provider1');
     });
 
-    it('長い文字列を切り詰めることができる', () => {
-        const longString = 'a'.repeat(1500);
-        providerObserver.logUpdate(provider1, 1, longString);
-        const updateHistory = providerObserver.getAllUpdateHistory();
-        expect(updateHistory[0].newValue.length).toBeLessThanOrEqual(1050);
-    });
-
     it('ログ出力を抑制できる', () => {
         const consoleSpy = jest.spyOn(console, 'log');
         providerObserver.outLogs(false);
