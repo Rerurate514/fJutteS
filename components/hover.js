@@ -41,13 +41,13 @@ export class Hover extends View {
             }),
             children: [
                 this.props.child,
-                new _Hover(this.props)
+                new _HoverWrapper(this.props)
             ]
         });
     }
 }
 
-class _Hover extends View {
+class _HoverWrapper extends View {
     constructor({
         radius = "inherit",
         onClickEffect = false
@@ -69,9 +69,39 @@ class _Hover extends View {
         element.style.width = "100%";
         element.style.height = "100%";
         element.style.background = "rgb(0, 0, 0, 0)";
+        element.style.overflow = "hidden";
+        element.style.zIndex = 998;
+        element.style.borderRadius = this.props.radius;
+
+        return element;
+    }
+
+    build(){
+        return new _Hover(this.props)
+    }
+}
+
+class _Hover extends View {
+    constructor({
+        radius = "inherit",
+        onClickEffect = false
+    }){
+        super({
+            radius,
+            onClickEffect
+        });
+    }
+
+    createWrapView(){
+        return document.createElement("div");
+    }
+
+    styledView(element){
+        element.style.width = "100%";
+        element.style.height = "100%";
+        element.style.background = "rgb(0, 0, 0, 0)";
         element.style.mixBlendMode = "difference";
         element.style.transition = "background-color 0.4s";
-        element.style.overflow = "hidden";
         element.style.zIndex = 999;
         element.style.borderRadius = this.props.radius;
 
@@ -121,7 +151,7 @@ class _Hover extends View {
             ripple.animate([
                 { transform: "scale(1)", opacity: "0"}
             ], {
-                duration: 600,
+                duration: 1000,
                 easing: "ease-in-out"
             });
 
