@@ -49,6 +49,8 @@ export { Transform } from './components/transform.js';
 export { Accordion } from './components/accordion.js';
 export { Paginations } from './components/paginations.js';
 export { PageRouter } from './components/pageRouter.js';
+export { Scaffold } from './components/scaffold.js';
+export { Header } from './components/header.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { RelativePositions } from './enums/relativePositions.js';
