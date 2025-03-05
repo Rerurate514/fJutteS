@@ -29,15 +29,8 @@ export class ProviderObserver {
     }
 
     logUpdate(provider, oldValue, newValue) {
-        if (newValue instanceof HTMLElement) {
-            newValue = JSON.stringify(newValue, (key, value) => {
-                if (key === 'id' || key === 'className' || key === 'data-view-class-name') {
-                    return value;
-                } else if (typeof value !== 'object') {
-                    return value;
-                }
-                return undefined;
-            });
+        if(this._isLargeObject(newValue)){
+            newValue = "Large Object ..."
         }
 
         const record = {
@@ -79,6 +72,17 @@ export class ProviderObserver {
         const stackTrace = new Error().stack.toString();
         return stackTrace.substr(13, stackTrace.length);
     }
+
+    _isLargeObject(obj, maxSize = 1024 * 1024) {
+        try {
+          const jsonString = JSON.stringify(obj);
+          const sizeInBytes = new Blob([jsonString]).size;
+          return sizeInBytes > maxSize;
+        } catch (error) {
+          console.error('オブジェクトの解析中にエラーが発生しました:', error);
+          return true;
+        }
+      }
 
     log(message) {
         if (!this._isOutedLog) return;
