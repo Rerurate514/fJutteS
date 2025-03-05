@@ -30,7 +30,7 @@ export class ProviderObserver {
 
     logUpdate(provider, oldValue, newValue) {
         if(this._isLargeObject(newValue)){
-            newValue = "Large Object ..."
+            newValue = "Large Object ...";
         }
 
         const record = {
