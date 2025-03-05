@@ -50,7 +50,7 @@ describe('ProviderObserver', () => {
     });
 
     it('巨大なオブジェクトを検出できる', () => {
-        const largeObject = Array(100000).fill().map((_, i) => ({ id: i, data: 'large data' }));
+        const largeObject = Array(1000).fill().map((_, i) => ({ id: i, data: 'large data' }));
         const isLarge = providerObserver._isLargeObject(largeObject)
     
         expect(isLarge).toEqual(true);
@@ -58,11 +58,12 @@ describe('ProviderObserver', () => {
     
     it('巨大なオブジェクトを回避できる', () => {
         const oldValue = { key: 'old value' };
-        const newValue = Array(100000).fill({ complexData: 'very large object data' });
+        const newValue = Array(1000).fill({ complexData: 'very large object data' });
     
         const logSpy = jest.spyOn(providerObserver, 'log');
         
         providerObserver.logUpdate(provider1, oldValue, newValue);
+
         const updateHistory = providerObserver.getAllUpdateHistory();
     
         expect(updateHistory).toHaveLength(1);
