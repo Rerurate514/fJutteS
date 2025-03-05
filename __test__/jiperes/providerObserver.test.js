@@ -58,23 +58,44 @@ describe('ProviderObserver', () => {
     });
     
     it('巨大なオブジェクトを回避できる', () => {
-        const moc = new Moc()
         const oldValue = { key: 'old value' };
-        const newValue = Array(1000).fill().map((_, i) => ({ id: i, data: moc }))[0];
+        const newValue = Array(1000).fill(new Moc());
 
         const logSpy = jest.spyOn(providerObserver, 'log');
         
         providerObserver.logUpdate(provider1, oldValue, newValue);
 
         const updateHistory = providerObserver.getAllUpdateHistory();
-        console.log(updateHistory[0])
+    
         expect(updateHistory).toHaveLength(1);
         expect(updateHistory[0].provider).toBe('provider1');
         expect(updateHistory[0].oldValue).toEqual({ key: 'old value' });
-        expect(updateHistory[0].newValue).toEqual({"data": {"props": {"id": `${moc.props.id}`}}});
+        expect(updateHistory[0].newValue).toBe('Large Object (simplified)');
     
         expect(logSpy).toHaveBeenCalledWith(
-            "Update: provider1 changed", {"from": {"key": "old value"}, "to": {"data": {"props": {"id": `${moc.props.id}`}}}}
+            `Update: provider1 changed from ${JSON.stringify(oldValue)} to "Large Object (simplified)"`
+        );
+    
+        logSpy.mockRestore();
+    });
+
+    it('巨大なViewオブジェクトを回避できる', () => {
+        const oldValue = { key: 'old value' };
+        const newValue = new Moc();
+
+        const logSpy = jest.spyOn(providerObserver, 'log');
+        
+        providerObserver.logUpdate(provider1, oldValue, newValue);
+
+        const updateHistory = providerObserver.getAllUpdateHistory();
+
+        expect(updateHistory).toHaveLength(1);
+        expect(updateHistory[0].provider).toBe('provider1');
+        expect(updateHistory[0].oldValue).toEqual({ key: 'old value' });
+        expect(updateHistory[0].newValue).toBe(newValue.props.id);
+    
+        expect(logSpy).toHaveBeenCalledWith(
+            `Update: provider1 changed from ${JSON.stringify(oldValue)} to "${newValue.props.id}"`
         );
     
         logSpy.mockRestore();
