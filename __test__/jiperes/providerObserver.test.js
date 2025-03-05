@@ -49,6 +49,34 @@ describe('ProviderObserver', () => {
         expect(filteredHistory[0].provider).toBe('provider1');
     });
 
+    it('巨大なオブジェクトを検出できる', () => {
+        const largeObject = Array(100000).fill().map((_, i) => ({ id: i, data: 'large data' }));
+        const isLarge = providerObserver._isLargeObject(largeObject)
+
+        expect(isLarge).toEqual(true);
+    });
+
+    it('巨大なオブジェクトを回避できる', () => {
+        const oldValue = { key: 'old value' };
+        const newValue = Array(100000).fill({ complexData: 'very large object data' });
+
+        const logSpy = jest.spyOn(providerObserver, 'log');
+    
+        providerObserver.logUpdate(provider1, oldValue, newValue);
+        const updateHistory = providerObserver.getAllUpdateHistory();
+    
+        expect(updateHistory).toHaveLength(1);
+        expect(updateHistory[0].provider).toBe('provider1');
+        expect(updateHistory[0].oldValue).toEqual(oldValue);
+        expect(updateHistory[0].newValue).toBe('Large Object ...');
+    
+        expect(logSpy).toHaveBeenCalledWith(
+            `Update: provider1 changed from ${JSON.stringify(oldValue)} to "Large Object ..."`
+        );
+    
+        logSpy.mockRestore();
+    });
+
     it('ログ出力を抑制できる', () => {
         const consoleSpy = jest.spyOn(console, 'log');
         providerObserver.outLogs(false);
