@@ -1,5 +1,6 @@
 import { ProviderObserver } from '../../jiperes/observer.js';
 import { Provider } from '../../jiperes/provider.js';
+import { Moc } from '../testScripts/moc.js';
 
 describe('ProviderObserver', () => {
     let providerObserver;
@@ -50,7 +51,7 @@ describe('ProviderObserver', () => {
     });
 
     it('巨大なオブジェクトを検出できる', () => {
-        const largeObject = Array(1000).fill().map((_, i) => ({ id: i, data: 'large data' }));
+        const largeObject = Array(1000).fill().map((_, i) => ({ id: i, data: new Moc() }));
         const isLarge = providerObserver._isLargeObject(largeObject)
     
         expect(isLarge).toEqual(true);
@@ -58,8 +59,8 @@ describe('ProviderObserver', () => {
     
     it('巨大なオブジェクトを回避できる', () => {
         const oldValue = { key: 'old value' };
-        const newValue = Array(1000).fill({ complexData: 'very large object data' });
-    
+        const newValue = Array(1000).fill(new Moc());
+
         const logSpy = jest.spyOn(providerObserver, 'log');
         
         providerObserver.logUpdate(provider1, oldValue, newValue);
@@ -73,6 +74,28 @@ describe('ProviderObserver', () => {
     
         expect(logSpy).toHaveBeenCalledWith(
             `Update: provider1 changed from ${JSON.stringify(oldValue)} to "Large Object (simplified)"`
+        );
+    
+        logSpy.mockRestore();
+    });
+
+    it('巨大なViewオブジェクトを回避できる', () => {
+        const oldValue = { key: 'old value' };
+        const newValue = new Moc();
+
+        const logSpy = jest.spyOn(providerObserver, 'log');
+        
+        providerObserver.logUpdate(provider1, oldValue, newValue);
+
+        const updateHistory = providerObserver.getAllUpdateHistory();
+
+        expect(updateHistory).toHaveLength(1);
+        expect(updateHistory[0].provider).toBe('provider1');
+        expect(updateHistory[0].oldValue).toEqual({ key: 'old value' });
+        expect(updateHistory[0].newValue).toBe(newValue.props.id);
+    
+        expect(logSpy).toHaveBeenCalledWith(
+            `Update: provider1 changed from ${JSON.stringify(oldValue)} to "${newValue.props.id}"`
         );
     
         logSpy.mockRestore();
