@@ -39,23 +39,48 @@ export class ProviderObserver {
     }
     
     logUpdate(provider, oldValue, newValue) {
-        newValue = newValue && newValue.props && newValue.props.id ? newValue.props.id : newValue;
-
-        if(this._isLargeObject(newValue)){
-            newValue = "Large Object (simplified)";
-        }
+        const simplifiedOldValue = this._simplifyObject(oldValue);
+        const simplifiedNewValue = this._simplifyObject(newValue);
     
         const record = {
-            timestamp: new Date,
+            timestamp: new Date(),
             provider: provider.name,
-            oldValue: oldValue,
-            newValue: newValue,
+            oldValue: simplifiedOldValue,
+            newValue: simplifiedNewValue,
             stackTrace: this._getStackTrace()
         };
     
         this.updateHistory.push(record);
     
-        this.log(`Update: ${record.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(newValue)}`);
+        this.log(`Update: ${record.provider} changed`, {
+            from: simplifiedOldValue, 
+            to: simplifiedNewValue
+        });
+    }
+
+    _simplifyObject(obj, depth = 2) {
+        if (depth === 0 || obj === null || typeof obj !== 'object') {
+            return obj;
+        }
+    
+        if (Array.isArray(obj)) {
+            return obj.length > 10 
+                ? `[Array with ${obj.length} items]` 
+                : obj.map(item => this._simplifyObject(item, depth - 1));
+        }
+    
+        const simplified = {};
+        for (const [key, value] of Object.entries(obj)) {
+            if (key.startsWith('_') || key === 'viewCache' || key === 'view' || key === 'child' || key === 'isLogOut' || key === 'id') continue;
+            
+            if (typeof value === 'object' && value !== null) {
+                simplified[key] = this._simplifyObject(value, depth - 1);
+            } else {
+                simplified[key] = value;
+            }
+        }
+    
+        return simplified;
     }
 
     getDependencyGraph() {
