@@ -37,7 +37,7 @@ export class ProviderObserver {
             return true;
         }
     }
-    
+
     logUpdate(provider, oldValue, newValue) {
         const simplifiedOldValue = this._simplifyObject(oldValue);
         const simplifiedNewValue = this._simplifyObject(newValue);
@@ -110,9 +110,16 @@ export class ProviderObserver {
         return stackTrace.substr(13, stackTrace.length);
     }
 
-    log(message) {
+    log(message, obj = null) {
         if (!this._isOutedLog) return;
-        console.log(`[ProviderObserver] ${message}`);
+        
+        const baseMessage = `[ProviderObserver] ${message}`;
+        
+        if (obj) {
+            console.log(baseMessage, JSON.stringify(obj, null, 2));
+        } else {
+            console.log(baseMessage);
+        }
     }
 
     static clearInstance() {
