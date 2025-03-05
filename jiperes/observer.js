@@ -28,7 +28,7 @@ export class ProviderObserver {
         this.log(`Dependency deleted: ${this._getProviderInfo(childProvider)} unsubscribed ${this._getProviderInfo(parentProvider)}`);
     }
 
-    _isLargeObject(obj, maxSize = 100 * 1024) {
+    _isLargeObject(obj, maxSize = 1024 * 10) {
         try {
             const sizeInBytes = new Blob([obj]).size;
             return sizeInBytes > maxSize;
@@ -39,6 +39,12 @@ export class ProviderObserver {
     }
     
     logUpdate(provider, oldValue, newValue) {
+        if(newValue.props){
+            if(newValue.props.id){
+                newValue = newValue.props.id;
+            }
+        }
+
         if(this._isLargeObject(newValue)){
             newValue = "Large Object (simplified)";
         }
