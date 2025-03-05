@@ -1,4 +1,4 @@
-import { View } from "../interface/view";
+import { View } from "../interface/view.js";
 
 export class Header extends View {
     constructor({

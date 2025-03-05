@@ -1,6 +1,6 @@
 import { Column } from "./column.js";
 import { Header } from "./header.js";
-import { View } from "../interface/view";
+import { View } from "../interface/view.js";
 
 export class Scaffold extends View {
     constructor({
