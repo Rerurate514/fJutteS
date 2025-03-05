@@ -4,8 +4,8 @@ import { LimitedProviderScope } from "../components/limitedProviderScope.js";
 
 export class PageRouter extends View {
     constructor({ pages = [] }) {
-        const pageHistoryProvider = Provider.createProvider(() => [0]);
-        const currentPageIndexProvider = Provider.createProvider(() => 0);
+        const pageHistoryProvider = Provider.createProvider(() => [0], "pageHistoryProvider__PageRouter");
+        const currentPageIndexProvider = Provider.createProvider(() => 0, "currentPageIndexProvider__PageRouter");
 
         super({ pages, pageHistoryProvider, currentPageIndexProvider });
     }

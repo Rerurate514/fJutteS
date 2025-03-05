@@ -21,7 +21,7 @@ export class ExpandsPanel extends View {
     }){
         const isExpands = Provider.createProvider(() => {
             return false;
-        }, "ExpandsPanel_isExpands");
+        }, "isExpands__ExpandsPanel");
         
         super({
             titleItem,
