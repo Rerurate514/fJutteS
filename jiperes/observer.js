@@ -53,7 +53,7 @@ export class ProviderObserver {
     
         this.updateHistory.push(record);
     
-        this.log(`Update: ${record.provider} changed from simplified object to simplified object`);
+        this.log(`Update: ${record.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(newValue)}`);
     }
 
     getDependencyGraph() {
