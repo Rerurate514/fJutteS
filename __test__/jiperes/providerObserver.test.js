@@ -71,7 +71,7 @@ describe('ProviderObserver', () => {
         expect(updateHistory[0].newValue).toBe('Large Object (simplified)');
     
         expect(logSpy).toHaveBeenCalledWith(
-            'Update: provider1 changed from simplified object to simplified object'
+            `Update: provider1 changed from ${JSON.stringify(oldValue)} to "Large Object (simplified)"`
         );
     
         logSpy.mockRestore();
