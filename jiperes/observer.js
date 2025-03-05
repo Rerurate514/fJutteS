@@ -28,11 +28,21 @@ export class ProviderObserver {
         this.log(`Dependency deleted: ${this._getProviderInfo(childProvider)} unsubscribed ${this._getProviderInfo(parentProvider)}`);
     }
 
+    _isLargeObject(obj, maxSize = 100 * 1024) {
+        try {
+            const sizeInBytes = new Blob([obj]).size;
+            return sizeInBytes > maxSize;
+        } catch (error) {
+            console.error('オブジェクトの解析中にエラーが発生しました:', error);
+            return true;
+        }
+    }
+    
     logUpdate(provider, oldValue, newValue) {
         if(this._isLargeObject(newValue)){
-            newValue = "Large Object ...";
+            newValue = "Large Object (simplified)";
         }
-
+    
         const record = {
             timestamp: new Date,
             provider: provider.name,
@@ -40,10 +50,10 @@ export class ProviderObserver {
             newValue: newValue,
             stackTrace: this._getStackTrace()
         };
-
+    
         this.updateHistory.push(record);
-
-        this.log(`Update: ${record.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(newValue)}`);
+    
+        this.log(`Update: ${record.provider} changed from simplified object to simplified object`);
     }
 
     getDependencyGraph() {
@@ -72,17 +82,6 @@ export class ProviderObserver {
         const stackTrace = new Error().stack.toString();
         return stackTrace.substr(13, stackTrace.length);
     }
-
-    _isLargeObject(obj, maxSize = 1024 * 1024) {
-        try {
-          const jsonString = JSON.stringify(obj);
-          const sizeInBytes = new Blob([jsonString]).size;
-          return sizeInBytes > maxSize;
-        } catch (error) {
-          console.error('オブジェクトの解析中にエラーが発生しました:', error);
-          return true;
-        }
-      }
 
     log(message) {
         if (!this._isOutedLog) return;
