@@ -31,7 +31,6 @@ class _Pre extends View {
   }
 
   styledView(element){
-    element.classList.add(`lang-${this.props.language}`);
     element.style.whiteSpace = "pre-wrap";
 
     return element;
@@ -52,6 +51,9 @@ class _Code extends View {
   }
 
   styledView(element){
+    element.classList.add(`lang-${this.props.language}`);
+    element.classList.add(`${this.props.language}`);
+
     element.innerHTML = this.props.code;
     return element;
   }
