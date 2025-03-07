@@ -92,10 +92,10 @@ describe('ProviderObserver', () => {
         expect(updateHistory).toHaveLength(1);
         expect(updateHistory[0].provider).toBe('provider1');
         expect(updateHistory[0].oldValue).toEqual({ key: 'old value' });
-        expect(updateHistory[0].newValue).toBe(newValue.props.id);
+        expect(updateHistory[0].newValue).toBe(`${newValue.constructor.name}__viewId:${newValue.props.id}`);
     
         expect(logSpy).toHaveBeenCalledWith(
-            `Update: provider1 changed from ${JSON.stringify(oldValue)} to "${newValue.props.id}"`
+            `Update: provider1 changed from ${JSON.stringify(oldValue)} to "${newValue.constructor.name}__viewId:${newValue.props.id}"`
         );
     
         logSpy.mockRestore();
