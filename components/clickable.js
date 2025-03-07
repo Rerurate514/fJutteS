@@ -8,9 +8,9 @@ export class Clickable extends View {
         onClick: onClick = () => {},
     }){
         super({
-            child: child,
-            baseCSS: baseCSS,
-            onClick: onClick
+            child,
+            baseCSS,
+            onClick
         });
     }
 

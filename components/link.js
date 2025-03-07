@@ -10,12 +10,12 @@ export class Link extends View {
         isShownUnderline = true
     }){
         super({
-            child: child,
-            href: href,
-            rel: rel,
-            target: target,
-            isDownload: isDownload,
-            isShownUnderline: isShownUnderline
+            child,
+            href,
+            rel,
+            target,
+            isDownload,
+            isShownUnderline
         });
     }
 

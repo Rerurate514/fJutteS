@@ -1,14 +1,13 @@
-import { BaseCSS } from "../enums/baseCSS.js";
 import { View } from "../interface/view.js";
 
-export class Clip extends View {
+export class Header extends View {
     constructor({
-        child, 
-        baseCSS = new BaseCSS()
+        child,
+        isStickyHeader = false
     }){
         super({
-            child,
-            baseCSS
+            child: child,
+            isStickyHeader: isStickyHeader
         });
     }
 
@@ -17,9 +16,10 @@ export class Clip extends View {
     }
 
     styledView(element){
-        element = this.props.baseCSS.applyCSS(element);
+        if(this.props.isStickyHeader) element.style.position = "sticky";
+        element.style.top = "0";
 
-        element.style.overflow = "hidden";
+        element.style.zIndex = 999;
 
         return element;
     }

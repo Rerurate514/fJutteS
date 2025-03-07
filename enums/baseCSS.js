@@ -14,7 +14,7 @@ export class BaseCSS {
             margin,
             padding,
             borderCSS
-        }
+        };
     }
 
     applyCSS(element){

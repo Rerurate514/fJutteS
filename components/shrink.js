@@ -1,9 +1,9 @@
-import { View } from "../interface/view.js"
+import { View } from "../interface/view.js";
 
 export class Shrink extends View {
     constructor(child){
         super({
-            child: child
+            child
         });
     }
 

@@ -10,7 +10,7 @@ export class FloatingActionButton extends View {
        onClick: onClick = () => {}
     } = {}){
         super({
-            onClick: onClick
+            onClick
         });
     }
 

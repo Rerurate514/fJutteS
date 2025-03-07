@@ -18,19 +18,19 @@ export class Transform extends View {
         skewY = 0,
     } = {}){
         super({
-            child: child,
-            baseCSS: baseCSS,
-            translateX: translateX,
-            translateY: translateY,
-            translateZ: translateZ,
-            rotateX: rotateX,
-            rotateY: rotateY,
-            rotateZ: rotateZ,
-            scaleX: scaleX,
-            scaleY: scaleY,
-            scaleZ: scaleZ,
-            skewX: skewX,
-            skewY: skewY,
+            child,
+            baseCSS,
+            translateX,
+            translateY,
+            translateZ,
+            rotateX,
+            rotateY,
+            rotateZ,
+            scaleX,
+            scaleY,
+            scaleZ,
+            skewX,
+            skewY,
         });
     }
 

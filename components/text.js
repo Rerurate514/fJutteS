@@ -6,7 +6,7 @@ export class Text extends View{
         text, 
         textCSS = new TextCSS(),
     ){
-        super({text: text, textCSS: textCSS});
+        super({text, textCSS});
     }
 
     createWrapView(){

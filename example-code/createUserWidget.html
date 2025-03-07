@@ -12,7 +12,7 @@
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@2.6.0/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@2.7.0/dist/index.mjs"
             }
         }
     </script>
@@ -36,11 +36,13 @@
 
             build(){
                 return new Center(
-                    new Row([
-                        new Text("Hello"),
-                        new Text("World!,"),
-                        new Text(this.props.name)
-                    ])
+                    new Row({
+                        children: [ 
+                            new Text("Hello"),
+                            new Text("World!,"),
+                            new Text(this.props.name)
+                        ]
+                    })
                 );
             }
         }

@@ -1,4 +1,4 @@
-import { Provider } from '../../Jiperes/provider.js';
+import { Provider } from '../../jiperes/provider.js';
 import { ProviderScope } from '../../interface/providerScope.js';
 import { Moc } from '../testScripts/moc.js';
 

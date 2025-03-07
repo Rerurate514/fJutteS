@@ -6,8 +6,8 @@ export class RelativePosition extends View {
         relativePositions
     }){
         super({
-            child: child,
-            relativePositions: relativePositions
+            child,
+            relativePositions
         });
     }
 
@@ -42,8 +42,8 @@ export class _RelativePosition extends View {
         relativePositions
     }){
         super({
-            child: child,
-            relativePositions: relativePositions
+            child,
+            relativePositions
         });
     }
 

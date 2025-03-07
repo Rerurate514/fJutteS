@@ -12,12 +12,12 @@ export class Box extends View {
         child = null
     }){
         super({
-            width: width, 
-            height: height,
-            background: background,
-            borderCSS: borderCSS,
-            webkitCSS: webkitCSS,
-            child: child
+            width, 
+            height,
+            background,
+            borderCSS,
+            webkitCSS,
+            child
         });
     }
 
@@ -31,7 +31,7 @@ export class Box extends View {
 
         if(this.props.background) element.style.background = this.props.background;
 
-        element = this.props.borderCSS.applyCSS(element)
+        element = this.props.borderCSS.applyCSS(element);
         element = this.props.webkitCSS.applyCSS(element);
 
         return element;

@@ -9,7 +9,7 @@ export class ProviderObserver {
         return ProviderObserver.instance;
     }
 
-    outLogs(isOutedLog = true){
+    outLogs(isOutedLog = true) {
         this._isOutedLog = isOutedLog;
     }
 
@@ -21,23 +21,46 @@ export class ProviderObserver {
         this.log(`Dependency added: ${this._getProviderInfo(childProvider)} depends on ${this._getProviderInfo(parentProvider)}`);
     }
 
-    deleteDependency(childProvider, parentProvider){
-        if (!this.dependencyGraph.has(childProvider)) {
+    deleteDependency(childProvider, parentProvider) {
+        if (this.dependencyGraph.has(childProvider)) {
             this.dependencyGraph.get(childProvider).delete(parentProvider);
         }
         this.log(`Dependency deleted: ${this._getProviderInfo(childProvider)} unsubscribed ${this._getProviderInfo(parentProvider)}`);
     }
 
+    _isLargeObject(obj, maxSize = 1024 * 10) {
+        try {
+            const sizeInBytes = new Blob([obj]).size;
+            return sizeInBytes > maxSize;
+        } catch (error) {
+            console.error('オブジェクトの解析中にエラーが発生しました:', error);
+            return true;
+        }
+    }
+
     logUpdate(provider, oldValue, newValue) {
-        const updateInfo = {
-            timestamp: new Date(),
+        oldValue = oldValue && oldValue.props && oldValue.props.id ? `${oldValue.constructor.name}__viewId:${oldValue.props.id}` : oldValue;
+        newValue = newValue && newValue.props && newValue.props.id ? `${newValue.constructor.name}__viewId:${newValue.props.id}` : newValue;
+
+        if(this._isLargeObject(oldValue)){
+            oldValue = "Large Object (simplified)";
+        }
+
+        if(this._isLargeObject(newValue)){
+            newValue = "Large Object (simplified)";
+        }
+    
+        const record = {
+            timestamp: new Date,
             provider: provider.name,
-            oldValue,
-            newValue,
+            oldValue: oldValue,
+            newValue: newValue,
             stackTrace: this._getStackTrace()
         };
-        this.updateHistory.push(updateInfo);
-        this.log(`Update: ${updateInfo.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(newValue)}`);
+    
+        this.updateHistory.push(record);
+    
+        this.log(`Update: ${record.provider} changed from ${JSON.stringify(oldValue)} to ${JSON.stringify(newValue)}`);
     }
 
     getDependencyGraph() {
@@ -53,7 +76,7 @@ export class ProviderObserver {
     }
 
     getFilteredUpdateHistory(provider) {
-        return this.updateHistory.filter((history) => 
+        return this.updateHistory.filter((history) =>
             history.provider === this._getProviderInfo(provider)
         );
     }
@@ -67,9 +90,16 @@ export class ProviderObserver {
         return stackTrace.substr(13, stackTrace.length);
     }
 
-    log(message) {
-        if(!this._isOutedLog) return;
-        console.log(`[ProviderObserver] ${message}`);
+    log(message, obj = null) {
+        if (!this._isOutedLog) return;
+        
+        const baseMessage = `[ProviderObserver] ${message}`;
+        
+        if (obj) {
+            console.log(baseMessage, JSON.stringify(obj, null, 2));
+        } else {
+            console.log(baseMessage);
+        }
     }
 
     static clearInstance() {
