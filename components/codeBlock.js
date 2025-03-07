@@ -31,7 +31,7 @@ class _Pre extends View {
   }
 
   styledView(element){
-    element.classList.add(this.props.language);
+    element.classList.add(`lang-${this.props.language}`);
     element.style.whiteSpace = "pre-wrap";
 
     return element;
