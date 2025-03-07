@@ -6,7 +6,9 @@ import pluginJs from "@eslint/js";
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   {
-    ignores: ['dist'],
+    ignores: ['dist/*', '__test__/*', '*/*.config*'],
+  },
+  {
     rules: {
       semi: ["error", "always"],
       "semi-spacing": ["error", { after: true, before: false }],
