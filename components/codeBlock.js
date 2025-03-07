@@ -42,9 +42,13 @@ class _Pre extends View {
 }
 
 class _Code extends View {
-  constructor(code){
-    super({ code });
+  constructor({
+    code, 
+    language
+  }){
+    super({ code, language });
   }
+
 
   createWrapView(){
     return document.createElement("code");
