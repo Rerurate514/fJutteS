@@ -73,7 +73,7 @@ export class RelativePositions {
                 return element;
             }
             default: {
-                throw new Error("RelativePositions must created by static method, RelativePositions.TOP, RelativePositions.BOTTOM, RelativePositions.RIGHT, etc")
+                throw new Error("RelativePositions must created by static method, RelativePositions.TOP, RelativePositions.BOTTOM, RelativePositions.RIGHT, etc");
             }
         }
     }

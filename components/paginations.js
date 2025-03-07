@@ -209,7 +209,7 @@ class PaginationNavigationItem extends View {
 
     embedScriptToView(e) {
         e.addEventListener("click", () => {
-            if(!this.props.isActive) return;console.log("sad")
+            if(!this.props.isActive) return;
 
             this.props.onClick(this.props.page);
 

@@ -11,11 +11,11 @@ export class Image extends View {
         webkitCSS: webkitCSS = new WebkitCSS()
     }){
         super({
-            src: src,
-            alt: alt,
-            title: title,
-            baseCSS: baseCSS,
-            webkitCSS: webkitCSS
+            src,
+            alt,
+            title,
+            baseCSS,
+            webkitCSS
         });
     }
 

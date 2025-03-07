@@ -11,12 +11,12 @@ export class Row extends View {
         isVerticalCenter = false
     }){
         super({
-            children: children, 
-            baseCSS: baseCSS,
-            isAlignCenter: isAlignCenter, 
-            isJustifySpaceAround: isJustifySpaceAround,
-            isJustifySpaceBetween: isJustifySpaceBetween,
-            isVerticalCenter: isVerticalCenter
+            children, 
+            baseCSS,
+            isAlignCenter, 
+            isJustifySpaceAround,
+            isJustifySpaceBetween,
+            isVerticalCenter
         });
     }
 

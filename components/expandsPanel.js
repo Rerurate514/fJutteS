@@ -21,15 +21,15 @@ export class ExpandsPanel extends View {
     }){
         const isExpands = Provider.createProvider(() => {
             return false;
-        }, "ExpandsPanel_isExpands");
+        }, "isExpands__ExpandsPanel");
         
         super({
-            titleItem: titleItem,
-            child: child,
-            panelItemBackGround: panelItemBackGround,
-            radius: radius,
-            buttonShadowLevel: buttonShadowLevel,
-            isExpands: isExpands
+            titleItem,
+            child,
+            panelItemBackGround,
+            radius,
+            buttonShadowLevel,
+            isExpands
         });
     }
 
@@ -90,6 +90,6 @@ export class ExpandsPanel extends View {
                     }
                 }),
             ]
-        })
+        });
     }
 }

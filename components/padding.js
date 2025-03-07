@@ -26,7 +26,7 @@ export class Padding extends View {
         validatePadding(left, 'left');
 
         super({
-            child: child,
+            child,
             padding: {
                 top,
                 right,

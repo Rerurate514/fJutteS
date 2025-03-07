@@ -13,11 +13,11 @@ export class SimpleDialog extends View {
         onOkClickedFn = () => {}
     }){
         super({
-            child: child,
-            cancelText: cancelText,
-            okText: okText,
-            onCancelClickedFn: onCancelClickedFn,
-            onOkClickedFn: onOkClickedFn
+            child,
+            cancelText,
+            okText,
+            onCancelClickedFn,
+            onOkClickedFn
         });
     }
 

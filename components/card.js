@@ -24,12 +24,12 @@ export class Card extends View {
         }
 
         super({
-            child: child,
-            radius: radius, 
-            baseCSS: baseCSS,
-            background: background,
-            elevation: elevation,
-            webkitCSS: webkitCSS
+            child,
+            radius, 
+            baseCSS,
+            background,
+            elevation,
+            webkitCSS
         });
     }
 
@@ -42,7 +42,7 @@ export class Card extends View {
         if(this.props.background) element.style.background = this.props.background;
         element.style.boxShadow = this.props.elevation;
 
-        element = this.props.baseCSS.applyCSS(element)
+        element = this.props.baseCSS.applyCSS(element);
         element = this.props.webkitCSS.applyCSS(element);
 
         return element;

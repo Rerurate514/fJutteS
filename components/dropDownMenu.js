@@ -8,9 +8,9 @@ export class DropDownMenu extends View {
         provider
     }){
         super({
-            item: item,
-            baseCSS: baseCSS,
-            provider: provider
+            item,
+            baseCSS,
+            provider
         });
     }
 
@@ -28,7 +28,7 @@ export class DropDownMenu extends View {
         element.addEventListener("change", (e) => {
             this.props.provider.update(() => {
                 return e.target.value;
-            })
+            });
         });
 
         return element;
