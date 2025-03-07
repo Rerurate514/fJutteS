@@ -90,6 +90,6 @@ export class ExpandsPanel extends View {
                     }
                 }),
             ]
-        })
+        });
     }
 }

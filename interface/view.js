@@ -78,7 +78,7 @@ export class View {
 
     _checkHTMLElement(child, msg) {
         if (!(child instanceof HTMLElement)) {
-            throw new TypeError(msg + "には必ずHTMLElenmentオブジェクトを格納してください。 渡された型:", typeof child)
+            throw new TypeError(msg + "には必ずHTMLElenmentオブジェクトを格納してください。 渡された型:", typeof child);
         }
     }
 
@@ -169,10 +169,10 @@ export class View {
      * この関数はオーバーライド不可で、dispose時に処理が必要な場合はonDiseposeを使用してください。
      */
     _dispose() {
-        if(this.child instanceof View) this.child._dispose()
+        if(this.child instanceof View) this.child._dispose();
         if(this.child instanceof Array){
             this.child.forEach((child) => {
-                child._dispose()
+                child._dispose();
             });
         }
 
@@ -184,10 +184,10 @@ export class View {
     }
     
     _rendered(){
-        if(this.child instanceof View) this.child._rendered()
+        if(this.child instanceof View) this.child._rendered();
         if(this.child instanceof Array){
             this.child.forEach((child) => {
-                child._rendered()
+                child._rendered();
             });
         }
         this.onRendered();

@@ -56,7 +56,7 @@ export class TextForm extends View {
         if (!this.props.provider) return;
 
         this.props.provider.update(() => {
-            return value
+            return value;
         });
     }
 }

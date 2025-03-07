@@ -31,7 +31,7 @@ export class Box extends View {
 
         if(this.props.background) element.style.background = this.props.background;
 
-        element = this.props.borderCSS.applyCSS(element)
+        element = this.props.borderCSS.applyCSS(element);
         element = this.props.webkitCSS.applyCSS(element);
 
         return element;

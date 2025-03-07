@@ -77,7 +77,7 @@ class _HoverWrapper extends View {
     }
 
     build(){
-        return new _Hover(this.props)
+        return new _Hover(this.props);
     }
 }
 

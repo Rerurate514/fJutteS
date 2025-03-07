@@ -8,7 +8,7 @@ export class Header extends View {
         super({
             child: child,
             isStickyHeader: isStickyHeader
-        })
+        });
     }
 
     createWrapView(){

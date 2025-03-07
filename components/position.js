@@ -21,7 +21,7 @@ export class Position extends View {
     styledView(element){
         element.className = "pos-wrapper";
         element.style.width = "100%";
-        element.style.height = "100%"
+        element.style.height = "100%";
 
         return element;
     }
@@ -31,7 +31,7 @@ export class Position extends View {
             child: this.props.child,
             top: this.props.top,
             left: this.props.left
-        })
+        });
     }
 }
 
@@ -51,7 +51,7 @@ class _PositionChild extends View {
     styledView(element){
         element.className = "pos-wrapper";
         element.style.width = "100%";
-        element.style.height = "100%"
+        element.style.height = "100%";
 
         element.style.position = "relative";
 

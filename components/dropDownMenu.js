@@ -28,7 +28,7 @@ export class DropDownMenu extends View {
         element.addEventListener("change", (e) => {
             this.props.provider.update(() => {
                 return e.target.value;
-            })
+            });
         });
 
         return element;

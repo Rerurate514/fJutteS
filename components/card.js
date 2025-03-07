@@ -42,7 +42,7 @@ export class Card extends View {
         if(this.props.background) element.style.background = this.props.background;
         element.style.boxShadow = this.props.elevation;
 
-        element = this.props.baseCSS.applyCSS(element)
+        element = this.props.baseCSS.applyCSS(element);
         element = this.props.webkitCSS.applyCSS(element);
 
         return element;
