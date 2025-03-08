@@ -1,3 +1,4 @@
+import { BaseCSS } from "../enums/baseCSS.js";
 import { View } from "../interface/view.js";
 import { Column } from "./column.js";
 import { ElevatedButton } from "./elevatedButton.js";
@@ -37,6 +38,9 @@ export class SimpleDialog extends View {
                     isAlignCenter: true,
                     children: [
                         new ElevatedButton({
+                            baseCSS: new BaseCSS({
+                                margin: "32px"
+                            }),
                             child: this.props.cancelText ?? new Text("cancel"),
                             onClick: () => {
                                 this.props.onCancelClickedFn();
@@ -44,6 +48,9 @@ export class SimpleDialog extends View {
                             }
                         }),
                         new ElevatedButton({
+                            baseCSS: new BaseCSS({
+                                margin: "32px"
+                            }),
                             child: this.props.okText ?? new Text("ok"),
                             onClick: () => {
                                 this.props.onOkClickedFn();
