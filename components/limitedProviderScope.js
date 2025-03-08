@@ -36,4 +36,12 @@ export class LimitedProviderScope extends ProviderScope {
     onPostBuild(){
 
     }
+
+    preBuild(){
+        this.onPreBuild();
+    }
+
+    onPreBuild(){
+
+    }
 }
