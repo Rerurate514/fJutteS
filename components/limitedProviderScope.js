@@ -28,4 +28,12 @@ export class LimitedProviderScope extends ProviderScope {
 
         return this.props.build(readArr);
     }
+
+    postBuild(){
+        this.onPostBuild();
+    }
+    
+    onPostBuild(){
+
+    }
 }
