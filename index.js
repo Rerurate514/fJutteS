@@ -53,6 +53,7 @@ export { Scaffold } from './components/scaffold.js';
 export { Header } from './components/header.js';
 export { CodeBlock } from './components/codeBlock.js';
 export { LangSwitcher, langSwitchProvider } from './components/langSwitcher.js';
+export { RelativePositionAnimateSwitcher } from './components/relativePositionAnimateSwitcher.js';
 
 export { ShadowLevel } from './enums/shadowLevel.js';
 export { RelativePositions } from './enums/relativePositions.js';
