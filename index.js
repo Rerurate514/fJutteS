@@ -1,21 +1,17 @@
-export function assembleView(viewArg, idName = "fJutteS-Container") {
-    let element = viewArg.view;
-    let container = document.getElementById(idName);
-    
-    if(container != null) container.appendChild(element);
-    viewArg.addPseudoElement();
-
-    viewArg._rendered();
-
-    return element;
-}
-
-export default assembleView;
-
+//fJutteS-core
+export { assembleView } from './core/logic/assembleView.js';
+export { generateUUID } from './core/logic/generateUUID.js';
+export { hashCode } from './core/logic/hasCode.js';
 export { View } from './core/interface/view.js';
+
+//fJutteS-Jiperes
+export { Provider } from './jiperes/logic/provider.js';
+export { ProviderObserver } from './jiperes/logic/observer.js';
 export { ProviderScope } from './jiperes/interface/providerScope.js';
 export { DynamicProviderScope } from './jiperes/interface/dynamicProviderScope.js';
+export { LimitedProviderScope } from './jiperes/components/limitedProviderScope.js';
 
+//fJutteS-Jaterials
 export { Card } from './jaterials/components/card.js';
 export { Center } from './jaterials/components/center.js';
 export { Column } from './jaterials/components/column.js';
@@ -39,7 +35,6 @@ export { Clip } from './jaterials/components/clip.js';
 export { SimpleDialog  } from './jaterials/components/simpleDialog.js';
 export { DropDownMenu, DropDownMenuItem } from './jaterials/components/dropDownMenu.js';
 export { FloatingActionButton } from './jaterials/components/floatingActionButton.js';
-export { LimitedProviderScope } from './jaterials/components/limitedProviderScope.js';
 export { ExpandsPanel } from './jaterials/components/expandsPanel.js';
 export { Shrink } from './jaterials/components/shrink.js';
 export { Grid } from './jaterials/components/grid.js';
@@ -58,19 +53,12 @@ export { RelativePositionAnimateSwitcher } from './jaterials/components/relative
 export { ShadowLevel } from './jaterials/enums/shadowLevel.js';
 export { RelativePositions } from './jaterials/enums/relativePositions.js';
 
-
+//fJutteS-CSSKit
 export { TextCSS } from './cssKit/textCSS.js';
 export { FontCSS } from './cssKit/fontCSS.js';
 export { BaseCSS } from './cssKit/baseCSS.js';
 export { WebkitCSS } from './cssKit/webkitCSS.js';
-
 export { BorderCSS } from './cssKit/borderCSS.js';
 
-export * from './errors/errors.js';
-
-export { ProviderObserver } from './jiperes/logic/observer.js';
-export { Provider } from './jiperes/logic/provider.js';
-
+//fJutteS-jexts
 export { AppRouter, route } from './jexts/router.js';
-
-export { generateUUID } from './utils/generateUUID.js';
