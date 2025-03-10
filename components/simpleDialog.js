@@ -1,3 +1,4 @@
+import { BaseCSS } from "../enums/baseCSS.js";
 import { View } from "../interface/view.js";
 import { Column } from "./column.js";
 import { ElevatedButton } from "./elevatedButton.js";
@@ -33,23 +34,30 @@ export class SimpleDialog extends View {
         return new Column({
             children: [
                 this.props.child,
-                new Row([
-                    new ElevatedButton({
-                        child: this.props.cancelText ?? new Text("cancel"),
-                        onClick: () => {
-                            this.props.onCancelClickedFn();
-                            this.closeModal();
-                        }
-                    }),
-                    new ElevatedButton({
-                        child: this.props.okText ?? new Text("ok"),
-                        onClick: () => {
-                            this.props.onOkClickedFn();
-                            this.closeModal();
-                        }
-                    })
-                ], {
-                    isAlignCenter: true
+                new Row({
+                    isAlignCenter: true,
+                    children: [
+                        new ElevatedButton({
+                            baseCSS: new BaseCSS({
+                                margin: "32px"
+                            }),
+                            child: this.props.cancelText ?? new Text("cancel"),
+                            onClick: () => {
+                                this.props.onCancelClickedFn();
+                                this.closeModal();
+                            }
+                        }),
+                        new ElevatedButton({
+                            baseCSS: new BaseCSS({
+                                margin: "32px"
+                            }),
+                            child: this.props.okText ?? new Text("ok"),
+                            onClick: () => {
+                                this.props.onOkClickedFn();
+                                this.closeModal();
+                            }
+                        })
+                    ]
                 })
             ]
         });
