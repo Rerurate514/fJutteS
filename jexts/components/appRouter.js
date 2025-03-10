@@ -1,5 +1,5 @@
-import { ProviderScope } from "../jiperes/interface/providerScope.js";
-import { Provider } from "../jiperes/logic/provider.js";
+import { ProviderScope } from "../../jiperes/interface/providerScope.js";
+import { Provider } from "../../jiperes/logic/provider.js";
 
 export class AppRouter extends ProviderScope {
     constructor({ 
@@ -42,8 +42,4 @@ export class AppRouter extends ProviderScope {
         }
         return new PageComponent();
     }
-}
-
-export function route(hash){
-    window.location.hash = `#${hash}`;
 }
