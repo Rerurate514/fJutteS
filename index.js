@@ -61,4 +61,5 @@ export { WebkitCSS } from './cssKit/webkitCSS.js';
 export { BorderCSS } from './cssKit/borderCSS.js';
 
 //fJutteS-jexts
-export { AppRouter, route } from './jexts/router.js';
+export { AppRouter } from './jexts/components/appRouter.js';
+export { route } from './jexts/logic/route.js';
