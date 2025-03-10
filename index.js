@@ -13,8 +13,8 @@ export function assembleView(viewArg, idName = "fJutteS-Container") {
 export default assembleView;
 
 export { View } from './core/interface/view.js';
-export { ProviderScope } from './interface/providerScope.js';
-export { DynamicProviderScope } from './interface/dynamicProviderScope.js';
+export { ProviderScope } from './jiperes/interface/providerScope.js';
+export { DynamicProviderScope } from './jiperes/interface/dynamicProviderScope.js';
 
 export { Card } from './components/card.js';
 export { Center } from './components/center.js';

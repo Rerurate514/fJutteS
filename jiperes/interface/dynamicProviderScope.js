@@ -1,6 +1,6 @@
-import { IllegalPreBuildDoSomothingError } from "../errors/errors.js";
-import { View } from "../core/interface/view.js";
-import { Provider } from "../jiperes/provider.js";
+import { IllegalPreBuildDoSomothingError } from "../../errors/errors.js";
+import { View } from "../../core/interface/view.js";
+import { Provider } from "../provider.js";
 
 /**
  * このクラスは状態管理しなくてはならない要素が動的に変化する際に有用なコンポーネントです。

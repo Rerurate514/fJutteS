@@ -1,4 +1,4 @@
-import { ProviderScope } from "../interface/providerScope.js";
+import { ProviderScope } from "../jiperes/interface/providerScope.js";
 import { Provider } from "../jiperes/provider.js";
 
 export class AppRouter extends ProviderScope {
