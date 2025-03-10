@@ -69,4 +69,6 @@ export * from './errors/errors.js';
 export { ProviderObserver } from './jiperes/observer.js';
 export { Provider } from './jiperes/provider.js';
 
+export { AppRouter, route } from './jexts/router.js';
+
 export { generateUUID } from './utils/generateUUID.js';
