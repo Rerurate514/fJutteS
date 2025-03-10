@@ -1,6 +1,6 @@
 import { View } from '../../core/interface/view.js';
 
-jest.mock('../../utils/generateUUID.js');
+jest.mock('../../core/logic/generateUUID.js');
 
 describe('View Class', () => {
 	let view;
