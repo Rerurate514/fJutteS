@@ -1,4 +1,4 @@
-import { generateUUID } from '../../utils/generateUUID.js';
+import { generateUUID } from '../logic/generateUUID.js';
 
 /**
  * Viewクラス - abstruct ---
