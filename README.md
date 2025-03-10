@@ -33,16 +33,16 @@ For state management, `fJutteS` uses its own library called `Jiperes` that's bee
 ### fJutteS-Core
 This library contains the foundational code needed to create components and widgets.
 
-### fJutteS-JaterialS
+### fJutteS-Jaterials
 This library houses a collection of basic components.
 
 ### fJutteS-CSSKit
-This library provides a simplified way to apply CSS styles to components defined in JaterialS.
+This library provides a simplified way to apply CSS styles to components defined in Jaterials.
 
 ### fJutteS-Jiperes
 This library provides state management using providers, along with components that utilize this state management system.
 
-### fJutteS-jexts
+### fJutteS-Jexts
 This library enables page routing using AppRouter and hash-based navigation.
 
 ## Installations

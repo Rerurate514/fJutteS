@@ -34,16 +34,16 @@ HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境
 ### fJutteS-Core
 コンポーネントやウィジェットを作成するために必要な基本的なコード群
 
-### fJutteS-JaterialS
+### fJutteS-Jaterials
 基本的なコンポーネント群が格納されているライブラリ
 
 ### fJutteS-CSSKit
-JaterialSで定義されているコンポーネントに対して、CSSを簡単に適用することができるライブラリ
+Jaterialsで定義されているコンポーネントに対して、CSSを簡単に適用することができるライブラリ
 
 ### fJutteS-Jiperes
 providerによる状態管理と、それを使役するコンポーネントなどのライブラリ
 
-### fJutteS-jexts
+### fJutteS-Jexts
 AppRouterとhashによるページルーティング
 
 ## インポート方法
