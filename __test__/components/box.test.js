@@ -1,15 +1,15 @@
 import { Box } from '../../components/box.js';
-import { BorderCSS } from '../../models/borderCSS.js';
-import { WebkitCSS } from '../../enums/webkitCSS.js';
+import { BorderCSS } from '../../cssKit/borderCSS.js';
+import { WebkitCSS } from '../../cssKit/webkitCSS.js';
 import { Moc } from "../testScripts/moc.js";
 
-jest.mock('../../models/borderCSS', () => ({
+jest.mock('../../cssKit/borderCSS', () => ({
 	BorderCSS: jest.fn().mockImplementation(() => ({
 		applyCSS: jest.fn(element => element)
 	}))
 }));
 
-jest.mock('../../enums/webkitCSS', () => ({
+jest.mock('../../cssKit/webkitCSS', () => ({
 	WebkitCSS: jest.fn().mockImplementation(() => ({
 		applyCSS: jest.fn(element => element)
 	}))

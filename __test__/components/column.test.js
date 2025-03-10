@@ -1,9 +1,9 @@
 import { Column } from '../../components/column.js';
-import { BaseCSS } from '../../enums/baseCSS.js';
+import { BaseCSS } from '../../cssKit/baseCSS.js';
 import { extendsWithoutId } from '../testScripts/matcherWithoutId.js';
 import { Moc } from "../testScripts/moc.js";
 
-jest.mock('../../enums/baseCSS', () => ({
+jest.mock('../../cssKit/baseCSS', () => ({
     BaseCSS: jest.fn().mockImplementation(() => ({
         applyCSS: jest.fn(element => element)
     }))

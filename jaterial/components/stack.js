@@ -1,4 +1,4 @@
-import { BaseCSS } from "../enums/baseCSS.js";
+import { BaseCSS } from "../cssKit/baseCSS.js";
 import { View } from "../core/interface/view.js";
 
 export class Stack extends View {

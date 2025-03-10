@@ -1,7 +1,7 @@
-import { BaseCSS } from "../enums/baseCSS.js";
-import { ShadowLevel } from "../enums/shadowLevel.js";
+import { BaseCSS } from "../cssKit/baseCSS.js";
+import { ShadowLevel } from "../cssKit/shadowLevel.js";
 import { View } from "../core/interface/view.js";
-import { BorderCSS } from "../models/borderCSS.js";
+import { BorderCSS } from "../cssKit/borderCSS.js";
 import { Row } from "./row.js";
 
 export class Hover extends View {

@@ -1,7 +1,7 @@
 import { View } from "../core/interface/view.js";
-import { ShadowLevel } from '../enums/shadowLevel.js';
-import { BaseCSS } from "../enums/baseCSS.js";
-import { WebkitCSS } from "../enums/webkitCSS.js";
+import { ShadowLevel } from '../cssKit/shadowLevel.js';
+import { BaseCSS } from "../cssKit/baseCSS.js";
+import { WebkitCSS } from "../cssKit/webkitCSS.js";
 
 export class Card extends View {
     constructor({

@@ -1,5 +1,5 @@
 import { View } from "../core/interface/view.js";
-import { TextCSS } from "../enums/textCSS.js";
+import { TextCSS } from "../cssKit/textCSS.js";
 
 export class Text extends View{
     constructor(

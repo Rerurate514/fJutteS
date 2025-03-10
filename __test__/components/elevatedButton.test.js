@@ -1,5 +1,5 @@
 import { ElevatedButton } from '../../components/elevatedButton.js';
-import { BaseCSS } from '../../enums/baseCSS.js';
+import { BaseCSS } from '../../cssKit/baseCSS.js';
 import { Center } from '../../components/center.js';
 import { Hover } from '../../components/hover.js';
 

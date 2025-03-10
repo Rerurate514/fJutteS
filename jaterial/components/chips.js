@@ -1,8 +1,8 @@
 import { View } from "../core/interface/view.js";
 import { Text } from "./text.js";
 import { Card } from "./card.js";
-import { ShadowLevel } from "../enums/shadowLevel.js";
-import { BorderCSS } from "../models/borderCSS.js";
+import { ShadowLevel } from "../cssKit/shadowLevel.js";
+import { BorderCSS } from "../cssKit/borderCSS.js";
 
 export class Chips extends View {
     constructor({

@@ -4,14 +4,14 @@ import { Row } from "../components/row.js";
 import { Column } from "../components/column.js";
 import { SpaceBox } from "../components/spaceBox.js";
 import { Card } from "../components/card.js";
-import { ShadowLevel } from "../enums/shadowLevel.js";
-import { TextCSS } from "../enums/textCSS.js";
-import { FontCSS } from "../enums/fontCSS.js";
+import { ShadowLevel } from "../cssKit/shadowLevel.js";
+import { TextCSS } from "../cssKit/textCSS.js";
+import { FontCSS } from "../cssKit/fontCSS.js";
 import { Provider } from "../jiperes/logic/provider.js";
 import { LimitedProviderScope } from "../components/limitedProviderScope.js";
 import { generateUUID } from "../utils/generateUUID.js";
 import { Shrink } from "./shrink.js";
-import { BaseCSS } from "../enums/baseCSS.js";
+import { BaseCSS } from "../cssKit/baseCSS.js";
 
 
 export class Accordion extends View {

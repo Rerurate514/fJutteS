@@ -1,4 +1,4 @@
-import { View } from "../core/interface/view.js";
+import { View } from "../../core/interface/view.js";
 
 export class Grid extends View {
     constructor({

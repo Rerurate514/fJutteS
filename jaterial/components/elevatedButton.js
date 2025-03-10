@@ -1,4 +1,4 @@
-import { BaseCSS } from "../enums/baseCSS.js";
+import { BaseCSS } from "../cssKit/baseCSS.js";
 import { View } from "../core/interface/view.js";
 import { Center } from "./center.js";
 import { Hover } from "./hover.js";

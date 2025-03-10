@@ -1,5 +1,5 @@
 import { DropDownMenu, DropDownMenuItem, DropDownMenuItemGroup } from '../../components/dropDownMenu.js';
-import { BaseCSS } from '../../enums/baseCSS.js';
+import { BaseCSS } from '../../cssKit/baseCSS.js';
 import { Provider } from '../../jiperes/logic/provider.js';
 import { Moc } from '../testScripts/moc.js';
 
