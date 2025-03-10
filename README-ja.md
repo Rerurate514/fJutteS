@@ -30,6 +30,22 @@ HTMLとCSSとJavaScriptのファイルのみが許されている特殊な環境
 </br>
 </br>
 
+## 内部ライブラリとその説明
+### fJutteS-Core
+コンポーネントやウィジェットを作成するために必要な基本的なコード群
+
+### fJutteS-JaterialS
+基本的なコンポーネント群が格納されているライブラリ
+
+### fJutteS-CSSKit
+JaterialSで定義されているコンポーネントに対して、CSSを簡単に適用することができるライブラリ
+
+### fJutteS-Jiperes
+providerによる状態管理と、それを使役するコンポーネントなどのライブラリ
+
+### fJutteS-jexts
+AppRouterとhashによるページルーティング
+
 ## インポート方法
 ### npm
 npm経由で`fjuttes`を使用するには`npm install fjuttes`をコンソールで実行してから`node_modules`で使用します。

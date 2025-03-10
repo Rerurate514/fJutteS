@@ -29,6 +29,22 @@ For state management, `fJutteS` uses its own library called `Jiperes` that's bee
 </br>
 </br>
 
+## Internal Libraries and their Descriptions
+### fJutteS-Core
+This library contains the foundational code needed to create components and widgets.
+
+### fJutteS-JaterialS
+This library houses a collection of basic components.
+
+### fJutteS-CSSKit
+This library provides a simplified way to apply CSS styles to components defined in JaterialS.
+
+### fJutteS-Jiperes
+This library provides state management using providers, along with components that utilize this state management system.
+
+### fJutteS-jexts
+This library enables page routing using AppRouter and hash-based navigation.
+
 ## Installations
 ### npm
 To use `fjuttes` via npm, run `npm install fjuttes` in the console and then use it in `node_modules`.
