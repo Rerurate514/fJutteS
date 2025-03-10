@@ -21,7 +21,7 @@ export class LangSwitcher extends View {
         return new LimitedProviderScope({
             watchingProviders: [ langSwitchProvider ],
             build: (langKey) => {
-                return this.props.build(langKey);
+                return this.props.build(langKey[0]);
             }
         });
     }
