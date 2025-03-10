@@ -4,7 +4,7 @@ import { Row } from "../jaterials/components/row.js";
 import { Column } from "../jaterials/components/column.js";
 import { SpaceBox } from "../jaterials/components/spaceBox.js";
 import { Card } from "../jaterials/components/card.js";
-import { ShadowLevel } from "../cssKit/shadowLevel.js";
+import { ShadowLevel } from "../enums/shadowLevel.js";
 import { TextCSS } from "../../cssKit/textCSS.js";
 import { FontCSS } from "../../cssKit/fontCSS.js";
 import { Provider } from "../jiperes/logic/provider.js";

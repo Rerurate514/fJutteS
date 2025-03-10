@@ -1,5 +1,5 @@
 import { Card } from '../../jaterials/components/card.js';
-import { ShadowLevel } from '../../cssKit/shadowLevel.js';
+import { ShadowLevel } from '../../jaterials/enums/shadowLevel.js';
 import { BaseCSS } from '../../cssKit/baseCSS.js';
 import { WebkitCSS } from '../../cssKit/webkitCSS.js';
 import { Moc } from "../testScripts/moc.js";

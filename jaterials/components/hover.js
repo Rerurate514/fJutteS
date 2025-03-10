@@ -1,5 +1,5 @@
 import { BaseCSS } from "../../cssKit/baseCSS.js";
-import { ShadowLevel } from "../cssKit/shadowLevel.js";
+import { ShadowLevel } from "../enums/shadowLevel.js";
 import { View } from "../../core/interface/view.js";
 import { BorderCSS } from "../../cssKit/borderCSS.js";
 import { Row } from "./row.js";

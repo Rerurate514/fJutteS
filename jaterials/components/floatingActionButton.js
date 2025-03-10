@@ -1,5 +1,5 @@
 import { BaseCSS } from "../../cssKit/baseCSS.js";
-import { ShadowLevel } from "../cssKit/shadowLevel.js";
+import { ShadowLevel } from "../enums/shadowLevel.js";
 import { View } from "../../core/interface/view.js";
 import { Center } from "./center.js";
 import { ElevatedButton } from "./elevatedButton.js";
