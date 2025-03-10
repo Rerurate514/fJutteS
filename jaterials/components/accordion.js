@@ -1,16 +1,17 @@
 import { View } from "../../core/interface/view.js";
-import { Text } from "../jaterials/components/text.js";
-import { Row } from "../jaterials/components/row.js";
-import { Column } from "../jaterials/components/column.js";
-import { SpaceBox } from "../jaterials/components/spaceBox.js";
-import { Card } from "../jaterials/components/card.js";
+import { Text } from "./text.js";
+import { Row } from "./row.js";
+import { Column } from "./column.js";
+import { SpaceBox } from "./spaceBox.js";
+import { Card } from "./card.js";
 import { ShadowLevel } from "../enums/shadowLevel.js";
 import { TextCSS } from "../../cssKit/textCSS.js";
 import { FontCSS } from "../../cssKit/fontCSS.js";
-import { Provider } from "../jiperes/logic/provider.js";
-import { LimitedProviderScope } from "../jaterials/components/limitedProviderScope.js";
-import { generateUUID } from "../utils/generateUUID.js";
+import { Provider } from "../../jiperes/logic/provider.js";
+import { LimitedProviderScope } from "../../jiperes/components/limitedProviderScope.js";
+import { generateUUID } from "../../core/logic/generateUUID.js";
 import { BaseCSS } from "../../cssKit/baseCSS.js";
+import { Shrink } from "./shrink.js";
 
 
 export class Accordion extends View {

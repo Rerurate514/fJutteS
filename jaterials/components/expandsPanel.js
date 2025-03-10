@@ -1,11 +1,11 @@
 import { BaseCSS } from "../../cssKit/baseCSS.js";
 import { ShadowLevel } from "../enums/shadowLevel.js";
 import { View } from "../../core/interface/view.js";
-import { Provider } from "../jiperes/logic/provider.js";
+import { Provider } from "../../jiperes/logic/provider.js";
 import { Card } from "./card.js";
 import { Column } from "./column.js";
 import { ElevatedButton } from "./elevatedButton.js";
-import { LimitedProviderScope } from "./limitedProviderScope.js";
+import { LimitedProviderScope } from "../../jiperes/components/limitedProviderScope.js";
 import { Row } from "./row.js";
 import { Shrink } from "./shrink.js";
 import { SpaceBox } from "./spaceBox.js";

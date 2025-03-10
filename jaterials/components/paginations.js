@@ -1,7 +1,7 @@
 import { BaseCSS } from "../../cssKit/baseCSS.js";
 import { View } from "../../core/interface/view.js";
-import { Provider } from "../jiperes/logic/provider.js";
-import { LimitedProviderScope } from "./limitedProviderScope.js";
+import { Provider } from "../../jiperes/logic/provider.js";
+import { LimitedProviderScope } from "../../jiperes/components/limitedProviderScope.js";
 
 export class Paginations extends View {
     constructor({ 

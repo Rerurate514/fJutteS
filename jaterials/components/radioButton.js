@@ -1,4 +1,4 @@
-import { ProviderScope } from "../jiperes/interface/providerScope.js";
+import { ProviderScope } from "../../jiperes/interface/providerScope.js";
 
 export class RadioButton extends ProviderScope {
     constructor({

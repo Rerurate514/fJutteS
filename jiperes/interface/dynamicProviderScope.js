@@ -1,5 +1,5 @@
 import { View } from "../../core/interface/view.js";
-import { Provider } from "../provider.js";
+import { Provider } from "../logic/provider.js";
 
 /**
  * このクラスは状態管理しなくてはならない要素が動的に変化する際に有用なコンポーネントです。
