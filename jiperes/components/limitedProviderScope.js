@@ -1,4 +1,4 @@
-import { ProviderScope } from "../jiperes/interface/providerScope.js";
+import { ProviderScope } from "../interface/providerScope.js";
 
 export class LimitedProviderScope extends ProviderScope {
     constructor({
