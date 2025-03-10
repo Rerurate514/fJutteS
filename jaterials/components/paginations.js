@@ -1,5 +1,5 @@
-import { BaseCSS } from "../cssKit/baseCSS.js";
-import { View } from "../core/interface/view.js";
+import { BaseCSS } from "../../cssKit/baseCSS.js";
+import { View } from "../../core/interface/view.js";
 import { Provider } from "../jiperes/logic/provider.js";
 import { LimitedProviderScope } from "./limitedProviderScope.js";
 

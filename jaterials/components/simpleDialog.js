@@ -1,5 +1,5 @@
-import { BaseCSS } from "../cssKit/baseCSS.js";
-import { View } from "../core/interface/view.js";
+import { BaseCSS } from "../../cssKit/baseCSS.js";
+import { View } from "../../core/interface/view.js";
 import { Column } from "./column.js";
 import { ElevatedButton } from "./elevatedButton.js";
 import { Row } from "./row.js";

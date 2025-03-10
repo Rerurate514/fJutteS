@@ -1,6 +1,6 @@
-import { BaseCSS } from "../cssKit/baseCSS.js";
+import { BaseCSS } from "../../cssKit/baseCSS.js";
 import { ShadowLevel } from "../cssKit/shadowLevel.js";
-import { View } from "../core/interface/view.js";
+import { View } from "../../core/interface/view.js";
 import { Provider } from "../jiperes/logic/provider.js";
 import { Card } from "./card.js";
 import { Column } from "./column.js";

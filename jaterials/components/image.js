@@ -1,6 +1,6 @@
-import { BaseCSS } from "../cssKit/baseCSS.js";
-import { WebkitCSS } from "../cssKit/webkitCSS.js";
-import { View } from "../core/interface/view.js";
+import { BaseCSS } from "../../cssKit/baseCSS.js";
+import { WebkitCSS } from "../../cssKit/webkitCSS.js";
+import { View } from "../../core/interface/view.js";
 
 export class Image extends View {
     constructor({

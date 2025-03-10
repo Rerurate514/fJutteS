@@ -1,4 +1,4 @@
-import { View } from "../core/interface/view.js";
+import { View } from "../../core/interface/view.js";
 
 export class RelativePositionAnimateSwitcher extends View {
     constructor({

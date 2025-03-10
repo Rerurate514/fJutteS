@@ -1,4 +1,4 @@
-import { View } from "../core/interface/view.js";
+import { View } from "../../core/interface/view.js";
 
 export class CodeBlock extends View {
   constructor({ code, language, showLineNumbers }) {
