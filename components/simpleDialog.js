@@ -1,5 +1,5 @@
 import { BaseCSS } from "../enums/baseCSS.js";
-import { View } from "../interface/view.js";
+import { View } from "../core/interface/view.js";
 import { Column } from "./column.js";
 import { ElevatedButton } from "./elevatedButton.js";
 import { Row } from "./row.js";

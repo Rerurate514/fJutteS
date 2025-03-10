@@ -1,4 +1,4 @@
-import { View } from "../interface/view.js";
+import { View } from "../core/interface/view.js";
 import { Text } from "./text.js";
 import { Card } from "./card.js";
 import { ShadowLevel } from "../enums/shadowLevel.js";

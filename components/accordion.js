@@ -1,4 +1,4 @@
-import { View } from "../interface/view.js";
+import { View } from "../core/interface/view.js";
 import { Text } from "../components/text.js";
 import { Row } from "../components/row.js";
 import { Column } from "../components/column.js";

@@ -1,4 +1,4 @@
-import { View } from "../interface/view.js";
+import { View } from "../core/interface/view.js";
 
 export class Padding extends View {
     constructor({

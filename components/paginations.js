@@ -1,5 +1,5 @@
 import { BaseCSS } from "../enums/baseCSS.js";
-import { View } from "../interface/view.js";
+import { View } from "../core/interface/view.js";
 import { Provider } from "../jiperes/provider.js";
 import { LimitedProviderScope } from "./limitedProviderScope.js";
 

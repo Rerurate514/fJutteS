@@ -1,6 +1,6 @@
 import { BaseCSS } from "../enums/baseCSS.js";
 import { WebkitCSS } from "../enums/webkitCSS.js";
-import { View } from "../interface/view.js";
+import { View } from "../core/interface/view.js";
 
 export class Image extends View {
     constructor({

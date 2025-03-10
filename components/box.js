@@ -1,5 +1,5 @@
 import { WebkitCSS } from "../enums/webkitCSS.js";
-import { View } from "../interface/view.js";
+import { View } from "../core/interface/view.js";
 import { BorderCSS } from "../models/borderCSS.js";
 
 export class Box extends View {

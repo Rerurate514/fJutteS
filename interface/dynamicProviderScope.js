@@ -1,5 +1,5 @@
 import { IllegalPreBuildDoSomothingError } from "../errors/errors.js";
-import { View } from "../interface/view.js";
+import { View } from "../core/interface/view.js";
 import { Provider } from "../jiperes/provider.js";
 
 /**

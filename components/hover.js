@@ -1,6 +1,6 @@
 import { BaseCSS } from "../enums/baseCSS.js";
 import { ShadowLevel } from "../enums/shadowLevel.js";
-import { View } from "../interface/view.js";
+import { View } from "../core/interface/view.js";
 import { BorderCSS } from "../models/borderCSS.js";
 import { Row } from "./row.js";
 

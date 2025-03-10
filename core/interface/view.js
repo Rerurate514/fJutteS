@@ -1,4 +1,4 @@
-import { generateUUID } from '../utils/generateUUID.js';
+import { generateUUID } from '../../utils/generateUUID.js';
 
 /**
  * Viewクラス - abstruct ---
@@ -6,7 +6,12 @@ import { generateUUID } from '../utils/generateUUID.js';
  * もしViewクラス内のログを出力する際には継承先でthis.isLogOutをtrueにしてください。
  */
 export class View {
-    isLogOut = false;
+    /**
+ * Description placeholder
+ *
+ * @type {boolean}
+ */
+isLogOut = false;
 
     constructor(props = {}) {
         if (this.constructor === View) {
@@ -34,7 +39,12 @@ export class View {
         this._isViewBuilt = true;
     }
 
-    _assembleWrapView() {
+    /**
+ * Description placeholder
+ *
+ * @returns {HTMLElenment} 
+ */
+_assembleWrapView() {
         let wrapView = this.createWrapView();
         this._checkHTMLElement(wrapView, "createWrapView");
 
@@ -47,7 +57,8 @@ export class View {
         return embededView;
     }
 
-    addPseudoElement(){
+    /** Description placeholder */
+addPseudoElement(){
         if(this.child instanceof View) this.child.addPseudoElement();
         if(this.child instanceof Array){
             this.child.forEach((child) => {
@@ -68,21 +79,42 @@ export class View {
         }
     }
 
-    createBeforeElement(){
+    /**
+ * Description placeholder
+ *
+ * @returns {*} 
+ */
+createBeforeElement(){
         return null;
     }
 
-    createAfterElement(){
+    /**
+ * Description placeholder
+ *
+ * @returns {*} 
+ */
+createAfterElement(){
         return null;
     }
 
-    _checkHTMLElement(child, msg) {
+    /**
+ * Description placeholder
+ *
+ * @param {*} child 
+ * @param {*} msg 
+ */
+_checkHTMLElement(child, msg) {
         if (!(child instanceof HTMLElement)) {
             throw new TypeError(msg + "には必ずHTMLElenmentオブジェクトを格納してください。 渡された型:", typeof child);
         }
     }
 
-    getBuildCompletionState() {
+    /**
+ * Description placeholder
+ *
+ * @returns {boolean} 
+ */
+getBuildCompletionState() {
         return this._isViewBuilt;
     }
 
@@ -183,7 +215,8 @@ export class View {
 
     }
     
-    _rendered(){
+    /** Description placeholder */
+_rendered(){
         if(this.child instanceof View) this.child._rendered();
         if(this.child instanceof Array){
             this.child.forEach((child) => {
@@ -193,7 +226,14 @@ export class View {
         this.onRendered();
     }
 
-    rebuild({
+    /**
+ * Description placeholder
+ *
+ * @param {{ props?: any; builtView?: any; }} [param0={}] 
+ * @param {*} [param0.props=null] 
+ * @param {*} [param0.builtView=null] 
+ */
+rebuild({
         props = null, 
         builtView = null
     } = {}) {
@@ -213,7 +253,13 @@ export class View {
         this.postBuild();
     }
 
-    _inputViewData(child, embededView) {
+    /**
+ * Description placeholder
+ *
+ * @param {*} child 
+ * @param {*} embededView 
+ */
+_inputViewData(child, embededView) {
         if (child instanceof Array) {
             this._inputMultiView(child, embededView);
         }
@@ -225,12 +271,24 @@ export class View {
         this._attributeViewNameToDataset();
     }
 
-    _inputSingleView(child, embededView) {
+    /**
+ * Description placeholder
+ *
+ * @param {*} child 
+ * @param {*} embededView 
+ */
+_inputSingleView(child, embededView) {
         this.view = embededView;
         if (child instanceof View) this.view.appendChild(child.view);
     }
 
-    _inputMultiView(child, embededView) {
+    /**
+ * Description placeholder
+ *
+ * @param {*} child 
+ * @param {*} embededView 
+ */
+_inputMultiView(child, embededView) {
         if (!this.view) this.view = embededView;
 
         child.forEach(child => {
@@ -239,19 +297,27 @@ export class View {
         });
     }
 
-    _createId() {
+    /** Description placeholder */
+_createId() {
         this.props.id = generateUUID();
     }
 
-    _attributeId() {
+    /** Description placeholder */
+_attributeId() {
         this.view.id = this.props.id;
     }
 
-    _attributeViewNameToDataset() {
+    /** Description placeholder */
+_attributeViewNameToDataset() {
         this.view.dataset.viewClassName = this.constructor.name;
     }
 
-    _log(message){
+    /**
+ * Description placeholder
+ *
+ * @param {*} message 
+ */
+_log(message){
         if(!this.isLogOut) return;
         console.log("[" + this.constructor.name + "] " + message);
     }
