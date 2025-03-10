@@ -1,4 +1,4 @@
-import { ClippingText } from '../../components/clippingText.js';
+import { ClippingText } from '../../jaterials/components/clippingText.js';
 import { Moc } from "../testScripts/moc.js";
 import { extendsWithoutId } from '../testScripts/matcherWithoutId.js';
 

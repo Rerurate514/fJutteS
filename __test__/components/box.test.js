@@ -1,4 +1,4 @@
-import { Box } from '../../components/box.js';
+import { Box } from '../../jaterials/components/box.js';
 import { BorderCSS } from '../../cssKit/borderCSS.js';
 import { WebkitCSS } from '../../cssKit/webkitCSS.js';
 import { Moc } from "../testScripts/moc.js";

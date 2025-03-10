@@ -1,4 +1,4 @@
-import { Column } from '../../components/column.js';
+import { Column } from '../../jaterials/components/column.js';
 import { BaseCSS } from '../../cssKit/baseCSS.js';
 import { extendsWithoutId } from '../testScripts/matcherWithoutId.js';
 import { Moc } from "../testScripts/moc.js";

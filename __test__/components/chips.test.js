@@ -1,6 +1,6 @@
-import { Card } from '../../components/card.js';
-import { Chips } from '../../components/chips.js';
-import { Text } from '../../components/text.js';
+import { Card } from '../../jaterials/components/card.js';
+import { Chips } from '../../jaterials/components/chips.js';
+import { Text } from '../../jaterials/components/text.js';
 import { BorderCSS } from '../../cssKit/borderCSS.js';
 import { extendsWithoutId } from '../testScripts/matcherWithoutId.js';
 

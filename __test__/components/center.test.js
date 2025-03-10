@@ -1,4 +1,4 @@
-import { Center, _Center } from "../../components/center.js";
+import { Center, _Center } from "../../jaterials/components/center.js";
 import { Moc } from "../testScripts/moc.js";
 
 describe('Center', () => {

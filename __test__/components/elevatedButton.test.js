@@ -1,7 +1,7 @@
-import { ElevatedButton } from '../../components/elevatedButton.js';
+import { ElevatedButton } from '../../jaterials/components/elevatedButton.js';
 import { BaseCSS } from '../../cssKit/baseCSS.js';
-import { Center } from '../../components/center.js';
-import { Hover } from '../../components/hover.js';
+import { Center } from '../../jaterials/components/center.js';
+import { Hover } from '../../jaterials/components/hover.js';
 
 describe('ElevatedButton', () => {
     let button;

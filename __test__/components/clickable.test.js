@@ -1,4 +1,4 @@
-import { Clickable } from '../../components/clickable.js';
+import { Clickable } from '../../jaterials/components/clickable.js';
 import { BaseCSS } from '../../cssKit/baseCSS.js';
 import { extendsWithoutId } from '../testScripts/matcherWithoutId.js';
 import { Moc } from "../testScripts/moc.js";

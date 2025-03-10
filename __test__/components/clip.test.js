@@ -1,4 +1,4 @@
-import { Clip } from '../../components/clip.js';
+import { Clip } from '../../jaterials/components/clip.js';
 import { BaseCSS } from '../../cssKit/baseCSS.js';
 import { extendsWithoutId } from '../testScripts/matcherWithoutId.js';
 import { Moc } from "../testScripts/moc.js";

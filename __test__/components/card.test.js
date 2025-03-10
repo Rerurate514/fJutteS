@@ -1,4 +1,4 @@
-import { Card } from '../../components/card.js';
+import { Card } from '../../jaterials/components/card.js';
 import { ShadowLevel } from '../../cssKit/shadowLevel.js';
 import { BaseCSS } from '../../cssKit/baseCSS.js';
 import { WebkitCSS } from '../../cssKit/webkitCSS.js';
