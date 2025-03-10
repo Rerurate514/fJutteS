@@ -7,7 +7,7 @@ import { Card } from "../components/card.js";
 import { ShadowLevel } from "../enums/shadowLevel.js";
 import { TextCSS } from "../enums/textCSS.js";
 import { FontCSS } from "../enums/fontCSS.js";
-import { Provider } from "../jiperes/provider.js";
+import { Provider } from "../jiperes/logic/provider.js";
 import { LimitedProviderScope } from "../components/limitedProviderScope.js";
 import { generateUUID } from "../utils/generateUUID.js";
 import { Shrink } from "./shrink.js";

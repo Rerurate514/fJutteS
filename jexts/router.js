@@ -1,5 +1,5 @@
 import { ProviderScope } from "../jiperes/interface/providerScope.js";
-import { Provider } from "../jiperes/provider.js";
+import { Provider } from "../jiperes/logic/provider.js";
 
 export class AppRouter extends ProviderScope {
     constructor({ 

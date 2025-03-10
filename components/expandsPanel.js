@@ -1,7 +1,7 @@
 import { BaseCSS } from "../enums/baseCSS.js";
 import { ShadowLevel } from "../enums/shadowLevel.js";
 import { View } from "../core/interface/view.js";
-import { Provider } from "../jiperes/provider.js";
+import { Provider } from "../jiperes/logic/provider.js";
 import { Card } from "./card.js";
 import { Column } from "./column.js";
 import { ElevatedButton } from "./elevatedButton.js";

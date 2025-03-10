@@ -66,8 +66,8 @@ export { BorderCSS } from './models/borderCSS.js';
 
 export * from './errors/errors.js';
 
-export { ProviderObserver } from './jiperes/observer.js';
-export { Provider } from './jiperes/provider.js';
+export { ProviderObserver } from './jiperes/logic/observer.js';
+export { Provider } from './jiperes/logic/provider.js';
 
 export { AppRouter, route } from './jexts/router.js';
 

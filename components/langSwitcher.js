@@ -1,4 +1,4 @@
-import { Provider } from "../jiperes/provider.js";
+import { Provider } from "../jiperes/logic/provider.js";
 import { View } from "../core/interface/view.js";
 import { LimitedProviderScope } from "./limitedProviderScope.js";
 

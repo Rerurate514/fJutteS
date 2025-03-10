@@ -1,5 +1,5 @@
 import { View } from "../core/interface/view.js";
-import { Provider } from "../jiperes/provider.js";
+import { Provider } from "../jiperes/logic/provider.js";
 import { LimitedProviderScope } from "../components/limitedProviderScope.js";
 
 export class PageRouter extends View {

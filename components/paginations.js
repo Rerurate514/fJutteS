@@ -1,6 +1,6 @@
 import { BaseCSS } from "../enums/baseCSS.js";
 import { View } from "../core/interface/view.js";
-import { Provider } from "../jiperes/provider.js";
+import { Provider } from "../jiperes/logic/provider.js";
 import { LimitedProviderScope } from "./limitedProviderScope.js";
 
 export class Paginations extends View {
