@@ -2,14 +2,14 @@ import { ProviderScope } from "../../jiperes/interface/providerScope.js";
 import { Provider } from "../../jiperes/logic/provider.js";
 
 export class AppRouter extends ProviderScope {
-    constructor({ 
+    constructor({
         routes,
         page404,
         homePage,
         startPageRoute = "",
-     }) {
+    }) {
         super({
-            props: { 
+            props: {
                 routes,
                 page404,
                 homePage,
@@ -19,7 +19,7 @@ export class AppRouter extends ProviderScope {
                 Provider.createProvider(() => window.location.hash.substring(1) || startPageRoute, 'currentPage__AppRouter')
             ],
         });
-        
+
         window.addEventListener('hashchange', () => {
             this.props.providers[0].update(() => window.location.hash.substring(1) || startPageRoute);
         });
@@ -33,7 +33,7 @@ export class AppRouter extends ProviderScope {
         const currentPage = this.props.providers[0].read();
         const PageComponent = this.props.routes[currentPage];
 
-        if(!currentPage){
+        if (!currentPage) {
             return this.props.homePage;
         }
 
