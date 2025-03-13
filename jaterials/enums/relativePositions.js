@@ -16,57 +16,57 @@ export class RelativePositions {
     applyCSS(element) {
         switch (this.value) {
             case 'center': {
-                element.style.margin = "50%";
+                element.style.margin = "auto";
 
                 return element;
             }
             case 'top': {
-                element.style.margin = "50%";
+                element.style.margin = "auto";
                 element.style.marginTop = "0%";
 
                 return element;
             }
             case 'top-right': {
-                element.style.margin = "50%";
+                element.style.margin = "auto";
                 element.style.marginTop = "0%";
                 element.style.marginRight = "0%";
 
                 return element;
             }
             case 'right': {
-                element.style.margin = "50%";
+                element.style.margin = "auto";
                 element.style.marginRight = "0%";
 
                 return element;
             }
             case 'bottom-right': {
-                element.style.margin = "50%";
+                element.style.margin = "auto";
                 element.style.marginRight = "0%";
                 element.style.marginBottom = "0%";
 
                 return element;
             }
             case 'bottom': {
-                element.style.margin = "50%";
+                element.style.margin = "auto";
                 element.style.marginBottom = "0%";
 
                 return element;
             }
             case 'bottom-left': {
-                element.style.margin = "50%";
+                element.style.margin = "auto";
                 element.style.marginLeft = "0%";
                 element.style.marginBottom = "0%";
 
                 return element;
             }
             case 'left': {
-                element.style.margin = "50%";
+                element.style.margin = "auto";
                 element.style.marginLeft = "0%";
 
                 return element;
             }
             case 'top-left': {
-                element.style.margin = "50%";
+                element.style.margin = "auto";
                 element.style.marginTop = "0%";
                 element.style.marginLeft = "0%";
 
