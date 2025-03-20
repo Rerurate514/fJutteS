@@ -615,6 +615,29 @@ console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));
 console.log(new ProviderObserver().getDependencyGraph());
 ```  
 
+## fJutteS-API
+fJutteSには基本的な情報を得ることができるAPIをrender.comにてデプロイしています。
+その例を以下に示します。
+```js
+async function getComponents() {
+    try {
+        const response = await fetch("https://fjuttes-api.onrender.com/components");
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log(data);
+
+    } catch (error) {
+        console.error("Error fetching components:", error);
+    }
+}
+
+getComponents();
+```
+
 ## 用語集
 - View(ビュー)：`View`クラスまたはその他UI構築クラスから継承して作成されたUI部品
 - コンポーネント：`fJutterS`側から提供されるViewのこと

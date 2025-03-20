@@ -607,6 +607,30 @@ Once logging is enabled, you can check logs using these methods:
 - View update history for a specific Provider: `console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));`
 - Display Provider dependency graph: `console.log(new ProviderObserver().getDependencyGraph());`
 
+## fJutteS-API
+The fJutteS-API provides basic information about fJutteS.  It is deployed on Render.com.
+
+Here's an example of how to fetch data from the API using JavaScript:
+
+```js
+async function getComponents() {
+  try {
+    const response = await fetch("[https://fjuttes-api.onrender.com/components](https://fjuttes-api.onrender.com/components)");
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+
+  } catch (error) {
+    console.error("Error fetching components:", error);
+  }
+}
+
+getComponents();
+
 ## Glossary
 - View: UI components created by inheriting from the `View` class or other UI construction classes
 - Component: Views provided by `fJutterS`
