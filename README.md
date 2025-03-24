@@ -1,7 +1,7 @@
 # THIS IS PURE JS FRAMEWORK
 `fJutteS` is a declarative component UI framework built purely with JavaScript. It's the perfect framework when you want to do Flutter-like component-based programming in specialized environments where only HTML, CSS, and JavaScript files are allowed (environments where you can't use React or Vue). While `fJutteS` comes with various pre-built components, these are ultimately just widgets that I created, and users can freely create their own widgets - after all, it's just JavaScript!
 For state management, `fJutteS` uses its own library called `Jiperes` that's been optimized specifically for the framework, eliminating the need to choose a state management library. However, this comes with a trade-off: the loss of setState and useState. This means that individual widgets cannot modify their state independently. We hope you'll understand this as one of our core design philosophies.
-- latest version -> fjuttes@2.8.1
+- latest version -> fjuttes@3.0.0
 - 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md
 
 <h6>OFFICIAL WIKI : https://rerurate514.github.io/fJutteS-Wiki/</h6>
@@ -28,6 +28,22 @@ For state management, `fJutteS` uses its own library called `Jiperes` that's bee
 </div>
 </br>
 </br>
+
+## Internal Libraries and their Descriptions
+### fJutteS-Core
+This library contains the foundational code needed to create components and widgets.
+
+### fJutteS-Jaterials
+This library houses a collection of basic components.
+
+### fJutteS-CSSKit
+This library provides a simplified way to apply CSS styles to components defined in Jaterials.
+
+### fJutteS-Jiperes
+This library provides state management using providers, along with components that utilize this state management system.
+
+### fJutteS-Jexts
+This library enables page routing using AppRouter and hash-based navigation.
 
 ## Installations
 ### npm
@@ -57,7 +73,7 @@ To use `fjuttes` via npm, run `npm install fjuttes` in the console and then use 
 You can use `unpkg` to utilize `fJutteS` functionality in CDN format without using npm.
 Here's a code example:
 ```html
-<script src="https://unpkg.com/fjuttes@2.8.1/dist/index.mjs"></script>
+<script src="https://unpkg.com/fjuttes@3.0.0/dist/index.mjs"></script>
 ```
 
 While more details will be explained later, you can use it as follows:
@@ -76,7 +92,7 @@ While more details will be explained later, you can use it as follows:
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@2.8.1/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@3.0.0/dist/index.mjs"
             }
         }
     </script>
@@ -590,6 +606,30 @@ Once logging is enabled, you can check logs using these methods:
 - View all Provider update history: `console.log(new ProviderObserver().getAllUpdateHistory());`
 - View update history for a specific Provider: `console.log(new ProviderObserver().getFilteredUpdateHistory(userProvider));`
 - Display Provider dependency graph: `console.log(new ProviderObserver().getDependencyGraph());`
+
+## fJutteS-API
+The fJutteS-API provides basic information about fJutteS.  It is deployed on Render.com.
+
+Here's an example of how to fetch data from the API using JavaScript:
+
+```js
+async function getComponents() {
+  try {
+    const response = await fetch("[https://fjuttes-api.onrender.com/components](https://fjuttes-api.onrender.com/components)");
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+
+  } catch (error) {
+    console.error("Error fetching components:", error);
+  }
+}
+
+getComponents();
 
 ## Glossary
 - View: UI components created by inheriting from the `View` class or other UI construction classes

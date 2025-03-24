@@ -1,5 +1,5 @@
-import { ProviderObserver } from '../../jiperes/observer.js';
-import { Provider } from '../../jiperes/provider.js';
+import { ProviderObserver } from '../../jiperes/logic/observer.js';
+import { Provider } from '../../jiperes/logic/provider.js';
 import { Moc } from '../testScripts/moc.js';
 
 describe('ProviderObserver', () => {
