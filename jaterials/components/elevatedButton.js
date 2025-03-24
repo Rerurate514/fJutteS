@@ -24,13 +24,14 @@ export class ElevatedButton extends View {
 
     styledView(element){
         element.style.borderRadius = this.props.radius;
-
+        element = element.props.baseCSS.applyCSS(element);
+        
         return element;
     }
 
     embedScriptToView(element){
         element.addEventListener("click", this.props.onClick);
-
+        
         return element;
     }
 
@@ -64,8 +65,6 @@ class _ElevatedButton extends View {
 
     styledView(element){
         element.style.borderRadius = "inherit";
-
-        element = this.props.baseCSS.applyCSS(element);
         return element;
     }
 
