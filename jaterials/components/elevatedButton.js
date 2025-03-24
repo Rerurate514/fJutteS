@@ -49,12 +49,10 @@ export class ElevatedButton extends View {
 class _ElevatedButton extends View {
     constructor({
         child,
-        baseCSS = new BaseCSS(),
         onClick: onClick = () => {},
     }){
         super({
             child: child,
-            baseCSS: baseCSS,
             onClick: onClick
         });
     }
