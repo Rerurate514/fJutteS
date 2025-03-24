@@ -9,7 +9,7 @@
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@2.8.1-alpha0.0.12/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@3.0.0-alpha0.0.12/dist/index.mjs"
             }
         }
     </script>
