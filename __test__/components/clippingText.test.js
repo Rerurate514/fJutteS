@@ -1,14 +1,14 @@
-import { ClippingText } from '../../components/clippingText.js';
+import { ClippingText } from '../../jaterials/components/clippingText.js';
 import { Moc } from "../testScripts/moc.js";
 import { extendsWithoutId } from '../testScripts/matcherWithoutId.js';
 
-jest.mock('../../models/borderCSS', () => ({
+jest.mock('../../cssKit/borderCSS', () => ({
     BorderCSS: jest.fn().mockImplementation(() => ({
         applyCSS: jest.fn(element => element)
     }))
 }));
 
-jest.mock('../../enums/webkitCSS', () => ({
+jest.mock('../../cssKit/webkitCSS', () => ({
     WebkitCSS: jest.fn().mockImplementation(() => ({
         applyCSS: jest.fn(element => element)
     }))

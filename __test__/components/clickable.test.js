@@ -1,10 +1,10 @@
-import { Clickable } from '../../components/clickable.js';
-import { BaseCSS } from '../../enums/baseCSS.js';
+import { Clickable } from '../../jaterials/components/clickable.js';
+import { BaseCSS } from '../../cssKit/baseCSS.js';
 import { extendsWithoutId } from '../testScripts/matcherWithoutId.js';
 import { Moc } from "../testScripts/moc.js";
 import { mocOnClick, onClickMoc } from '../testScripts/onClickMoc.js';
 
-jest.mock('../../enums/baseCSS', () => ({
+jest.mock('../../cssKit/baseCSS', () => ({
     BaseCSS: jest.fn().mockImplementation(() => ({
       applyCSS: jest.fn(element => element)
     }))

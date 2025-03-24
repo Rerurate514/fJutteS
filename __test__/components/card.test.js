@@ -1,7 +1,7 @@
-import { Card } from '../../components/card.js';
-import { ShadowLevel } from '../../enums/shadowLevel.js';
-import { BaseCSS } from '../../enums/baseCSS.js';
-import { WebkitCSS } from '../../enums/webkitCSS.js';
+import { Card } from '../../jaterials/components/card.js';
+import { ShadowLevel } from '../../jaterials/enums/shadowLevel.js';
+import { BaseCSS } from '../../cssKit/baseCSS.js';
+import { WebkitCSS } from '../../cssKit/webkitCSS.js';
 import { Moc } from "../testScripts/moc.js";
 
 describe('Card', () => {
