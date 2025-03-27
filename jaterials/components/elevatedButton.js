@@ -24,7 +24,7 @@ export class ElevatedButton extends View {
 
     styledView(element){
         element.style.borderRadius = this.props.radius;
-        element = element.props.baseCSS.applyCSS(element);
+        element = this.props.baseCSS.applyCSS(element);
         
         return element;
     }
