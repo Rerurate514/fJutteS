@@ -130,7 +130,6 @@ export class Provider {
                 observer.logUpdate(this, oldValue, newValue);
             },
             watch: (otherProvider, updateFn) => {
-                const observer = new ProviderObserver();
                 observer.addDependency(this, otherProvider);
                 this._dependencies.set(
                     otherProvider,
