@@ -174,8 +174,8 @@ class Dependency {
     _listenParent(updateFn) {
         this._unsubscribed = this.parentProvider.watch(
             parentValue => {
-                this.provider.update(currentValue => {
-                    return updateFn(parentValue, currentValue);
+                this.provider.update(() => {
+                    return updateFn(parentValue);
                 });
             },
             { immediate: false }
