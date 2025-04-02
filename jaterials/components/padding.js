@@ -41,10 +41,10 @@ export class Padding extends View {
     }
 
     styledView(element){
-        element.firstElementChild.style.paddingTop = this.props.padding.top;
-        element.firstElementChild.style.paddingRight = this.props.padding.right;
-        element.firstElementChild.style.paddingBottom = this.props.padding.bottom;
-        element.firstElementChild.style.paddingLeft = this.props.padding.left;
+        this.child.view.style.paddingTop = this.props.padding.top;
+        this.child.view.style.paddingRight = this.props.padding.right;
+        this.child.view.style.paddingBottom = this.props.padding.bottom;
+        this.child.view.style.paddingLeft = this.props.padding.left;
 
         return element;
     }
