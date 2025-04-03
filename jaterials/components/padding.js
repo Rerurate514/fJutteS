@@ -36,10 +36,6 @@ export class Padding extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         this.child.view.style.paddingTop = this.props.padding.top;
         this.child.view.style.paddingRight = this.props.padding.right;

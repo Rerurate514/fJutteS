@@ -19,9 +19,7 @@ export class Hover extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
+
 
     styledView(element){
         element.style.width = "fit-content";
@@ -58,9 +56,7 @@ class _HoverWrapper extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
+
 
     styledView(element){
         element.style.position = "absolute";
@@ -90,10 +86,6 @@ class _Hover extends View {
             radius,
             onClickEffect
         });
-    }
-
-    createWrapView(){
-        return document.createElement("div");
     }
 
     styledView(element){

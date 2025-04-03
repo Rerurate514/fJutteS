@@ -36,10 +36,6 @@ export class Margin extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.marginTop = this.props.margin.top;
         element.style.marginRight = this.props.margin.right;

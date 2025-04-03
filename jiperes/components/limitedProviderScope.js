@@ -17,10 +17,6 @@ export class LimitedProviderScope extends ProviderScope {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     build(){
         const readArr = this.props.providers.map((provider) => {
             return provider.read();

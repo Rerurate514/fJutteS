@@ -10,11 +10,6 @@ export class RelativePositionAnimateSwitcher extends View {
         super({child, beginPosition, endPosition, duration});
     }
 
-
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.width = "100%";
         element.style.height = "100%";
@@ -50,10 +45,6 @@ export class _RelativePositionAnimateSwitcher extends View {
         endPosition
     }){
         super({child, beginPosition, endPosition});
-    }
-
-    createWrapView(){
-        return document.createElement("div");
     }
 
     styledView(element){

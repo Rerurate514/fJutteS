@@ -13,10 +13,6 @@ export class LangSwitcher extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     build(){
         return new LimitedProviderScope({
             watchingProviders: [ langSwitchProvider ],

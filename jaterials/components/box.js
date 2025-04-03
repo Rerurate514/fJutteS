@@ -21,9 +21,6 @@ export class Box extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
 
     styledView(element){
         element.style.width = this.props.width;

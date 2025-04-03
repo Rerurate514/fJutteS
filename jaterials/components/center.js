@@ -5,10 +5,6 @@ export class Center extends View {
         super({child});
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.width = "100%";
         element.style.height = "100%";
@@ -33,10 +29,6 @@ export class Center extends View {
 export class _Center extends View {
     constructor(child){
         super({child});
-    }
-
-    createWrapView(){
-        return document.createElement("div");
     }
 
     styledView(element){

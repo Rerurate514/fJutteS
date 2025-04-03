@@ -8,10 +8,6 @@ export class SpaceBox extends View {
         super({width, height});
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.width = this.props.width;
         element.style.height = this.props.height;

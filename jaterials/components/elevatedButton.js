@@ -18,9 +18,7 @@ export class ElevatedButton extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
+
 
     styledView(element){
         element.style.borderRadius = this.props.radius;
@@ -55,10 +53,6 @@ class _ElevatedButton extends View {
             child: child,
             onClick: onClick
         });
-    }
-
-    createWrapView(){
-        return document.createElement("div");
     }
 
     styledView(element){

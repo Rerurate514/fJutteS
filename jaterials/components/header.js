@@ -11,10 +11,6 @@ export class Header extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         if(this.props.isStickyHeader) element.style.position = "sticky";
         element.style.top = "0";
