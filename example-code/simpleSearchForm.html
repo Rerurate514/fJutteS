@@ -22,23 +22,28 @@
             TextForm,
             ElevatedButton,
             Row,
+            Text,
             assembleView,
             BaseCSS,
-            TextCSS
+            TextCSS,
+            Provider
         } from 'fjuttes';
 
+        const textProv = Provider.createProvider(() => "");
+
         class SimpleSearchForm extends View {
-            constructor(props) {
-                super(props);
-                this.state = {
+            constructor(props = {}) {
+                props.state = {
                     searchText: ''
                 };
-                this.onSearchTextChanged = this.onSearchTextChanged.bind(this);
-                this.onSearchButtonClicked = this.onSearchButtonClicked.bind(this);
+
+                super(props);
+                // this.onSearchTextChanged = this.onSearchTextChanged.bind(this);
+                // this.onSearchButtonClicked = this.onSearchButtonClicked.bind(this);
             }
 
-            createWrapView() {
-                return document.createElement('div');
+            createWrapView(){
+                return document.createElement("div");
             }
 
             styledView(element) {
@@ -46,25 +51,12 @@
                 return element;
             }
 
-            onSearchTextChanged(text) {
-                this.state.searchText = text;
-            }
-
-            onSearchButtonClicked() {
-                if (this.props.onSearch) {
-                    this.props.onSearch(this.state.searchText);
-                } else {
-                    console.log('検索ワード:', this.state.searchText);
-                    alert(`検索ワード: ${this.state.searchText}`);
-                }
-            }
-
             build() {
                 return new Row({
                     children: [
                         new TextForm({
-                            hintText: '検索ワードを入力',
-                            onChanged: this.onSearchTextChanged,
+                            provider: textProv,
+                            placeholder: '検索ワードを入力',
                             baseCSS: new BaseCSS({
                                 flexGrow: '1',
                                 marginRight: '8px',
@@ -72,13 +64,19 @@
                         }),
                         new ElevatedButton({
                             child: new Text('検索'),
-                            onClick: this.onSearchButtonClicked,
+                            onClick: () => {
+                                this.props.state.searchText = textProv.read();
+
+                                if (this.props.onSearch) {
+                                    this.props.onSearch(this.props.state.searchText);
+                                } else {
+                                    console.log('検索ワード:', this.props.state.searchText);
+                                    alert(`検索ワード: ${this.props.state.searchText}`);
+                                }
+                            },
                             baseCSS: new BaseCSS({
-                                padding: '8px 16px',
+                                padding: '8px',
                             }),
-                            textCSS: new TextCSS({
-                                fontWeight: 'bold',
-                            })
                         }),
                     ],
                     baseCSS: new BaseCSS({
@@ -88,17 +86,14 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            assembleView(
-                new SimpleSearchForm({
-                    onSearch: (searchText) => {
-                        console.log('親コンポーネントで検索:', searchText);
-                        alert(`親コンポーネントで検索: ${searchText}`);
-                    }
-                }),
-                document.getElementById('fJutteS-Container')
-            );
-        });
+        assembleView(
+            new SimpleSearchForm({
+                onSearch: (searchText) => {
+                    console.log('親コンポーネントで検索:', searchText);
+                    alert(`親コンポーネントで検索: ${searchText}`);
+                }
+            })
+        );
     </script>
 </body>
 </html>
