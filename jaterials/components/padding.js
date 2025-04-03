@@ -14,7 +14,7 @@ export class Padding extends View {
         }
 
         const validatePadding = (value, direction) => {
-            const valid = /^(\d+(\.\d+)?)(px|rem|em|%|vh|vw)$/.test(value);
+            const valid = /^(?:(\d+(\.\d+)?)(px|rem|em|%|vh|vw)|initial)$/.test(value);
             if (!valid) {
                 throw TypeError(`Paddingコンポーネントの${direction}プロパティには、有効なCSSの長さ単位が必要です。\n渡された値: ${value}`);
             }
