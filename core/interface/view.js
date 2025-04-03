@@ -7,15 +7,15 @@ import { generateUUID } from '../logic/generateUUID.js';
  */
 export class View {
     /**
- * Description placeholder
- *
- * @type {boolean}
- */
-isLogOut = false;
+     * Description placeholder
+     *
+     * @type {boolean}
+     */
+    isLogOut = false;
 
     constructor(props = {}) {
         if (this.constructor === View) {
-            throw new TypeError('このクラスをインスタンス化しないでください。');
+            throw new TypeError('Please do not instantiate this class.');
         }
 
         this._isViewBuilt = false;
@@ -40,11 +40,11 @@ isLogOut = false;
     }
 
     /**
- * Description placeholder
- *
- * @returns {HTMLElenment} 
- */
-_assembleWrapView() {
+     * Description placeholder
+     *
+     * @returns {HTMLElenment} 
+     */
+    _assembleWrapView() {
         let wrapView = this.createWrapView();
         this._checkHTMLElement(wrapView, "createWrapView");
 
@@ -58,9 +58,9 @@ _assembleWrapView() {
     }
 
     /** Description placeholder */
-addPseudoElement(){
-        if(this.child instanceof View) this.child.addPseudoElement();
-        if(this.child instanceof Array){
+    addPseudoElement() {
+        if (this.child instanceof View) this.child.addPseudoElement();
+        if (this.child instanceof Array) {
             this.child.forEach((child) => {
                 child.addPseudoElement();
             });
@@ -69,61 +69,61 @@ addPseudoElement(){
         let before = this.createBeforeElement();
         let after = this.createAfterElement();
 
-        if(before) {
+        if (before) {
             this._checkHTMLElement(before, "createBeforeElement");
             this.view.before(before);
         }
-        if(after) {
+        if (after) {
             this._checkHTMLElement(after, "createAfterElement");
             this.view.after(after);
         }
     }
 
     /**
- * Description placeholder
- *
- * @returns {*} 
- */
-createBeforeElement(){
+     * Description placeholder
+     *
+     * @returns {*} 
+     */
+    createBeforeElement() {
         return null;
     }
 
     /**
- * Description placeholder
- *
- * @returns {*} 
- */
-createAfterElement(){
+     * Description placeholder
+     *
+     * @returns {*} 
+     */
+    createAfterElement() {
         return null;
     }
 
     /**
- * Description placeholder
- *
- * @param {*} child 
- * @param {*} msg 
- */
-_checkHTMLElement(child, msg) {
+     * Description placeholder
+     *
+     * @param {*} child 
+     * @param {*} msg 
+     */
+    _checkHTMLElement(child, msg) {
         if (!(child instanceof HTMLElement)) {
-            throw new TypeError(msg + "には必ずHTMLElenmentオブジェクトを格納してください。 渡された型:", typeof child);
+            throw new TypeError(msg + "must contain an HTMLElenment object. Type passed:", typeof child);
         }
     }
 
     /**
- * Description placeholder
- *
- * @returns {boolean} 
- */
-getBuildCompletionState() {
+     * Description placeholder
+     *
+     * @returns {boolean} 
+     */
+    getBuildCompletionState() {
         return this._isViewBuilt;
     }
 
     /**
-     * 必ずこのcreateWrapViewをオーバーライドしてViewのコンテナを設定してください
+     * このcreateWrapViewをオーバーライドしてViewのコンテナを設定してください
      * @returns HTMLElement
      */
     createWrapView() {
-        throw new TypeError("createWrapViewメソッドを必ずオーバーライドして、HTMLElement型を返り値に設定してください。");
+        return document.createElement("div");
     }
 
     /**
@@ -201,8 +201,8 @@ getBuildCompletionState() {
      * この関数はオーバーライド不可で、dispose時に処理が必要な場合はonDiseposeを使用してください。
      */
     _dispose() {
-        if(this.child instanceof View) this.child._dispose();
-        if(this.child instanceof Array){
+        if (this.child instanceof View) this.child._dispose();
+        if (this.child instanceof Array) {
             this.child.forEach((child) => {
                 child._dispose();
             });
@@ -211,14 +211,14 @@ getBuildCompletionState() {
         this.onDispose();
     }
 
-    onRendered(){
+    onRendered() {
 
     }
-    
+
     /** Description placeholder */
-_rendered(){
-        if(this.child instanceof View) this.child._rendered();
-        if(this.child instanceof Array){
+    _rendered() {
+        if (this.child instanceof View) this.child._rendered();
+        if (this.child instanceof Array) {
             this.child.forEach((child) => {
                 child._rendered();
             });
@@ -227,14 +227,14 @@ _rendered(){
     }
 
     /**
- * Description placeholder
- *
- * @param {{ props?: any; builtView?: any; }} [param0={}] 
- * @param {*} [param0.props=null] 
- * @param {*} [param0.builtView=null] 
- */
-rebuild({
-        props = null, 
+     * Description placeholder
+     *
+     * @param {{ props?: any; builtView?: any; }} [param0={}] 
+     * @param {*} [param0.props=null] 
+     * @param {*} [param0.builtView=null] 
+     */
+    rebuild({
+        props = null,
         builtView = null
     } = {}) {
         if (props) this.props = props;
@@ -248,18 +248,18 @@ rebuild({
 
         thisView.replaceWith(this.view);
 
-        this._log("rebuildされました : View name => " + this.constructor.name + "\nViewID => " + this.view.id);
+        this._log("rebuilded : View name => " + this.constructor.name + "\nViewID => " + this.view.id);
 
         this.postBuild();
     }
 
     /**
- * Description placeholder
- *
- * @param {*} child 
- * @param {*} embededView 
- */
-_inputViewData(child, embededView) {
+     * Description placeholder
+     *
+     * @param {*} child 
+     * @param {*} embededView 
+     */
+    _inputViewData(child, embededView) {
         if (child instanceof Array) {
             this._inputMultiView(child, embededView);
         }
@@ -272,53 +272,53 @@ _inputViewData(child, embededView) {
     }
 
     /**
- * Description placeholder
- *
- * @param {*} child 
- * @param {*} embededView 
- */
-_inputSingleView(child, embededView) {
+     * Description placeholder
+     *
+     * @param {*} child 
+     * @param {*} embededView 
+     */
+    _inputSingleView(child, embededView) {
         this.view = embededView;
         if (child instanceof View) this.view.appendChild(child.view);
     }
 
     /**
- * Description placeholder
- *
- * @param {*} child 
- * @param {*} embededView 
- */
-_inputMultiView(child, embededView) {
+     * Description placeholder
+     *
+     * @param {*} child 
+     * @param {*} embededView 
+     */
+    _inputMultiView(child, embededView) {
         if (!this.view) this.view = embededView;
 
         child.forEach(child => {
-            if(!child) return;
+            if (!child) return;
             this.view.appendChild(child.view);
         });
     }
 
     /** Description placeholder */
-_createId() {
+    _createId() {
         this.props.id = generateUUID();
     }
 
     /** Description placeholder */
-_attributeId() {
+    _attributeId() {
         this.view.id = this.props.id;
     }
 
     /** Description placeholder */
-_attributeViewNameToDataset() {
+    _attributeViewNameToDataset() {
         this.view.dataset.viewClassName = this.constructor.name;
     }
 
     /**
- * Description placeholder
- *
- * @param {*} message 
- */
-_log(message){
-        if(!this.isLogOut) return;
+     * Description placeholder
+     *
+     * @param {*} message 
+     */
+    _log(message) {
+        if (!this.isLogOut) return;
         console.log("[" + this.constructor.name + "] " + message);
     }
 }
