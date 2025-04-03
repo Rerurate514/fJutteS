@@ -19,8 +19,6 @@ export class ElevatedButton extends View {
         });
     }
 
-
-
     styledView(element){
         element.style.borderRadius = this.props.radius;
         element = this.props.baseCSS.applyCSS(element);
@@ -42,35 +40,36 @@ export class ElevatedButton extends View {
                 radius: this.props.radius,
                 onClickEffect: true,
                 child: new Padding({
-                    all: this.props.baseCSS.padding,
-                    child: this.props.child
+                    all: this.props.baseCSS.padding ?? "initial",
+                    child: new _ElevatedButton(this.props)
                 })
             })
         );
     }
 }
 
-// class _ElevatedButton extends View {
-//     constructor({
-//         child,
-//         baseCSS,
-//         onClick: onClick = () => {},
-//     }){
-//         super({
-//             child: child,
-//             baseCSS: baseCSS,
-//             onClick: onClick
-//         });
-//     }
+class _ElevatedButton extends View {
+    constructor({
+        child,
+        baseCSS,
+        onClick: onClick = () => {},
+    }){
+        super({
+            child: child,
+            baseCSS: baseCSS,
+            onClick: onClick
+        });
+    }
 
-//     styledView(element){
-//         element.style.borderRadius = "inherit";
-//         element = this.props.baseCSS.applyCSS(element);
+    styledView(element){
+        element.style.borderRadius = "inherit";
+        element.style.width = this.props.baseCSS.width;
+        element.style.height = this.props.baseCSS.height;
         
-//         return element;
-//     }
+        return element;
+    }
 
-//     build(){
-//         return this.props.child;
-//     }
-// }
+    build(){
+        return this.props.child;
+    }
+}
