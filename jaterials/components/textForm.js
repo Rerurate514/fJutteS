@@ -18,7 +18,7 @@ export class TextForm extends View {
             maxLength,
             value,
             placeholder,
-            required: required,
+            required,
             pattern,
             baseCSS
         });
