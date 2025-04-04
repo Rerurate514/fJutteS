@@ -161,10 +161,6 @@ class SampleWidget extends View {
     }
 }
 ```
-Note that `createWrapView` must be overridden, or you'll get this error:
-```error
-throw new TypeError("createWrapView method must be overridden and return an HTMLElement type.");
-```
 
 #### Defining Widget Styles
 To apply styles to the `HTMLElement` created in `createWrapView`, override the `styledView` method.
