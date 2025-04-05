@@ -162,10 +162,6 @@ class SampleWidget extends View {
 	}
 }
 ```
-因みにこの`createWrapView`はオーバーライド必須で、オーバーライドしないとエラーが出てしまいます。
-```error
-throw new TypeError("createWrapViewメソッドを必ずオーバーライドして、HTMLElement型を返り値に設定してください。");
-```
 
 #### ウィジェットのスタイル定義
 `createWrapView`で作成した`HTMLElement`要素に対してスタイルを適用するには`styledView`メソッドをオーバーライドします。
