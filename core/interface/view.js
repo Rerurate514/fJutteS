@@ -1,3 +1,4 @@
+import { generateRandomColor } from '../logic/generateColor.js';
 import { generateUUID } from '../logic/generateUUID.js';
 
 /**
@@ -12,6 +13,7 @@ export class View {
      * @type {boolean}
      */
     isLogOut = false;
+    isTestMode = true;
 
     constructor(props = {}) {
         if (this.constructor === View) {
@@ -32,6 +34,9 @@ export class View {
         this.terminate();
 
         let embededView = this._assembleWrapView();
+
+        if(this.isTestMode) embededView = this._generateTestNode(embededView);
+
         this.viewCache = embededView.cloneNode(true);
 
         this._inputViewData(child, embededView);
@@ -53,6 +58,24 @@ export class View {
 
         let embededView = this.embedScriptToView(styledView);
         this._checkHTMLElement(embededView, "embedScriptToView");
+
+        return embededView;
+    }
+
+    _generateTestNode(embededView){
+        let text = embededView.textContent;
+        embededView.textContent = "";
+
+        let color = generateRandomColor();
+
+        let elementNameDiv = document.createElement("div");
+        elementNameDiv.style.background = color;
+        elementNameDiv.textContent = this.constructor.name;
+
+        embededView.style.background = color;
+
+        embededView.appendChild(elementNameDiv);
+        if(elementNameDiv) embededView.appendChild(document.createTextNode(text));
 
         return embededView;
     }
