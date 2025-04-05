@@ -147,7 +147,7 @@ class _Hover extends View {
                 easing: "ease-in-out"
             });
 
-            setTimeout(() => ripple.remove(), 1000);
+            setTimeout(() => ripple.remove(), 600);
         });
 
         return element;
