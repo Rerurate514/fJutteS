@@ -13,7 +13,7 @@ export class View {
      * @type {boolean}
      */
     isLogOut = false;
-    isTestMode = true;
+    isTestMode = false;
 
     constructor(props = {}) {
         if (this.constructor === View) {
