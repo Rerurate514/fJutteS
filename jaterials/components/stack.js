@@ -10,10 +10,6 @@ export class Stack extends View {
             children,
             baseCSS
         });
-    }    
-
-    createWrapView(){
-        return document.createElement("div");
     }
     
     styledView(element){

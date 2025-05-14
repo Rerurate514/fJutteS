@@ -14,10 +14,6 @@ export class Column extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.display = "flex";
         element.style.flexDirection = "column";

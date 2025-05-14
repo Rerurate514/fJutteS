@@ -17,10 +17,6 @@ export class Chips extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.borderRadius = "32px";
 

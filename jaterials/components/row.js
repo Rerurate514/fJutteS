@@ -20,10 +20,6 @@ export class Row extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.className = "row-container";
         element.style.display = "flex";

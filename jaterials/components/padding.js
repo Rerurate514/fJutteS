@@ -14,7 +14,7 @@ export class Padding extends View {
         }
 
         const validatePadding = (value, direction) => {
-            const valid = /^(\d+(\.\d+)?)(px|rem|em|%|vh|vw)$/.test(value);
+            const valid = /^(?:(\d+(\.\d+)?)(px|rem|em|%|vh|vw)|initial)$/.test(value);
             if (!valid) {
                 throw TypeError(`Paddingコンポーネントの${direction}プロパティには、有効なCSSの長さ単位が必要です。\n渡された値: ${value}`);
             }
@@ -36,15 +36,11 @@ export class Padding extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
-        element.style.paddingTop = this.props.padding.top;
-        element.style.paddingRight = this.props.padding.right;
-        element.style.paddingBottom = this.props.padding.bottom;
-        element.style.paddingLeft = this.props.padding.left;
+        this.child.view.style.paddingTop = this.props.padding.top;
+        this.child.view.style.paddingRight = this.props.padding.right;
+        this.child.view.style.paddingBottom = this.props.padding.bottom;
+        this.child.view.style.paddingLeft = this.props.padding.left;
 
         return element;
     }

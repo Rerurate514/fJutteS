@@ -14,10 +14,6 @@ export class FloatingActionButton extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.width = "fit-content";
         element.style.height = "fit-content";
@@ -35,10 +31,6 @@ export class FloatingActionButton extends View {
 class _FlotingActionButton extends View {
     constructor(onClick){
         super({onClick: onClick});
-    }
-
-    createWrapView(){
-        return document.createElement("div");
     }
 
     styledView(element){

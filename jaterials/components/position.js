@@ -13,11 +13,6 @@ export class Position extends View {
         });
     }
 
-    createWrapView(){
-        let posWrapper = document.createElement("div");
-        return posWrapper;
-    }
-
     styledView(element){
         element.className = "pos-wrapper";
         element.style.width = "100%";
@@ -42,10 +37,6 @@ class _PositionChild extends View {
             top, 
             left
         });
-    }
-
-    createWrapView(){
-        return document.createElement("div");
     }
 
     styledView(element){

@@ -33,10 +33,6 @@ export class ExpandsPanel extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.width = "100%";
         return element;

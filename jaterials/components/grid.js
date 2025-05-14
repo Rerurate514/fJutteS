@@ -15,10 +15,6 @@ export class Grid extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.display = "grid";
         element.style.gridTemplateColumns = "repeat(auto-fit, minmax(" + this.props.minmaxPX + "px, " + this.props.fraction + "fr))";

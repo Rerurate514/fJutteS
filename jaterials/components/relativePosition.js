@@ -11,10 +11,6 @@ export class RelativePosition extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.width = "100%";
         element.style.height = "100%";
@@ -45,10 +41,6 @@ export class _RelativePosition extends View {
             child,
             relativePositions
         });
-    }
-
-    createWrapView(){
-        return document.createElement("div");
     }
 
     styledView(element){

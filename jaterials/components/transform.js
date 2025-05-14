@@ -34,10 +34,6 @@ export class Transform extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element = this.props.baseCSS.applyCSS(element);
         

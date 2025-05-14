@@ -6,7 +6,5 @@ export class Moc extends View {
         super();
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
+
 }

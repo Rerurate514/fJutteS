@@ -7,10 +7,6 @@ export class Shrink extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.width = "0px";
         element.style.height = "0px";

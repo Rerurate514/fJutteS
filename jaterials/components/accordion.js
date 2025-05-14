@@ -29,10 +29,6 @@ export class Accordion extends View {
         });
     }
 
-    createWrapView() {
-        return document.createElement("div");
-    }
-
     build() {
         return this.props.items.map((item) => {
             return new AccordionItem({ 
