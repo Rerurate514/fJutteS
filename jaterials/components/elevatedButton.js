@@ -2,6 +2,7 @@ import { BaseCSS } from "../../cssKit/baseCSS.js";
 import { View } from "../../core/interface/view.js";
 import { Center } from "./center.js";
 import { Hover } from "./hover.js";
+import { Padding } from "./padding.js";
 
 export class ElevatedButton extends View {
     constructor({
@@ -18,13 +19,11 @@ export class ElevatedButton extends View {
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.borderRadius = this.props.radius;
         element = this.props.baseCSS.applyCSS(element);
+
+        element.style.padding = "0px";
         
         return element;
     }
@@ -40,7 +39,10 @@ export class ElevatedButton extends View {
             new Hover({
                 radius: this.props.radius,
                 onClickEffect: true,
-                child: new _ElevatedButton(this.props)
+                child: new Padding({
+                    all: this.props.baseCSS.padding ?? "initial",
+                    child: new _ElevatedButton(this.props)
+                })
             })
         );
     }
@@ -49,24 +51,21 @@ export class ElevatedButton extends View {
 class _ElevatedButton extends View {
     constructor({
         child,
+        baseCSS,
         onClick: onClick = () => {},
     }){
         super({
             child: child,
+            baseCSS: baseCSS,
             onClick: onClick
         });
     }
 
-    createWrapView(){
-        return document.createElement("div");
-    }
-
     styledView(element){
         element.style.borderRadius = "inherit";
-        return element;
-    }
-
-    embedScriptToView(element){
+        element.style.width = this.props.baseCSS.width;
+        element.style.height = this.props.baseCSS.height;
+        
         return element;
     }
 

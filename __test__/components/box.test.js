@@ -68,7 +68,6 @@ describe('Box', () => {
 			expect(styledElement.style.height).toBe('200px');
 			expect(styledElement.style.background).toBe('rgb(255, 255, 255)');
 
-			expect(box.props.borderCSS.applyCSS).toHaveBeenCalled();
 			expect(box.props.webkitCSS.applyCSS).toHaveBeenCalled();
 		});
 

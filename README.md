@@ -626,6 +626,7 @@ async function getComponents() {
 }
 
 getComponents();
+```
 
 ## Glossary
 - View: UI components created by inheriting from the `View` class or other UI construction classes

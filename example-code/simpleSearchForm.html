@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="importmap">
+        {
+            "imports": {
+                "fjuttes": "https://unpkg.com/fjuttes@3.0.1/dist/index.mjs"
+            }
+        }
+    </script>
+
+    <div id="fJutteS-Container"></div>
+
+    <script type="module">
+        import {
+            View,
+            TextForm,
+            ElevatedButton,
+            Row,
+            Text,
+            assembleView,
+            BaseCSS,
+            TextCSS,
+            Provider
+        } from 'fjuttes';
+
+        const textProv = Provider.createProvider(() => "");
+
+        class SimpleSearchForm extends View {
+            constructor(props = {}) {
+                props.state = {
+                    searchText: ''
+                };
+
+                super(props);
+            }
+
+            createWrapView(){
+                return document.createElement("div");
+            }
+
+            styledView(element) {
+                element.style.padding = '16px';
+                return element;
+            }
+
+            build() {
+                return new Row({
+                    children: [
+                        new TextForm({
+                            provider: textProv,
+                            placeholder: '検索ワードを入力',
+                            baseCSS: new BaseCSS({
+                                flexGrow: '1',
+                                marginRight: '8px',
+                            })
+                        }),
+                        new ElevatedButton({
+                            child: new Text('検索'),
+                            onClick: () => {
+                                this.props.state.searchText = textProv.read();
+
+                                if (this.props.onSearch) {
+                                    this.props.onSearch(this.props.state.searchText);
+                                } else {
+                                    console.log('検索ワード:', this.props.state.searchText);
+                                    alert(`検索ワード: ${this.props.state.searchText}`);
+                                }
+                            },
+                            baseCSS: new BaseCSS({
+                                padding: '8px',
+                            }),
+                        }),
+                    ],
+                    baseCSS: new BaseCSS({
+                        alignItems: 'center',
+                    })
+                });
+            }
+        }
+
+        assembleView(
+            new SimpleSearchForm({
+                onSearch: (searchText) => {
+                    console.log('親コンポーネントで検索:', searchText);
+                    alert(`親コンポーネントで検索: ${searchText}`);
+                }
+            })
+        );
+    </script>
+</body>
+</html>
