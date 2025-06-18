@@ -1,12 +1,11 @@
 export function assembleView(viewArg, idName = "fJutteS-Container") {
+    viewArg.assemble();
     let element = viewArg.view;
-    viewArg.isTestMode = true;
     let container = document.getElementById(idName);
-    
-    if(container != null) container.appendChild(element);
-    //viewArg.addPseudoElement();
 
-    //viewArg._rendered();
+    if(container) container.appendChild(element);
+
+    viewArg.assembleComplete();
 
     return element;
 }
