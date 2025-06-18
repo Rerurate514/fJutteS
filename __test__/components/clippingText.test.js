@@ -42,8 +42,8 @@ describe('ClippingText', () => {
                 child: moc
             });
 
-            expect(clipping.props.child).toBe(moc);
-            expect(clipping.props.background).toBe(null);
+            expect(clipping.child).toBe(moc);
+            expect(clipping.background).toBe(null);
         });
 
         test('カスタム値で初期化できる', () => {
@@ -52,7 +52,7 @@ describe('ClippingText', () => {
                 background: "rgb(255, 255, 255)"
             });
 
-            expect(clipping.props.background).toBe("rgb(255, 255, 255)");
+            expect(clipping.background).toBe("rgb(255, 255, 255)");
         });
     });
 

@@ -22,9 +22,9 @@ describe('chips', () => {
 			const chips = new Chips({
 				text: "test"
 			});
-			expect(chips.props.text).toBe("test");
-			expect(chips.props.background).toBe(null);
-			expect(chips.props.borderCSS).toStrictEqual(new BorderCSS());
+			expect(chips.text).toBe("test");
+			expect(chips.background).toBe(null);
+			expect(chips.borderCSS).toStrictEqual(new BorderCSS());
 		});
 
 		test('カスタム値で初期化できる', () => {
@@ -33,9 +33,9 @@ describe('chips', () => {
 				background: 'rgb(255, 255, 255)',
 				borderCSS: new BorderCSS(),
 			});
-			expect(chips.props.text).toBe("test");
-			expect(chips.props.background).toBe("rgb(255, 255, 255)");
-			expect(chips.props.borderCSS).toStrictEqual(new BorderCSS());
+			expect(chips.text).toBe("test");
+			expect(chips.background).toBe("rgb(255, 255, 255)");
+			expect(chips.borderCSS).toStrictEqual(new BorderCSS());
 		});
 	});
 

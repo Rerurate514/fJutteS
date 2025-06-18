@@ -32,8 +32,8 @@ describe('Column', () => {
         test('デフォルト値で初期化できる', () => {
             const column = new Column({ children: children });
 
-            expect(column.props.baseCSS.applyCSS).toHaveBeenCalled();
-            expect(column.props.isHorizontalCenter).toBe(false);
+            expect(column.baseCSS.applyCSS).toHaveBeenCalled();
+            expect(column.isHorizontalCenter).toBe(false);
         });
 
         test('カスタム値で初期化できる', () => {
@@ -43,9 +43,9 @@ describe('Column', () => {
                 children: children
             });
 
-            expect(column.props.baseCSS.applyCSS).toHaveBeenCalled();
-            expect(column.props.isHorizontalCenter).toBe(true);
-            expect(column.props.children).toBe(children);
+            expect(column.baseCSS.applyCSS).toHaveBeenCalled();
+            expect(column.isHorizontalCenter).toBe(true);
+            expect(column.children).toBe(children);
         });
     });
 
@@ -70,7 +70,7 @@ describe('Column', () => {
             expect(styledElement.style.flexDirection).toBe('column');
             expect(styledElement.style.alignItems).toBe('center');
 
-            expect(column.props.baseCSS.applyCSS).toHaveBeenCalled();
+            expect(column.baseCSS.applyCSS).toHaveBeenCalled();
         });
     });
 

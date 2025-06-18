@@ -28,8 +28,8 @@ describe('ProviderScope', () => {
             watchingProviders: [mockProvider],
         });
 
-        expect(providerScope.props.child).toBe(mockChild);
-        expect(providerScope.props.providers).toEqual([mockProvider]);
+        expect(providerScope.child).toBe(mockChild);
+        expect(providerScope.providers).toEqual([mockProvider]);
     });
 
     it('各プロバイダーに対してwatchが呼び出される', () => {
@@ -76,8 +76,8 @@ describe('ProviderScope', () => {
             watchingProviders: [mockProvider],
         });
 
-        expect(providerScope.props.test).toBe('test');
-        expect(providerScope.props.child).toBe(mockChild);
-        expect(providerScope.props.providers).toEqual([mockProvider]);
+        expect(providerScope.test).toBe('test');
+        expect(providerScope.child).toBe(mockChild);
+        expect(providerScope.providers).toEqual([mockProvider]);
     });
 });
