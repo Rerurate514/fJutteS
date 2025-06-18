@@ -318,7 +318,7 @@ class SampleWidget extends View {
     }
 
     build(){
-        return new Text(this.props.text);//Use it here
+        return new Text(this.text);//Use it here
     }
 }
 ```
@@ -348,7 +348,7 @@ class SampleWidget extends View {
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }
 ```
@@ -401,7 +401,7 @@ class SampleWidget extends ProviderScope {
         let num = sampleProvider.read();
 
         return Row([
-            this.props.child,
+            this.child,
             new Text(num)
         ]);
     }
