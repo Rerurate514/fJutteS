@@ -9,36 +9,30 @@ export class AppRouter extends ProviderScope {
         startPageRoute = "",
     }) {
         super({
-            props: {
-                routes,
-                page404,
-                homePage,
-                startPageRoute,
-            },
             watchingProviders: [
                 Provider.createProvider(() => window.location.hash.substring(1) || startPageRoute, 'currentPage__AppRouter')
             ],
         });
+        this.routes = routes;
+        this.page404 = page404;
+        this.homePage = homePage;
+        this.startPageRoute = startPageRoute;
 
         window.addEventListener('hashchange', () => {
-            this.props.providers[0].update(() => window.location.hash.substring(1) || startPageRoute);
+            this.providers[0].update(() => window.location.hash.substring(1) || startPageRoute);
         });
     }
 
-    createWrapView() {
-        return document.createElement('div');
-    }
-
     build() {
-        const currentPage = this.props.providers[0].read();
-        const PageComponent = this.props.routes[currentPage];
+        const currentPage = this.providers[0].read();
+        const PageComponent = this.routes[currentPage];
 
         if (!currentPage) {
-            return this.props.homePage;
+            return this.homePage;
         }
 
         if (!PageComponent) {
-            return this.props.page404;
+            return this.page404;
         }
         return new PageComponent();
     }

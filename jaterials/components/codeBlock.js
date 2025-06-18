@@ -2,17 +2,17 @@ import { View } from "../../core/interface/view.js";
 
 export class CodeBlock extends View {
   constructor({ code, language, showLineNumbers }) {
-    super({ code, language, showLineNumbers });
+    super();
+    this.code = code;
+    this.language = language || "plaintext";
+    this.showLineNumbers = showLineNumbers || false;
   }
 
-  createWrapView() {
-    return document.createElement("div");
-  }
 
   build(){
     return new _Pre({
-      code: this.props.code,
-      language: this.props.language
+      code: this.code,
+      language: this.language
     });
   }
 }
@@ -23,7 +23,9 @@ class _Pre extends View {
     code, 
     language
   }){
-    super({ code, language });
+    super();
+    this.code = code;
+    this.language = language || "plaintext";
   }
 
   createWrapView(){
@@ -55,10 +57,10 @@ class _Code extends View {
   }
 
   styledView(element){
-    element.classList.add(`lang-${this.props.language}`);
-    element.classList.add(`${this.props.language}`);
+    element.classList.add(`lang-${this.language}`);
+    element.classList.add(`${this.language}`);
 
-    element.innerHTML = this.props.code;
+    element.innerHTML = this.code;
     return element;
   }
 }

@@ -6,14 +6,13 @@ export class Clip extends View {
         child, 
         baseCSS = new BaseCSS()
     }){
-        super({
-            child,
-            baseCSS
-        });
+        super();
+        this.child = child;
+        this.baseCSS = baseCSS;
     }
 
     styledView(element){
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
 
         element.style.overflow = "hidden";
 
@@ -21,6 +20,6 @@ export class Clip extends View {
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

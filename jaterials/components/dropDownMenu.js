@@ -7,11 +7,10 @@ export class DropDownMenu extends View {
         baseCSS = new BaseCSS(),
         provider
     }){
-        super({
-            item,
-            baseCSS,
-            provider
-        });
+        super();
+        this.item = item;
+        this.baseCSS = baseCSS;
+        this.provider = provider;
     }
 
     createWrapView(){
@@ -19,14 +18,14 @@ export class DropDownMenu extends View {
     }
 
     styledView(element){
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
 
         return element;
     }
 
     embedScriptToView(element){
         element.addEventListener("change", (e) => {
-            this.props.provider.update(() => {
+            this.provider.update(() => {
                 return e.target.value;
             });
         });
@@ -35,7 +34,7 @@ export class DropDownMenu extends View {
     }
 
     build(){
-       return  this.props.item;
+       return  this.item;
     }
 }
 
@@ -44,10 +43,9 @@ export class DropDownMenuItem extends View {
         text,
         value
     }){
-        super({
-            text: text,
-            value: value
-        });
+        super();
+        this.text = text;
+        this.value = value;
     }
 
     createWrapView(){
@@ -55,8 +53,8 @@ export class DropDownMenuItem extends View {
     }
 
     styledView(element){
-        element.textContent = this.props.text;
-        element.value = this.props.value;
+        element.textContent = this.text;
+        element.value = this.value;
 
         return element;
     }
@@ -66,9 +64,8 @@ export class DropDownMenuItemGroup extends View {
     constructor({
         item = []
     }){
-        super({
-            item: item
-        });
+        super();
+        this.item = item;
     }
 
     createWrapView(){

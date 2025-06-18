@@ -14,17 +14,12 @@ export class Scaffold extends View {
             throw new Error("Scaffold header property must assign Header class");
         }
 
-        super({
-            child: child,
-            header: header,
-            footer: footer,
-            drawer: drawer,
-            floatingActionButton: floatingActionButton,
-        });
-    }
-
-    createWrapView(){
-        return document.createElement("div");   
+        super();
+        this.child = child;
+        this.header = header;
+        this.footer = footer;
+        this.drawer = drawer;
+        this.floatingActionButton = floatingActionButton;
     }
 
     styledView(element){
@@ -37,16 +32,16 @@ export class Scaffold extends View {
     build(){
         const children = [];
         
-        if (this.props.header) {
+        if (this.header) {
             children.push(
-                this.props.header
+                this.header
             );
         }
         
-        children.push(this.props.child);
+        children.push(this.child);
         
-        if (this.props.footer) {
-            children.push(this.props.footer);
+        if (this.footer) {
+            children.push(this.footer);
         }
         
         return new Column({

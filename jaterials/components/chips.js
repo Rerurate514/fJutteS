@@ -10,11 +10,10 @@ export class Chips extends View {
         background = null,
         borderCSS = new BorderCSS()
     }){
-        super({
-            text,
-            background,
-            borderCSS
-        });
+        super();
+        this.text = text;
+        this.background = background;
+        this.borderCSS = borderCSS;
     }
 
     styledView(element){
@@ -27,17 +26,17 @@ export class Chips extends View {
 
         element.style.boxShadow = ShadowLevel.LVL3;
 
-        if(this.props.background) element.style.background = this.props.background;
+        if(this.background) element.style.background = this.background;
 
-        element = this.props.borderCSS.applyCSS(element);
+        element = this.borderCSS.applyCSS(element);
 
         return element;
     }
 
     build(){
         return new Card({
-            background: this.props.background ?? "transparent",
-            child: new Text(this.props.text)
+            background: this.background ?? "transparent",
+            child: new Text(this.text)
         });
     }
 }

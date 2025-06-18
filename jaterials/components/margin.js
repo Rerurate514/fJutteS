@@ -25,27 +25,26 @@ export class Margin extends View {
         validateMargin(bottom, 'bottom');
         validateMargin(left, 'left');
 
-        super({
-            child,
-            margin: {
-                top,
-                right,
-                bottom,
-                left
-            }
-        });
+        super();
+        this.child = child;
+        this.margin = {
+            top,
+            right,
+            bottom,
+            left
+        };
     }
 
     styledView(element){
-        element.style.marginTop = this.props.margin.top;
-        element.style.marginRight = this.props.margin.right;
-        element.style.marginBottom = this.props.margin.bottom;
-        element.style.marginLeft = this.props.margin.left;
+        element.style.marginTop = this.margin.top;
+        element.style.marginRight = this.margin.right;
+        element.style.marginBottom = this.margin.bottom;
+        element.style.marginLeft = this.margin.left;
 
         return element;
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

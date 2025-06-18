@@ -5,10 +5,9 @@ export class RelativePosition extends View {
         child,
         relativePositions
     }){
-        super({
-            child,
-            relativePositions
-        });
+        super();
+        this.child = child;
+        this.relativePositions = relativePositions;
     }
 
     styledView(element){
@@ -37,17 +36,16 @@ export class _RelativePosition extends View {
         child,
         relativePositions
     }){
-        super({
-            child,
-            relativePositions
-        });
+        super();
+        this.child = child;
+        this.relativePositions = relativePositions;
     }
 
     styledView(element){
         element.style.width = "fit-content";
         element.style.height = "fit-content";
 
-        element = this.props.relativePositions.applyCSS(element);
+        element = this.relativePositions.applyCSS(element);
 
         element.style.borderRadius = "inherit";
 
@@ -55,6 +53,6 @@ export class _RelativePosition extends View {
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

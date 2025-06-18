@@ -21,20 +21,19 @@ export class Accordion extends View {
         shadowLevel = ShadowLevel.LVL2,
         baseCSS = new BaseCSS()
     }) {
-        super({ 
-            items, 
-            radius, 
-            shadowLevel,
-            baseCSS
-        });
+        super();
+        this.items = items;
+        this.radius = radius;
+        this.shadowLevel = shadowLevel;
+        this.baseCSS = baseCSS;
     }
 
     build() {
-        return this.props.items.map((item) => {
+        return this.items.map((item) => {
             return new AccordionItem({ 
                 ...item, 
-                radius: this.props.radius, 
-                shadowLevel: this.props.shadowLevel 
+                radius: this.radius, 
+                shadowLevel: this.shadowLevel 
             });
         });
     }
@@ -50,30 +49,25 @@ class AccordionItem extends View {
             padding: "4px"
         })
     }) {
-        super({ 
-            title, 
-            content, 
-            radius, 
-            shadowLevel, 
-            isExpanded: Provider.createProvider(() => false, `AccordionItem_isExpanded_${generateUUID()}`),
-            baseCSS
-        });
-    }
-
-    createWrapView() {
-        return document.createElement("div");
+        super();
+        this.title = title;
+        this.content = content;
+        this.radius = radius;
+        this.shadowLevel = shadowLevel;
+        this.isExpanded = Provider.createProvider(() => false, `AccordionItem_isExpanded_${generateUUID()}`);
+        this.baseCSS = baseCSS;
     }
 
     styledView(element){
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
 
         return element;
     }
 
     build() {
         return new Card({
-            radius: this.props.radius,
-            elevation: this.props.shadowLevel,
+            radius: this.radius,
+            elevation: this.shadowLevel,
             baseCSS: new BaseCSS({
                 padding: "4px"
             }),
@@ -81,10 +75,10 @@ class AccordionItem extends View {
                 children: [
                     new Row({
                         children: [
-                            new Text(this.props.title, new TextCSS({ fontCSS: new FontCSS({ fontWeight: "bold" }) })),
+                            new Text(this.title, new TextCSS({ fontCSS: new FontCSS({ fontWeight: "bold" }) })),
                             new SpaceBox({ width: "8px" }),
                             new LimitedProviderScope({
-                                watchingProviders: [this.props.isExpanded],
+                                watchingProviders: [this.isExpanded],
                                 build: (values) => new Text(values[0] ? "▲" : "▼"),
                             }),
                         ],
@@ -92,8 +86,8 @@ class AccordionItem extends View {
                         isVerticalCenter: true,
                     }),
                     new LimitedProviderScope({
-                        watchingProviders: [this.props.isExpanded],
-                        build: (values) => values[0] ? this.props.content : new Shrink(this.props.content),
+                        watchingProviders: [this.isExpanded],
+                        build: (values) => values[0] ? this.content : new Shrink(this.content),
                     }),
                 ],
             }),
@@ -102,7 +96,7 @@ class AccordionItem extends View {
 
     embedScriptToView(e) {
         e.addEventListener("click", () => {
-            this.props.isExpanded.update((value) => !value);
+            this.isExpanded.update((value) => !value);
         });
         return e;
     }

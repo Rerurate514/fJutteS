@@ -39,8 +39,8 @@ export class ProviderObserver {
     }
 
     logUpdate(provider, oldValue, newValue) {
-        oldValue = oldValue && oldValue.props && oldValue.props.id ? `${oldValue.constructor.name}__viewId:${oldValue.props.id}` : oldValue;
-        newValue = newValue && newValue.props && newValue.props.id ? `${newValue.constructor.name}__viewId:${newValue.props.id}` : newValue;
+        oldValue = oldValue && oldValue.props && oldValue.id ? `${oldValue.constructor.name}__viewId:${oldValue.id}` : oldValue;
+        newValue = newValue && newValue.props && newValue.id ? `${newValue.constructor.name}__viewId:${newValue.id}` : newValue;
 
         if(this._isLargeObject(oldValue)){
             oldValue = "Large Object (simplified)";

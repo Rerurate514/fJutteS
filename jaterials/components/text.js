@@ -6,7 +6,9 @@ export class Text extends View{
         text, 
         textCSS = new TextCSS(),
     ){
-        super({text, textCSS});
+        super();
+        this.text = text;
+        this.textCSS = textCSS;
     }
 
     createWrapView(){
@@ -14,12 +16,12 @@ export class Text extends View{
     }
 
     styledView(element) {
-        element.textContent = this.props.text;
+        element.textContent = this.text;
         element.style.margin = "0";
 
-        element = this.props.textCSS.applyCSS(element);
+        element = this.textCSS.applyCSS(element);
 
-        if(this.props.textCSS.webkitCSS) element = this.props.textCSS.webkitCSS.applyCSS(element);
+        if(this.textCSS.webkitCSS) element = this.textCSS.webkitCSS.applyCSS(element);
         
 
         return element;

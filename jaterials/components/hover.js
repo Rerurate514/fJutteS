@@ -11,21 +11,18 @@ export class Hover extends View {
         shadow = ShadowLevel.LVL5,
         onClickEffect = false
     }){
-        super({
-            child,
-            radius,
-            shadow,
-            onClickEffect
-        });
+        super();
+        this.child = child;
+        this.radius = radius;
+        this.shadow = shadow;
+        this.onClickEffect = onClickEffect;
     }
-
-
 
     styledView(element){
         element.style.width = "fit-content";
         element.style.height = "fit-content";
         element.style.position = "relative";
-        element.style.borderRadius = this.props.radius;
+        element.style.borderRadius = this.radius;
 
         return element;
     }
@@ -38,7 +35,7 @@ export class Hover extends View {
                 })
             }),
             children: [
-                this.props.child,
+                this.child,
                 new _HoverWrapper(this.props)
             ]
         });
@@ -67,7 +64,7 @@ class _HoverWrapper extends View {
         element.style.background = "rgb(0, 0, 0, 0)";
         element.style.overflow = "hidden";
         element.style.zIndex = 998;
-        element.style.borderRadius = this.props.radius;
+        element.style.borderRadius = this.radius;
 
         return element;
     }
@@ -95,7 +92,7 @@ class _Hover extends View {
         element.style.mixBlendMode = "difference";
         element.style.transition = "background-color 0.4s";
         element.style.zIndex = 999;
-        element.style.borderRadius = this.props.radius;
+        element.style.borderRadius = this.radius;
 
         return element;
     }
@@ -109,7 +106,7 @@ class _Hover extends View {
             element.style.background = "rgb(0, 0, 0, 0)";
         });
 
-        if(!this.props.onClickEffect) return element;
+        if(!this.onClickEffect) return element;
 
         element.addEventListener('click', (e) => {
             const ripples = element.getElementsByClassName('ripple');

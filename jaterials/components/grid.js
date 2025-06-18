@@ -7,23 +7,22 @@ export class Grid extends View {
         fraction = 1,
         gap = "0px"
     }){
-        super({
-            children,
-            minmaxPX,
-            fraction,
-            gap
-        });
+        super();
+        this.children = children;
+        this.minmaxPX = minmaxPX;
+        this.fraction = fraction;
+        this.gap = gap;
     }
 
     styledView(element){
         element.style.display = "grid";
-        element.style.gridTemplateColumns = "repeat(auto-fit, minmax(" + this.props.minmaxPX + "px, " + this.props.fraction + "fr))";
-        element.style.gap = this.props.gap;
+        element.style.gridTemplateColumns = "repeat(auto-fit, minmax(" + this.minmaxPX + "px, " + this.fraction + "fr))";
+        element.style.gap = this.gap;
 
         return element;
     }
 
     build(){
-        return this.props.children;
+        return this.children;
     }
 }

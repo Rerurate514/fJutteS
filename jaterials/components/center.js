@@ -2,7 +2,8 @@ import { View } from "../../core/interface/view.js";
 
 export class Center extends View {
     constructor(child){
-        super({child});
+        super();
+        this.child = child;
     }
 
     styledView(element){
@@ -21,14 +22,15 @@ export class Center extends View {
     }
 
     build(){
-        return new _Center(this.props.child);
+        return new _Center(this.child);
     }
 }
 
 
 export class _Center extends View {
     constructor(child){
-        super({child});
+        super();
+        this.child = child;
     }
 
     styledView(element){
@@ -43,6 +45,6 @@ export class _Center extends View {
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

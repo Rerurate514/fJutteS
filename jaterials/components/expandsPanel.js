@@ -23,14 +23,13 @@ export class ExpandsPanel extends View {
             return false;
         }, "isExpands__ExpandsPanel");
         
-        super({
-            titleItem,
-            child,
-            panelItemBackGround,
-            radius,
-            buttonShadowLevel,
-            isExpands
-        });
+        super();
+        this.titleItem = titleItem;
+        this.child = child;
+        this.radius = radius;
+        this.buttonShadowLevel = buttonShadowLevel;
+        this.isExpands = isExpands;
+        this.panelItemBackGround = panelItemBackGround;
     }
 
     styledView(element){
@@ -45,26 +44,26 @@ export class ExpandsPanel extends View {
                     isJustifySpaceBetween: true,
                     isVerticalCenter: true,
                     children: [
-                        this.props.titleItem,
+                        this.titleItem,
                         new SpaceBox({
                             width: "8px",
                         }),
                         new Card({
-                            radius: this.props.radius,
-                            elevation: this.props.buttonShadowLevel,
+                            radius: this.radius,
+                            elevation: this.buttonShadowLevel,
                             child: new ElevatedButton({
                                 baseCSS: new BaseCSS({
                                     padding: "8px",
                                 }),
                                 child: new LimitedProviderScope({
-                                    watchingProviders: [ this.props.isExpands ],
+                                    watchingProviders: [ this.isExpands ],
                                     build: (isExpand) => {
                                         const button = isExpand[0] ? "∧" : "∨";
                                         return new Text(button);
                                     }
                                 }),
                                 onClick: () => {
-                                    this.props.isExpands.update((currentValue) => {
+                                    this.isExpands.update((currentValue) => {
                                         return !currentValue;
                                     });
                                 }
@@ -76,11 +75,11 @@ export class ExpandsPanel extends View {
                     height: "8px",
                 }),
                 new LimitedProviderScope({
-                    watchingProviders: [ this.props.isExpands ],
+                    watchingProviders: [ this.isExpands ],
                     build: (isExpand) => {
                         const view = isExpand[0] 
-                        ? this.props.child
-                        : new Shrink(this.props.child);
+                        ? this.child
+                        : new Shrink(this.child);
 
                         return view;
                     }

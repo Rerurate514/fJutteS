@@ -7,25 +7,24 @@ export class Column extends View {
         baseCSS = new BaseCSS(),
         isHorizontalCenter = false
     }){
-        super({
-            children,
-            baseCSS,
-            isHorizontalCenter
-        });
+        super();
+        this.children = children;
+        this.baseCSS = baseCSS;
+        this.isHorizontalCenter = isHorizontalCenter;
     }
 
     styledView(element){
         element.style.display = "flex";
         element.style.flexDirection = "column";
 
-        if(this.props.isHorizontalCenter) element.style.alignItems = "center";
+        if(this.isHorizontalCenter) element.style.alignItems = "center";
 
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
 
         return element; 
     }
 
     build(){
-        return this.props.children;
+        return this.children;
     }
 }
