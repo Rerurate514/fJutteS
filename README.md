@@ -575,7 +575,7 @@ class ProviderExample extends View {
                 new SpaceBox({height: "16px"}),
                 new LimitedProviderScope({
                     watchingProviders: [ counter ],
-                    build: (providerValue) => {
+                    builder: (providerValue) => {
                         return new Text("click count : " + providerValue[0]);
                     }
                 })

@@ -1,8 +1,6 @@
 import { View } from "../../core/interface/view.js";
 
 /**
- * @param {View} child - 子要素
- * @param {Object} props - プロップス
  * @param {Array<Provider>} watchingProviders - プロバイダーの配列
  *
  * このクラスに渡されたProvidersはリッスン状態となり、値の変更を常に監視しています。
@@ -15,20 +13,17 @@ import { View } from "../../core/interface/view.js";
 export class ProviderScope extends View {
     /**
      * コンストラクタ
-     * @param {View} child - 子要素
-     * @param {Object} props - プロップス
      * @param {Array<Provider>} watchingProviders - プロバイダーの配列
      */
-    constructor({child, props = {}, watchingProviders = []}) {
-        props.providers = watchingProviders;
-        props.child = child;
-        super(props);
+    constructor({watchingProviders = []}) {
+        super();
+        this.providers = watchingProviders;
 
         this._iterateProviders();
     }
 
     _iterateProviders() {
-        this.props.providers.forEach(provider => {
+        this.providers.forEach(provider => {
             this._watch(provider);
         });
     }
