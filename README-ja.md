@@ -295,7 +295,8 @@ class SampleWidget extends View {
 ```js
 class SampleWidget extends View {
 	constructor(text){
-		super({text: text});
+		super();
+		this.text = text;
 	}
 
 	createWrapView(){
@@ -325,7 +326,8 @@ class SampleWidget extends View {
 ```js
 class SampleWidget extends View {
 	constructor(child){
-		super({child: child});
+		super();
+		this.child = child;
 	}
 
 	createWrapView(){
