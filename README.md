@@ -299,7 +299,8 @@ Let's rewrite the above code using `props`:
 ```js
 class SampleWidget extends View {
     constructor(text){
-        super({text: text});
+        super();
+	this.child = child;
     }
 
     createWrapView(){
@@ -329,7 +330,8 @@ Similarly, when passing child elements:
 ```js
 class SampleWidget extends View {
     constructor(child){
-        super({child: child});
+        super();
+	this.child = child;
     }
 
     createWrapView(){
