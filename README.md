@@ -290,41 +290,6 @@ class SampleWidget extends View {
     }
 }
 ```
-However, running this will display `undefined`.
-This is because in the `View` class, `createWrapView` and `build` methods are executed in the constructor, so `build` finishes executing before `this.text = text`.
-
-To avoid this problem, you can pass `props` as an argument to the `View` class constructor.
-
-Let's rewrite the above code using `props`:
-```js
-class SampleWidget extends View {
-    constructor(text){
-        super();
-	this.child = child;
-    }
-
-    createWrapView(){
-        let div = document.createElement("div");
-        return div;
-    }
-
-    styledView(element){
-        element.className = "sample-widget";
-
-        element.style.backgroundColor = "red";
-        element.style.width = "100px";
-        element.style.height = "100px";
-
-        return element;
-    }
-
-    build(){
-        return new Text(this.text);//Use it here
-    }
-}
-```
-`props` is passed as an object.
-Since it's stored as an instance variable of the `View` class before methods like `createWrapView` are executed, the values become available in methods like `build`.
 
 Similarly, when passing child elements:
 ```js
@@ -379,9 +344,9 @@ Create a widget by inheriting from the `ProviderScope` component:
 class SampleWidget extends ProviderScope {
     constructor(child){
         super({
-            child: child,
             watchingProviders: [ sampleProvider ]
         });
+        this.child = child;
     }
 
     createWrapView(){

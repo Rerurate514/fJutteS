@@ -258,7 +258,7 @@ class SampleWidget extends View {
 例えば、ウィジェットに子要素を渡して、それを子要素でビルドして欲しい時や親要素のプロパティを子要素に渡して表示して欲しい時があるかもしれません。
 その際のやり方をこのセクションでは解説します。
 
-まず皆さんが親要素から渡された文字列を`Text`コンポーネントで表示したいとき、このように書くかもしれません。
+まず皆さんが親要素から渡された文字列を`Text`コンポーネントで表示したいとき、このように書きます。
 ```js
 class SampleWidget extends View {
 	constructor(text){
@@ -286,41 +286,6 @@ class SampleWidget extends View {
 	}
 }
 ```
-しかし、これを実行してみると`undefined`と表示されてしまいます。
-これは`View`クラス側で、`createWrapView`や`build`メソッドがコンストラクタで実行されているのが原因です。そのため、`build`が実行し終わってから`this.text = text`のコードを実行してしまいます。
-
-この問題を回避するため、`View`クラスのコンストラクタには`props`という引数を渡すことができます。
-
-`props`を使用して、もう一度上のコードを書き直してみます。
-```js
-class SampleWidget extends View {
-	constructor(text){
-		super();
-		this.text = text;
-	}
-
-	createWrapView(){
-		let div = document.createElement("div");
-		return div;
-	}
-
-	styledView(element){
-		element.className = "sample-widget";
-
-		element.style.backgroundColor = "red";
-		element.style.width = "100px";
-		element.style.height = "100px";
-
-		return element;
-	}
-
-	build(){
-		return new Text(this.text);//ここで使用
-	}
-}
-```
-`props`はオブジェクトとして渡します。
-これは`View`クラスのインスタンス変数として`createWrapView`などのメソッドが実行される前に格納されるので、`build`メソッドなどで値が使用可能になります。
 
 同様に子要素を渡された場合でも、
 ```js
@@ -373,9 +338,9 @@ Providerの値の変更を監視するためにはView単位で行います。
 class SampleWidget extends ProviderScope {
 	constructor(child){
 		super({
-			child: child,
 			watchingProviders: [ sampleProvider ]
 		});
+        this.child = child;
 	}
 
 	createWrapView(){
