@@ -1,6 +1,6 @@
 import { generateRandomColor } from '../logic/generateRandomColor.js';
 import { generateUUID } from '../logic/generateUUID.js';
-import { devMode } from '../logic/setupDevMode.js';
+import { devMode, setupDevMode } from '../logic/setupDevMode.js';
 
 /**
  * View抽象クラス
