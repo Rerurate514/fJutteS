@@ -39,7 +39,9 @@ class _Pre extends View {
   }
 
   build(){
-    return new _Code(this.props);
+    return new _Code({
+      code: this.code,
+    });
   }
 }
 

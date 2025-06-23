@@ -40,7 +40,11 @@ export class ElevatedButton extends View {
                 onClickEffect: true,
                 child: new Padding({
                     all: this.baseCSS.padding ?? "initial",
-                    child: new _ElevatedButton(this.props)
+                    child: new _ElevatedButton({
+                        child: this.child,
+                        baseCSS: this.baseCSS,
+                        onClick: this.onClick
+                    })
                 })
             })
         );

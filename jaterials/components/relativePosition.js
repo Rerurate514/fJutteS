@@ -26,7 +26,10 @@ export class RelativePosition extends View {
     }
 
     build(){
-        return new _RelativePosition(this.props);
+        return new _RelativePosition({
+            child: this.child,
+            relativePositions: this.relativePositions
+        });
     }
 }
 

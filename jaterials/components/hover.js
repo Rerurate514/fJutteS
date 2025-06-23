@@ -36,7 +36,10 @@ export class Hover extends View {
             }),
             children: [
                 this.child,
-                new _HoverWrapper(this.props)
+                new _HoverWrapper({
+                    radius: this.radius,
+                    onClickEffect: this.onClickEffect
+                })
             ]
         });
     }
@@ -70,7 +73,10 @@ class _HoverWrapper extends View {
     }
 
     build(){
-        return new _Hover(this.props);
+        return new _Hover({
+            radius: this.radius,
+            onClickEffect: this.onClickEffect
+        });
     }
 }
 

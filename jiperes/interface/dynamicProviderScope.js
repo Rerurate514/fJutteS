@@ -22,8 +22,6 @@ export class DynamicProviderScope extends View {
     }
 
     refreshProviders(){
-        this.rebuild({
-            props: this.props
-        });
+        this.rebuild();
     }
 }

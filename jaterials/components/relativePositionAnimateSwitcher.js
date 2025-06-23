@@ -31,7 +31,11 @@ export class RelativePositionAnimateSwitcher extends View {
     }
 
     build(){
-        const repos = new _RelativePositionAnimateSwitcher(this.props);
+        const repos = new _RelativePositionAnimateSwitcher({
+            child: this.child,
+            beginPosition: this.beginPosition,
+            endPosition: this.endPosition
+        });
         this.repos = repos;
         return repos;
     }
