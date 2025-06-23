@@ -21,7 +21,7 @@ export class PageRouter extends View {
         if (this.pages.length === 0) return null;
 
         return new LimitedProviderScope({
-            watchingProviders: [this.currentPageIndexProvider],
+            providers: [this.currentPageIndexProvider],
             build: (index) => {
                 return this.pages[index[0]];
             }

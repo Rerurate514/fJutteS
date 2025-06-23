@@ -78,7 +78,7 @@ class AccordionItem extends View {
                             new Text(this.title, new TextCSS({ fontCSS: new FontCSS({ fontWeight: "bold" }) })),
                             new SpaceBox({ width: "8px" }),
                             new LimitedProviderScope({
-                                watchingProviders: [this.isExpanded],
+                                providers: [this.isExpanded],
                                 build: (values) => new Text(values[0] ? "▲" : "▼"),
                             }),
                         ],
@@ -86,7 +86,7 @@ class AccordionItem extends View {
                         isVerticalCenter: true,
                     }),
                     new LimitedProviderScope({
-                        watchingProviders: [this.isExpanded],
+                        providers: [this.isExpanded],
                         build: (values) => values[0] ? this.content : new Shrink(this.content),
                     }),
                 ],

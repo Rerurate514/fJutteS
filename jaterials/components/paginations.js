@@ -49,7 +49,7 @@ export class Paginations extends View {
 
         items.push(
             new LimitedProviderScope({
-                watchingProviders: [ this.currentPageProvider ],
+                providers: [ this.currentPageProvider ],
                 build: (index) => {
                     return new PaginationNavigationItem({ 
                         label: "<", 
@@ -65,7 +65,7 @@ export class Paginations extends View {
         if (startPage > 1) {
             items.push(
                 new LimitedProviderScope({
-                    watchingProviders: [ this.currentPageProvider ],
+                    providers: [ this.currentPageProvider ],
                     build: () => {
                         return new PaginationItem({ 
                             page: 1, 
@@ -84,7 +84,7 @@ export class Paginations extends View {
             const pageNumber = i;
             items.push(
                 new LimitedProviderScope({
-                    watchingProviders: [ this.currentPageProvider ],
+                    providers: [ this.currentPageProvider ],
                     build: () => {
                         return new PaginationItem({
                             page: pageNumber,
@@ -101,7 +101,7 @@ export class Paginations extends View {
 
         items.push(
             new LimitedProviderScope({
-                watchingProviders: [ this.currentPageProvider ],
+                providers: [ this.currentPageProvider ],
                 build: (index) => {
                     return new PaginationNavigationItem({ 
                         label: ">", 

@@ -338,7 +338,7 @@ Providerの値の変更を監視するためにはView単位で行います。
 class SampleWidget extends ProviderScope {
 	constructor(child){
 		super({
-			watchingProviders: [ sampleProvider ]
+			providers: [ sampleProvider ]
 		});
         this.child = child;
 	}
@@ -405,7 +405,7 @@ const counter = Provider.createProvider((ref) => {
 class ProviderExample extends ProviderScope {
     constructor(){
         super({
-            watchingProviders: [ counter ]
+            providers: [ counter ]
         });
     }
 
@@ -537,7 +537,7 @@ class ProviderExample extends View {
                 }),
                 new SpaceBox({height: "16px"}),
                 new LimitedProviderScope({
-                    watchingProviders: [ counter ],
+                    providers: [ counter ],
                     builder: (providerValue) => {
                         return new Text("click count : " + providerValue[0]);
                     }
@@ -552,7 +552,7 @@ assembleView(
     new ProviderExample()
 );
 ```
-通常の`ProviderScope`を継承したやり方では、この`ProviderExample`ウィジェット全体が再描画されてしまいます。しかし、この`LimitedProviderScope`を使用したやり方では`Text`コンポーネントのみが再描画されます。この`build`関数オブジェクトの引数ですが、`provider`を`watchingProviders`で格納した順番でそれぞれの`Provider`の値が格納された配列が返されます。
+通常の`ProviderScope`を継承したやり方では、この`ProviderExample`ウィジェット全体が再描画されてしまいます。しかし、この`LimitedProviderScope`を使用したやり方では`Text`コンポーネントのみが再描画されます。この`build`関数オブジェクトの引数ですが、`provider`を`providers`で格納した順番でそれぞれの`Provider`の値が格納された配列が返されます。
 
 #### ProviderObserverによる値の変更確認
 `Jiperes`には`ProviderObserver`という`Provider`の値の変更履歴や依存関係を記録するクラスが実装されています。

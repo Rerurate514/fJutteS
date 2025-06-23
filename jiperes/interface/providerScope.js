@@ -1,7 +1,7 @@
 import { View } from "../../core/interface/view.js";
 
 /**
- * @param {Array<Provider>} watchingProviders - プロバイダーの配列
+ * @param {Array<Provider>} providers - プロバイダーの配列
  *
  * このクラスに渡されたProvidersはリッスン状態となり、値の変更を常に監視しています。
  * 変更が検知されるとこのコンポーネント以下のViewがrebuild()されます。
@@ -13,11 +13,11 @@ import { View } from "../../core/interface/view.js";
 export class ProviderScope extends View {
     /**
      * コンストラクタ
-     * @param {Array<Provider>} watchingProviders - プロバイダーの配列
+     * @param {Array<Provider>} providers - プロバイダーの配列
      */
-    constructor({watchingProviders = []}) {
+    constructor({providers = []}) {
         super();
-        this.providers = watchingProviders;
+        this.providers = providers;
 
         this._iterateProviders();
     }

@@ -105,7 +105,7 @@
                                 }),
                                 new SpaceBox({height: "16px"}),
                                 new LimitedProviderScope({
-                                    watchingProviders: [ counter ],
+                                    providers: [ counter ],
                                     build: (value) => {
                                         return new Text("click count : " + value);
                                     },
@@ -121,7 +121,7 @@
                                         })
                                     ),
                                     child: new LimitedProviderScope({
-                                        watchingProviders: [ counter ],
+                                        providers: [ counter ],
                                         build: () => {
                                             return new Text(
                                                 JSON.stringify(

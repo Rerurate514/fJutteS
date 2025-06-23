@@ -2,15 +2,15 @@ import { ProviderScope } from "../interface/providerScope.js";
 
 export class LimitedProviderScope extends ProviderScope {
     constructor({
-        watchingProviders = [],
+        providers = [],
         builder = () => {
             return undefined;
         }
     }) {
         super({
-            watchingProviders: providers
+            providers: providers
         });
-        this.providers = watchingProviders;
+        this.providers = providers;
         this.builder = builder;
     }
 

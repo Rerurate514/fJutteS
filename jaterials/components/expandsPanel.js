@@ -56,7 +56,7 @@ export class ExpandsPanel extends View {
                                     padding: "8px",
                                 }),
                                 child: new LimitedProviderScope({
-                                    watchingProviders: [ this.isExpands ],
+                                    providers: [ this.isExpands ],
                                     build: (isExpand) => {
                                         const button = isExpand[0] ? "∧" : "∨";
                                         return new Text(button);
@@ -75,7 +75,7 @@ export class ExpandsPanel extends View {
                     height: "8px",
                 }),
                 new LimitedProviderScope({
-                    watchingProviders: [ this.isExpands ],
+                    providers: [ this.isExpands ],
                     build: (isExpand) => {
                         const view = isExpand[0] 
                         ? this.child

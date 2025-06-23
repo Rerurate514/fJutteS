@@ -10,7 +10,7 @@ export class RadioButton extends ProviderScope {
         isChecked = false
     }){
         super({
-            watchingProviders: providers ?? [],
+            providers: providers ?? [],
         });
         this.labelText = labelText;
         this.name = name;

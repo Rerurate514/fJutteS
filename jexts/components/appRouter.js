@@ -9,7 +9,7 @@ export class AppRouter extends ProviderScope {
         startPageRoute = "",
     }) {
         super({
-            watchingProviders: [
+            providers: [
                 Provider.createProvider(() => window.location.hash.substring(1) || startPageRoute, 'currentPage__AppRouter')
             ],
         });

@@ -3,8 +3,8 @@ import { ProviderScope } from '../../jiperes/interface/providerScope.js';
 import { Moc } from '../testScripts/moc.js';
 
 class MyProviderScope extends ProviderScope {
-    constructor({ child, watchingProviders, props = {} }) {
-        super({ child, watchingProviders, props });
+    constructor({ child, providers, props = {} }) {
+        super({ child, providers, props });
     }
 
     createWrapView() {
@@ -25,7 +25,7 @@ describe('ProviderScope', () => {
     it('適切なプロパティで初期化される', () => {
         providerScope = new MyProviderScope({
             child: mockChild,
-            watchingProviders: [mockProvider],
+            providers: [mockProvider],
         });
 
         expect(providerScope.child).toBe(mockChild);
@@ -37,7 +37,7 @@ describe('ProviderScope', () => {
         
         providerScope = new MyProviderScope({
             child: mockChild,
-            watchingProviders: [mockProvider],
+            providers: [mockProvider],
         });
 
         expect(watchSpy).toHaveBeenCalled();
@@ -47,7 +47,7 @@ describe('ProviderScope', () => {
     it('immediateがfalseの場合、初期化時にrebuildが呼び出されない', () => {
         providerScope = new MyProviderScope({
             child: mockChild,
-            watchingProviders: [mockProvider],
+            providers: [mockProvider],
         });
 
         const rebuildSpy = jest.spyOn(providerScope, 'rebuild');
@@ -59,7 +59,7 @@ describe('ProviderScope', () => {
     it('プロバイダーが更新されたときにrebuildが呼び出される', () => {
         providerScope = new MyProviderScope({
             child: mockChild,
-            watchingProviders: [mockProvider],
+            providers: [mockProvider],
         });
 
         const rebuildSpy = jest.spyOn(providerScope, 'rebuild');
@@ -73,7 +73,7 @@ describe('ProviderScope', () => {
         providerScope = new MyProviderScope({
             child: mockChild,
             props: props,
-            watchingProviders: [mockProvider],
+            providers: [mockProvider],
         });
 
         expect(providerScope.test).toBe('test');
