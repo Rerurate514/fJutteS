@@ -7,13 +7,11 @@ export class LimitedProviderScope extends ProviderScope {
             return undefined;
         }
     }) {
-        this.providers = watchingProviders;
-        this.builder = builder;
-
         super({
             watchingProviders: providers
         });
-        
+        this.providers = watchingProviders;
+        this.builder = builder;
     }
 
     build(){
