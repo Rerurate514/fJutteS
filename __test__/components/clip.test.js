@@ -30,6 +30,8 @@ describe('Clip', () => {
                 child: moc
             });
 
+            clip.assemble();
+
             expect(clip.baseCSS.applyCSS).toHaveBeenCalled();
         });
 
@@ -38,6 +40,8 @@ describe('Clip', () => {
                 child: moc,
                 baseCSS: new BaseCSS()
             });
+
+            clip.assemble();
             
             expect(clip.child).toBe(moc);
             expect(clip.baseCSS.applyCSS).toHaveBeenCalled();
