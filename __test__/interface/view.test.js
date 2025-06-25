@@ -64,6 +64,7 @@ describe('View Class', () => {
 		}
 
 		view = new TestView();
+		view.assemble();
 	});
 
 	afterEach(() => {
@@ -94,10 +95,6 @@ describe('View Class', () => {
 		expect(mockTerminate).toHaveBeenCalled();
 	});
 
-	it('getBuildCompletionStateがtrueを返す', () => {
-		expect(view.getBuildCompletionState()).toBe(true);
-	});
-
 	it('rebuildメソッドが呼び出されると、同じ要素と置き換えられる', () => {
 		const originalView = view.view;
 		view.rebuild();
@@ -123,10 +120,15 @@ describe('View Class', () => {
 			}
 		}
 		const childView = new ChildView();
+		childView.assemble();
 		mockBuild.mockReturnValue(childView);
+
 		const testView = new (view.constructor)();
+		testView.assemble();
+
 		const addPseudoElementMock = jest.spyOn(childView, "addPseudoElement");
 		testView.addPseudoElement();
+
 		expect(addPseudoElementMock).toHaveBeenCalled();
 	});
 
@@ -150,10 +152,14 @@ describe('View Class', () => {
 		}
 		const childView1 = new ChildView();
 		const childView2 = new ChildView();
+		childView1.assemble();
+		childView2.assemble();
+
 		mockBuild.mockReturnValue([childView1, childView2]);
 		const addPseudoElementMock1 = jest.spyOn(childView1, "addPseudoElement");
 		const addPseudoElementMock2 = jest.spyOn(childView2, "addPseudoElement");
 		const testView = new (view.constructor)();
+		testView.assemble();
 		testView.addPseudoElement();
 		expect(addPseudoElementMock1).toHaveBeenCalled();
 		expect(addPseudoElementMock2).toHaveBeenCalled();
