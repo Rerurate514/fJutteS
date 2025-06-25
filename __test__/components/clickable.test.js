@@ -32,6 +32,8 @@ describe('Clickable', () => {
                 child: moc
             });
 
+            clickable.assemble();
+
             expect(clickable.child).toBe(moc);
             expect(clickable.baseCSS.applyCSS).toHaveBeenCalled();
         });
@@ -42,6 +44,8 @@ describe('Clickable', () => {
                 baseCSS: new BaseCSS(),
                 onClick: onClickMoc
             });
+
+            clickable.assemble();
 
             expect(clickable.child).toBe(moc);
             expect(clickable.baseCSS.applyCSS).toHaveBeenCalled();
@@ -59,6 +63,7 @@ describe('Clickable', () => {
 
     describe('styledView', () => {
         test('基本的なスタイルを適用する', () => {
+            clickable.assemble();
             expect(clickable.baseCSS.applyCSS).toHaveBeenCalled();
         });
 
