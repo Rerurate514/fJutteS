@@ -32,6 +32,8 @@ describe('Column', () => {
         test('デフォルト値で初期化できる', () => {
             const column = new Column({ children: children });
 
+            column.assemble();
+
             expect(column.baseCSS.applyCSS).toHaveBeenCalled();
             expect(column.isHorizontalCenter).toBe(false);
         });
@@ -42,6 +44,8 @@ describe('Column', () => {
                 isHorizontalCenter: true,
                 children: children
             });
+
+            column.assemble();
 
             expect(column.baseCSS.applyCSS).toHaveBeenCalled();
             expect(column.isHorizontalCenter).toBe(true);
