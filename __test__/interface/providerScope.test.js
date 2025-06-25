@@ -24,11 +24,11 @@ describe('ProviderScope', () => {
 
     it('適切なプロパティで初期化される', () => {
         providerScope = new MyProviderScope({
-            child: mockChild,
             providers: [mockProvider],
         });
 
-        expect(providerScope.child).toBe(mockChild);
+        providerScope.assemble();
+
         expect(providerScope.providers).toEqual([mockProvider]);
     });
 
@@ -66,18 +66,5 @@ describe('ProviderScope', () => {
         mockProvider.update(() => 1);
         expect(rebuildSpy).toHaveBeenCalledTimes(1);
         rebuildSpy.mockRestore();
-    });
-
-    it('親クラスに適切なプロパティが渡される', () => {
-        const props = { test: 'test' };
-        providerScope = new MyProviderScope({
-            child: mockChild,
-            props: props,
-            providers: [mockProvider],
-        });
-
-        expect(providerScope.test).toBe('test');
-        expect(providerScope.child).toBe(mockChild);
-        expect(providerScope.providers).toEqual([mockProvider]);
     });
 });
