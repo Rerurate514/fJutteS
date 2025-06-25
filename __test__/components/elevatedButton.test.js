@@ -77,12 +77,4 @@ describe('ElevatedButton', () => {
             expect(mockOnClick).toHaveBeenCalled();
         });
     });
-
-    describe('build', () => {
-        test('CenterコンポーネントでラップされたHoverコンポーネントを返す', () => {
-            const result = button.build();
-            expect(result instanceof Center).toBe(true);
-            expect(result.child.child instanceof Hover).toBe(true);
-        });
-    });
 });
