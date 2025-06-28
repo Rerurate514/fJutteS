@@ -19,10 +19,10 @@ export class ElevatedButton extends View {
     }
 
     styledView(element){
+        element.style.padding = "0px";
+        
         element.style.borderRadius = this.radius;
         element = this.baseCSS.applyCSS(element);
-
-        element.style.padding = "0px";
         
         return element;
     }
