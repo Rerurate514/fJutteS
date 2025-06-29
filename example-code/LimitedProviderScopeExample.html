@@ -12,7 +12,7 @@
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@3.0.1/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@4.0.0-alpha0.0.4/dist/index.mjs"
             }
         }
     </script>
@@ -49,10 +49,6 @@
                 super();
             }
 
-            createWrapView(){
-                return document.createElement("div");
-            }
-
             styledView(element){
                 element.style.height = "90vh";
 
@@ -76,6 +72,12 @@
                                     radius: "8px",
                                     elevation: ShadowLevel.LVL6,
                                     child: new ElevatedButton({
+                                        baseCSS: new BaseCSS({
+                                            padding: "32px",
+                                            border: new BorderCSS({
+                                                borderSize: "2px",
+                                            })
+                                        }),
                                         child: new Text(
                                             "CLICK HERE!",
                                             new TextCSS({
@@ -85,12 +87,6 @@
                                                 })
                                             })
                                         ),
-                                        baseCSS: new BaseCSS({
-                                            padding: "8px",
-                                            border: new BorderCSS({
-                                                borderSize: "2px",
-                                            })
-                                        }),
                                         onClick: () => {
                                             counter.update((value) => {
                                                 return value + 1;

@@ -14,7 +14,7 @@
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@3.0.1/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@4.0.0-alpha0.0.4/dist/index.mjs"
             }
         }
     </script>
@@ -28,10 +28,6 @@
         class TextFormExample extends View {
             constructor() {
                 super();
-            }
-
-            createWrapView() {
-                return document.createElement("div");
             }
 
             build() {
@@ -54,10 +50,6 @@
                 super({
                     providers: [ textController ]
                 });
-            }
-
-            createWrapView(){
-                return document.createElement("div");
             }
 
             build(){

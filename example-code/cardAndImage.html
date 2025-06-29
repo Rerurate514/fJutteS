@@ -12,7 +12,7 @@
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@3.0.1/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@4.0.0-alpha0.0.4/dist/index.mjs"
             }
         }
     </script>
@@ -21,11 +21,8 @@
 
         class CardExample extends View {
             constructor(src){
-                super({src: src});
-            }
-
-            createWrapView(){
-                return document.createElement("div");
+                super();
+                this.src = src;
             }
 
             styledView(element){
@@ -47,32 +44,34 @@
                         elevation: ShadowLevel.LVL5,
                         child: new Column({
                             children: [
-                                new Row([
-                                    new Text(
-                                        "This framework name is",
-                                        new TextCSS({
-                                            fontCSS: new FontCSS({
-                                                color: "#29C5F8",
-                                                fontWeight: "bold",
-                                                fontSize: "32px"
-                                            })
-                                        })
-                                    ),
-                                    new SpaceBox({width: "16px"}),
-                                    new Link({
-                                        href: "https://www.npmjs.com/package/fjuttes",
-                                        child: new Text(
-                                            "fJutteS.",
+                                new Row({
+                                    children: [
+                                        new Text(
+                                            "This framework name is",
                                             new TextCSS({
                                                 fontCSS: new FontCSS({
-                                                    color: "red",
+                                                    color: "#29C5F8",
                                                     fontWeight: "bold",
                                                     fontSize: "32px"
                                                 })
                                             })
                                         ),
-                                    })
-                                ]),
+                                        new SpaceBox({width: "16px"}),
+                                        new Link({
+                                            href: "https://www.npmjs.com/package/fjuttes",
+                                            child: new Text(
+                                                "fJutteS.",
+                                                new TextCSS({
+                                                    fontCSS: new FontCSS({
+                                                        color: "red",
+                                                        fontWeight: "bold",
+                                                        fontSize: "32px"
+                                                    })
+                                                })
+                                            ),
+                                        })
+                                    ]
+                                }),
                                 new SpaceBox({height: "16px"}),
                                 new Center(
                                     new Image({
