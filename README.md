@@ -1,7 +1,7 @@
 # THIS IS PURE JS FRAMEWORK
 `fJutteS` is a declarative component UI framework built purely with JavaScript. It's the perfect framework when you want to do Flutter-like component-based programming in specialized environments where only HTML, CSS, and JavaScript files are allowed (environments where you can't use React or Vue). While `fJutteS` comes with various pre-built components, these are ultimately just widgets that I created, and users can freely create their own widgets - after all, it's just JavaScript!
 For state management, `fJutteS` uses its own library called `Jiperes` that's been optimized specifically for the framework, eliminating the need to choose a state management library. However, this comes with a trade-off: the loss of setState and useState. This means that individual widgets cannot modify their state independently. We hope you'll understand this as one of our core design philosophies.
-- latest version -> fjuttes@3.0.1
+- latest version -> fjuttes@4.0.0
 - 日本語バージョンはこちら -> https://github.com/Rerurate514/fJutteS/blob/main/README-ja.md
 
 <h6>OFFICIAL WIKI : https://rerurate514.github.io/fJutteS-Wiki/</h6>
@@ -73,7 +73,7 @@ To use `fjuttes` via npm, run `npm install fjuttes` in the console and then use 
 You can use `unpkg` to utilize `fJutteS` functionality in CDN format without using npm.
 Here's a code example:
 ```html
-<script src="https://unpkg.com/fjuttes@3.0.1/dist/index.mjs"></script>
+<script src="https://unpkg.com/fjuttes@4.0.0/dist/index.mjs"></script>
 ```
 
 While more details will be explained later, you can use it as follows:
@@ -92,7 +92,7 @@ While more details will be explained later, you can use it as follows:
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@3.0.1/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@4.0.0/dist/index.mjs"
             }
         }
     </script>
