@@ -118,7 +118,7 @@
                                     ),
                                     child: new LimitedProviderScope({
                                         providers: [ counter ],
-                                        build: () => {
+                                        builder: () => {
                                             return new Text(
                                                 JSON.stringify(
                                                     new ProviderObserver().getAllUpdateHistory(),
