@@ -9,7 +9,7 @@
     <script type="importmap">
         {
             "imports": {
-                "fjuttes": "https://unpkg.com/fjuttes@3.0.1/dist/index.mjs"
+                "fjuttes": "https://unpkg.com/fjuttes@4.0.0/dist/index.mjs"
             }
         }
     </script>
@@ -33,15 +33,12 @@
 
         class SimpleSearchForm extends View {
             constructor(props = {}) {
-                props.state = {
+                state = {
                     searchText: ''
                 };
 
-                super(props);
-            }
-
-            createWrapView(){
-                return document.createElement("div");
+                super();
+                this.state = state;
             }
 
             styledView(element) {
@@ -63,13 +60,13 @@
                         new ElevatedButton({
                             child: new Text('検索'),
                             onClick: () => {
-                                this.props.state.searchText = textProv.read();
+                                this.state.searchText = textProv.read();
 
-                                if (this.props.onSearch) {
-                                    this.props.onSearch(this.props.state.searchText);
+                                if (this.onSearch) {
+                                    this.onSearch(this.state.searchText);
                                 } else {
-                                    console.log('検索ワード:', this.props.state.searchText);
-                                    alert(`検索ワード: ${this.props.state.searchText}`);
+                                    console.log('検索ワード:', this.state.searchText);
+                                    alert(`検索ワード: ${this.state.searchText}`);
                                 }
                             },
                             baseCSS: new BaseCSS({

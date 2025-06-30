@@ -5,10 +5,10 @@ import { Provider } from "../logic/provider.js";
  * このクラスは状態管理しなくてはならない要素が動的に変化する際に有用なコンポーネントです。
  */
 export class DynamicProviderScope extends View {
-    constructor({child, props = {}}){
-        props.child = child;
-        props.providers = [];
-        super(props);
+    constructor({child}){
+        super();
+        this.child = child;
+        this.providers = [];
     }
 
     createProvider(initialValue){
@@ -16,14 +16,12 @@ export class DynamicProviderScope extends View {
             return initialValue;
         });
 
-        this.props.providers.push(provider);
+        this.providers.push(provider);
 
         return provider;
     }
 
     refreshProviders(){
-        this.rebuild({
-            props: this.props
-        });
+        this.rebuild();
     }
 }

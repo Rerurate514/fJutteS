@@ -5,14 +5,13 @@ export class Header extends View {
         child,
         isStickyHeader = false
     }){
-        super({
-            child: child,
-            isStickyHeader: isStickyHeader
-        });
+        super();
+        this.child = child;
+        this.isStickyHeader = isStickyHeader;
     }
 
     styledView(element){
-        if(this.props.isStickyHeader) element.style.position = "sticky";
+        if(this.isStickyHeader) element.style.position = "sticky";
         element.style.top = "0";
 
         element.style.zIndex = 999;
@@ -21,6 +20,6 @@ export class Header extends View {
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

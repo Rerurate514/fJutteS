@@ -10,15 +10,13 @@ export class RadioButton extends ProviderScope {
         isChecked = false
     }){
         super({
-            watchingProviders: providers ?? [],
-            props : {
-                labelText,
-                name,
-                checkedRadioButton,
-                isDisplay,
-                isChecked
-            },
+            providers: providers ?? [],
         });
+        this.labelText = labelText;
+        this.name = name;
+        this.checkedRadioButton = checkedRadioButton;
+        this.isDisplay = isDisplay;
+        this.isChecked = isChecked;
     }
 
     createWrapView(){
@@ -26,7 +24,7 @@ export class RadioButton extends ProviderScope {
         let radio = document.createElement("input");
         label.appendChild(radio);
 
-        const labelTextDiv = document.createTextNode(this.props.labelText);
+        const labelTextDiv = document.createTextNode(this.labelText);
         label.appendChild(labelTextDiv);
 
         return label;
@@ -34,9 +32,9 @@ export class RadioButton extends ProviderScope {
 
     styledView(element){
         element.firstElementChild.type = "radio";
-        element.firstElementChild.name = this.props.name;
-        if(!this.props.isDisplay) element.firstElementChild.style.display = "none";
-        element.firstElementChild.checked = this.props.isChecked;
+        element.firstElementChild.name = this.name;
+        if(!this.isDisplay) element.firstElementChild.style.display = "none";
+        element.firstElementChild.checked = this.isChecked;
 
         return element;
     }
@@ -49,7 +47,7 @@ export class RadioButton extends ProviderScope {
     _setEventListenerToRadioBtn(radioBtn) {
         radioBtn.addEventListener("change", (e) => {   
             if (e.target.checked) {
-                this.props.checkedRadioButton(radioBtn, e);
+                this.checkedRadioButton(radioBtn, e);
             }
         });
     }

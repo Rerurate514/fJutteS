@@ -13,17 +13,16 @@ export class Slider extends View {
         isDisplay = true,
         baseCSS = new BaseCSS()
     } = {}){
-        super({
-            provider,
-            min,
-            max,
-            value,
-            step,
-            name,
-            onChange,
-            isDisplay,
-            baseCSS
-        });
+        super();
+        this.provider = provider;
+        this.min = min;
+        this.max = max;
+        this.value = value;
+        this.step = step;
+        this.name = name;
+        this.onChange = onChange;
+        this.isDisplay = isDisplay;
+        this.baseCSS = baseCSS;
     }
 
     createWrapView(){
@@ -32,15 +31,15 @@ export class Slider extends View {
 
     styledView(element){
         element.type = "range";
-        element.min = this.props.min;
-        element.max = this.props.max;
-        element.value = this.props.value;
-        element.step = this.props.step;
-        element.name = this.props.name;
+        element.min = this.min;
+        element.max = this.max;
+        element.value = this.value;
+        element.step = this.step;
+        element.name = this.name;
         
-        if(!this.props.isDisplay) element.style.display = "none";
+        if(!this.isDisplay) element.style.display = "none";
 
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
 
         return element;
     }
@@ -52,10 +51,10 @@ export class Slider extends View {
 
     _setEventListenerToSlider(sliderElement) {
         sliderElement.addEventListener("input", (e) => {   
-            this.props.onChange(e.target.value, sliderElement, e);
+            this.onChange(e.target.value, sliderElement, e);
             
-            if(!this.props.provider) return;
-            this.props.provider.update(() => {
+            if(!this.provider) return;
+            this.provider.update(() => {
                 return e.target.value;
             });
         });

@@ -32,8 +32,10 @@ describe('Clickable', () => {
                 child: moc
             });
 
-            expect(clickable.props.child).toBe(moc);
-            expect(clickable.props.baseCSS.applyCSS).toHaveBeenCalled();
+            clickable.assemble();
+
+            expect(clickable.child).toBe(moc);
+            expect(clickable.baseCSS.applyCSS).toHaveBeenCalled();
         });
 
         test('カスタム値で初期化できる', () => {
@@ -43,8 +45,10 @@ describe('Clickable', () => {
                 onClick: onClickMoc
             });
 
-            expect(clickable.props.child).toBe(moc);
-            expect(clickable.props.baseCSS.applyCSS).toHaveBeenCalled();
+            clickable.assemble();
+
+            expect(clickable.child).toBe(moc);
+            expect(clickable.baseCSS.applyCSS).toHaveBeenCalled();
 
             mocOnClick(clickable);
         });
@@ -59,7 +63,8 @@ describe('Clickable', () => {
 
     describe('styledView', () => {
         test('基本的なスタイルを適用する', () => {
-            expect(clickable.props.baseCSS.applyCSS).toHaveBeenCalled();
+            clickable.assemble();
+            expect(clickable.baseCSS.applyCSS).toHaveBeenCalled();
         });
 
         describe('build', () => {

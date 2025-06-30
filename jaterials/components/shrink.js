@@ -2,9 +2,8 @@ import { View } from "../../core/interface/view.js";
 
 export class Shrink extends View {
     constructor(child){
-        super({
-            child
-        });
+        super();
+        this.child = child;
     }
 
     styledView(element){
@@ -16,6 +15,6 @@ export class Shrink extends View {
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

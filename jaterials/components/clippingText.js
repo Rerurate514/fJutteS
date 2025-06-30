@@ -5,14 +5,9 @@ export class ClippingText extends View {
     child,
     background = null
   }){
-    super({
-      child,
-      background
-    });
-  }
-
-  createWrapView(){
-    return document.createElement("div");
+    super();
+    this.child = child;
+    this.background = background;
   }
 
   styledView(element){
@@ -21,12 +16,12 @@ export class ClippingText extends View {
 
     element.style.webkitBackgroundClip = "text";
 
-    if(this.props.background) element.style.background = this.props.background;
+    if(this.background) element.style.background = this.background;
 
     return element;
   }
 
   build(){
-    return this.props.child;
+    return this.child;
   }
 }

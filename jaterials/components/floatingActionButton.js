@@ -9,9 +9,8 @@ export class FloatingActionButton extends View {
     constructor({
        onClick: onClick = () => {}
     } = {}){
-        super({
-            onClick
-        });
+        super();
+        this.onClick = onClick;
     }
 
     styledView(element){
@@ -23,14 +22,15 @@ export class FloatingActionButton extends View {
 
     build(){
         return new _FlotingActionButton(
-            this.props.onClick
+            this.onClick
         );
     }
 }
 
 class _FlotingActionButton extends View {
     constructor(onClick){
-        super({onClick: onClick});
+        super();
+        this.onClick = onClick;
     }
 
     styledView(element){
@@ -44,7 +44,7 @@ class _FlotingActionButton extends View {
 
     build(){
         return new ElevatedButton({
-            onClick: this.props.onClick,
+            onClick: this.onClick,
             baseCSS: new BaseCSS({
                 width: "64px",
                 height: "64px"

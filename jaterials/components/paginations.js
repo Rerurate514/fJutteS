@@ -14,13 +14,11 @@ export class Paginations extends View {
             currentPageIndex, "currentPage"
         );
         
-        super({ 
-            totalPages,
-            currentPageProvider,
-            onPageChange,
-            itemStyle
-        });
-
+        super();
+        this.totalPages = totalPages;
+        this.currentPageProvider = currentPageProvider;
+        this.onPageChange = onPageChange;
+        this.itemStyle = itemStyle;
     }
 
     createWrapView() {
@@ -38,11 +36,11 @@ export class Paginations extends View {
         const items = [];
         const maxPagesToShow = 5;
 
-        let startPage = Math.max(1, this.props.currentPageProvider.read() - 2);
-        let endPage = Math.min(this.props.totalPages, this.props.currentPageProvider.read() + 2);
+        let startPage = Math.max(1, this.currentPageProvider.read() - 2);
+        let endPage = Math.min(this.totalPages, this.currentPageProvider.read() + 2);
 
         if (endPage - startPage + 1 > maxPagesToShow) {
-            if (this.props.currentPageProvider <= Math.ceil(maxPagesToShow / 2)) {
+            if (this.currentPageProvider <= Math.ceil(maxPagesToShow / 2)) {
                 endPage = maxPagesToShow;
             } else {
                 startPage = endPage - maxPagesToShow + 1;
@@ -51,14 +49,14 @@ export class Paginations extends View {
 
         items.push(
             new LimitedProviderScope({
-                watchingProviders: [ this.props.currentPageProvider ],
+                providers: [ this.currentPageProvider ],
                 build: (index) => {
                     return new PaginationNavigationItem({ 
                         label: "<", 
                         isActive: index == 1 ? false : true,
                         isAddition: false,
-                        currentPageProvider: this.props.currentPageProvider,
-                        itemStyle: this.props.itemStyle
+                        currentPageProvider: this.currentPageProvider,
+                        itemStyle: this.itemStyle
                     });
                 }
             })
@@ -67,34 +65,34 @@ export class Paginations extends View {
         if (startPage > 1) {
             items.push(
                 new LimitedProviderScope({
-                    watchingProviders: [ this.props.currentPageProvider ],
+                    providers: [ this.currentPageProvider ],
                     build: () => {
                         return new PaginationItem({ 
                             page: 1, 
                             label: "1", 
                             isActive: false, 
-                            onClick: this.props.onPageChange,
-                            currentPageProvider: this.props.currentPageProvider,
-                            itemStyle: this.props.itemStyle
+                            onClick: this.onPageChange,
+                            currentPageProvider: this.currentPageProvider,
+                            itemStyle: this.itemStyle
                         });
                     }
                 })
             );
         }
 
-        for (let i = startPage; i <= this.props.totalPages; i++) {
+        for (let i = startPage; i <= this.totalPages; i++) {
             const pageNumber = i;
             items.push(
                 new LimitedProviderScope({
-                    watchingProviders: [ this.props.currentPageProvider ],
+                    providers: [ this.currentPageProvider ],
                     build: () => {
                         return new PaginationItem({
                             page: pageNumber,
                             label: pageNumber.toString(),
-                            isActive: pageNumber === this.props.currentPageProvider.read(),
-                            onClick: this.props.onPageChange,
-                            currentPageProvider: this.props.currentPageProvider,
-                            itemStyle: this.props.itemStyle
+                            isActive: pageNumber === this.currentPageProvider.read(),
+                            onClick: this.onPageChange,
+                            currentPageProvider: this.currentPageProvider,
+                            itemStyle: this.itemStyle
                         });
                     }
                 })
@@ -103,14 +101,14 @@ export class Paginations extends View {
 
         items.push(
             new LimitedProviderScope({
-                watchingProviders: [ this.props.currentPageProvider ],
+                providers: [ this.currentPageProvider ],
                 build: (index) => {
                     return new PaginationNavigationItem({ 
                         label: ">", 
-                        isActive: index == this.props.totalPages ? false : true,
+                        isActive: index == this.totalPages ? false : true,
                         isAddition: true,
-                        currentPageProvider: this.props.currentPageProvider,
-                        itemStyle: this.props.itemStyle
+                        currentPageProvider: this.currentPageProvider,
+                        itemStyle: this.itemStyle
                     });
                 }
             })
@@ -149,22 +147,22 @@ class PaginationItem extends View {
         element.style.border = "1px solid #ccc";
         element.style.borderRadius = "5px";
         element.style.cursor = "pointer";
-        if (this.props.isActive) {
+        if (this.isActive) {
             element.style.backgroundColor = "#ccc";
         }
 
-        element = this.props.itemStyle.applyCSS(element);
+        element = this.itemStyle.applyCSS(element);
 
-        element.textContent = this.props.label;
+        element.textContent = this.label;
         
         return element;
     }
 
     embedScriptToView(e) {
         e.addEventListener("click", () => {
-            this.props.onClick(this.props.page);
+            this.onClick(this.page);
 
-            this.props.currentPageProvider.update(() => this.props.page);
+            this.currentPageProvider.update(() => this.page);
         });
         return e;
     }
@@ -198,23 +196,23 @@ class PaginationNavigationItem extends View {
         element.style.border = "1px solid #ccc";
         element.style.borderRadius = "5px";
         element.style.cursor = "pointer";
-        if (!this.props.isActive) {
+        if (!this.isActive) {
             element.style.backgroundColor = "#ccc";
         }
 
-        element.textContent = this.props.label;
+        element.textContent = this.label;
         
         return element;
     }
 
     embedScriptToView(e) {
         e.addEventListener("click", () => {
-            if(!this.props.isActive) return;
+            if(!this.isActive) return;
 
-            this.props.onClick(this.props.page);
+            this.onClick(this.page);
 
-            this.props.currentPageProvider.update((index) => {
-                if(this.props.isAddition){
+            this.currentPageProvider.update((index) => {
+                if(this.isAddition){
                     return ++index;
                 }
                 else{

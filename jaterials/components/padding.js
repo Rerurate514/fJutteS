@@ -25,27 +25,26 @@ export class Padding extends View {
         validatePadding(bottom, 'bottom');
         validatePadding(left, 'left');
 
-        super({
-            child,
-            padding: {
-                top,
-                right,
-                bottom,
-                left
-            }
-        });
+        super();
+        this.child = child;
+        this.padding = {
+            top,
+            right,
+            bottom,
+            left
+        };
     }
 
     styledView(element){
-        this.child.view.style.paddingTop = this.props.padding.top;
-        this.child.view.style.paddingRight = this.props.padding.right;
-        this.child.view.style.paddingBottom = this.props.padding.bottom;
-        this.child.view.style.paddingLeft = this.props.padding.left;
+        this.child.view.style.paddingTop = this.padding.top;
+        this.child.view.style.paddingRight = this.padding.right;
+        this.child.view.style.paddingBottom = this.padding.bottom;
+        this.child.view.style.paddingLeft = this.padding.left;
 
         return element;
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

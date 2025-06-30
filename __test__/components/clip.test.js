@@ -30,7 +30,9 @@ describe('Clip', () => {
                 child: moc
             });
 
-            expect(clip.props.baseCSS.applyCSS).toHaveBeenCalled();
+            clip.assemble();
+
+            expect(clip.baseCSS.applyCSS).toHaveBeenCalled();
         });
 
         test('カスタム値で初期化できる', () => {
@@ -38,9 +40,11 @@ describe('Clip', () => {
                 child: moc,
                 baseCSS: new BaseCSS()
             });
+
+            clip.assemble();
             
-            expect(clip.props.child).toBe(moc);
-            expect(clip.props.baseCSS.applyCSS).toHaveBeenCalled();
+            expect(clip.child).toBe(moc);
+            expect(clip.baseCSS.applyCSS).toHaveBeenCalled();
         });
     });
 

@@ -1,148 +1,52 @@
-import { generateRandomColor } from '../logic/generateColor.js';
+import { generateRandomColor } from '../logic/generateRandomColor.js';
 import { generateUUID } from '../logic/generateUUID.js';
+import { devMode } from '../logic/setupDevMode.js';
 
 /**
- * Viewクラス - abstruct ---
- * 必ずcreateWrapViewをオーバーライドしてViewをカスタマイズしてください。
- * もしViewクラス内のログを出力する際には継承先でthis.isLogOutをtrueにしてください。
+ * View抽象クラス
+ * ## OverView
+ * fTutteSフレームワークにおける全てのウィジェットの基底となる抽象クラスです。
+ * UI要素の作成、スタイリング、スクリプトの埋め込み、そして子ウィジェットの構築と管理のための
+ * コアなライフサイクルメソッドとロジックを提供します。
+ * このクラスは直接インスタンス化することはできません。
+ *
+ * `devMode` が有効な場合、各 View のコンテナには、そのウィジェットの名前とランダムな背景色が追加され、
+ * デバッグ時の視覚的な識別を助けます。
  */
 export class View {
-    /**
-     * Description placeholder
-     *
-     * @type {boolean}
-     */
-    isLogOut = false;
-    isTestMode = false;
-
-    constructor(props = {}) {
+    constructor() {
         if (this.constructor === View) {
-            throw new TypeError('Please do not instantiate this class.');
+            throw new TypeError("このクラスをインスタンス化しないでください。");
         }
 
-        this._isViewBuilt = false;
+        this.id = generateUUID();
+        this._view = document.createElement("div");
+        this.viewCache = document.createElement("div");
+        this.viewChild = undefined;
+    }
 
-        this.props = props;
+    get view() {
+        return this._view;
+    }
 
-        this._createId();
-
+    assemble() {
         this.initialize();
         this.preBuild();
-        let child = this.build();
-        this.child = child;
+        this.viewChild = this.build();
         this.postBuild();
         this.terminate();
+        
+        let view = this.assembleWrapView();
+        if(devMode) view = this.generateTestNode(view);
+        this.viewCache = this.embedScriptToView(view.cloneNode(true));
+        
+        this.assembleViewData(this.viewChild, this.viewCache);
 
-        let embededView = this._assembleWrapView();
-
-        if(this.isTestMode) embededView = this._generateTestNode(embededView);
-
-        this.viewCache = embededView.cloneNode(true);
-
-        this._inputViewData(child, embededView);
-
-        this._isViewBuilt = true;
+        return this.view;
     }
 
     /**
-     * Description placeholder
-     *
-     * @returns {HTMLElenment} 
-     */
-    _assembleWrapView() {
-        let wrapView = this.createWrapView();
-        this._checkHTMLElement(wrapView, "createWrapView");
-
-        let styledView = this.styledView(wrapView);
-        this._checkHTMLElement(styledView, "styledView");
-
-        let embededView = this.embedScriptToView(styledView);
-        this._checkHTMLElement(embededView, "embedScriptToView");
-
-        return embededView;
-    }
-
-    _generateTestNode(embededView){
-        let text = embededView.textContent;
-        embededView.textContent = "";
-
-        let color = generateRandomColor();
-
-        let elementNameDiv = document.createElement("div");
-        elementNameDiv.style.background = color;
-        elementNameDiv.textContent = this.constructor.name;
-
-        embededView.style.background = color;
-
-        embededView.appendChild(elementNameDiv);
-        if(elementNameDiv) embededView.appendChild(document.createTextNode(text));
-
-        return embededView;
-    }
-
-    /** Description placeholder */
-    addPseudoElement() {
-        if (this.child instanceof View) this.child.addPseudoElement();
-        if (this.child instanceof Array) {
-            this.child.forEach((child) => {
-                child.addPseudoElement();
-            });
-        }
-
-        let before = this.createBeforeElement();
-        let after = this.createAfterElement();
-
-        if (before) {
-            this._checkHTMLElement(before, "createBeforeElement");
-            this.view.before(before);
-        }
-        if (after) {
-            this._checkHTMLElement(after, "createAfterElement");
-            this.view.after(after);
-        }
-    }
-
-    /**
-     * Description placeholder
-     *
-     * @returns {*} 
-     */
-    createBeforeElement() {
-        return null;
-    }
-
-    /**
-     * Description placeholder
-     *
-     * @returns {*} 
-     */
-    createAfterElement() {
-        return null;
-    }
-
-    /**
-     * Description placeholder
-     *
-     * @param {*} child 
-     * @param {*} msg 
-     */
-    _checkHTMLElement(child, msg) {
-        if (!(child instanceof HTMLElement)) {
-            throw new TypeError(msg + "must contain an HTMLElenment object. Type passed:", typeof child);
-        }
-    }
-
-    /**
-     * Description placeholder
-     *
-     * @returns {boolean} 
-     */
-    getBuildCompletionState() {
-        return this._isViewBuilt;
-    }
-
-    /**
-     * このcreateWrapViewをオーバーライドしてViewのコンテナを設定してください
+     * createWrapViewをオーバーライドしてViewのコンテナを設定してください
      * @returns HTMLElement
      */
     createWrapView() {
@@ -150,7 +54,7 @@ export class View {
     }
 
     /**
-     * @param {HTMLElenment} element
+     * @param {HTMLElement} element
      * 
      * ここで引数にスタイルを設定してください
      */
@@ -159,12 +63,55 @@ export class View {
     }
 
     /**
-     * @param {HTMLElenment} element
+     * @param {HTMLElement} element
      * 
      * ここでスクリプトを埋め込んでください
      */
     embedScriptToView(element) {
         return element;
+    }
+
+    generateTestNode(view) {
+        let text = view.textContent;
+        view.textContent = "";
+
+        let color = generateRandomColor();
+
+        let elementNameDiv = document.createElement("div");
+        elementNameDiv.style.background = color;
+        elementNameDiv.textContent = this.constructor.name;
+
+        view.style.background = color;
+
+        view.appendChild(elementNameDiv);
+        if(elementNameDiv) view.appendChild(document.createTextNode(text ?? ""));
+
+        return view;
+    }
+
+    assembleWrapView() {
+        let wrapView = this.createWrapView();
+        this.checkHTMLElement(wrapView, "createWrapView");
+
+        let styledView = this.styledView(wrapView);
+        this.checkHTMLElement(styledView, "styledView");
+
+        let embededView = this.embedScriptToView(styledView);
+        this.checkHTMLElement(embededView, "embedScriptToView");
+
+        return embededView;
+    }
+
+    /**
+     * Description placeholder
+     *
+     * @param {*} child 
+     * @param {*} msg 
+     */
+    checkHTMLElement(child, msg) {
+        if (!(child instanceof HTMLElement)) {
+            throw new TypeError(msg + "must contain an HTMLElenment object. Type passed:" + typeof child);
+        }
     }
 
     /**
@@ -176,6 +123,89 @@ export class View {
      */
     build() {
         return undefined;
+    }
+
+    /**
+     * Description placeholder
+     */
+    rebuild() {
+        this.preBuild();
+
+        let thisView = document.getElementById(`${this._view.id}`);
+        if (thisView == null) return;
+
+        this.viewChild = this.build();
+
+        this.assembleViewData(this.viewChild, this.viewCache);
+
+        while (thisView.firstChild) {
+            thisView.removeChild(thisView.firstChild);
+        }
+
+        if(this.viewChild instanceof View){
+            thisView.appendChild(this.viewChild.view);
+        }
+        else if (this.viewChild instanceof Array) {
+            this.viewChild.forEach((child) => {
+                thisView.appendChild(child.view);
+            });
+        }
+        
+        this.postBuild();
+        this.assembleComplete();
+    }
+
+    /**
+     * Viewのスタイルを部分的に更新します。
+     * 不要な再レンダリングを避けるために、必要なCSSプロパティのみを直接DOM要素に適用します。
+     * このメソッドは、ViewがDOMにアタッチされた後（assembleComplete後）に呼び出すことを想定しています。
+     *
+     * @param {Object} stylePatch 更新したいCSSプロパティのオブジェクト
+     */
+    updateStyle(stylePatch) {
+        if (!this._view || !this._view.isConnected) {
+            console.warn("ViewはまだDOMにアタッチされていないか、デタッチされた後です。", this._view, this._view.isConnected);
+            return;
+        }
+
+        const readOnlyProperties = new Set([
+            "length",
+            "parentRule",
+            "cssText",
+        ]);
+
+        for (const key in stylePatch) {
+            if (Object.prototype.hasOwnProperty.call(stylePatch, key)) {
+                const value = stylePatch[key];
+
+                if (readOnlyProperties.has(key)) continue;
+
+                if (value !== undefined) {
+                    this._view.style[key] = value;
+                }
+            }
+        }
+    }
+
+    assembleComplete() {
+        this.onAssembleComplete();
+
+        if (this.viewChild instanceof View) {
+            this.viewChild.assembleComplete();
+        } else if (this.viewChild instanceof Array) {
+            this.viewChild.forEach(child => {
+                if (child) {
+                    child.assembleComplete();
+                }
+            });
+        }
+    }
+
+    /**
+     * Viewのビルドが終了して、完全にレンダリングされた後に実行される関数
+     */
+    onAssembleComplete() {
+        
     }
 
     /**
@@ -212,7 +242,7 @@ export class View {
 
     /**
      * Viewの破棄時に実行される関数、またはViewが破棄されるときに実行される関数
-     * Viewそのものを破棄する関数は_dispose関数にて実装されています。
+     * Viewそのものを破棄する関数はdispose関数にて実装されています。
      */
     onDispose() {
 
@@ -223,15 +253,95 @@ export class View {
      * 基本的には状態管理辺りの処理で必要となるため実装
      * この関数はオーバーライド不可で、dispose時に処理が必要な場合はonDiseposeを使用してください。
      */
-    _dispose() {
-        if (this.child instanceof View) this.child._dispose();
-        if (this.child instanceof Array) {
-            this.child.forEach((child) => {
-                child._dispose();
+    dispose() {
+        if (this.viewChild instanceof View) this.viewChild.dispose();
+        if (this.viewChild instanceof Array) {
+            this.viewChild.forEach((child) => {
+                child.dispose();
             });
         }
 
         this.onDispose();
+    }
+
+    assembleViewData(child, embededView) {
+        if (child instanceof Array) {
+            this.assembleMultiView(child, embededView);
+        }
+        else if(child instanceof View){
+            this.assembleSingleView(child, embededView);
+        }
+        else{
+            this._view = embededView;
+        }
+
+        this.attributeId();
+        this.attributeViewNameToDataset();
+    }
+
+    assembleSingleView(child, embededView) {
+        child.assemble();
+        embededView.appendChild(child.view);
+        this._view = embededView;
+    }
+
+    assembleMultiView(children, embededView) {
+        children.forEach(child => {
+            if (!child) return;
+            child.assemble();
+            embededView.appendChild(child.view);
+        });
+        this._view = embededView;
+    }
+
+    attributeId() {
+        this._view.id = this.id;
+    }
+
+    attributeViewNameToDataset() {
+        this._view.dataset.viewClassName = this.constructor.name;
+    }
+
+    // JSファイルにのみ存在するメソッド（そのまま保持）
+    
+    /** Description placeholder */
+    addPseudoElement() {
+        if (this.viewChild instanceof View) this.viewChild.addPseudoElement();
+        if (this.viewChild instanceof Array) {
+            this.viewChild.forEach((child) => {
+                child.addPseudoElement();
+            });
+        }
+
+        let before = this.createBeforeElement();
+        let after = this.createAfterElement();
+
+        if (before) {
+            this.checkHTMLElement(before, "createBeforeElement");
+            this.view.before(before);
+        }
+        if (after) {
+            this.checkHTMLElement(after, "createAfterElement");
+            this.view.after(after);
+        }
+    }
+
+    /**
+     * Description placeholder
+     *
+     * @returns {*} 
+     */
+    createBeforeElement() {
+        return null;
+    }
+
+    /**
+     * Description placeholder
+     *
+     * @returns {*} 
+     */
+    createAfterElement() {
+        return null;
     }
 
     onRendered() {
@@ -240,9 +350,9 @@ export class View {
 
     /** Description placeholder */
     _rendered() {
-        if (this.child instanceof View) this.child._rendered();
-        if (this.child instanceof Array) {
-            this.child.forEach((child) => {
+        if (this.viewChild instanceof View) this.viewChild._rendered();
+        if (this.viewChild instanceof Array) {
+            this.viewChild.forEach((child) => {
                 child._rendered();
             });
         }
@@ -252,87 +362,10 @@ export class View {
     /**
      * Description placeholder
      *
-     * @param {{ props?: any; builtView?: any; }} [param0={}] 
-     * @param {*} [param0.props=null] 
-     * @param {*} [param0.builtView=null] 
+     * @returns {boolean} 
      */
-    rebuild({
-        props = null,
-        builtView = null
-    } = {}) {
-        if (props) this.props = props;
-
-        this.preBuild();
-
-        let thisView = document.getElementById(`${this.view.id}`);
-        if (thisView == null) return;
-
-        this._inputViewData(builtView ?? this.build(), this.viewCache.cloneNode(true));
-
-        thisView.replaceWith(this.view);
-
-        this._log("rebuilded : View name => " + this.constructor.name + "\nViewID => " + this.view.id);
-
-        this.postBuild();
-    }
-
-    /**
-     * Description placeholder
-     *
-     * @param {*} child 
-     * @param {*} embededView 
-     */
-    _inputViewData(child, embededView) {
-        if (child instanceof Array) {
-            this._inputMultiView(child, embededView);
-        }
-        else {
-            this._inputSingleView(child, embededView);
-        }
-
-        this._attributeId();
-        this._attributeViewNameToDataset();
-    }
-
-    /**
-     * Description placeholder
-     *
-     * @param {*} child 
-     * @param {*} embededView 
-     */
-    _inputSingleView(child, embededView) {
-        this.view = embededView;
-        if (child instanceof View) this.view.appendChild(child.view);
-    }
-
-    /**
-     * Description placeholder
-     *
-     * @param {*} child 
-     * @param {*} embededView 
-     */
-    _inputMultiView(child, embededView) {
-        if (!this.view) this.view = embededView;
-
-        child.forEach(child => {
-            if (!child) return;
-            this.view.appendChild(child.view);
-        });
-    }
-
-    /** Description placeholder */
-    _createId() {
-        this.props.id = generateUUID();
-    }
-
-    /** Description placeholder */
-    _attributeId() {
-        this.view.id = this.props.id;
-    }
-
-    /** Description placeholder */
-    _attributeViewNameToDataset() {
-        this.view.dataset.viewClassName = this.constructor.name;
+    getBuildCompletionState() {
+        return this._isViewBuilt;
     }
 
     /**

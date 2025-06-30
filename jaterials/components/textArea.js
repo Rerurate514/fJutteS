@@ -15,19 +15,18 @@ export class TextArea extends View {
         disabled = false,
         baseCSS = new BaseCSS(),
     }) {
-        super({
-            provider,
-            value,
-            placeholder,
-            maxLength,
-            rows,
-            cols,
-            wrap,
-            spellcheck,
-            readonly,
-            disabled,
-            baseCSS
-        });
+        super();
+        this.provider = provider;
+        this.value = value;
+        this.placeholder = placeholder;
+        this.maxLength = maxLength;
+        this.rows = rows;
+        this.cols = cols;
+        this.wrap = wrap;
+        this.spellcheck = spellcheck;
+        this.readonly = readonly;
+        this.disabled = disabled;
+        this.baseCSS = baseCSS;
     }
 
     createWrapView() {
@@ -35,19 +34,19 @@ export class TextArea extends View {
     }
 
     styledView(element) {
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
 
-        element.value = this.props.value;
-        element.placeholder = this.props.placeholder;
+        element.value = this.value;
+        element.placeholder = this.placeholder;
 
-        if(this.props.maxLength) element.maxLength = this.props.maxLength;
-        if(this.props.rows) element.rows = this.props.rows;
-        if(this.props.cols) element.cols = this.props.cols;
+        if(this.maxLength) element.maxLength = this.maxLength;
+        if(this.rows) element.rows = this.rows;
+        if(this.cols) element.cols = this.cols;
 
-        element.wrap = this.props.wrap;
-        element.spellcheck = this.props.spellcheck;
-        element.readOnly = this.props.readonly;
-        element.disabled = this.props.disabled;
+        element.wrap = this.wrap;
+        element.spellcheck = this.spellcheck;
+        element.readOnly = this.readonly;
+        element.disabled = this.disabled;
 
         return element;
     }
@@ -62,9 +61,9 @@ export class TextArea extends View {
     }
 
     updateProvider(value) {
-        if (!this.props.provider) return;
+        if (!this.provider) return;
 
-        this.props.provider.update(() => {
+        this.provider.update(() => {
             return value;
         });
     }

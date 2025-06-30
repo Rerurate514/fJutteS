@@ -2,27 +2,24 @@ import { ProviderScope } from "../interface/providerScope.js";
 
 export class LimitedProviderScope extends ProviderScope {
     constructor({
-        props = {}, 
-        watchingProviders = [],
-        build = () => {
+        providers = [],
+        builder = () => {
             return undefined;
         }
     }) {
-        props.providers = watchingProviders;
-        props.build = build;
-
         super({
-            props,
-            watchingProviders: props.providers
+            providers: providers
         });
+        this.providers = providers;
+        this.builder = builder;
     }
 
     build(){
-        const readArr = this.props.providers.map((provider) => {
+        const readArr = this.providers.map((provider) => {
             return provider.read();
         });
 
-        return this.props.build(readArr);
+        return this.builder(readArr);
     }
 
     postBuild(){

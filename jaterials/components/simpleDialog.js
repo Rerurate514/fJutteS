@@ -13,13 +13,12 @@ export class SimpleDialog extends View {
         onCancelClickedFn = () => {},
         onOkClickedFn = () => {}
     }){
-        super({
-            child,
-            cancelText,
-            okText,
-            onCancelClickedFn,
-            onOkClickedFn
-        });
+        super();
+        this.child = child;
+        this.cancelText = cancelText;
+        this.okText = okText;
+        this.onCancelClickedFn = onCancelClickedFn;
+        this.onOkClickedFn = onOkClickedFn;
     }
 
     createWrapView(){
@@ -33,7 +32,7 @@ export class SimpleDialog extends View {
     build(){
         return new Column({
             children: [
-                this.props.child,
+                this.child,
                 new Row({
                     isAlignCenter: true,
                     children: [
@@ -41,9 +40,9 @@ export class SimpleDialog extends View {
                             baseCSS: new BaseCSS({
                                 margin: "32px"
                             }),
-                            child: this.props.cancelText ?? new Text("cancel"),
+                            child: this.cancelText ?? new Text("cancel"),
                             onClick: () => {
-                                this.props.onCancelClickedFn();
+                                this.onCancelClickedFn();
                                 this.closeModal();
                             }
                         }),
@@ -51,9 +50,9 @@ export class SimpleDialog extends View {
                             baseCSS: new BaseCSS({
                                 margin: "32px"
                             }),
-                            child: this.props.okText ?? new Text("ok"),
+                            child: this.okText ?? new Text("ok"),
                             onClick: () => {
-                                this.props.onOkClickedFn();
+                                this.onOkClickedFn();
                                 this.closeModal();
                             }
                         })

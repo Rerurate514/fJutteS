@@ -7,7 +7,11 @@ export class RelativePositionAnimateSwitcher extends View {
         endPosition,
         duration = 600
     }){
-        super({child, beginPosition, endPosition, duration});
+        super();
+        this.child = child;
+        this.beginPosition = beginPosition;
+        this.endPosition = endPosition;
+        this.duration = duration;
     }
 
     styledView(element){
@@ -27,7 +31,11 @@ export class RelativePositionAnimateSwitcher extends View {
     }
 
     build(){
-        const repos = new _RelativePositionAnimateSwitcher(this.props);
+        const repos = new _RelativePositionAnimateSwitcher({
+            child: this.child,
+            beginPosition: this.beginPosition,
+            endPosition: this.endPosition
+        });
         this.repos = repos;
         return repos;
     }
@@ -44,14 +52,17 @@ export class _RelativePositionAnimateSwitcher extends View {
         beginPosition,
         endPosition
     }){
-        super({child, beginPosition, endPosition});
+        super();
+        this.child = child;
+        this.beginPosition = beginPosition;
+        this.endPosition = endPosition;
     }
 
     styledView(element){
         element.style.width = "fit-content";
         element.style.height = "fit-content";
 
-        element = this.props.beginPosition.applyCSS(element);
+        element = this.beginPosition.applyCSS(element);
 
         element.style.borderRadius = "inherit";
         element.style.transition = "all 0.5s ease-in-out";
@@ -60,16 +71,16 @@ export class _RelativePositionAnimateSwitcher extends View {
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 
     animate(){
-        let element = document.getElementById(this.props.id);
+        let element = document.getElementById(this.id);
 
         if (element) {
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
-                    this.props.endPosition.applyCSS(element);
+                    this.endPosition.applyCSS(element);
                 });
             });
         }

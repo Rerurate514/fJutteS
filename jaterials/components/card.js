@@ -23,28 +23,28 @@ export class Card extends View {
             throw TypeError("CardコンポーネントのwebkitCSSプロパティには、WebkitCSSクラスのみ受け付けています。\n渡された型:" + typeof elevation);
         }
 
-        super({
-            child,
-            radius, 
-            baseCSS,
-            background,
-            elevation,
-            webkitCSS
-        });
+        super();
+
+        this.child = child;
+        this.radius = radius;
+        this.baseCSS = baseCSS;
+        this.background = background;
+        this.elevation = elevation;
+        this.webkitCSS = webkitCSS;
     }
 
     styledView(element){
-        element.style.borderRadius = this.props.radius;
-        if(this.props.background) element.style.background = this.props.background;
-        element.style.boxShadow = this.props.elevation;
+        element.style.borderRadius = this.radius;
+        if(this.background) element.style.background = this.background;
+        element.style.boxShadow = this.elevation;
 
-        element = this.props.baseCSS.applyCSS(element);
-        element = this.props.webkitCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
+        element = this.webkitCSS.applyCSS(element);
 
         return element;
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }
