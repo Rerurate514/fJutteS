@@ -7,25 +7,24 @@ export class Clickable extends View {
         baseCSS = new BaseCSS(),
         onClick: onClick = () => {},
     }){
-        super({
-            child,
-            baseCSS,
-            onClick
-        });
+        super();
+        this.child = child;
+        this.baseCSS = baseCSS;
+        this.onClick = onClick;
     }
 
     styledView(element){
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
         return element;
     }
 
     embedScriptToView(element){
-        element.addEventListener("click", this.props.onClick);
+        element.addEventListener("click", this.onClick);
 
         return element;
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

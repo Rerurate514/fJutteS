@@ -31,8 +31,8 @@ describe('Box', () => {
 	describe('constructor', () => {
 		test('デフォルト値で初期化できる', () => {
 			const box = new Box({});
-			expect(box.props.width).toBe('0px');
-			expect(box.props.height).toBe('0px');
+			expect(box.width).toBe('0px');
+			expect(box.height).toBe('0px');
 		});
 
 		test('カスタム値で初期化できる', () => {
@@ -41,9 +41,9 @@ describe('Box', () => {
 				height: '100px',
 				background: 'rgb(0, 0, 0)'
 			});
-			expect(box.props.width).toBe('50px');
-			expect(box.props.height).toBe('100px');
-			expect(box.props.background).toBe('rgb(0, 0, 0)');
+			expect(box.width).toBe('50px');
+			expect(box.height).toBe('100px');
+			expect(box.background).toBe('rgb(0, 0, 0)');
 		});
 	});
 
@@ -68,7 +68,7 @@ describe('Box', () => {
 			expect(styledElement.style.height).toBe('200px');
 			expect(styledElement.style.background).toBe('rgb(255, 255, 255)');
 
-			expect(box.props.webkitCSS.applyCSS).toHaveBeenCalled();
+			expect(box.webkitCSS.applyCSS).toHaveBeenCalled();
 		});
 
 		test('背景色がnullの場合でもエラーにならない', () => {

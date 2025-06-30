@@ -64,6 +64,7 @@ describe('View Class', () => {
 		}
 
 		view = new TestView();
+		view.assemble();
 	});
 
 	afterEach(() => {
@@ -94,10 +95,6 @@ describe('View Class', () => {
 		expect(mockTerminate).toHaveBeenCalled();
 	});
 
-	it('getBuildCompletionStateがtrueを返す', () => {
-		expect(view.getBuildCompletionState()).toBe(true);
-	});
-
 	it('rebuildメソッドが呼び出されると、同じ要素と置き換えられる', () => {
 		const originalView = view.view;
 		view.rebuild();
@@ -123,10 +120,15 @@ describe('View Class', () => {
 			}
 		}
 		const childView = new ChildView();
+		childView.assemble();
 		mockBuild.mockReturnValue(childView);
+
 		const testView = new (view.constructor)();
+		testView.assemble();
+
 		const addPseudoElementMock = jest.spyOn(childView, "addPseudoElement");
 		testView.addPseudoElement();
+
 		expect(addPseudoElementMock).toHaveBeenCalled();
 	});
 
@@ -150,12 +152,153 @@ describe('View Class', () => {
 		}
 		const childView1 = new ChildView();
 		const childView2 = new ChildView();
+		childView1.assemble();
+		childView2.assemble();
+
 		mockBuild.mockReturnValue([childView1, childView2]);
 		const addPseudoElementMock1 = jest.spyOn(childView1, "addPseudoElement");
 		const addPseudoElementMock2 = jest.spyOn(childView2, "addPseudoElement");
 		const testView = new (view.constructor)();
+		testView.assemble();
 		testView.addPseudoElement();
 		expect(addPseudoElementMock1).toHaveBeenCalled();
 		expect(addPseudoElementMock2).toHaveBeenCalled();
+	});
+
+	describe('updateStyle method', () => {
+		let testView;
+		let mockConsoleWarn;
+
+		beforeEach(() => {
+			class TestView extends View {
+				constructor(props) {
+					super(props);
+				}
+				createWrapView() {
+					return document.createElement('div');
+				}
+				styledView(element) {
+					return element;
+				}
+				embedScriptToView(element) {
+					return element;
+				}
+				build() {
+					return undefined;
+				}
+			}
+
+			testView = new TestView();
+			testView.assemble();
+			
+			mockConsoleWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
+		});
+
+		afterEach(() => {
+			mockConsoleWarn.mockRestore();
+		});
+
+		it('ViewがDOMにアタッチされていない場合、警告を出力して早期リターンする', () => {
+			Object.defineProperty(testView._view, 'isConnected', {
+				value: false,
+				writable: true
+			});
+
+			const stylePatch = { color: 'red', fontSize: '16px' };
+			testView.updateStyle(stylePatch);
+
+			expect(mockConsoleWarn).toHaveBeenCalledWith(
+				"ViewはまだDOMにアタッチされていないか、デタッチされた後です。",
+				testView._view,
+				false
+			);
+			expect(testView._view.style.color).toBe('');
+			expect(testView._view.style.fontSize).toBe('');
+		});
+
+		it('ViewがDOMにアタッチされている場合、スタイルが正常に適用される', () => {
+			document.body.appendChild(testView._view);
+
+			const stylePatch = {
+				color: 'red',
+				fontSize: '16px',
+				backgroundColor: 'blue',
+				margin: '10px'
+			};
+
+			testView.updateStyle(stylePatch);
+
+			expect(testView._view.style.color).toBe('red');
+			expect(testView._view.style.fontSize).toBe('16px');
+			expect(testView._view.style.backgroundColor).toBe('blue');
+			expect(testView._view.style.margin).toBe('10px');
+			expect(mockConsoleWarn).not.toHaveBeenCalled();
+
+			document.body.removeChild(testView._view);
+		});
+
+		it('readOnlyPropertiesは無視される', () => {
+			document.body.appendChild(testView._view);
+
+			const stylePatch = {
+				color: 'red',
+				length: 100,
+				parentRule: 'some rule',
+				cssText: 'some css text',
+				fontSize: '16px'
+			};
+
+			testView.updateStyle(stylePatch);
+
+			expect(testView._view.style.color).toBe('red');
+			expect(testView._view.style.fontSize).toBe('16px');
+			expect(testView._view.style.length).not.toBe(100);
+			expect(mockConsoleWarn).not.toHaveBeenCalled();
+
+			document.body.removeChild(testView._view);
+		});
+
+		it('undefinedの値は無視される', () => {
+			document.body.appendChild(testView._view);
+
+			const stylePatch = {
+				color: 'red',
+				fontSize: undefined,
+				backgroundColor: 'blue',
+				margin: undefined
+			};
+
+			testView.updateStyle(stylePatch);
+
+			expect(testView._view.style.color).toBe('red');
+			expect(testView._view.style.backgroundColor).toBe('blue');
+			expect(testView._view.style.fontSize).toBe('');
+			expect(testView._view.style.margin).toBe('');
+			expect(mockConsoleWarn).not.toHaveBeenCalled();
+
+			document.body.removeChild(testView._view);
+		});
+
+		it('空のstylePatchオブジェクトでも正常に動作する', () => {
+			document.body.appendChild(testView._view);
+
+			const stylePatch = {};
+			testView.updateStyle(stylePatch);
+
+			expect(mockConsoleWarn).not.toHaveBeenCalled();
+
+			document.body.removeChild(testView._view);
+		});
+
+		it('nullまたはundefinedのstylePatchでも正常に動作する', () => {
+			document.body.appendChild(testView._view);
+
+			testView.updateStyle(null);
+			testView.updateStyle(undefined);
+
+			expect(mockConsoleWarn).not.toHaveBeenCalled();
+
+			document.body.removeChild(testView._view);
+		});
 	});
 });

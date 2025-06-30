@@ -6,11 +6,10 @@ export class Position extends View {
         top = 0, 
         left = 0
     }){
-        super({
-            child,
-            top, 
-            left
-        });
+        super();
+        this.child = child;
+        this.top = top;
+        this.left = left;
     }
 
     styledView(element){
@@ -23,20 +22,19 @@ export class Position extends View {
 
     build(){
         return new _PositionChild({
-            child: this.props.child,
-            top: this.props.top,
-            left: this.props.left
+            child: this.child,
+            top: this.top,
+            left: this.left
         });
     }
 }
 
 class _PositionChild extends View {
     constructor({child, top = 0, left = 0}){
-        super({
-            child, 
-            top, 
-            left
-        });
+        super();
+        this.child = child;
+        this.top = top;
+        this.left = left;
     }
 
     styledView(element){
@@ -47,13 +45,13 @@ class _PositionChild extends View {
         element.style.position = "relative";
 
         element.className = "pos";
-        element.style.top = this.props.top + "px";
-        element.style.left = this.props.left + "px";
+        element.style.top = this.top + "px";
+        element.style.left = this.left + "px";
 
         return element;
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

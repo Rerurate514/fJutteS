@@ -11,17 +11,16 @@ export class ElevatedButton extends View {
         baseCSS = new BaseCSS(),
         onClick: onClick = () => {},
     }){
-        super({
-            child,
-            radius,
-            baseCSS,
-            onClick
-        });
+        super();
+        this.child = child;
+        this.radius = radius;
+        this.baseCSS = baseCSS;
+        this.onClick = onClick;
     }
 
     styledView(element){
-        element.style.borderRadius = this.props.radius;
-        element = this.props.baseCSS.applyCSS(element);
+        element.style.borderRadius = this.radius;
+        element = this.baseCSS.applyCSS(element);
 
         element.style.padding = "0px";
         
@@ -29,7 +28,7 @@ export class ElevatedButton extends View {
     }
 
     embedScriptToView(element){
-        element.addEventListener("click", this.props.onClick);
+        element.addEventListener("click", this.onClick);
         
         return element;
     }
@@ -37,11 +36,15 @@ export class ElevatedButton extends View {
     build(){
         return new Center(
             new Hover({
-                radius: this.props.radius,
+                radius: this.radius,
                 onClickEffect: true,
                 child: new Padding({
-                    all: this.props.baseCSS.padding ?? "initial",
-                    child: new _ElevatedButton(this.props)
+                    all: this.baseCSS.padding ?? "initial",
+                    child: new _ElevatedButton({
+                        child: this.child,
+                        baseCSS: this.baseCSS,
+                        onClick: this.onClick
+                    })
                 })
             })
         );
@@ -54,22 +57,23 @@ class _ElevatedButton extends View {
         baseCSS,
         onClick: onClick = () => {},
     }){
-        super({
-            child: child,
-            baseCSS: baseCSS,
-            onClick: onClick
-        });
+        super();
+        this.child = child;
+        this.baseCSS = baseCSS;
+        this.onClick = onClick;
     }
 
     styledView(element){
+        element = this.baseCSS.applyCSS(element);
+
         element.style.borderRadius = "inherit";
-        element.style.width = this.props.baseCSS.width;
-        element.style.height = this.props.baseCSS.height;
+        element.style.width = this.baseCSS.width;
+        element.style.height = this.baseCSS.height;
         
         return element;
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

@@ -7,7 +7,10 @@ export class PageRouter extends View {
         const pageHistoryProvider = Provider.createProvider(() => [0], "pageHistoryProvider__PageRouter");
         const currentPageIndexProvider = Provider.createProvider(() => 0, "currentPageIndexProvider__PageRouter");
 
-        super({ pages, pageHistoryProvider, currentPageIndexProvider });
+        super();
+        this.pages = pages;
+        this.pageHistoryProvider = pageHistoryProvider;
+        this.currentPageIndexProvider = currentPageIndexProvider;
     }
 
     createWrapView() {
@@ -15,28 +18,28 @@ export class PageRouter extends View {
     }
 
     build() {
-        if (this.props.pages.length === 0) return null;
+        if (this.pages.length === 0) return null;
 
         return new LimitedProviderScope({
-            watchingProviders: [this.props.currentPageIndexProvider],
+            providers: [this.currentPageIndexProvider],
             build: (index) => {
-                return this.props.pages[index[0]];
+                return this.pages[index[0]];
             }
         });
     }
 
     pushPage(pageIndex) {
-        this.props.pageHistoryProvider.update((history) => {
+        this.pageHistoryProvider.update((history) => {
             return [...history, pageIndex];
         });
-        this.props.currentPageIndexProvider.update(() => pageIndex);
+        this.currentPageIndexProvider.update(() => pageIndex);
     }
 
     popPage() {
-        this.props.pageHistoryProvider.update((history) => {
+        this.pageHistoryProvider.update((history) => {
             if (history.length > 1) {
                 const newHistory = history.slice(0, -1);
-                this.props.currentPageIndexProvider.update(() => newHistory[newHistory.length - 1]);
+                this.currentPageIndexProvider.update(() => newHistory[newHistory.length - 1]);
                 return newHistory;
             }
             return history;
@@ -44,14 +47,14 @@ export class PageRouter extends View {
     }
 
     replacePage(pageIndex) {
-        this.props.pageHistoryProvider.update((history) => {
+        this.pageHistoryProvider.update((history) => {
             const newHistory = [...history.slice(0, -1), pageIndex];
-            this.props.currentPageIndexProvider.update(() => pageIndex);
+            this.currentPageIndexProvider.update(() => pageIndex);
             return newHistory;
         });
     }
 
     canPop() {
-        return this.props.pageHistoryProvider.read().length > 1;
+        return this.pageHistoryProvider.read().length > 1;
     }
 }

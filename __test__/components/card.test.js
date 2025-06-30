@@ -23,9 +23,9 @@ describe('Card', () => {
 			const card = new Card({
 				child: new Moc()
 			});
-			expect(card.props.radius).toBe('inherit');
-			expect(card.props.background).toBeNull();
-			expect(card.props.elevation).toBe(ShadowLevel.LVL0);
+			expect(card.radius).toBe('inherit');
+			expect(card.background).toBeNull();
+			expect(card.elevation).toBe(ShadowLevel.LVL0);
 		});
 
 		test('カスタム値で初期化できる', () => {
@@ -35,9 +35,9 @@ describe('Card', () => {
 				background: 'rgb(0, 0, 0)',
 				elevation: ShadowLevel.LVL1
 			});
-			expect(card.props.radius).toBe('8px');
-			expect(card.props.background).toBe('rgb(0, 0, 0)');
-			expect(card.props.elevation).toBe(ShadowLevel.LVL1);
+			expect(card.radius).toBe('8px');
+			expect(card.background).toBe('rgb(0, 0, 0)');
+			expect(card.elevation).toBe(ShadowLevel.LVL1);
 		});
 	});
 

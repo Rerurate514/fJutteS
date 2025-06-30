@@ -14,7 +14,7 @@ describe('Center', () => {
 		test('子要素を正しく初期化できる', () => {
 			const child = new Moc();
 			const center = new Center(child);
-			expect(center.props.child).toBe(child);
+			expect(center.child).toBe(child);
 		});
 	});
 
@@ -67,7 +67,7 @@ describe('_Center', () => {
 		test('子要素を正しく初期化できる', () => {
 			const child = new Moc();
 			const _center = new _Center(child);
-			expect(_center.props.child).toBe(child);
+			expect(_center.child).toBe(child);
 		});
 	});
 

@@ -6,27 +6,26 @@ export class Stack extends View {
         children,
         baseCSS = new BaseCSS()
     }){
-        super({
-            children,
-            baseCSS
-        });
+        super();
+        this.children = children;
+        this.baseCSS = baseCSS;
     }
     
     styledView(element){
         element.style.position = "relative";
 
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
 
         return element;
     }
 
     preBuild(){
-        this.props.children.forEach(com => {
+        this.children.forEach(com => {
             com.view.style.position = "absolute";
         });
     }
 
     build(){
-        return this.props.children;
+        return this.children;
     }
 }

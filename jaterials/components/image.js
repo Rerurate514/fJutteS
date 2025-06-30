@@ -10,13 +10,12 @@ export class Image extends View {
         baseCSS: baseCSS = new BaseCSS(),
         webkitCSS: webkitCSS = new WebkitCSS()
     }){
-        super({
-            src,
-            alt,
-            title,
-            baseCSS,
-            webkitCSS
-        });
+        super();
+        this.src = src;
+        this.alt = alt;
+        this.title = title;
+        this.baseCSS = baseCSS;
+        this.webkitCSS = webkitCSS;
     }
 
     createWrapView(){
@@ -24,12 +23,12 @@ export class Image extends View {
     }
 
     styledView(element){
-        element = this.props.baseCSS.applyCSS(element);
-        element = this.props.webkitCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
+        element = this.webkitCSS.applyCSS(element);
 
-        element.src = this.props.src;
-        element.alt = this.props.alt;
-        element.title = this.props.title;
+        element.src = this.src;
+        element.alt = this.alt;
+        element.title = this.title;
 
         return element;
     }

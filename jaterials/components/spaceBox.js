@@ -5,12 +5,14 @@ export class SpaceBox extends View {
         width = "0px", 
         height = "0px"
     } = {}){
-        super({width, height});
+        super();
+        this.width = width;
+        this.height = height;
     }
 
     styledView(element){
-        element.style.width = this.props.width;
-        element.style.height = this.props.height;
+        element.style.width = this.width;
+        element.style.height = this.height;
 
         return element;
     }

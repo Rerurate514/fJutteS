@@ -9,14 +9,13 @@ export class Link extends View {
         isDownload = false,
         isShownUnderline = true
     }){
-        super({
-            child,
-            href,
-            rel,
-            target,
-            isDownload,
-            isShownUnderline
-        });
+        super();
+        this.child = child;
+        this.href = href;
+        this.rel = rel;
+        this.target = target;
+        this.isDownload = isDownload;
+        this.isShownUnderline = isShownUnderline;
     }
 
     createWrapView(){
@@ -24,18 +23,18 @@ export class Link extends View {
     }
 
     styledView(element){
-        element.href = this.props.href;
-        if(this.props.isDownload) element.download = "download";
+        element.href = this.href;
+        if(this.isDownload) element.download = "download";
 
-        if(this.props.rel) element.rel = this.props.rel;
-        if(this.props.target) element.target = this.props.target;
+        if(this.rel) element.rel = this.rel;
+        if(this.target) element.target = this.target;
 
-        if(!this.props.isShownUnderline) element.style.textDecoration = "none";
+        if(!this.isShownUnderline) element.style.textDecoration = "none";
 
         return element;
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

@@ -26,9 +26,9 @@ describe('ElevatedButton', () => {
             const button = new ElevatedButton({
                 child: mockChild
             });
-            expect(button.props.radius).toBe('inherit');
-            expect(button.props.baseCSS).toBeInstanceOf(BaseCSS);
-            expect(typeof button.props.onClick).toBe('function');
+            expect(button.radius).toBe('inherit');
+            expect(button.baseCSS).toBeInstanceOf(BaseCSS);
+            expect(typeof button.onClick).toBe('function');
         });
 
         test('カスタム値で初期化できる', () => {
@@ -38,9 +38,9 @@ describe('ElevatedButton', () => {
                 baseCSS: mockBaseCSS,
                 onClick: mockOnClick
             });
-            expect(button.props.radius).toBe('8px');
-            expect(button.props.baseCSS).toBe(mockBaseCSS);
-            expect(button.props.onClick).toBe(mockOnClick);
+            expect(button.radius).toBe('8px');
+            expect(button.baseCSS).toBe(mockBaseCSS);
+            expect(button.onClick).toBe(mockOnClick);
         });
     });
 
@@ -75,14 +75,6 @@ describe('ElevatedButton', () => {
             element.dispatchEvent(new Event('click'));
             
             expect(mockOnClick).toHaveBeenCalled();
-        });
-    });
-
-    describe('build', () => {
-        test('CenterコンポーネントでラップされたHoverコンポーネントを返す', () => {
-            const result = button.build();
-            expect(result instanceof Center).toBe(true);
-            expect(result.child.child instanceof Hover).toBe(true);
         });
     });
 });

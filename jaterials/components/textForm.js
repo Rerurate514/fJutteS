@@ -12,16 +12,15 @@ export class TextForm extends View {
         pattern = "",
         baseCSS = new BaseCSS(),
     }){
-        super({
-            provider,
-            minLength,
-            maxLength,
-            value,
-            placeholder,
-            required,
-            pattern,
-            baseCSS
-        });
+        super();
+        this.provider = provider;
+        this.minLength = minLength;
+        this.maxLength = maxLength;
+        this.value = value;
+        this.placeholder = placeholder;
+        this.required = required;
+        this.pattern = pattern;
+        this.baseCSS = baseCSS;
     }
 
     createWrapView(){
@@ -31,14 +30,14 @@ export class TextForm extends View {
     }
 
     styledView(element){
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
 
-        element.value = this.props.value || '';
-        element.placeholder = this.props.placeholder;
-        if(this.props.minLength) element.minLength = this.props.minLength;
-        if(this.props.maxLength) element.maxLength = this.props.maxLength;
-        element.required = this.props.required !== "";
-        element.pattern = this.props.pattern;
+        element.value = this.value || '';
+        element.placeholder = this.placeholder;
+        if(this.minLength) element.minLength = this.minLength;
+        if(this.maxLength) element.maxLength = this.maxLength;
+        element.required = this.required !== "";
+        element.pattern = this.pattern;
 
         return element;
     }
@@ -53,9 +52,9 @@ export class TextForm extends View {
     }
     
     updateProvider(value) {
-        if (!this.props.provider) return;
+        if (!this.provider) return;
 
-        this.props.provider.update(() => {
+        this.provider.update(() => {
             return value;
         });
     }

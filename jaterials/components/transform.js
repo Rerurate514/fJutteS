@@ -17,9 +17,10 @@ export class Transform extends View {
         skewX = 0,
         skewY = 0,
     } = {}){
-        super({
-            child,
-            baseCSS,
+        super();
+        this.child = child;
+        this.baseCSS = baseCSS;
+        this.properties = {
             translateX,
             translateY,
             translateZ,
@@ -30,12 +31,12 @@ export class Transform extends View {
             scaleY,
             scaleZ,
             skewX,
-            skewY,
-        });
+            skewY
+        };
     }
 
     styledView(element){
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
         
         element = this._applyTransformCSS(element);
         
@@ -45,26 +46,26 @@ export class Transform extends View {
     _applyTransformCSS(element) {
         const transforms = [];
 
-        if (this.props.translateX !== 0 || this.props.translateY !== 0 || this.props.translateZ !== 0) {
-            transforms.push(`translate3d(${this.props.translateX}px, ${this.props.translateY}px, ${this.props.translateZ}px)`);
+        if (this.properties.translateX !== 0 || this.properties.translateY !== 0 || this.properties.translateZ !== 0) {
+            transforms.push(`translate3d(${this.properties.translateX}px, ${this.properties.translateY}px, ${this.properties.translateZ}px)`);
         }
         
-        if (this.props.rotateX !== 0) {
-            transforms.push(`rotateX(${this.props.rotateX}deg)`);
+        if (this.properties.rotateX !== 0) {
+            transforms.push(`rotateX(${this.properties.rotateX}deg)`);
         }
-        if (this.props.rotateY !== 0) {
-            transforms.push(`rotateY(${this.props.rotateY}deg)`);
+        if (this.properties.rotateY !== 0) {
+            transforms.push(`rotateY(${this.properties.rotateY}deg)`);
         }
-        if (this.props.rotateZ !== 0) {
-            transforms.push(`rotateZ(${this.props.rotateZ}deg)`);
+        if (this.properties.rotateZ !== 0) {
+            transforms.push(`rotateZ(${this.properties.rotateZ}deg)`);
         }
 
-        if (this.props.scaleX !== 1 || this.props.scaleY !== 1 || this.props.scaleZ !== 1) {
-            transforms.push(`scale3d(${this.props.scaleX}, ${this.props.scaleY}, ${this.props.scaleZ})`);
+        if (this.properties.scaleX !== 1 || this.properties.scaleY !== 1 || this.properties.scaleZ !== 1) {
+            transforms.push(`scale3d(${this.properties.scaleX}, ${this.properties.scaleY}, ${this.properties.scaleZ})`);
         }
         
-        if (this.props.skewX !== 0 || this.props.skewY !== 0) {
-            transforms.push(`skew(${this.props.skewX}deg, ${this.props.skewY}deg)`);
+        if (this.properties.skewX !== 0 || this.properties.skewY !== 0) {
+            transforms.push(`skew(${this.properties.skewX}deg, ${this.properties.skewY}deg)`);
         }
         
         if (transforms.length > 0) {
@@ -79,7 +80,7 @@ export class Transform extends View {
     animate(properties, duration = 500, easing = 'ease') {
         if (!this.view) return this;
         
-        Object.assign(this.props, properties);
+        Object.assign(this.properties, properties);
         
         this.view.style.transition = `transform ${duration}ms ${easing}`;
         
@@ -96,6 +97,6 @@ export class Transform extends View {
     }
     
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

@@ -25,8 +25,8 @@ describe('DropDownMenu', () => {
             const menu = new DropDownMenu({
                 provider: mockProvider
             });
-            expect(menu.props.item).toEqual([]);
-            expect(menu.props.baseCSS).toBeInstanceOf(BaseCSS);
+            expect(menu.item).toEqual([]);
+            expect(menu.baseCSS).toBeInstanceOf(BaseCSS);
         });
 
         test('カスタム値で初期化できる', () => {
@@ -36,8 +36,8 @@ describe('DropDownMenu', () => {
                 baseCSS: mockBaseCSS,
                 provider: mockProvider
             });
-            expect(menu.props.item).toBe(items);
-            expect(menu.props.baseCSS).toBe(mockBaseCSS);
+            expect(menu.item).toBe(items);
+            expect(menu.baseCSS).toBe(mockBaseCSS);
         });
     });
 
@@ -109,8 +109,8 @@ describe('DropDownMenuItem', () => {
 
     describe('constructor', () => {
         test('テキストと値で初期化できる', () => {
-            expect(menuItem.props.text).toBe(mockText);
-            expect(menuItem.props.value).toBe(mockValue);
+            expect(menuItem.text).toBe(mockText);
+            expect(menuItem.value).toBe(mockValue);
         });
     });
 
@@ -149,11 +149,11 @@ describe('DropDownMenuItemGroup', () => {
                 item: mockItems
             });
 
-            expect(group.props.item).toEqual(mockItems);
+            expect(group.item).toEqual(mockItems);
         });
 
         test('メニュー項目リストで初期化できる', () => {
-            expect(menuGroup.props.item).toBe(mockItems);
+            expect(menuGroup.item).toBe(mockItems);
         });
     });
 

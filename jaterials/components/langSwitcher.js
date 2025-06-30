@@ -8,16 +8,15 @@ export class LangSwitcher extends View {
     constructor({
         build = () => {}
     }){
-        super({
-            build
-        });
+        super();
+        this.build = build;
     }
 
     build(){
         return new LimitedProviderScope({
-            watchingProviders: [ langSwitchProvider ],
+            providers: [ langSwitchProvider ],
             build: (langKey) => {
-                return this.props.build(langKey[0]);
+                return this.build(langKey[0]);
             }
         });
     }

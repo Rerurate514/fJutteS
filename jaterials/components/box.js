@@ -11,30 +11,29 @@ export class Box extends View {
         webkitCSS = new WebkitCSS(),
         child = null
     }){
-        super({
-            width, 
-            height,
-            background,
-            baseCSS,
-            webkitCSS,
-            child
-        });
+        super();
+        this.width = width;
+        this.height = height;
+        this.background = background;
+        this.baseCSS = baseCSS;
+        this.webkitCSS = webkitCSS;
+        this.child = child;
     }
 
 
     styledView(element){
-        element.style.width = this.props.width;
-        element.style.height = this.props.height;
+        element.style.width = this.width;
+        element.style.height = this.height;
 
-        if(this.props.background) element.style.background = this.props.background;
+        if(this.background) element.style.background = this.background;
 
-        element = this.props.baseCSS.applyCSS(element);
-        element = this.props.webkitCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
+        element = this.webkitCSS.applyCSS(element);
 
         return element;
     }
 
     build(){
-        return this.props.child;
+        return this.child;
     }
 }

@@ -10,31 +10,30 @@ export class Row extends View {
         isJustifySpaceBetween = false,
         isVerticalCenter = false
     }){
-        super({
-            children, 
-            baseCSS,
-            isAlignCenter, 
-            isJustifySpaceAround,
-            isJustifySpaceBetween,
-            isVerticalCenter
-        });
+        super();
+        this.children = children;
+        this.baseCSS = baseCSS;
+        this.isAlignCenter = isAlignCenter;
+        this.isJustifySpaceAround = isJustifySpaceAround;
+        this.isJustifySpaceBetween = isJustifySpaceBetween;
+        this.isVerticalCenter = isVerticalCenter;
     }
 
     styledView(element){
         element.className = "row-container";
         element.style.display = "flex";
 
-        if(this.props.isAlignCenter) element.style.justifyContent = "center";
-        if(this.props.isJustifySpaceAround) element.style.justifyContent = "space-around";
-        if(this.props.isJustifySpaceBetween) element.style.justifyContent = "space-between";
-        if(this.props.isVerticalCenter) element.style.alignItems = "center";
+        if(this.isAlignCenter) element.style.justifyContent = "center";
+        if(this.isJustifySpaceAround) element.style.justifyContent = "space-around";
+        if(this.isJustifySpaceBetween) element.style.justifyContent = "space-between";
+        if(this.isVerticalCenter) element.style.alignItems = "center";
 
-        element = this.props.baseCSS.applyCSS(element);
+        element = this.baseCSS.applyCSS(element);
 
         return element;
     }
 
     build(){
-        return this.props.children;
+        return this.children;
     }
 }
