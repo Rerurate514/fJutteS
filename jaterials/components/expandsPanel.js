@@ -13,7 +13,7 @@ import { Text } from "./text.js";
 
 export class ExpandsPanel extends View {
     constructor({
-        titleItem: titleItem,
+        titleItem,
         child,
         radius = "10px",
         buttonShadowLevel = ShadowLevel.LVL3,
@@ -57,7 +57,7 @@ export class ExpandsPanel extends View {
                                 }),
                                 child: new LimitedProviderScope({
                                     providers: [ this.isExpands ],
-                                    build: (isExpand) => {
+                                    builder: (isExpand) => {
                                         const button = isExpand[0] ? "∧" : "∨";
                                         return new Text(button);
                                     }

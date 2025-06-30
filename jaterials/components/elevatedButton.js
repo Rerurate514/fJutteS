@@ -19,10 +19,10 @@ export class ElevatedButton extends View {
     }
 
     styledView(element){
-        element.style.padding = "0px";
-        
         element.style.borderRadius = this.radius;
         element = this.baseCSS.applyCSS(element);
+
+        element.style.padding = "0px";
         
         return element;
     }
@@ -64,6 +64,8 @@ class _ElevatedButton extends View {
     }
 
     styledView(element){
+        element = this.baseCSS.applyCSS(element);
+
         element.style.borderRadius = "inherit";
         element.style.width = this.baseCSS.width;
         element.style.height = this.baseCSS.height;

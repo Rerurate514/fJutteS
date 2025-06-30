@@ -50,13 +50,10 @@ class _HoverWrapper extends View {
         radius = "inherit",
         onClickEffect = false
     }){
-        super({
-            radius,
-            onClickEffect
-        });
+        super();
+        this.radius = radius;
+        this.onClickEffect = onClickEffect;
     }
-
-
 
     styledView(element){
         element.style.position = "absolute";
@@ -85,10 +82,9 @@ class _Hover extends View {
         radius = "inherit",
         onClickEffect = false
     }){
-        super({
-            radius,
-            onClickEffect
-        });
+        super();
+        this.radius = radius;
+        this.onClickEffect = onClickEffect;
     }
 
     styledView(element){
